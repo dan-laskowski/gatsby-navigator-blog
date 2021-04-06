@@ -2,13 +2,15 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import ReactHtmlParser from "react-html-parser";
 import { graphql, Link } from "gatsby";
-import Pagination from "components/Pagination";
+import Layout from "organisms/layout";
+import Tag from "atoms/tag";
+import Pagination from "molecules/Pagination";
 
 const Category = ({ data, pageContext }) => {
   console.log(data);
   const { wpCategory, allWpPost } = data;
   return (
-    <>
+    <Layout>
       <Helmet>
         <title>{wpCategory.name} | Navigator</title>
       </Helmet>
@@ -41,26 +43,24 @@ const Category = ({ data, pageContext }) => {
       )}
       <div>
         {allWpPost.edges.map(({ node }) => (
-          <Link to={node.uri}>
-            <div key={node.id}>
-              <img
-                srcSet={node.featuredImage.node.srcSet}
-                alt={node.featuredImage.node.altText}
-              />
+          <div key={node.id}>
+            <img
+              srcSet={node.featuredImage.node.srcSet}
+              alt={node.featuredImage.node.altText}
+            />
+            <div>
+              {node.tags.nodes.map(node => (
+                <Tag key={node.slug} name={node.name} slug={node.slug} />
+              ))}
+            </div>
+            <Link to={node.uri}>
               <h2>{node.title}</h2>
               <div>{ReactHtmlParser(node.excerpt)}</div>
-              <div>
-                {node.tags.nodes.map(node => (
-                  <Link to={node.slug}>
-                    <span>{node.name}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         ))}
       </div>
-    </>
+    </Layout>
   );
 };
 

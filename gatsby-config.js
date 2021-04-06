@@ -19,7 +19,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets/images`,
       },
     },
     {
@@ -27,9 +27,13 @@ module.exports = {
       options: {
         src: path.join(__dirname, "src"),
         components: path.join(__dirname, "src/components"),
-        images: path.join(__dirname, "src/images"),
+        assets: path.join(__dirname, "src/assets"),
+        images: path.join(__dirname, "src/assets/images"),
         pages: path.join(__dirname, "src/pages"),
         templates: path.join(__dirname, "src/templates"),
+        atoms: path.join(__dirname, "src/components/atoms"),
+        molecules: path.join(__dirname, "src/components/molecules"),
+        organisms: path.join(__dirname, "src/components/organisms"),
       },
     },
     {
