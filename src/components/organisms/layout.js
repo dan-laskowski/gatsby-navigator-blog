@@ -8,6 +8,7 @@ import Tag from "atoms/tag";
 import Button from "atoms/button";
 import { Heading, Subheading } from "atoms/heading";
 import theme from "assets/styles/theme";
+import Header from "molecules/header";
 import AsideSection from "molecules/asideSection";
 import NewsletterForm from "molecules/newsletterForm";
 
@@ -50,6 +51,7 @@ const Layout = ({ children }) => {
       <Reset />
       <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <Header />
         <Wrapper>
           <AsideSection title="tagi">
             <div>

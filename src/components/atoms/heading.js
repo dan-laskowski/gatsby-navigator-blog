@@ -21,10 +21,10 @@ const StyledSubheading = styled.h2`
   margin-bottom: 25px;
 `;
 
-export const Heading = ({ text }) => {
-  return <StyledHeading>{text}</StyledHeading>;
+export const Heading = ({ text, ...props }) => {
+  return <StyledHeading {...props}>{text}</StyledHeading>;
 };
 
-export const Subheading = ({ text }) => {
-  return <StyledSubheading>{text}</StyledSubheading>;
+export const Subheading = ({ text, ...props }) => {
+  return <StyledSubheading {...props}>{text}</StyledSubheading>;
 };
