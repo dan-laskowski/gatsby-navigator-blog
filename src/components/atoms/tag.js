@@ -22,7 +22,9 @@ const StyledTag = styled.button`
 const Tag = ({ name, slug, ...props }) => {
   return (
     <Link to={`/${slug}`} {...props}>
-      <StyledTag>{name.charAt(0).toUpperCase() + name.slice(1)}</StyledTag>
+      <StyledTag {...props}>
+        {name.charAt(0).toUpperCase() + name.slice(1)}
+      </StyledTag>
     </Link>
   );
 };

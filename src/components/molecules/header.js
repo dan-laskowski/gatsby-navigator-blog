@@ -9,7 +9,6 @@ import searchLogo from "assets/images/search.svg";
 
 const StyledHeader = styled.header`
   display: block;
-  height: 226px;
   margin: 0 auto;
 `;
 
@@ -70,10 +69,14 @@ const Header = () => (
     <LogoSection>
       <LogoSectionWrapper>
         <StyledSubheading text="Magazyn o zrównoważonym rozwoju i etycznym biznesie" />
-        <img src={headerLogo} width="430" height="152" />
+        <Link to="/">
+          <img src={headerLogo} width="430" height="152" />
+        </Link>
         <div>
-          <StyledLogoSubheading text="Wspiera" />
-          <img src={betterLogo} width="57" height="61" />
+          <StyledLogoSubheading text="Powered by" />
+          <a href="http://b-better.pl/">
+            <img src={betterLogo} width="57" height="61" />
+          </a>
         </div>
       </LogoSectionWrapper>
     </LogoSection>

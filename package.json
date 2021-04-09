@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@bogachenkov/react-scrolling-progress": "^1.0.1",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.12.0",
     "dotenv": "^8.2.0",
@@ -25,10 +26,12 @@
     "lunr": "^2.3.9",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-html-parser": "^2.0.2",
     "react-inlinesvg": "^2.2.2",
+    "react-scroll-progress-bar": "^1.1.13",
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.4"
   },
