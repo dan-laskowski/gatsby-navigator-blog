@@ -93,17 +93,18 @@ exports.createPages = async ({ graphql, actions }) => {
     const totalPosts =
       node.posts.nodes.length !== null ? node.posts.nodes.length : 0;
 
+    const url = `/${node.slug}`;
+
     const items = Array.from({ length: totalPosts });
 
     paginate({
       createPage,
       items: items,
-      itemsPerPage: 3,
+      itemsPerPage: 2,
       component: categoryTemplate,
-      pathPrefix: node.slug,
+      pathPrefix: url,
       context: {
         id: node.id,
-        slug: node.slug,
       },
     });
   });

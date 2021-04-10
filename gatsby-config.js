@@ -34,6 +34,7 @@ module.exports = {
         atoms: path.join(__dirname, "src/components/atoms"),
         molecules: path.join(__dirname, "src/components/molecules"),
         organisms: path.join(__dirname, "src/components/organisms"),
+        utils: path.join(__dirname, "src/utils"),
       },
     },
     {

@@ -1,14 +1,22 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "gatsby";
 
-const Pagination = ({
-  pageContext: previousPagePath,
-  nextPagePath,
-  humanPageNumber,
-  numberOfPages,
-}) => {
+const Pagination = ({ pageContext }) => {
+  const {
+    previousPagePath,
+    nextPagePath,
+    humanPageNumber,
+    numberOfPages,
+  } = pageContext;
+
+  console.log(previousPagePath);
+  console.log(nextPagePath);
+  console.log(humanPageNumber);
+  console.log(numberOfPages);
+
   return (
-    <nav>
+    <nav className="pagination" role="navigation">
       <div>
         {previousPagePath && (
           <Link to={previousPagePath} rel="prev">
@@ -17,7 +25,7 @@ const Pagination = ({
         )}
       </div>
       {numberOfPages > 1 && (
-        <div>
+        <div className="pagination-location">
           Strona {humanPageNumber} z {numberOfPages}
         </div>
       )}
@@ -31,4 +39,9 @@ const Pagination = ({
     </nav>
   );
 };
+
+Pagination.propTypes = {
+  pageContext: PropTypes.object.isRequired,
+};
+
 export default Pagination;

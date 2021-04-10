@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import { Heading } from "atoms/heading";
 import Tag from "atoms/tag";
-import { node } from "prop-types";
 
 const Wrapper = styled.section`
   display: grid;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledInput = styled.input`
   font-family: ${({ theme }) => theme.font.button.family};
   font-weight: ${({ theme }) => theme.font.button.weight};
-  font-style: ${({ theme }) => theme.font.button.weight};
+  font-style: ${({ theme }) => theme.font.button.style};
   font-size: ${({ theme }) => theme.font.button.size};
   background: ${({ theme }) => theme.color.white};
   color: ${({ theme }) => theme.color.gray};

@@ -4,10 +4,10 @@ import { graphql, Link } from "gatsby";
 import { Helmet } from "react-helmet";
 import ProgressBar from "react-scroll-progress-bar";
 import ReactHtmlParser from "react-html-parser";
-import Tag from "atoms/tag";
 import { Heading, Subheading } from "atoms/heading";
 import AsideSection from "molecules/asideSection";
 import PostSmall from "molecules/postSmall";
+import TagBox from "molecules/tagBox";
 import Layout from "organisms/layout";
 import facebook from "assets/images/facebook.svg";
 import twitter from "assets/images/twitter.svg";
@@ -226,21 +226,15 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
                   <img src={share} />
                 </SocialIcon>
               </Socials>
-
               <div>
-                {wpPost.tags.nodes.map(node => (
-                  <Tag key={node.slug} name={node.name} slug={node.slug} />
-                ))}
+                <TagBox tags={wpPost.tags} />
               </div>
             </MetaSection>
             <ArticleContent>{ReactHtmlParser(wpPost.content)}</ArticleContent>
             <Aside>
               <AsideSection title="tagi">
                 <div>
-                  {allWpTag.nodes.map(node => (
-                    <Tag key={node.slug} name={node.name} slug={node.slug} />
-                  ))}
-                  <Tag key="last" name="..." slug="tags" />
+                  <TagBox tags={allWpTag} />
                 </div>
               </AsideSection>
               <AsideSection title="ostatnie">
@@ -297,7 +291,7 @@ export const query = graphql`
       tags {
         nodes {
           name
-          uri
+          slug
         }
       }
       excerpt

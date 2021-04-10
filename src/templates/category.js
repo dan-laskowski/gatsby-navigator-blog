@@ -1,65 +1,156 @@
 import React from "react";
+import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import ReactHtmlParser from "react-html-parser";
-import { graphql, Link } from "gatsby";
-import Layout from "organisms/layout";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import Tag from "atoms/tag";
+import { Heading } from "atoms/heading";
 import Pagination from "molecules/Pagination";
+import Aside from "organisms/aside";
+import PostMedium from "molecules/postMedium";
+import AsideSection from "molecules/asideSection";
+import PostSmall from "molecules/postSmall";
+import Layout from "organisms/layout";
+import truncate from "utils/truncate";
 
-const Category = ({ data, pageContext }) => {
-  console.log(data);
-  const { wpCategory, allWpPost } = data;
+const Wrapper = styled.div``;
+
+const ContentWrapper = styled.div`
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(12, 122px);
+  grid-gap: 16px;
+  grid-template-rows: auto;
+  grid-template-areas: "text text text text space img img img img aside aside aside";
+`;
+
+const CategoryName = styled.div`
+  background: ${({ theme }) => theme.color.lightGray};
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 41px;
+  *:visited {
+    color: ${({ theme }) => theme.color.black};
+  }
+`;
+
+const SubcategoryName = styled.div`
+  font-family: ${({ theme }) => theme.font.heading.family};
+  font-weight: ${({ theme }) => theme.font.heading.weight};
+  font-style: ${({ theme }) => theme.font.heading.style};
+  font-size: 20px;
+  *:not(:last-child) {
+    margin-right: 40px;
+  }
+`;
+
+const StyledHeading = styled(Heading)`
+  font-size: ${({ theme }) => theme.font.heading.size};
+  text-transform: uppercase;
+  margin-bottom: 26px;
+`;
+const Posts = styled.div`
+  grid-column-start: text;
+  grid-column-end: img;
+  a:first-child {
+    margin-top: 0;
+  }
+
+  a:last-child {
+    border-bottom: none;
+  }
+`;
+
+const StyledAside = styled(Aside)`
+  grid-area: aside;
+`;
+
+const Category = ({
+  data: { wpCategory, allWpPost, asideQuery },
+  pageContext,
+}) => {
+  const handleCategoryNode = post =>
+    !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
+
+  console.log(allWpPost);
   return (
     <Layout>
       <Helmet>
         <title>{wpCategory.name} | Navigator</title>
       </Helmet>
-      {wpCategory.wpChildren.nodes.length ? (
-        <>
-          <Link style={{ color: "red" }} to={`/${wpCategory.slug}`}>
-            rodzic {wpCategory.name}
-          </Link>
-          {wpCategory.wpChildren.nodes.map(node => (
-            <Link key={node.uri} to={`/${node.slug}`}>
-              {node.name}
-            </Link>
-          ))}
-        </>
-      ) : (
-        <>
-          <Link to={`/${wpCategory.wpParent.node.slug}`}>
-            rodzic {wpCategory.wpParent.node.name}
-          </Link>
-          {wpCategory.wpParent.node.wpChildren.nodes.map(node => (
-            <Link
-              style={{ color: wpCategory.name === node.name ? `red` : `` }}
-              key={node.slug}
-              to={`/${node.slug}`}
-            >
-              {node.name}
-            </Link>
-          ))}
-        </>
-      )}
-      <div>
-        {allWpPost.edges.map(({ node }) => (
-          <div key={node.id}>
-            <img
-              srcSet={node.featuredImage.node.srcSet}
-              alt={node.featuredImage.node.altText}
-            />
-            <div>
-              {node.tags.nodes.map(node => (
-                <Tag key={node.slug} name={node.name} slug={node.slug} />
+      <Wrapper>
+        <CategoryName>
+          {wpCategory.wpChildren.nodes.length ? (
+            <>
+              <Link style={{ color: "red" }} to={`/${wpCategory.slug}`}>
+                <StyledHeading text={wpCategory.name} />
+              </Link>
+              <SubcategoryName>
+                {wpCategory.wpChildren.nodes.map(node => (
+                  <Link key={node.uri} to={`/${node.slug}`}>
+                    {node.name}
+                  </Link>
+                ))}
+              </SubcategoryName>
+            </>
+          ) : (
+            <>
+              <Link to={`/${wpCategory.wpParent.node.slug}`}>
+                <StyledHeading text={wpCategory.wpParent.node.name} />
+              </Link>
+              <SubcategoryName>
+                {wpCategory.wpParent.node.wpChildren.nodes.map(node => (
+                  <Link
+                    style={{
+                      color:
+                        wpCategory.name === node.name
+                          ? `rgb(240, 117, 56)`
+                          : ``,
+                    }}
+                    key={node.slug}
+                    to={`/${node.slug}`}
+                  >
+                    {node.name}
+                  </Link>
+                ))}
+              </SubcategoryName>
+            </>
+          )}
+        </CategoryName>
+        <ContentWrapper>
+          <Posts>
+            {allWpPost.edges.map(({ node }) => (
+              <PostMedium
+                key={node.title}
+                title={node.title}
+                excerpt={truncate(node.excerpt, 30)}
+                category={node.categories.nodes[handleCategoryNode(node)]}
+                tags={node.tags}
+                img={node.featuredImage}
+                slug={node.slug}
+              />
+            ))}
+          </Posts>
+          <StyledAside>
+            <AsideSection title="ostatnie">
+              {asideQuery.nodes.map(node => (
+                <PostSmall
+                  key={node.title}
+                  title={node.title}
+                  category={node.categories.nodes[handleCategoryNode(node)]}
+                  tags={node.tags}
+                  img={node.featuredImage}
+                  slug={node.slug}
+                />
               ))}
-            </div>
-            <Link to={node.uri}>
-              <h2>{node.title}</h2>
-              <div>{ReactHtmlParser(node.excerpt)}</div>
-            </Link>
-          </div>
-        ))}
-      </div>
+            </AsideSection>
+          </StyledAside>
+        </ContentWrapper>
+        <Pagination pageContext={pageContext} />
+      </Wrapper>
     </Layout>
   );
 };
@@ -100,6 +191,12 @@ export const query = graphql`
             nodes {
               name
               slug
+              wpChildren {
+                nodes {
+                  name
+                  slug
+                }
+              }
             }
           }
           featuredImage {
@@ -110,15 +207,41 @@ export const query = graphql`
           }
           date(locale: "pl")
           title
-          subtitle {
-            podtytul
-          }
           excerpt
-          uri
+          slug
           tags {
             nodes {
               name
               slug
+            }
+          }
+        }
+      }
+    }
+    asideQuery: allWpPost(limit: 3) {
+      nodes {
+        title
+        slug
+        tags {
+          nodes {
+            name
+            slug
+          }
+        }
+        featuredImage {
+          node {
+            srcSet
+          }
+        }
+        categories {
+          nodes {
+            name
+            slug
+            wpChildren {
+              nodes {
+                name
+                slug
+              }
             }
           }
         }

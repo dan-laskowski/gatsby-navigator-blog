@@ -10,9 +10,10 @@ import NewsletterForm from "molecules/newsletterForm";
 const AsideWrapper = styled.aside`
   padding-left: 21px;
   width: 60%;
+  border-left: 1px solid ${({ theme }) => theme.color.lightGray};
 `;
 
-const Aside = () => {
+const Aside = ({ children }) => {
   const { allWpPost, allWpTag } = useStaticQuery(graphql`
     query AsideQuery {
       allWpPost(
@@ -60,6 +61,7 @@ const Aside = () => {
       <AsideSection title="newsletter">
         <NewsletterForm />
       </AsideSection>
+      {children}
     </AsideWrapper>
   );
 };
