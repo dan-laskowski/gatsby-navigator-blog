@@ -24,7 +24,7 @@ const StyledButton = styled.button`
 const Button = ({ text, uri, ...props }) => {
   return (
     <Link to={uri} {...props}>
-      <StyledButton>{text}</StyledButton>
+      <StyledButton {...props}>{text}</StyledButton>
     </Link>
   );
 };

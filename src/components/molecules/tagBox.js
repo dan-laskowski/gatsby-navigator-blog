@@ -11,7 +11,7 @@ const TagBox = ({ tags, amount }) => {
       {slicedTags.map(node => (
         <Tag key={node.slug} name={node.name} slug={node.slug} />
       ))}
-      {amount !== tags.nodes.length && amount && (
+      {amount !== tags.nodes.length && amount && !tags && (
         <Tag key="last" name="..." slug="tags" />
       )}
     </>

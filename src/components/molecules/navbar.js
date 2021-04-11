@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { MenuItem, SubmenuItem } from "atoms/menuItem";
 
 const StyledNav = styled.nav`
-  li {
+  * > li {
     display: inline-block;
     list-style-type: none;
     position: relative;
+    padding: 21px 0;
     background: ${({ theme }) => theme.color.white};
   }
   li ul {
@@ -20,7 +21,7 @@ const StyledNav = styled.nav`
   }
   li ul li {
     padding: 7px 21px;
-    min-width: 226px;
+    min-width: 280px;
     color: ${({ theme }) => theme.color.black};
   }
   li:hover > ul {

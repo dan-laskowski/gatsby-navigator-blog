@@ -7,7 +7,7 @@ import Tag from "atoms/tag";
 import { Heading } from "atoms/heading";
 import Pagination from "molecules/Pagination";
 import Aside from "organisms/aside";
-import PostMedium from "molecules/postMedium";
+import PostLarge from "molecules/postLarge";
 import AsideSection from "molecules/asideSection";
 import PostSmall from "molecules/postSmall";
 import Layout from "organisms/layout";
@@ -123,7 +123,7 @@ const Category = ({
         <ContentWrapper>
           <Posts>
             {allWpPost.edges.map(({ node }) => (
-              <PostMedium
+              <PostLarge
                 key={node.title}
                 title={node.title}
                 excerpt={truncate(node.excerpt, 30)}
@@ -182,7 +182,10 @@ export const query = graphql`
     allWpPost(
       limit: $limit
       skip: $skip
-      filter: { categories: { nodes: { elemMatch: { id: { eq: $id } } } } }
+      filter: {
+        categories: { nodes: { elemMatch: { id: { eq: $id } } } }
+        status: { eq: "publish" }
+      }
     ) {
       edges {
         node {

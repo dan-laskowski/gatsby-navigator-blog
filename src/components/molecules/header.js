@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import { Subheading } from "atoms/heading";
@@ -6,6 +6,7 @@ import Navbar from "molecules/navbar";
 import headerLogo from "assets/images/headerLogo.svg";
 import betterLogo from "assets/images/betterLogo.svg";
 import searchLogo from "assets/images/search.svg";
+import exit from "assets/images/exit.svg";
 
 const StyledHeader = styled.header`
   display: block;
@@ -37,6 +38,15 @@ const StyledLogoSubheading = styled(Subheading)`
   margin-bottom: 14px;
 `;
 
+const StyledButton = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+  :focus {
+    outline: none;
+  }
+`;
+
 const Navigation = styled.section`
   display: flex;
   justify-content: center;
@@ -64,30 +74,80 @@ const Newsletter = styled(Link)`
   color: ${({ theme }) => theme.color.orange};
 `;
 
-const Header = () => (
-  <StyledHeader>
-    <LogoSection>
-      <LogoSectionWrapper>
-        <StyledSubheading text="Magazyn o zrównoważonym rozwoju i etycznym biznesie" />
-        <Link to="/">
-          <img src={headerLogo} width="430" height="152" />
-        </Link>
-        <div>
-          <StyledLogoSubheading text="Powered by" />
-          <a href="http://b-better.pl/">
-            <img src={betterLogo} width="57" height="61" />
-          </a>
-        </div>
-      </LogoSectionWrapper>
-    </LogoSection>
-    <Navigation>
-      <NavigationWrapper>
-        <img src={searchLogo} width="24" height="24" />
-        <Navbar />
-        <Newsletter to="/newsletter">Newsletter</Newsletter>
-      </NavigationWrapper>
-    </Navigation>
-  </StyledHeader>
-);
+const Search = styled.div`
+  min-height: 540px;
+  width: 100vw;
+  background: ${({ theme }) => theme.color.white};
+  position: absolute;
+  justify-content: center;
+`;
+const SearchWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 1645px;
+  width: 100%;
+`;
+
+const ExitButton = styled.button`
+  float: right;
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 40px;
+  :focus {
+    outline: none;
+  }
+`;
+
+const SearchForm = styled.form``;
+
+const SuggestionBox = styled.div``;
+
+const Header = () => {
+  const [showSearch, setSearch] = useState(false);
+  const [showSuggestions, setSuggestions] = useState(true);
+
+  return (
+    <StyledHeader>
+      <LogoSection>
+        <LogoSectionWrapper>
+          <StyledSubheading text="Magazyn o zrównoważonym rozwoju i etycznym biznesie" />
+          <Link to="/">
+            <img src={headerLogo} width="430" height="152" />
+          </Link>
+          <div>
+            <StyledLogoSubheading text="Powered by" />
+            <a href="http://b-better.pl/">
+              <img src={betterLogo} width="57" height="61" />
+            </a>
+          </div>
+        </LogoSectionWrapper>
+      </LogoSection>
+
+      <Navigation>
+        <NavigationWrapper>
+          <StyledButton onClick={() => setSearch(prevState => !prevState)}>
+            <img src={searchLogo} width="24" height="24" />
+          </StyledButton>
+          <Navbar />
+          <Newsletter to="/newsletter">Newsletter</Newsletter>
+        </NavigationWrapper>
+      </Navigation>
+      <Search style={{ display: showSearch ? `flex` : `none` }}>
+        <SearchWrapper>
+          <ExitButton onClick={() => setSearch(prevState => !prevState)}>
+            <img src={exit} width="80" height="80" />
+          </ExitButton>
+          <SearchForm>
+            <input />
+            <button>{`>`}</button>
+          </SearchForm>
+          {showSuggestions && <SuggestionBox />}
+        </SearchWrapper>
+      </Search>
+    </StyledHeader>
+  );
+};
 
 export default Header;

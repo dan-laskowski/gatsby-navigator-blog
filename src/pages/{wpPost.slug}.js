@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import ProgressBar from "react-scroll-progress-bar";
 import ReactHtmlParser from "react-html-parser";
 import { Heading, Subheading } from "atoms/heading";
+import Button from "atoms/button";
 import AsideSection from "molecules/asideSection";
 import PostSmall from "molecules/postSmall";
 import TagBox from "molecules/tagBox";
@@ -118,13 +119,16 @@ const SocialIcon = styled.a`
 
 const ArticleContent = styled.div`
   grid-area: content;
+  font-family: ${({ theme }) => theme.font.paragraph.family};
+  font-weight: ${({ theme }) => theme.font.paragraph.weight};
+  font-style: ${({ theme }) => theme.font.paragraph.weight};
+  font-size: ${({ theme }) => theme.font.paragraph.size};
+  line-height: 39px;
+  color: ${({ theme }) => theme.color.gray};
+  overflow-wrap: break-word;
+
+  div,
   p {
-    font-family: ${({ theme }) => theme.font.paragraph.family};
-    font-weight: ${({ theme }) => theme.font.paragraph.weight};
-    font-style: ${({ theme }) => theme.font.paragraph.weight};
-    font-size: ${({ theme }) => theme.font.paragraph.size};
-    line-height: 39px;
-    color: ${({ theme }) => theme.color.gray};
     margin-right: 21px;
     margin-bottom: 46px;
   }
@@ -146,6 +150,17 @@ const ArticleContent = styled.div`
       width: 20%;
     }
   }
+  ul {
+    list-style-type: circle;
+  }
+  strong {
+    font-weight: ${({ theme }) => theme.font.sectionName.weight};
+  }
+
+  em {
+    font-style: italic;
+  }
+
   ::after {
     display: block;
     content: "";
@@ -156,6 +171,13 @@ const ArticleContent = styled.div`
   }
 `;
 
+const StyledButton = styled(Button)`
+  width: 200px;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 68px;
+`;
+
 const Aside = styled.div`
   grid-area: aside;
 `;
@@ -163,7 +185,7 @@ const Aside = styled.div`
 const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
   const handleCategoryNode = post =>
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
-
+  console.log(!!wpPost.raport.raportfile);
   return (
     <>
       <script
@@ -230,7 +252,17 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
                 <TagBox tags={wpPost.tags} />
               </div>
             </MetaSection>
-            <ArticleContent>{ReactHtmlParser(wpPost.content)}</ArticleContent>
+            <ArticleContent>
+              {ReactHtmlParser(wpPost.content)}
+              {!!wpPost.raport.raportfile && (
+                <StyledButton
+                  target="_blank"
+                  rel="noreferrer"
+                  text="Pobierz raport"
+                  uri={wpPost.raport.raportfile.localFile.url}
+                />
+              )}
+            </ArticleContent>
             <Aside>
               <AsideSection title="tagi">
                 <div>
@@ -288,6 +320,14 @@ export const query = graphql`
           }
         }
       }
+      raport {
+        raportfile {
+          title
+          localFile {
+            url
+          }
+        }
+      }
       tags {
         nodes {
           name
@@ -296,7 +336,7 @@ export const query = graphql`
       }
       excerpt
       content
-      dateGmt(locale: "pl", formatString: "d MMMM yyyy")
+      dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
     }
     allWpTag {
       nodes {
@@ -304,7 +344,10 @@ export const query = graphql`
         slug
       }
     }
-    allWpPost(filter: { id: { ne: $id } }, limit: 3) {
+    allWpPost(
+      filter: { id: { ne: $id }, status: { eq: "publish" } }
+      limit: 3
+    ) {
       nodes {
         title
         slug

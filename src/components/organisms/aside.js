@@ -21,8 +21,10 @@ const Aside = ({ children }) => {
           categories: {
             nodes: { elemMatch: { name: { eq: "Publikacje/Raporty" } } }
           }
+          status: { eq: "publish" }
         }
         limit: 1
+        sort: { order: DESC, fields: date }
       ) {
         edges {
           node {
@@ -32,6 +34,14 @@ const Aside = ({ children }) => {
               podtytul
             }
             slug
+            raport {
+              raportfile {
+                title
+                localFile {
+                  url
+                }
+              }
+            }
           }
         }
       }
@@ -56,7 +66,12 @@ const Aside = ({ children }) => {
       <AsideSection title="sprawdź!">
         <Heading text={allWpPost.edges[0].node.title} />
         <Subheading text={allWpPost.edges[0].node.subtitle.podtytul} />
-        <Button text="Pobierz" uri={`/${allWpPost.edges[0].node.slug}`} />
+        <Button
+          target="_blank"
+          rel="noreferrer"
+          text="Pobierz"
+          uri={`${allWpPost.edges[0].node.raport.raportfile.localFile.url}`}
+        />
       </AsideSection>
       <AsideSection title="newsletter">
         <NewsletterForm />
