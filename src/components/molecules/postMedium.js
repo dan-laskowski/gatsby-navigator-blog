@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import ReactHtmlParser from "react-html-parser";
-import { Heading } from "atoms/heading";
+import { Heading, Subheading } from "atoms/heading";
 import TagBox from "molecules/tagBox";
 
 const Wrapper = styled.section`
@@ -33,6 +33,16 @@ const FeaturedImg = styled.div`
   }
 `;
 
+const MetaWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  :nth-last-child() {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
 const Category = styled(Link)`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
@@ -46,29 +56,42 @@ const Category = styled(Link)`
 const StyledHeading = styled(Heading)`
   margin: 0;
   margin-top: 10px;
-  margin-bottom: 26px;
+  margin-bottom: ${({ excerpt }) => (!excerpt ? "26px" : "10px")};
   font-size: 28px;
   text-transform: uppercase;
 `;
+
+const StyledSubheading = styled(Subheading)``;
 
 const TagSection = styled.div`
   margin-bottom: 17px;
 `;
 
-const PostMedium = ({ title, category, tags, img, slug, ...props }) => {
+const PostMedium = ({
+  title,
+  category,
+  tags,
+  img,
+  slug,
+  excerpt,
+  ...props
+}) => {
   return (
     <Wrapper as={Link} to={`/${slug}`} {...props}>
       <Article>
         <FeaturedImg>
           <img srcSet={img.node.srcSet} alt={img.node.altText} />
         </FeaturedImg>
-        <div>
-          <Category to={`/${category.slug}`}>{category.name}</Category>
-          <StyledHeading text={title} />
+        <MetaWrapper>
+          <div>
+            <Category to={`/${category.slug}`}>{category.name}</Category>
+            <StyledHeading text={title} excerpt={!!excerpt} />
+            {excerpt ? <StyledSubheading text={excerpt} /> : null}
+          </div>
           <TagSection>
             <TagBox tags={tags} amount={2} />
           </TagSection>
-        </div>
+        </MetaWrapper>
       </Article>
     </Wrapper>
   );

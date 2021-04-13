@@ -77,7 +77,7 @@ const PostLarge = ({ title, excerpt, category, tags, img, slug, ...props }) => {
           <StyledSubheading text={ReactHtmlParser(excerpt)} />
         </div>
         <TagSection>
-          <TagBox tags={tags} />
+          <TagBox tags={tags} amount={2} />
         </TagSection>
       </Article>
       <FeaturedImg>

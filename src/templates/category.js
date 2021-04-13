@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
-import ReactHtmlParser from "react-html-parser";
-import { useStaticQuery, graphql, Link } from "gatsby";
-import Tag from "atoms/tag";
+import { graphql, Link } from "gatsby";
 import { Heading } from "atoms/heading";
 import Pagination from "molecules/Pagination";
 import Aside from "organisms/aside";
@@ -52,6 +50,7 @@ const StyledHeading = styled(Heading)`
   text-transform: uppercase;
   margin-bottom: 26px;
 `;
+
 const Posts = styled.div`
   grid-column-start: text;
   grid-column-end: img;
@@ -62,6 +61,22 @@ const Posts = styled.div`
   a:last-child {
     border-bottom: none;
   }
+`;
+
+const StyledPostLarge = styled(PostLarge)`
+  h1 {
+    font-size: 28px;
+    line-height: 33px;
+  }
+  h2 {
+    font-size: 20px;
+    line-height: 34px;
+  }
+  img {
+    max-width: 572px;
+    height: 320px;
+  }
+  padding-bottom: 28px;
 `;
 
 const StyledAside = styled(Aside)`
@@ -123,7 +138,7 @@ const Category = ({
         <ContentWrapper>
           <Posts>
             {allWpPost.edges.map(({ node }) => (
-              <PostLarge
+              <StyledPostLarge
                 key={node.title}
                 title={node.title}
                 excerpt={truncate(node.excerpt, 30)}
