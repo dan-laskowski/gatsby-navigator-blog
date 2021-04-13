@@ -1,6 +1,22 @@
 import React from "react";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
+import { Heading } from "atoms/heading";
+import NavButton from "atoms/navButton";
+
+const Wrapper = styled.nav`
+  margin: 40px auto;
+  max-width: 1645px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const StyledHeading = styled(Heading)`
+  margin: 0 5px;
+  font-size: 14px;
+  letter-spacing: 40;
+`;
 
 const Pagination = ({ pageContext }) => {
   const {
@@ -16,27 +32,19 @@ const Pagination = ({ pageContext }) => {
   console.log(numberOfPages);
 
   return (
-    <nav className="pagination" role="navigation">
-      <div>
-        {previousPagePath && (
-          <Link to={previousPagePath} rel="prev">
-            Poprzednia
-          </Link>
-        )}
-      </div>
+    <Wrapper>
       {numberOfPages > 1 && (
-        <div className="pagination-location">
-          Strona {humanPageNumber} z {numberOfPages}
-        </div>
+        <>
+          {previousPagePath && <NavButton to={previousPagePath} prev />}
+          <div className="pagination-location">
+            <StyledHeading
+              text={`STRONA ${humanPageNumber} z ${numberOfPages}`}
+            />
+          </div>
+          {nextPagePath && <NavButton to={nextPagePath} />}
+        </>
       )}
-      <div>
-        {nextPagePath && (
-          <Link to={nextPagePath} rel="next">
-            Następna
-          </Link>
-        )}
-      </div>
-    </nav>
+    </Wrapper>
   );
 };
 

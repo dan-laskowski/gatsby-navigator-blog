@@ -100,7 +100,11 @@ const Category = ({
         <CategoryName>
           {wpCategory.wpChildren.nodes.length ? (
             <>
-              <Link style={{ color: "red" }} to={`/${wpCategory.slug}`}>
+              <Link
+                key={wpCategory.slug}
+                style={{ color: "red" }}
+                to={`/${wpCategory.slug}`}
+              >
                 <StyledHeading text={wpCategory.name} />
               </Link>
               <SubcategoryName>

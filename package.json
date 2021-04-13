@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@bogachenkov/react-scrolling-progress": "^1.0.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "@splidejs/react-splide": "^0.4.4",
     "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.12.0",

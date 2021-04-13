@@ -27,7 +27,6 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
-            uri
             slug
             posts {
               nodes {
