@@ -20,11 +20,20 @@ const StyledHeading = styled(Heading)`
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 40;
+  color: ${({ to, theme }) => (!!to ? theme.color.navy : theme.color.gray)};
+  img {
+    fill: ${({ to, theme }) => (to ? theme.color.orange : theme.color.gray)};
+  }
+`;
+
+const StyledLink = styled(Link)`
+  cursor: ${({ to }) => (to ? `pointer` : `not-allowed`)};
+  pointer-events: ${({ to }) => (to ? `unset` : `none`)};
 `;
 
 const NavButton = ({ disabled, to, prev, ...props }) => {
   return (
-    <Link to={to} {...props}>
+    <StyledLink to={to} {...props}>
       <StyledButton>
         {prev ? (
           <>
@@ -38,7 +47,7 @@ const NavButton = ({ disabled, to, prev, ...props }) => {
           </>
         )}
       </StyledButton>
-    </Link>
+    </StyledLink>
   );
 };
 

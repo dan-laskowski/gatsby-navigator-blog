@@ -35,13 +35,13 @@ const Pagination = ({ pageContext }) => {
     <Wrapper>
       {numberOfPages > 1 && (
         <>
-          {previousPagePath && <NavButton to={previousPagePath} prev />}
+          <NavButton to={previousPagePath ? previousPagePath : ``} prev />
           <div className="pagination-location">
             <StyledHeading
               text={`STRONA ${humanPageNumber} z ${numberOfPages}`}
             />
           </div>
-          {nextPagePath && <NavButton to={nextPagePath} />}
+          <NavButton to={nextPagePath} />
         </>
       )}
     </Wrapper>
