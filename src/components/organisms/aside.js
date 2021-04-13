@@ -13,7 +13,7 @@ const AsideWrapper = styled.aside`
   border-left: 1px solid ${({ theme }) => theme.color.lightGray};
 `;
 
-const Aside = ({ children }) => {
+const Aside = ({ children, ...props }) => {
   const { allWpPost, allWpTag } = useStaticQuery(graphql`
     query AsideQuery {
       allWpPost(
@@ -54,7 +54,7 @@ const Aside = ({ children }) => {
     }
   `);
   return (
-    <AsideWrapper>
+    <AsideWrapper {...props}>
       <AsideSection title="tagi">
         <div>
           {allWpTag.nodes.map(node => (

@@ -197,6 +197,37 @@ const GlobalStyle = createGlobalStyle`
 .b-contain:first-child .b-input::before {
 	visibility: hidden;
 }
+
+/* SLIDER */
+
+.splide__arrow svg {
+	fill: #DBDBDB;
+	width: 50px;
+	height: 50px;
+}
+
+.splide__arrow svg:hover {
+	fill: rgb(240,117,56);
+}
+
+.splide__arrow--prev {
+    left: -110px;
+}
+
+.splide__arrow--next {
+    right: -110px;
+}
+
+.splide__pagination__page {
+	height:8px;
+	width: 8px;
+}
+
+.splide__pagination__page.is-active {
+	height:8px !important;
+	width: 8px !important;
+	background: #F07539;
+}
 `;
 
 export default GlobalStyle;

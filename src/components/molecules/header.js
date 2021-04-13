@@ -22,7 +22,7 @@ const LogoSection = styled.section`
 const LogoSectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   max-width: 1645px;
@@ -112,16 +112,19 @@ const Header = () => {
     <StyledHeader>
       <LogoSection>
         <LogoSectionWrapper>
-          <StyledSubheading text="Magazyn o zrównoważonym rozwoju i etycznym biznesie" />
+          {/* <StyledSubheading
+            text="Magazyn o zrównoważonym 
+rozwoju i etycznym biznesie"
+          /> */}
           <Link to="/">
             <img src={headerLogo} width="430" height="152" />
           </Link>
-          <div>
+          {/* <div>
             <StyledLogoSubheading text="Powered by" />
             <a href="http://b-better.pl/">
               <img src={betterLogo} width="57" height="61" />
             </a>
-          </div>
+          </div> */}
         </LogoSectionWrapper>
       </LogoSection>
 

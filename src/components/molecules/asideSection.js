@@ -10,9 +10,9 @@ const Wrapper = styled.section`
   width: 380px;
 `;
 
-const AsideSection = ({ title, more, children }) => {
+const AsideSection = ({ title, more, children, ...props }) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <SectionName>{title.toUpperCase()}</SectionName>
       {children}
     </Wrapper>

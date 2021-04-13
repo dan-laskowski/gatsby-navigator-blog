@@ -6,14 +6,11 @@ import { Heading, Subheading } from "atoms/heading";
 import TagBox from "molecules/tagBox";
 
 const Wrapper = styled.section`
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(9, 122px);
-  grid-gap: 16px;
-  grid-template-rows: auto;
-  grid-template-areas: "text text text text img img img img img";
-  padding-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  /* padding-bottom: 28px; */
   margin-top: 30px;
+  margin-bottom: 49px;
   border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
 `;
 
@@ -40,11 +37,14 @@ const StyledHeading = styled(Heading)`
   margin-bottom: 26px;
   font-size: 28px;
   text-transform: uppercase;
+  max-width: 603px;
+  font-size: 60px;
 `;
 
 const StyledSubheading = styled(Subheading)`
-  font-size: 20px;
+  font-size: 28px;
   line-height: 34px;
+  max-width: 525px;
   .more-link {
     display: none;
   }
@@ -53,9 +53,11 @@ const StyledSubheading = styled(Subheading)`
 const FeaturedImg = styled.div`
   grid-area: img;
   overflow: hidden;
-  margin-left: 108px;
+  max-width: 905px;
+  max-height: 523px;
   img {
     width: 100%;
+    height: 525px;
     overflow: hidden;
     object-fit: cover;
   }
@@ -65,18 +67,17 @@ const TagSection = styled.div`
   margin-bottom: 17px;
 `;
 
-const PostLarge = ({ title, excerpt, category, tags, img, slug }) => {
-  console.log(excerpt);
+const PostLarge = ({ title, excerpt, category, tags, img, slug, ...props }) => {
   return (
-    <Wrapper as={Link} to={`/${slug}`}>
-      <Article>
+    <Wrapper as={Link} to={`/${slug}`} {...props}>
+      <Article {...props}>
         <div>
           <Category to={`/${category.slug}`}>{category.name}</Category>
           <StyledHeading text={title} />
           <StyledSubheading text={ReactHtmlParser(excerpt)} />
         </div>
         <TagSection>
-          <TagBox tags={tags} amount={2} />
+          <TagBox tags={tags} />
         </TagSection>
       </Article>
       <FeaturedImg>
