@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Tag from "atoms/tag";
 import SectionName from "atoms/sectionName";
+import SectionLink from "atoms/sectionLink";
 
 const Wrapper = styled.section`
   border-top: 4px solid ${({ theme }) => theme.color.black};
@@ -10,10 +11,20 @@ const Wrapper = styled.section`
   width: 380px;
 `;
 
-const AsideSection = ({ title, more, children, ...props }) => {
+const NameWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-content: ${props => (props.to ? "space-between" : "flex-start")};
+`;
+
+const AsideSection = ({ title, to, children, ...props }) => {
   return (
     <Wrapper {...props}>
-      <SectionName>{title.toUpperCase()}</SectionName>
+      <NameWrapper to>
+        <SectionName>{title.toUpperCase()}</SectionName>
+        <SectionLink to={to}>{to ? `Więcej` : null}</SectionLink>
+      </NameWrapper>
       {children}
     </Wrapper>
   );

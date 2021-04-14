@@ -154,7 +154,7 @@ const Category = ({
             ))}
           </Posts>
           <StyledAside>
-            <AsideSection title="ostatnie">
+            <AsideSection title="ostatnie" to={`/`}>
               {asideQuery.nodes.map(node => (
                 <PostSmall
                   key={node.title}

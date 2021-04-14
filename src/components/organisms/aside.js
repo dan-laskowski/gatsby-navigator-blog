@@ -55,7 +55,7 @@ const Aside = ({ children, ...props }) => {
   `);
   return (
     <AsideWrapper {...props}>
-      <AsideSection title="tagi">
+      <AsideSection title="tagi" to={`/tagi`}>
         <div>
           {allWpTag.nodes.map(node => (
             <Tag key={node.slug} name={node.name} slug={node.slug} />
@@ -63,7 +63,7 @@ const Aside = ({ children, ...props }) => {
           <Tag key="last" name="..." slug="tags" />
         </div>
       </AsideSection>
-      <AsideSection title="sprawdź!">
+      <AsideSection title="sprawdź!" to={`/publikacje-i-raporty`}>
         <Heading text={allWpPost.edges[0].node.title} />
         <Subheading text={allWpPost.edges[0].node.subtitle.podtytul} />
         <Button

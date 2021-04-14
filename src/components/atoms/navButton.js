@@ -27,7 +27,6 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledLink = styled(Link)`
-  cursor: ${({ to }) => (to ? `pointer` : `not-allowed`)};
   pointer-events: ${({ to }) => (to ? `unset` : `none`)};
 `;
 
