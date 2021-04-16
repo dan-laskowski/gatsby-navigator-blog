@@ -229,7 +229,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
                 <SocialIcon
                   href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.SITE_URL}${wpPost.slug}`}
                 >
-                  <img src={facebook} />
+                  <img src={facebook} alt="facebook logo" />
                 </SocialIcon>
                 <SocialIcon>
                   <a
@@ -241,11 +241,11 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
                     data-show-count="false"
                     data-lang="pl"
                   >
-                    <img src={twitter} />
+                    <img src={twitter} alt="twitter logo" />
                   </a>
                 </SocialIcon>
                 <SocialIcon>
-                  <img src={share} />
+                  <img src={share} alt="ikona udostępniania treści" />
                 </SocialIcon>
               </Socials>
               <div>

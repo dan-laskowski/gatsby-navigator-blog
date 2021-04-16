@@ -55,7 +55,7 @@ const Aside = ({ children, ...props }) => {
   `);
   return (
     <AsideWrapper {...props}>
-      <AsideSection title="tagi" to={`/tagi`}>
+      <AsideSection title="tagi" to={`/tags`}>
         <div>
           {allWpTag.nodes.map(node => (
             <Tag key={node.slug} name={node.name} slug={node.slug} />

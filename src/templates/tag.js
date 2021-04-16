@@ -35,16 +35,6 @@ const CategoryName = styled.div`
   }
 `;
 
-const SubcategoryName = styled.div`
-  font-family: ${({ theme }) => theme.font.heading.family};
-  font-weight: ${({ theme }) => theme.font.heading.weight};
-  font-style: ${({ theme }) => theme.font.heading.style};
-  font-size: 20px;
-  *:not(:last-child) {
-    margin-right: 40px;
-  }
-`;
-
 const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.font.heading.size};
   text-transform: uppercase;
@@ -112,7 +102,7 @@ const Tag = ({ data: { wpTag, allWpPost, asideQuery }, pageContext }) => {
             ))}
           </Posts>
           <StyledAside>
-            <AsideSection title="ostatnie">
+            <AsideSection title="ostatnie" to={`/`}>
               {asideQuery.nodes.map(node => (
                 <PostSmall
                   key={node.title}

@@ -268,7 +268,7 @@ const IndexPage = ({
               ))}
             </Splide>
           </CarouselWrapper>
-          <ArticleSection title="artykuły">
+          <ArticleSection title="artykuły" to={`/artykuly`}>
             <ArticlePostLarge
               key={articlePosts.nodes[0].title}
               title={articlePosts.nodes[0].title}
@@ -295,7 +295,7 @@ const IndexPage = ({
               ))}
             </ArticlePostMediumWrapper>
           </ArticleSection>
-          <TipsSection title="Dobre praktyki">
+          <TipsSection title="Dobre praktyki" to={`/dobre-praktyki`}>
             <TipsSectionWrapper>
               {tipsPosts.nodes.map(node => (
                 <ArticlePostMedium
@@ -310,7 +310,7 @@ const IndexPage = ({
               ))}
             </TipsSectionWrapper>
           </TipsSection>
-          <BcorpSection title="B Corp">
+          <BcorpSection title="B Corp" to={`/dobre-praktyki`}>
             <BcorpSectionWrapper>
               <LargePostLarge
                 key={bcorpPosts.nodes[0].title}
@@ -339,7 +339,7 @@ const IndexPage = ({
               </MiniPostWrapper>
             </BcorpSectionWrapper>
           </BcorpSection>
-          <EventSection title="Wydarzenia">
+          <EventSection title="Wydarzenia" to={`/wydarzenia`}>
             <EventSectionWrapper>
               {eventPosts.nodes.map(node => (
                 <ArticlePostMedium
@@ -357,19 +357,39 @@ const IndexPage = ({
           <CommercialHorizontal />
           <ShortyWrapper>
             <ShortyRow>
-              <Shorty posts={eventPosts} title="Wywiady" />
-              <Shorty posts={articlePosts} title="Artykuły" />
-              <Shorty posts={bcorpPosts} title="B Corp" />
+              <Shorty posts={eventPosts} title="Wywiady" to={`/wywiady`} />
+              <Shorty posts={articlePosts} title="Artykuły" to={`/artykuly`} />
+              <Shorty
+                posts={bcorpPosts}
+                title="B Corp"
+                to={`/teksty-o-b-corpach`}
+              />
             </ShortyRow>
             <ShortyRow>
-              <Shorty posts={tipsPosts} title="Dobre praktyki" />
-              <Shorty posts={eventPosts} title="Wydarzenia" />
-              <Shorty posts={articlePosts} title="Księgarnia" />
+              <Shorty
+                posts={tipsPosts}
+                title="Dobre praktyki"
+                to={`/dobre-praktyki`}
+              />
+              <Shorty
+                posts={eventPosts}
+                title="Wydarzenia"
+                to={`/wydarzenia`}
+              />
+              <Shorty
+                posts={articlePosts}
+                title="Księgarnia"
+                to={`/ksiegarnia`}
+              />
             </ShortyRow>
             <ShortyRow>
-              <Shorty posts={eventPosts} title="Publikacje/raporty" />
+              <Shorty
+                posts={eventPosts}
+                title="Publikacje/raporty"
+                to={`/publikacje-i-raporty`}
+              />
               <Shorty posts={tipsPosts} title="Baza firm" />
-              <Shorty posts={articlePosts} title="Artykuły" />
+              <Shorty posts={articlePosts} title="Artykuły" to={`/artykuly`} />
             </ShortyRow>
           </ShortyWrapper>
           <StyledAside />

@@ -1,8 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
-import Pagination from "molecules/Pagination";
 import ReactHtmlParser from "react-html-parser";
 
 const Author = ({ data, pageContext }) => {
