@@ -38,6 +38,18 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries: require("./src/utils/algolia-queries"),
+        skipIndexing: false,
+        enablePartialUpdates: true,
+        matchFields: ["dateGmt"],
+      },
+    },
+    {
       resolve: `gatsby-source-wordpress`,
       options: {
         url: process.env.WP_ENDPOINT,

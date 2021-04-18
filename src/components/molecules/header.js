@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { Link } from "gatsby";
+import React, { useState, useRef } from "react";
+import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import { Subheading } from "atoms/heading";
+import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
 import headerLogo from "assets/images/headerLogo.svg";
 import betterLogo from "assets/images/betterLogo.svg";
 import searchLogo from "assets/images/search.svg";
+import searchPhase from "assets/images/searchPhase.svg";
 import exit from "assets/images/exit.svg";
 
 const StyledHeader = styled.header`
@@ -76,11 +78,13 @@ const Newsletter = styled(Link)`
 `;
 
 const Search = styled.div`
+  display: none;
   min-height: 540px;
   width: 100vw;
   background: ${({ theme }) => theme.color.white};
   position: absolute;
   justify-content: center;
+  z-index: 10000;
 `;
 const SearchWrapper = styled.div`
   display: flex;
@@ -101,13 +105,85 @@ const ExitButton = styled.button`
   }
 `;
 
-const SearchForm = styled.form``;
+const SearchForm = styled.form`
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 50%;
+  max-width: 540px;
+  border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
+  margin-bottom: 80px;
+  input,
+  button {
+    border: none;
+    background: none;
+  }
+  input {
+    width: 100%;
+    font-family: ${({ theme }) => theme.font.menuItem.family};
+    font-weight: ${({ theme }) => theme.font.menuItem.weight};
+    font-style: ${({ theme }) => theme.font.menuItem.style};
+    font-size: 36px;
+    color: ${({ theme }) => theme.color.gray};
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    :focus {
+      outline: none;
+    }
+  }
+  button {
+    cursor: pointer;
+    margin-bottom: 17px;
+  }
+`;
 
-const SuggestionBox = styled.div``;
+const SuggestionWrapper = styled.div`
+  align-self: center;
+  font-family: ${({ theme }) => theme.font.menuItem.family};
+  font-weight: ${({ theme }) => theme.font.menuItem.weight};
+  font-style: ${({ theme }) => theme.font.menuItem.style};
+  color: ${({ theme }) => theme.color.black};
+  font-size: 20px;
+  text-transform: uppercase;
+  h2 {
+    text-align: center;
+    margin-bottom: 19px;
+  }
+`;
+
+const SuggestionBox = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 100px;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const SuggestionLink = styled(StyledLink)`
+  color: ${({ theme }) => theme.color.gray};
+  text-align: center;
+`;
 
 const Header = () => {
   const [showSearch, setSearch] = useState(false);
-  const [showSuggestions, setSuggestions] = useState(true);
+  const [query, setQuery] = useState("");
+  const inputEl = useRef(null);
+  const searchEl = useRef(null);
+
+  const handleSearchToggle = () => {
+    setSearch(prevState => !prevState);
+    searchEl.current.style.display = showSearch ? "none" : "flex";
+    inputEl.current.focus();
+  };
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    const q = inputEl.current.value;
+    navigate(`/search?q=${q}`);
+  };
 
   return (
     <StyledHeader>
@@ -118,7 +194,12 @@ const Header = () => {
 rozwoju i etycznym biznesie"
           /> */}
           <Link to="/">
-            <img src={headerLogo} width="430" height="152" />
+            <img
+              src={headerLogo}
+              alt="navigator logo"
+              width="430"
+              height="152"
+            />
           </Link>
           {/* <div>
             <StyledLogoSubheading text="Powered by" />
@@ -131,23 +212,45 @@ rozwoju i etycznym biznesie"
 
       <Navigation>
         <NavigationWrapper>
-          <StyledButton onClick={() => setSearch(prevState => !prevState)}>
+          <StyledButton onClick={handleSearchToggle}>
             <img src={searchLogo} width="24" height="24" />
           </StyledButton>
           <Navbar />
           <Newsletter to="/newsletter">Newsletter</Newsletter>
         </NavigationWrapper>
       </Navigation>
-      <Search style={{ display: showSearch ? `flex` : `none` }}>
+      <Search ref={searchEl}>
         <SearchWrapper>
-          <ExitButton onClick={() => setSearch(prevState => !prevState)}>
-            <img src={exit} width="80" height="80" />
+          <ExitButton onClick={handleSearchToggle}>
+            <img src={exit} width="80" height="80" alt="wyjdź" />
           </ExitButton>
-          <SearchForm>
-            <input />
-            <button>{`>`}</button>
+          <SearchForm onSubmit={handleFormSubmit}>
+            <input
+              ref={inputEl}
+              placeholder="Czego szukasz?"
+              onChange={e => setQuery(e.target.value)}
+            />
+            <button>
+              <img src={searchPhase} alt="szukaj" />
+            </button>
           </SearchForm>
-          {showSuggestions && <SuggestionBox />}
+          <SuggestionWrapper>
+            <h2>Sugestie</h2>
+            <SuggestionBox>
+              <div>
+                <SuggestionLink to={`/bcorp`}>b corp</SuggestionLink>
+                <SuggestionLink to={`/wydarzenia`}>wydarzenia</SuggestionLink>
+                <SuggestionLink to={`/dobre-praktyki`}>
+                  dobre praktyki
+                </SuggestionLink>
+              </div>
+              <div>
+                <SuggestionLink to={`/artykuly`}>artykuły</SuggestionLink>
+                <SuggestionLink to={`/wywiady`}>wywiady</SuggestionLink>
+                <SuggestionLink to={`/baza-firm`}>baza firm</SuggestionLink>
+              </div>
+            </SuggestionBox>
+          </SuggestionWrapper>
         </SearchWrapper>
       </Search>
     </StyledHeader>

@@ -36,13 +36,13 @@ const NavButton = ({ disabled, to, prev, ...props }) => {
       <StyledButton>
         {prev ? (
           <>
-            <img src={arrowPrev} />
+            <img src={arrowPrev} alt="poprzednie" />
             <StyledHeading text="poprzednie" />
           </>
         ) : (
           <>
             <StyledHeading text="następne" />
-            <img src={arrowNext} />
+            <img src={arrowNext} alt="następne" />
           </>
         )}
       </StyledButton>

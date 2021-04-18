@@ -163,6 +163,7 @@ export const query = graphql`
             podtytul
           }
           excerpt
+          slug
           uri
           tags {
             nodes {

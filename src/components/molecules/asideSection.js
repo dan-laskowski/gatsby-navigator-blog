@@ -1,7 +1,5 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Tag from "atoms/tag";
 import SectionName from "atoms/sectionName";
 import SectionLink from "atoms/sectionLink";
 

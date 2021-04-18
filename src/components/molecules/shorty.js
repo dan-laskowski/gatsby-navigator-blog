@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import AsideSection from "molecules/asideSection";
-import { node } from "prop-types";
 
 const ShortyWrapper = styled(AsideSection)`
   width: 520px;
