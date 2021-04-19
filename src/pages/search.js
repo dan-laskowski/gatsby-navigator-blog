@@ -2,12 +2,17 @@ import React from "react";
 import { window } from "browser-monads";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
-import { Subheading } from "atoms/heading";
+import { Heading } from "atoms/heading";
 import SearchResult from "molecules/searchResult";
 import Layout from "organisms/layout";
 import Aside from "organisms/aside";
 import algoliasearch from "algoliasearch/lite";
-import { InstantSearch, SearchBox, Hits, Stats } from "react-instantsearch-dom";
+import {
+  InstantSearch,
+  SearchBox,
+  Hits,
+  connectStateResults,
+} from "react-instantsearch-dom";
 import searchPhase from "assets/images/searchPhaseGray.svg";
 import exit from "assets/images/exit.svg";
 import algoliaIcon from "assets/images/algolia.svg";
@@ -91,6 +96,17 @@ const StyledSearchBox = styled(SearchBox)`
   }
 `;
 
+const Results = connectStateResults(
+  ({ searchState, searchResults, children }) =>
+    searchResults && searchResults.nbHits !== 0 ? (
+      children
+    ) : (
+      <Heading
+        text={`Nie znaleziono wyników dla hasła ${searchState.query}.`}
+      />
+    )
+);
+
 const Search = () => {
   const params = new URLSearchParams(window.location.search.slice(1));
   const q = params.get("q") || "";
@@ -120,8 +136,9 @@ const Search = () => {
         </SearchBar>
         <ContentWrapper>
           <div>
-            <Stats />
-            <Hits hitComponent={SearchResult} />
+            <Results>
+              <Hits hitComponent={SearchResult} />
+            </Results>
           </div>
           <Aside />
         </ContentWrapper>
