@@ -89,8 +89,6 @@ const Category = ({
 }) => {
   const handleCategoryNode = post =>
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
-
-  console.log(allWpPost);
   return (
     <Layout>
       <Helmet>

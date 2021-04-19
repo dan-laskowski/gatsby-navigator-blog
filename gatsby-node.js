@@ -9,20 +9,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     {
-      allWpUser {
-        edges {
-          node {
-            id
-            slug
-            uri
-            posts {
-              nodes {
-                title
-              }
-            }
-          }
-        }
-      }
       allWpCategory {
         edges {
           node {
@@ -58,34 +44,12 @@ exports.createPages = async ({ graphql, actions }) => {
     throw new Error(result.errors);
   }
   // Extract query results
-  const authors = result.data.allWpUser.edges;
   const categories = result.data.allWpCategory.edges;
   const tags = result.data.allWpTag.edges;
 
   // Load templates
-  const authorTemplate = path.resolve(`./src/templates/author.js`);
   const categoryTemplate = path.resolve(`./src/templates/category.js`);
   const tagTemplate = path.resolve(`./src/templates/tag.js`);
-
-  // Create author pages
-
-  authors.forEach(({ node }) => {
-    const totalPosts =
-      node.posts.nodes.length !== null ? node.posts.nodes.length : 0;
-
-    const items = Array.from({ length: totalPosts });
-
-    paginate({
-      createPage,
-      items: items,
-      itemsPerPage: 3,
-      component: authorTemplate,
-      pathPrefix: node.uri,
-      context: {
-        id: node.id,
-      },
-    });
-  });
 
   // Create category pages
   categories.forEach(({ node }) => {
@@ -129,4 +93,19 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+};
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /@splidejs/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
 };

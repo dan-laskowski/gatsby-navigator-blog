@@ -231,6 +231,9 @@ const IndexPage = ({
 }) => {
   const handleCategoryNode = post =>
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
+  if (typeof window === "undefined") {
+    return <p>Server Render</p>;
+  }
   return (
     <>
       <Helmet>

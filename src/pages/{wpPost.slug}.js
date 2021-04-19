@@ -185,7 +185,6 @@ const Aside = styled.div`
 const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
   const handleCategoryNode = post =>
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
-  console.log(!!wpPost.raport.raportfile);
   return (
     <>
       <script

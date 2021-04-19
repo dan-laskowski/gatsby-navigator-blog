@@ -25,11 +25,6 @@ const Pagination = ({ pageContext }) => {
     numberOfPages,
   } = pageContext;
 
-  console.log(previousPagePath);
-  console.log(nextPagePath);
-  console.log(humanPageNumber);
-  console.log(numberOfPages);
-
   return (
     <Wrapper>
       {numberOfPages > 1 && (

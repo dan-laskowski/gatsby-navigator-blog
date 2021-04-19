@@ -38,6 +38,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        url: `https://daniello110.usermd.net/graphql`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.ALGOLIA_APP_ID,
@@ -47,12 +53,6 @@ module.exports = {
         skipIndexing: false,
         enablePartialUpdates: true,
         matchFields: ["dateGmt"],
-      },
-    },
-    {
-      resolve: `gatsby-source-wordpress`,
-      options: {
-        url: process.env.WP_ENDPOINT,
       },
     },
     `gatsby-transformer-sharp`,
