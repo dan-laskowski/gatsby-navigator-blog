@@ -34,10 +34,9 @@ const queries = [
   {
     query: postQuery,
     transformer: ({ data }) => data.posts.nodes,
-
-    settings: {
-      attributesToSnippet: [`excerpt:20`],
-    },
+    // settings: {
+    //   attributesToSnippet: [`excerpt:20`],
+    // },
     matchFields: ["dateGmt"],
   },
 ];

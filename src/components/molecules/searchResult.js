@@ -8,14 +8,13 @@ import TagBox from "molecules/tagBox";
 const Wrapper = styled.section`
   display: flex;
   justify-content: space-between;
-  /* padding-bottom: 28px; */
+  padding-bottom: 28px;
   margin-top: 30px;
   margin-bottom: 49px;
   border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
 `;
 
 const Article = styled.article`
-  grid-area: text;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,34 +31,23 @@ const Category = styled(Link)`
 `;
 
 const StyledHeading = styled(Heading)`
+  font-size: 28px;
+  line-height: 33px;
   margin: 0;
   margin-top: 10px;
   margin-bottom: 26px;
-  font-size: 28px;
   text-transform: uppercase;
-  max-width: 603px;
-  font-size: 60px;
 `;
 
 const StyledSubheading = styled(Subheading)`
-  font-size: 28px;
+  font-size: 20px;
   line-height: 34px;
-  max-width: 525px;
-  .more-link {
+  .more-link,
+  .screen-reader-text {
     display: none;
   }
-`;
-
-const FeaturedImg = styled.div`
-  grid-area: img;
-  overflow: hidden;
-  max-width: 905px;
-  max-height: 523px;
-  img {
-    width: 100%;
-    height: 525px;
-    overflow: hidden;
-    object-fit: cover;
+  a:last-of-type {
+    display: none;
   }
 `;
 
@@ -67,24 +55,25 @@ const TagSection = styled.div`
   margin-bottom: 17px;
 `;
 
-const PostLarge = ({ title, excerpt, category, tags, img, slug, ...props }) => {
+const handleCategoryNode = post =>
+  !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
+
+const SearchResult = ({ hit, ...props }) => {
+  const category = hit.categories.nodes[handleCategoryNode(hit)];
   return (
-    <Wrapper key={slug} as={Link} to={`/${slug}`} {...props}>
-      <Article {...props}>
+    <Wrapper key={hit.slug} as={Link} to={`/${hit.slug}`} {...props}>
+      <Article>
         <div>
           <Category to={`/${category.slug}`}>{category.name}</Category>
-          <StyledHeading text={title} />
-          <StyledSubheading text={ReactHtmlParser(excerpt)} />
+          <StyledHeading text={hit.title} />
+          <StyledSubheading text={ReactHtmlParser(hit.excerpt)} />
         </div>
         <TagSection>
-          <TagBox tags={tags} amount={2} />
+          <TagBox tags={hit.tags} />
         </TagSection>
       </Article>
-      <FeaturedImg>
-        <img srcSet={img.node.srcSet} alt={img.node.altText} />
-      </FeaturedImg>
     </Wrapper>
   );
 };
 
-export default PostLarge;
+export default SearchResult;
