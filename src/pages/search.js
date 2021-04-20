@@ -1,5 +1,6 @@
 import React from "react";
 import { window } from "browser-monads";
+import { navigate } from "gatsby";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { Heading } from "atoms/heading";
@@ -8,13 +9,14 @@ import Layout from "organisms/layout";
 import Aside from "organisms/aside";
 import algoliasearch from "algoliasearch/lite";
 import {
+  Configure,
   InstantSearch,
   SearchBox,
   Hits,
+  Pagination,
   connectStateResults,
 } from "react-instantsearch-dom";
 import searchPhase from "assets/images/searchPhaseGray.svg";
-import exit from "assets/images/exit.svg";
 import algoliaIcon from "assets/images/algolia.svg";
 
 const searchClient = algoliasearch(
@@ -96,20 +98,28 @@ const StyledSearchBox = styled(SearchBox)`
   }
 `;
 
-const Results = connectStateResults(
-  ({ searchState, searchResults, children }) =>
-    searchResults && searchResults.nbHits !== 0 ? (
-      children
-    ) : (
-      <Heading
-        text={`Nie znaleziono wyników dla hasła ${searchState.query}.`}
-      />
-    )
+const StyledPagination = styled(Pagination)`
+  display: flex;
+  align-self: flex-start;
+`;
+
+const Results = connectStateResults(({ searchResults, children }) =>
+  searchResults && searchResults.nbHits !== 0 ? (
+    children
+  ) : (
+    <Heading text={`Nie znaleziono wyników dla podanego hasła`} />
+  )
 );
 
 const Search = () => {
   const params = new URLSearchParams(window.location.search.slice(1));
   const q = params.get("q") || "";
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    const query = e.target.children[0].value;
+    navigate(`/search?q=${query}`);
+  };
   return (
     <Layout>
       <Helmet>
@@ -121,8 +131,8 @@ const Search = () => {
       >
         <SearchBar>
           <StyledSearchBox
+            onSubmit={handleFormSubmit}
             submit={<img src={searchPhase} alt="szukaj" />}
-            autoFocus
             defaultRefinement={q}
             searchAsYouType={false}
             translations={{
@@ -137,7 +147,9 @@ const Search = () => {
         <ContentWrapper>
           <div>
             <Results>
+              <Configure hitsPerPage={3} />
               <Hits hitComponent={SearchResult} />
+              <StyledPagination totalPages={3} />
             </Results>
           </div>
           <Aside />

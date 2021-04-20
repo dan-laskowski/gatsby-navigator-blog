@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
-import { Subheading } from "atoms/heading";
+// import { Subheading } from "atoms/heading";
 import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
 import headerLogo from "assets/images/headerLogo.svg";
-import betterLogo from "assets/images/betterLogo.svg";
+// import betterLogo from "assets/images/betterLogo.svg";
 import searchLogo from "assets/images/search.svg";
 import searchPhase from "assets/images/searchPhase.svg";
 import exit from "assets/images/exit.svg";
@@ -30,15 +30,15 @@ const LogoSectionWrapper = styled.div`
   max-width: 1645px;
 `;
 
-const StyledSubheading = styled(Subheading)`
-  width: 283px;
-  font-size: 18px;
-  margin: 0;
-`;
+// const StyledSubheading = styled(Subheading)`
+//   width: 283px;
+//   font-size: 18px;
+//   margin: 0;
+// `;
 
-const StyledLogoSubheading = styled(Subheading)`
-  margin-bottom: 14px;
-`;
+// const StyledLogoSubheading = styled(Subheading)`
+//   margin-bottom: 14px;
+// `;
 
 const StyledButton = styled.button`
   border: none;
@@ -181,8 +181,7 @@ const Header = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    const q = inputEl.current.value;
-    navigate(`/search?q=${q}`);
+    navigate(`/search?q=${query}`);
   };
 
   return (
@@ -213,7 +212,7 @@ rozwoju i etycznym biznesie"
       <Navigation>
         <NavigationWrapper>
           <StyledButton onClick={handleSearchToggle}>
-            <img src={searchLogo} width="24" height="24" />
+            <img src={searchLogo} alt="wyszukiwanie" width="24" height="24" />
           </StyledButton>
           <Navbar />
           <Newsletter to="/newsletter">Newsletter</Newsletter>
