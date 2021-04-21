@@ -181,7 +181,7 @@ const Header = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    navigate(`/search?q=${query}`);
+    navigate(`/search?q=${query}&page=1`);
   };
 
   return (

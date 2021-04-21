@@ -13,9 +13,11 @@ import {
   InstantSearch,
   SearchBox,
   Hits,
-  Pagination,
   connectStateResults,
+  connectPagination,
 } from "react-instantsearch-dom";
+import arrowNext from "assets/images/arrowNext.svg";
+import arrowPrev from "assets/images/arrowPrev.svg";
 import searchPhase from "assets/images/searchPhaseGray.svg";
 import algoliaIcon from "assets/images/algolia.svg";
 
@@ -36,6 +38,12 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
   .ais-Hits {
     width: 80%;
+  }
+  .ais-Hits-list {
+    li:last-child a {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -98,9 +106,36 @@ const StyledSearchBox = styled(SearchBox)`
   }
 `;
 
-const StyledPagination = styled(Pagination)`
+const StyledHeading = styled(Heading)`
+  margin: 0 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 40;
+  color: ${({ theme }) => theme.color.navy};
+  img {
+  }
+`;
+
+const StyledButton = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
   display: flex;
-  align-self: flex-start;
+  flex-direction: row;
+`;
+const StyledList = styled.ul`
+  grid-column-start: results;
+  grid-column-end: aside;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 40px;
+  margin-top: 29px;
+  margin-bottom: 40px;
+  border-top: 1px solid ${({ theme }) => theme.color.lightGray};
+  *:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 
 const Results = connectStateResults(({ searchResults, children }) =>
@@ -111,14 +146,81 @@ const Results = connectStateResults(({ searchResults, children }) =>
   )
 );
 
+const Pagination = ({ currentRefinement, nbPages, params }) =>
+  nbPages > 1 && (
+    <StyledList>
+      <li>
+        <StyledButton
+          onClick={e => {
+            if (params.get("page") > 1) {
+              e.preventDefault();
+              params.set("page", currentRefinement - 1);
+              navigate(`/search?${params.toString()}`);
+            }
+          }}
+          style={{
+            pointerEvents: params.get("page") > 1 ? "unset" : "none",
+          }}
+        >
+          <img src={arrowPrev} alt="poprzednie" />
+          <StyledHeading text="poprzednie" />
+        </StyledButton>
+      </li>
+      <li>
+        {new Array(nbPages).fill(null).map((_, index) => {
+          const page = index + 1;
+          const style = {
+            color:
+              currentRefinement === page
+                ? `rgb(240,117,56)`
+                : `rgb(45, 48, 72)`,
+          };
+          return (
+            <StyledButton
+              key={index}
+              onClick={e => {
+                e.preventDefault();
+                params.set("page", page);
+                navigate(`/search?${params.toString()}`);
+              }}
+            >
+              <StyledHeading style={style} text={page} />
+            </StyledButton>
+          );
+        })}
+      </li>
+      <li>
+        <StyledButton
+          onClick={e => {
+            if (params.get("page") < nbPages) {
+              e.preventDefault();
+              console.log(nbPages);
+              params.set("page", currentRefinement + 1);
+              navigate(`/search?${params.toString()}`);
+            }
+          }}
+          style={{
+            pointerEvents: params.get("page") < nbPages ? "unset" : "none",
+          }}
+        >
+          <StyledHeading text="następne" />
+          <img src={arrowNext} alt="następne" />
+        </StyledButton>
+      </li>
+    </StyledList>
+  );
+
+const CustomPagination = connectPagination(Pagination);
+
 const Search = () => {
-  const params = new URLSearchParams(window.location.search.slice(1));
+  let params = new URLSearchParams(window.location.search.slice(1));
   const q = params.get("q") || "";
+  const page = params.get("page");
 
   const handleFormSubmit = e => {
     e.preventDefault();
     const query = e.target.children[0].value;
-    navigate(`/search?q=${query}`);
+    navigate(`/search?q=${query}&page=1`);
   };
   return (
     <Layout>
@@ -145,14 +247,12 @@ const Search = () => {
           </span>
         </SearchBar>
         <ContentWrapper>
-          <div>
-            <Results>
-              <Configure hitsPerPage={3} />
-              <Hits hitComponent={SearchResult} />
-              <StyledPagination totalPages={3} />
-            </Results>
-          </div>
+          <Results>
+            <Configure hitsPerPage={3} />
+            <Hits hitComponent={SearchResult} />
+          </Results>
           <Aside />
+          <CustomPagination params={params} defaultRefinement={page} />
         </ContentWrapper>
       </Wrapper>
     </Layout>
