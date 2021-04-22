@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { Heading } from "atoms/heading";
 import SearchResult from "molecules/searchResult";
+import SearchPagination from "molecules/searchPagination";
 import Layout from "organisms/layout";
 import Aside from "organisms/aside";
 import algoliasearch from "algoliasearch/lite";
@@ -16,8 +17,6 @@ import {
   connectStateResults,
   connectPagination,
 } from "react-instantsearch-dom";
-import arrowNext from "assets/images/arrowNext.svg";
-import arrowPrev from "assets/images/arrowPrev.svg";
 import searchPhase from "assets/images/searchPhaseGray.svg";
 import algoliaIcon from "assets/images/algolia.svg";
 
@@ -25,11 +24,9 @@ const searchClient = algoliasearch(
   process.env.ALGOLIA_APP_ID,
   process.env.ALGOLIA_SEACH_ONLY_API_KEY
 );
-
 const Wrapper = styled(InstantSearch)`
   display: flex;
 `;
-
 const ContentWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 380px;
@@ -46,7 +43,6 @@ const ContentWrapper = styled.div`
     }
   }
 `;
-
 const SearchBar = styled.div`
   grid-column-start: results;
   grid-column-end: aside;
@@ -67,7 +63,6 @@ const SearchBar = styled.div`
     }
   }
 `;
-
 const StyledSearchBox = styled(SearchBox)`
   max-width: 540px;
   form {
@@ -105,39 +100,6 @@ const StyledSearchBox = styled(SearchBox)`
     margin-bottom: 17px;
   }
 `;
-
-const StyledHeading = styled(Heading)`
-  margin: 0 5px;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 40;
-  color: ${({ theme }) => theme.color.navy};
-  img {
-  }
-`;
-
-const StyledButton = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-`;
-const StyledList = styled.ul`
-  grid-column-start: results;
-  grid-column-end: aside;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 40px;
-  margin-top: 29px;
-  margin-bottom: 40px;
-  border-top: 1px solid ${({ theme }) => theme.color.lightGray};
-  *:nth-child(2) {
-    display: flex;
-    flex-direction: row;
-  }
-`;
-
 const Results = connectStateResults(({ searchResults, children }) =>
   searchResults && searchResults.nbHits !== 0 ? (
     children
@@ -145,72 +107,11 @@ const Results = connectStateResults(({ searchResults, children }) =>
     <Heading text={`Nie znaleziono wyników dla podanego hasła`} />
   )
 );
-
-const Pagination = ({ currentRefinement, nbPages, params }) =>
-  nbPages > 1 && (
-    <StyledList>
-      <li>
-        <StyledButton
-          onClick={e => {
-            if (params.get("page") > 1) {
-              e.preventDefault();
-              params.set("page", currentRefinement - 1);
-              navigate(`/search?${params.toString()}`);
-            }
-          }}
-          style={{
-            pointerEvents: params.get("page") > 1 ? "unset" : "none",
-          }}
-        >
-          <img src={arrowPrev} alt="poprzednie" />
-          <StyledHeading text="poprzednie" />
-        </StyledButton>
-      </li>
-      <li>
-        {new Array(nbPages).fill(null).map((_, index) => {
-          const page = index + 1;
-          const style = {
-            color:
-              currentRefinement === page
-                ? `rgb(240,117,56)`
-                : `rgb(45, 48, 72)`,
-          };
-          return (
-            <StyledButton
-              key={index}
-              onClick={e => {
-                e.preventDefault();
-                params.set("page", page);
-                navigate(`/search?${params.toString()}`);
-              }}
-            >
-              <StyledHeading style={style} text={page} />
-            </StyledButton>
-          );
-        })}
-      </li>
-      <li>
-        <StyledButton
-          onClick={e => {
-            if (params.get("page") < nbPages) {
-              e.preventDefault();
-              console.log(nbPages);
-              params.set("page", currentRefinement + 1);
-              navigate(`/search?${params.toString()}`);
-            }
-          }}
-          style={{
-            pointerEvents: params.get("page") < nbPages ? "unset" : "none",
-          }}
-        >
-          <StyledHeading text="następne" />
-          <img src={arrowNext} alt="następne" />
-        </StyledButton>
-      </li>
-    </StyledList>
-  );
-
-const CustomPagination = connectPagination(Pagination);
+const PaginationWrapper = styled.nav`
+  grid-column-start: results;
+  grid-column-end: aside;
+`;
+const CustomPagination = connectPagination(SearchPagination);
 
 const Search = () => {
   let params = new URLSearchParams(window.location.search.slice(1));
@@ -248,11 +149,13 @@ const Search = () => {
         </SearchBar>
         <ContentWrapper>
           <Results>
-            <Configure hitsPerPage={3} />
+            <Configure hitsPerPage={6} />
             <Hits hitComponent={SearchResult} />
           </Results>
-          <Aside />
-          <CustomPagination params={params} defaultRefinement={page} />
+          <Aside search />
+          <PaginationWrapper>
+            <CustomPagination params={params} defaultRefinement={page} />
+          </PaginationWrapper>
         </ContentWrapper>
       </Wrapper>
     </Layout>

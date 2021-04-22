@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import { Heading } from "atoms/heading";
 import NavButton from "atoms/navButton";
 
@@ -40,10 +39,6 @@ const Pagination = ({ pageContext }) => {
       )}
     </Wrapper>
   );
-};
-
-Pagination.propTypes = {
-  pageContext: PropTypes.object.isRequired,
 };
 
 export default Pagination;

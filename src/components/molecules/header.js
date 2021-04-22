@@ -14,13 +14,11 @@ const StyledHeader = styled.header`
   display: block;
   margin: 0 auto;
 `;
-
 const LogoSection = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: center;
 `;
-
 const LogoSectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -29,17 +27,6 @@ const LogoSectionWrapper = styled.div`
   width: 100%;
   max-width: 1645px;
 `;
-
-// const StyledSubheading = styled(Subheading)`
-//   width: 283px;
-//   font-size: 18px;
-//   margin: 0;
-// `;
-
-// const StyledLogoSubheading = styled(Subheading)`
-//   margin-bottom: 14px;
-// `;
-
 const StyledButton = styled.button`
   border: none;
   background: none;
@@ -48,7 +35,6 @@ const StyledButton = styled.button`
     outline: none;
   }
 `;
-
 const Navigation = styled.section`
   display: flex;
   justify-content: center;
@@ -68,7 +54,6 @@ const NavigationWrapper = styled.div`
   height: 74px;
   z-index: 10000;
 `;
-
 const Newsletter = styled(Link)`
   font-family: ${({ theme }) => theme.font.menuItem.family};
   font-weight: ${({ theme }) => theme.font.menuItem.weight};
@@ -76,7 +61,6 @@ const Newsletter = styled(Link)`
   font-size: ${({ theme }) => theme.font.menuItem.size};
   color: ${({ theme }) => theme.color.orange};
 `;
-
 const Search = styled.div`
   display: none;
   min-height: 540px;
@@ -92,7 +76,6 @@ const SearchWrapper = styled.div`
   max-width: 1645px;
   width: 100%;
 `;
-
 const ExitButton = styled.button`
   float: right;
   background: none;
@@ -104,7 +87,6 @@ const ExitButton = styled.button`
     outline: none;
   }
 `;
-
 const SearchForm = styled.form`
   align-self: center;
   display: flex;
@@ -137,7 +119,6 @@ const SearchForm = styled.form`
     margin-bottom: 17px;
   }
 `;
-
 const SuggestionWrapper = styled.div`
   align-self: center;
   font-family: ${({ theme }) => theme.font.menuItem.family};
@@ -151,7 +132,6 @@ const SuggestionWrapper = styled.div`
     margin-bottom: 19px;
   }
 `;
-
 const SuggestionBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -161,7 +141,6 @@ const SuggestionBox = styled.div`
     flex-direction: column;
   }
 `;
-
 const SuggestionLink = styled(StyledLink)`
   color: ${({ theme }) => theme.color.gray};
   text-align: center;

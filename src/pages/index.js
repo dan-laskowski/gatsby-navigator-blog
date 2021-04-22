@@ -49,9 +49,9 @@ const CarouselPostLarge = styled(PostLarge)`
 
 const StyledAside = styled(Aside)`
   width: auto;
-  margin-top: 60px;
   grid-area: a;
   padding-left: 0;
+  margin-top: 10px;
   border-left: none;
 `;
 

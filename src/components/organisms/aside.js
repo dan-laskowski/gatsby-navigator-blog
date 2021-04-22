@@ -12,6 +12,12 @@ const AsideWrapper = styled.aside`
   width: 60%;
   border-left: 1px solid ${({ theme }) => theme.color.lightGray};
 `;
+const StickyContainer = styled.div`
+  position: ${({ search }) => (search ? `sticky` : `relative`)};
+
+  top: 40px;
+  bottom: 40px;
+`;
 
 const Aside = ({ children, ...props }) => {
   const { allWpPost, allWpTag } = useStaticQuery(graphql`
@@ -55,28 +61,30 @@ const Aside = ({ children, ...props }) => {
   `);
   return (
     <AsideWrapper {...props}>
-      <AsideSection title="tagi" to={`/tags`}>
-        <div>
-          {allWpTag.nodes.map(node => (
-            <Tag key={node.slug} name={node.name} slug={node.slug} />
-          ))}
-          <Tag key="last" name="..." slug="tags" />
-        </div>
-      </AsideSection>
-      <AsideSection title="sprawdź!" to={`/publikacje-i-raporty`}>
-        <Heading text={allWpPost.edges[0].node.title} />
-        <Subheading text={allWpPost.edges[0].node.subtitle.podtytul} />
-        <Button
-          target="_blank"
-          rel="noreferrer"
-          text="Pobierz"
-          uri={`${allWpPost.edges[0].node.raport.raportfile.localFile.url}`}
-        />
-      </AsideSection>
-      <AsideSection title="newsletter">
-        <NewsletterForm />
-      </AsideSection>
-      {children}
+      <StickyContainer {...props}>
+        <AsideSection title="tagi" to={`/tags`}>
+          <div>
+            {allWpTag.nodes.map(node => (
+              <Tag key={node.slug} name={node.name} slug={node.slug} />
+            ))}
+            <Tag key="last" name="..." slug="tags" />
+          </div>
+        </AsideSection>
+        <AsideSection title="sprawdź!" to={`/publikacje-i-raporty`}>
+          <Heading text={allWpPost.edges[0].node.title} />
+          <Subheading text={allWpPost.edges[0].node.subtitle.podtytul} />
+          <Button
+            target="_blank"
+            rel="noreferrer"
+            text="Pobierz"
+            uri={`${allWpPost.edges[0].node.raport.raportfile.localFile.url}`}
+          />
+        </AsideSection>
+        <AsideSection title="newsletter">
+          <NewsletterForm />
+        </AsideSection>
+        {children}
+      </StickyContainer>
     </AsideWrapper>
   );
 };
