@@ -13,14 +13,12 @@ const Wrapper = styled.section`
   margin-bottom: 49px;
   border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
 `;
-
 const Article = styled.article`
   grid-area: text;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
-
 const Category = styled(Link)`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
@@ -30,7 +28,6 @@ const Category = styled(Link)`
   text-transform: uppercase;
   margin-bottom: 10px;
 `;
-
 const StyledHeading = styled(Heading)`
   margin: 0;
   margin-top: 10px;
@@ -40,7 +37,6 @@ const StyledHeading = styled(Heading)`
   max-width: 603px;
   font-size: 60px;
 `;
-
 const StyledSubheading = styled(Subheading)`
   font-size: 28px;
   line-height: 34px;
@@ -49,7 +45,6 @@ const StyledSubheading = styled(Subheading)`
     display: none;
   }
 `;
-
 const FeaturedImg = styled.div`
   grid-area: img;
   overflow: hidden;
@@ -62,7 +57,6 @@ const FeaturedImg = styled.div`
     object-fit: cover;
   }
 `;
-
 const TagSection = styled.div`
   margin-bottom: 17px;
 `;

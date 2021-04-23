@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
+import { window } from "browser-monads";
 // import { Subheading } from "atoms/heading";
 import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
@@ -151,13 +152,12 @@ const Header = () => {
   const [query, setQuery] = useState("");
   const inputEl = useRef(null);
   const searchEl = useRef(null);
-
   const handleSearchToggle = () => {
     setSearch(prevState => !prevState);
     searchEl.current.style.display = showSearch ? "none" : "flex";
     inputEl.current.focus();
   };
-
+  console.log(window.location.href);
   const handleFormSubmit = e => {
     e.preventDefault();
     navigate(`/search?q=${query}&page=1`);
@@ -190,7 +190,13 @@ rozwoju i etycznym biznesie"
 
       <Navigation>
         <NavigationWrapper>
-          <StyledButton onClick={handleSearchToggle}>
+          <StyledButton
+            onClick={
+              window.location.href.includes("search")
+                ? null
+                : handleSearchToggle
+            }
+          >
             <img src={searchLogo} alt="wyszukiwanie" width="24" height="24" />
           </StyledButton>
           <Navbar />

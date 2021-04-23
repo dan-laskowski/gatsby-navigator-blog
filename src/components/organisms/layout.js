@@ -4,6 +4,7 @@ import { Reset } from "styled-reset";
 import GlobalStyle from "assets/styles/globalStyle";
 import theme from "assets/styles/theme";
 import Header from "molecules/header";
+import Footer from "molecules/footer";
 
 const Layout = ({ children }) => {
   return (
@@ -13,6 +14,7 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={theme}>
         <Header />
         {children}
+        <Footer />
       </ThemeProvider>
     </>
   );

@@ -6,7 +6,6 @@ import AsideSection from "molecules/asideSection";
 const ShortyWrapper = styled(AsideSection)`
   width: 520px;
 `;
-
 const ShortyLink = styled(Link)`
   display: block;
   h2 {

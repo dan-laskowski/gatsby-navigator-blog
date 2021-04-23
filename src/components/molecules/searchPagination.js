@@ -16,7 +16,6 @@ const StyledList = styled.ul`
     flex-direction: row;
   }
 `;
-
 const StyledButton = styled.button`
   border: none;
   background: none;
@@ -24,7 +23,6 @@ const StyledButton = styled.button`
   display: flex;
   flex-direction: row;
 `;
-
 const StyledHeading = styled(Heading)`
   margin: 0 5px;
   font-size: 14px;

@@ -135,6 +135,7 @@ export const query = graphql`
         tags: { nodes: { elemMatch: { id: { eq: $id } } } }
         status: { eq: "publish" }
       }
+      sort: { order: DESC, fields: date }
     ) {
       edges {
         node {

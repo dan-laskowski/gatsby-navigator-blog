@@ -13,14 +13,12 @@ const Wrapper = styled.section`
   padding-bottom: 28px;
   margin-top: 30px;
 `;
-
 const Article = styled.article`
   grid-area: text;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
-
 const FeaturedImg = styled.div`
   grid-area: img;
   overflow: hidden;
@@ -31,7 +29,6 @@ const FeaturedImg = styled.div`
     object-fit: cover;
   }
 `;
-
 const MetaWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,7 +38,6 @@ const MetaWrapper = styled.div`
     flex-direction: column;
   }
 `;
-
 const Category = styled(Link)`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
@@ -51,7 +47,6 @@ const Category = styled(Link)`
   text-transform: uppercase;
   margin-bottom: 10px;
 `;
-
 const StyledHeading = styled(Heading)`
   margin: 0;
   margin-top: 10px;
@@ -59,13 +54,10 @@ const StyledHeading = styled(Heading)`
   font-size: 28px;
   text-transform: uppercase;
 `;
-
 const StyledSubheading = styled(Subheading)``;
-
 const TagSection = styled.div`
   margin-bottom: 17px;
 `;
-
 const PostMedium = ({
   title,
   category,

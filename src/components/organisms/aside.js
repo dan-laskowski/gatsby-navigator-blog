@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import Tag from "atoms/tag";
 import Button from "atoms/button";
 import { Heading, Subheading } from "atoms/heading";
@@ -28,6 +28,7 @@ const Aside = ({ children, ...props }) => {
             nodes: { elemMatch: { name: { eq: "Publikacje/Raporty" } } }
           }
           status: { eq: "publish" }
+          raport: { featured: { eq: true } }
         }
         limit: 1
         sort: { order: DESC, fields: date }
@@ -71,14 +72,16 @@ const Aside = ({ children, ...props }) => {
           </div>
         </AsideSection>
         <AsideSection title="sprawdź!" to={`/publikacje-i-raporty`}>
-          <Heading text={allWpPost.edges[0].node.title} />
-          <Subheading text={allWpPost.edges[0].node.subtitle.podtytul} />
-          <Button
-            target="_blank"
-            rel="noreferrer"
-            text="Pobierz"
-            uri={`${allWpPost.edges[0].node.raport.raportfile.localFile.url}`}
-          />
+          <Link to={`/${allWpPost.edges[0].node.slug}`}>
+            <Heading text={allWpPost.edges[0].node.title} />
+            <Subheading text={allWpPost.edges[0].node.subtitle.podtytul} />
+            <Button
+              target="_blank"
+              rel="noreferrer"
+              text="Pobierz"
+              uri={`${allWpPost.edges[0].node.raport.raportfile.localFile.url}`}
+            />
+          </Link>
         </AsideSection>
         <AsideSection title="newsletter">
           <NewsletterForm />

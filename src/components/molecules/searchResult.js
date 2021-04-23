@@ -13,13 +13,11 @@ const Wrapper = styled.section`
   margin-bottom: 49px;
   border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
 `;
-
 const Article = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
-
 const Category = styled(Link)`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
@@ -29,7 +27,6 @@ const Category = styled(Link)`
   text-transform: uppercase;
   margin-bottom: 10px;
 `;
-
 const StyledHeading = styled(Heading)`
   font-size: 28px;
   line-height: 33px;
@@ -38,7 +35,6 @@ const StyledHeading = styled(Heading)`
   margin-bottom: 26px;
   text-transform: uppercase;
 `;
-
 const StyledSubheading = styled(Subheading)`
   font-size: 20px;
   line-height: 34px;
@@ -50,7 +46,6 @@ const StyledSubheading = styled(Subheading)`
     display: none;
   }
 `;
-
 const TagSection = styled.div`
   margin-bottom: 17px;
 `;

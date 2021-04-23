@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { Heading } from "atoms/heading";
-import NavButton from "atoms/navButton";
+import { Link } from "gatsby";
+import PaginationButton from "atoms/paginationButton";
 
 const Wrapper = styled.nav`
   margin: 40px auto;
   max-width: 1645px;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 `;
-
 const StyledHeading = styled(Heading)`
   margin: 0 5px;
   font-size: 14px;
@@ -28,13 +29,22 @@ const Pagination = ({ pageContext }) => {
     <Wrapper>
       {numberOfPages > 1 && (
         <>
-          <NavButton to={previousPagePath ? previousPagePath : ``} prev />
+          <PaginationButton
+            as={Link}
+            to={previousPagePath ? previousPagePath : ``}
+            prev
+            active={+humanPageNumber > 1}
+          />
           <div className="pagination-location">
             <StyledHeading
               text={`STRONA ${humanPageNumber} z ${numberOfPages}`}
             />
           </div>
-          <NavButton to={nextPagePath} />
+          <PaginationButton
+            as={Link}
+            to={nextPagePath}
+            active={+humanPageNumber < numberOfPages}
+          />
         </>
       )}
     </Wrapper>

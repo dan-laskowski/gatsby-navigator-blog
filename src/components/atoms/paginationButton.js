@@ -10,6 +10,7 @@ const NavigationButton = styled.button`
   cursor: pointer;
   display: flex;
   flex-direction: row;
+  align-items: baseline;
   pointer-events: ${({ active }) => (active ? "unset" : "none")};
 `;
 const StyledIcon = styled(Icon)`
@@ -19,7 +20,6 @@ const StyledIcon = styled(Icon)`
       active ? theme.color.orange : theme.color.gray};
   }
 `;
-
 const StyledHeading = styled(Heading)`
   margin: 0 5px;
   font-size: 14px;

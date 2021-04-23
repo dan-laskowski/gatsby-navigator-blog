@@ -29,7 +29,6 @@ const PageWrapper = styled.main`
     "es es es es es es es es es es es es com com com com"
     "comh comh comh comh comh comh comh comh comh comh comh comh comh comh comh comh";
 `;
-
 const CarouselWrapper = styled.section`
   margin-top: 94px;
   grid-area: s;
@@ -37,7 +36,6 @@ const CarouselWrapper = styled.section`
     border: none;
   }
 `;
-
 const CarouselPostLarge = styled(PostLarge)`
   grid-template-columns: repeat(16, 65px);
   grid-gap: unset;
@@ -46,7 +44,6 @@ const CarouselPostLarge = styled(PostLarge)`
   grid-template-areas: "text text text text text text . img img img img img img img img img";
   grid-area: s;
 `;
-
 const StyledAside = styled(Aside)`
   width: auto;
   grid-area: a;
@@ -54,7 +51,6 @@ const StyledAside = styled(Aside)`
   margin-top: 10px;
   border-left: none;
 `;
-
 const ArticleSection = styled(AsideSection)`
   margin-top: 60px;
   grid-column-start: bt;
@@ -62,7 +58,6 @@ const ArticleSection = styled(AsideSection)`
   width: auto;
   margin-bottom: 0;
 `;
-
 const ArticlePostLarge = styled(PostLarge)`
   grid-column-start: bt;
   grid-column-end: bi;
@@ -92,7 +87,6 @@ const ArticlePostLarge = styled(PostLarge)`
     max-height: 432px;
   }
 `;
-
 const ArticlePostMediumWrapper = styled.div`
   grid-area: sm;
   display: flex;
@@ -100,7 +94,6 @@ const ArticlePostMediumWrapper = styled.div`
   justify-content: space-between;
   align-items: flex-start;
 `;
-
 const ArticlePostMedium = styled(PostMedium)`
   display: grid;
   grid-template-columns: repeat(4, 65px);
@@ -123,34 +116,29 @@ const ArticlePostMedium = styled(PostMedium)`
   padding-left: 20px;
   border-right: 1px solid ${({ theme }) => theme.color.lightGray}; */
 `;
-
 const TipsSection = styled(AsideSection)`
   width: auto;
   grid-column-start: s;
   grid-column-end: s;
 `;
-
 const TipsSectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
 `;
-
 const BcorpSection = styled(AsideSection)`
   width: auto;
   grid-column-start: sm;
   grid-column-end: sm;
   margin-bottom: 28px;
 `;
-
 const BcorpSectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
 `;
-
 const LargePostLarge = styled(PostLarge)`
   max-width: 800px;
   justify-content: center;
@@ -173,7 +161,6 @@ const LargePostLarge = styled(PostLarge)`
   margin-bottom: 0;
   border-bottom: none;
 `;
-
 const MiniPostWrapper = styled.div`
   max-width: 380px;
   display: flex;
@@ -181,21 +168,18 @@ const MiniPostWrapper = styled.div`
   height: 100%;
   margin-top: 30px;
 `;
-
 const EventSection = styled(AsideSection)`
   width: auto;
   grid-column-start: sm;
   grid-column-end: sm;
   margin-bottom: 0;
 `;
-
 const EventSectionWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
 `;
-
 const CommercialVertical = styled.aside`
   grid-area: com;
   background: #f07538;
@@ -207,12 +191,10 @@ const CommercialHorizontal = styled.div`
   margin-bottom: 96px;
   background: #2d3048;
 `;
-
 const ShortyWrapper = styled.section`
   grid-column-start: s;
   grid-column-end: s;
 `;
-
 const ShortyRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -404,7 +386,11 @@ const IndexPage = ({
 
 export const query = graphql`
   query IndexQuery {
-    carouselPosts: allWpPost(filter: { status: { eq: "publish" } }, limit: 3) {
+    carouselPosts: allWpPost(
+      filter: { status: { eq: "publish" } }
+      limit: 3
+      sort: { order: DESC, fields: date }
+    ) {
       nodes {
         title
         subtitle {
@@ -443,6 +429,7 @@ export const query = graphql`
         categories: { nodes: { elemMatch: { name: { eq: "Artykuły" } } } }
       }
       limit: 4
+      sort: { order: DESC, fields: date }
     ) {
       nodes {
         title
@@ -482,6 +469,7 @@ export const query = graphql`
         categories: { nodes: { elemMatch: { name: { eq: "Dobre praktyki" } } } }
       }
       limit: 4
+      sort: { order: DESC, fields: date }
     ) {
       nodes {
         title
@@ -524,6 +512,7 @@ export const query = graphql`
         }
       }
       limit: 3
+      sort: { order: DESC, fields: date }
     ) {
       nodes {
         title
@@ -563,6 +552,7 @@ export const query = graphql`
         categories: { nodes: { elemMatch: { name: { eq: "Wydarzenia" } } } }
       }
       limit: 3
+      sort: { order: DESC, fields: date }
     ) {
       nodes {
         title
@@ -602,6 +592,7 @@ export const query = graphql`
         categories: { nodes: { elemMatch: { name: { eq: "Wywiad" } } } }
       }
       limit: 3
+      sort: { order: DESC, fields: date }
     ) {
       nodes {
         title

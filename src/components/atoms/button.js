@@ -20,7 +20,6 @@ const StyledButton = styled.button`
     outline: none;
   }
 `;
-
 const Button = ({ text, uri, ...props }) => {
   return (
     <Link to={uri} {...props}>

@@ -10,13 +10,11 @@ const Wrapper = styled.section`
   margin-bottom: 20px;
   min-height: 110px;
 `;
-
 const Article = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
-
 const Category = styled(Link)`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
@@ -26,7 +24,6 @@ const Category = styled(Link)`
   text-transform: uppercase;
   margin-bottom: 8px;
 `;
-
 const StyledHeading = styled(Heading)`
   margin: 0;
   margin-top: 8px;
@@ -34,7 +31,6 @@ const StyledHeading = styled(Heading)`
   font-size: 20px;
   text-transform: uppercase;
 `;
-
 const FeaturedImg = styled.div`
   overflow: hidden;
   img {

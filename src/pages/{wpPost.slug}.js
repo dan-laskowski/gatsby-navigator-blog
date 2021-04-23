@@ -12,7 +12,7 @@ import TagBox from "molecules/tagBox";
 import Layout from "organisms/layout";
 import facebook from "assets/images/facebook.svg";
 import twitter from "assets/images/twitter.svg";
-import share from "assets/images/share.svg";
+import linkedin from "assets/images/linkedin.svg";
 
 const ArticleWrapper = styled.article``;
 
@@ -23,20 +23,17 @@ const HeadingSection = styled.section`
   margin-bottom: 140px;
   max-width: 1920px;
 `;
-
 const ArticleInfo = styled.div`
-  background: ${({ theme }) => theme.color.navy};
+  background: ${({ background }) => background};
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
-
 const HeadingWrapper = styled.div`
   margin-left: 10%;
   margin-right: 10%;
 `;
-
 const CategoryName = styled(Link)`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
@@ -46,7 +43,6 @@ const CategoryName = styled(Link)`
   text-transform: uppercase;
   margin-left: 2px;
 `;
-
 const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.font.heading.size};
   color: ${({ theme }) => theme.color.offWhite};
@@ -59,7 +55,6 @@ const StyledSubheading = styled(Subheading)`
   color: ${({ theme }) => theme.color.offWhite};
   line-height: 38px;
 `;
-
 const FeaturedImg = styled.div`
   overflow: hidden;
   img {
@@ -69,7 +64,6 @@ const FeaturedImg = styled.div`
     height: 100%;
   }
 `;
-
 const ArticleMain = styled.div`
   display: grid;
   justify-content: center;
@@ -78,11 +72,9 @@ const ArticleMain = styled.div`
   grid-template-rows: auto;
   grid-template-areas: "meta meta . content content content content content content aside aside aside";
 `;
-
 const MetaSection = styled.div`
   grid-area: meta;
 `;
-
 const AuthorName = styled.p`
   font-family: ${({ theme }) => theme.font.sectionName.family};
   font-weight: ${({ theme }) => theme.font.sectionName.weight};
@@ -91,7 +83,6 @@ const AuthorName = styled.p`
   color: ${({ theme }) => theme.color.gray};
   margin-bottom: 20px;
 `;
-
 const Date = styled.p`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
@@ -100,7 +91,6 @@ const Date = styled.p`
   color: ${({ theme }) => theme.color.gray};
   margin-bottom: 30px;
 `;
-
 const Socials = styled.div`
   display: flex;
   flex-direction: row;
@@ -108,7 +98,6 @@ const Socials = styled.div`
   width: 144px;
   margin-bottom: 80px;
 `;
-
 const SocialIcon = styled.a`
   display: block;
   img {
@@ -116,7 +105,6 @@ const SocialIcon = styled.a`
     height: 22px;
   }
 `;
-
 const ArticleContent = styled.div`
   grid-area: content;
   font-family: ${({ theme }) => theme.font.paragraph.family};
@@ -170,14 +158,12 @@ const ArticleContent = styled.div`
     margin-bottom: 30px;
   }
 `;
-
 const StyledButton = styled(Button)`
   width: 200px;
   margin: 0 auto;
   display: block;
   margin-bottom: 68px;
 `;
-
 const Aside = styled.div`
   grid-area: aside;
 `;
@@ -199,7 +185,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
       <Layout>
         <ArticleWrapper>
           <HeadingSection>
-            <ArticleInfo>
+            <ArticleInfo background={wpPost.subtitle.kolorTlaTytulu}>
               <ProgressBar bgcolor="#F07539" />
               <HeadingWrapper>
                 <CategoryName
@@ -243,8 +229,10 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
                     <img src={twitter} alt="twitter logo" />
                   </a>
                 </SocialIcon>
-                <SocialIcon>
-                  <img src={share} alt="ikona udostępniania treści" />
+                <SocialIcon
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${process.env.SITE_URL}${wpPost.slug}`}
+                >
+                  <img src={linkedin} alt="linkedin logo" />
                 </SocialIcon>
               </Socials>
               <div>
@@ -294,6 +282,7 @@ export const query = graphql`
       title
       subtitle {
         podtytul
+        kolorTlaTytulu
       }
       featuredImage {
         node {

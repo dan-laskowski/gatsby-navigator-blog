@@ -203,6 +203,7 @@ export const query = graphql`
         categories: { nodes: { elemMatch: { id: { eq: $id } } } }
         status: { eq: "publish" }
       }
+      sort: { order: DESC, fields: date }
     ) {
       edges {
         node {

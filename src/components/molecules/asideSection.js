@@ -8,7 +8,6 @@ const Wrapper = styled.section`
   margin-bottom: 62px;
   width: 380px;
 `;
-
 const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
