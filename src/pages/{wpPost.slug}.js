@@ -246,7 +246,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
                   target="_blank"
                   rel="noreferrer"
                   text="Pobierz raport"
-                  uri={wpPost.raport.raportfile.localFile.url}
+                  uri={wpPost.raport.raportfile.mediaItemUrl}
                 />
               )}
             </ArticleContent>
@@ -311,9 +311,7 @@ export const query = graphql`
       raport {
         raportfile {
           title
-          localFile {
-            url
-          }
+          mediaItemUrl
         }
       }
       tags {

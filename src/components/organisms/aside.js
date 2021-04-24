@@ -44,9 +44,7 @@ const Aside = ({ children, ...props }) => {
             raport {
               raportfile {
                 title
-                localFile {
-                  url
-                }
+                mediaItemUrl
               }
             }
           }
@@ -79,7 +77,7 @@ const Aside = ({ children, ...props }) => {
               target="_blank"
               rel="noreferrer"
               text="Pobierz"
-              uri={`${allWpPost.edges[0].node.raport.raportfile.localFile.url}`}
+              uri={`${allWpPost.edges[0].node.raport.raportfile.mediaItemUrl}`}
             />
           </Link>
         </AsideSection>
