@@ -21,7 +21,6 @@ const ContentWrapper = styled.div`
   grid-template-rows: auto;
   grid-template-areas: "text text text text space img img img img aside aside aside";
 `;
-
 const CategoryName = styled.div`
   background: ${({ theme }) => theme.color.lightGray};
   height: 400px;
@@ -34,7 +33,6 @@ const CategoryName = styled.div`
     color: ${({ theme }) => theme.color.black};
   }
 `;
-
 const SubcategoryName = styled.div`
   font-family: ${({ theme }) => theme.font.heading.family};
   font-weight: ${({ theme }) => theme.font.heading.weight};
@@ -44,13 +42,11 @@ const SubcategoryName = styled.div`
     margin-right: 40px;
   }
 `;
-
 const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.font.heading.size};
   text-transform: uppercase;
   margin-bottom: 26px;
 `;
-
 const Posts = styled.div`
   grid-column-start: text;
   grid-column-end: img;
@@ -62,7 +58,6 @@ const Posts = styled.div`
     border-bottom: none;
   }
 `;
-
 const StyledPostLarge = styled(PostLarge)`
   h1 {
     font-size: 28px;
@@ -78,7 +73,6 @@ const StyledPostLarge = styled(PostLarge)`
   }
   padding-bottom: 28px;
 `;
-
 const StyledAside = styled(Aside)`
   grid-area: aside;
 `;

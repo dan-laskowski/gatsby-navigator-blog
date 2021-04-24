@@ -12,6 +12,7 @@ const Wrapper = styled.footer`
   background: ${({ theme }) => theme.color.lightGray};
   display: flex;
   justify-content: center;
+  margin-top: 12px;
 `;
 const StyledFooter = styled.div`
   max-width: 1645px;
