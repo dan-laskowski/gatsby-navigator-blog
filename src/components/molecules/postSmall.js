@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Heading } from "atoms/heading";
 import Tag from "atoms/tag";
@@ -33,7 +34,7 @@ const StyledHeading = styled(Heading)`
 `;
 const FeaturedImg = styled.div`
   overflow: hidden;
-  img {
+  .gatsby-image-wrapper {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -55,7 +56,10 @@ const PostSmall = ({ title, category, tags, img, slug }) => {
         </div>
       </Article>
       <FeaturedImg>
-        <img srcSet={img.node.srcSet} alt={img.node.altText} />
+        <GatsbyImage
+          image={img.node.localFile.childImageSharp.gatsbyImageData}
+          alt={img.node.altText}
+        />
       </FeaturedImg>
     </Wrapper>
   );

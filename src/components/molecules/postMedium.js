@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { Heading, Subheading } from "atoms/heading";
 import TagBox from "molecules/tagBox";
@@ -23,7 +24,7 @@ const FeaturedImg = styled.div`
   grid-area: img;
   overflow: hidden;
   margin-left: 108px;
-  img {
+  .gatsby-image-wrapper {
     width: 100%;
     overflow: hidden;
     object-fit: cover;
@@ -71,7 +72,10 @@ const PostMedium = ({
     <Wrapper as={Link} to={`/${slug}`} {...props}>
       <Article>
         <FeaturedImg>
-          <img srcSet={img.node.srcSet} alt={img.node.altText} />
+          <GatsbyImage
+            image={img.node.localFile.childImageSharp.gatsbyImageData}
+            alt={img.node.altText}
+          />
         </FeaturedImg>
         <MetaWrapper>
           <div>

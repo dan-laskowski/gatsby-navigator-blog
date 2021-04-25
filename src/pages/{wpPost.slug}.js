@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql, Link } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { Helmet } from "react-helmet";
 import ProgressBar from "react-scroll-progress-bar";
 import ReactHtmlParser from "react-html-parser";
@@ -57,7 +58,7 @@ const StyledSubheading = styled(Subheading)`
 `;
 const FeaturedImg = styled.div`
   overflow: hidden;
-  img {
+  .gatsby-image-wrapper {
     width: 100%;
     overflow: hidden;
     object-fit: cover;
@@ -171,6 +172,8 @@ const Aside = styled.div`
 const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
   const handleCategoryNode = post =>
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
+  const image = getImage(wpPost.featuredImage.node.localFile);
+
   return (
     <>
       <script
@@ -200,10 +203,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
               </HeadingWrapper>
             </ArticleInfo>
             <FeaturedImg>
-              <img
-                srcSet={wpPost.featuredImage.node.srcSet}
-                alt={wpPost.featuredImage.altText}
-              />
+              <GatsbyImage image={image} alt={wpPost.featuredImage.altText} />
             </FeaturedImg>
           </HeadingSection>
           <ArticleMain>
@@ -286,8 +286,14 @@ export const query = graphql`
       }
       featuredImage {
         node {
-          srcSet
-          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                placeholder: TRACED_SVG
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
         }
       }
       slug
@@ -345,7 +351,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {

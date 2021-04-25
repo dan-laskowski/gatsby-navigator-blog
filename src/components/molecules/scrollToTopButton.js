@@ -7,6 +7,9 @@ import searchPhase from "assets/images/searchPhaseGray.svg";
 const StyledIcon = styled(Icon)`
   transform: rotateZ(-90deg);
   margin-left: 3px;
+  svg {
+    width: 20px;
+  }
 `;
 const StyledContainer = styled.div`
   display: grid;

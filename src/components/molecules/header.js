@@ -161,11 +161,6 @@ const Header = () => {
     e.preventDefault();
     navigate(`/search?q=${query}&page=1`);
   };
-  console.log(process.env.SITE_URL);
-  console.log(process.env.ALGOLIA_APP_ID);
-  console.log(process.env.ALGOLIA_API_KEY);
-  console.log(process.env.ALGOLIA_INDEX_NAME);
-  console.log(process.env.ALGOLIA_SEACH_ONLY_API_KEY);
   return (
     <StyledHeader>
       <LogoSection>

@@ -67,7 +67,7 @@ const StyledPostLarge = styled(PostLarge)`
     font-size: 20px;
     line-height: 34px;
   }
-  img {
+  .gatsby-image-wrapper {
     max-width: 572px;
     height: 320px;
   }
@@ -216,8 +216,14 @@ export const query = graphql`
           }
           featuredImage {
             node {
-              altText
-              srcSet
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    placeholder: TRACED_SVG
+                    formats: [AUTO, WEBP, AVIF]
+                  )
+                }
+              }
             }
           }
           date(locale: "pl")
@@ -245,7 +251,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {

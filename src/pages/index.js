@@ -82,7 +82,7 @@ const ArticlePostLarge = styled(PostLarge)`
     line-height: 20px;
     max-width: 379px;
   }
-  img {
+  .gatsby-image-wrapper {
     width: 800px;
     max-height: 432px;
   }
@@ -108,7 +108,7 @@ const ArticlePostMedium = styled(PostMedium)`
     margin-left: 0;
   }
 
-  img {
+  .gatsby-image-wrapper {
     height: 210px;
   }
 
@@ -153,7 +153,7 @@ const LargePostLarge = styled(PostLarge)`
     max-width: 357px;
     line-height: 20px;
   }
-  img {
+  .gatsby-image-wrapper {
     width: 400px;
     max-height: 250px;
   }
@@ -405,8 +405,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
-            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {
@@ -445,8 +451,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
-            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {
@@ -486,8 +498,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
-            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {
@@ -528,8 +546,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
-            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {
@@ -568,8 +592,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
-            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {
@@ -608,8 +638,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
-            altText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {
