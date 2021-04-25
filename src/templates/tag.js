@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { Heading } from "atoms/heading";
+import Seo from "molecules/seo";
 import Pagination from "molecules/Pagination";
 import Aside from "organisms/aside";
 import PostLarge from "molecules/postLarge";
@@ -21,7 +22,6 @@ const ContentWrapper = styled.div`
   grid-template-rows: auto;
   grid-template-areas: "text text text text space img img img img aside aside aside";
 `;
-
 const CategoryName = styled.div`
   background: ${({ theme }) => theme.color.lightGray};
   height: 400px;
@@ -34,13 +34,11 @@ const CategoryName = styled.div`
     color: ${({ theme }) => theme.color.black};
   }
 `;
-
 const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.font.heading.size};
   text-transform: uppercase;
   margin-bottom: 26px;
 `;
-
 const Posts = styled.div`
   grid-column-start: text;
   grid-column-end: img;
@@ -52,7 +50,6 @@ const Posts = styled.div`
     border-bottom: none;
   }
 `;
-
 const StyledPostLarge = styled(PostLarge)`
   h1 {
     font-size: 28px;
@@ -68,7 +65,6 @@ const StyledPostLarge = styled(PostLarge)`
   }
   padding-bottom: 28px;
 `;
-
 const StyledAside = styled(Aside)`
   grid-area: aside;
 `;
@@ -78,9 +74,10 @@ const Tag = ({ data: { wpTag, allWpPost, asideQuery }, pageContext }) => {
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
   return (
     <Layout>
-      <Helmet>
-        <title>{wpTag.name} | Navigator</title>
-      </Helmet>
+      <Seo
+        title={wpTag.name | `Navigator`}
+        description={`Wszystkie posty z tagiem ${wpTag.name}`}
+      />
       <Wrapper>
         <CategoryName>
           <Link key={wpTag.slug} to={`/${wpTag.slug}`}>

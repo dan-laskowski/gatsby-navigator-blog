@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import Seo from "molecules/seo";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Helmet } from "react-helmet";
 import ProgressBar from "react-scroll-progress-bar";
 import ReactHtmlParser from "react-html-parser";
-import { window } from "browser-monads";
 import { Heading, Subheading } from "atoms/heading";
 import Button from "atoms/button";
 import AsideSection from "molecules/asideSection";
@@ -17,7 +16,6 @@ import twitter from "assets/images/twitter.svg";
 import linkedin from "assets/images/linkedin.svg";
 
 const ArticleWrapper = styled.article``;
-
 const HeadingSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -181,26 +179,11 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
         src="https://platform.twitter.com/widgets.js"
         charSet="utf-8"
       ></script>
-      <Helmet>
-        <title>{wpPost.title}</title>
-        <meta name="description" content={wpPost.excerpt} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://metatags.io/" />
-        <meta property="og:title" content={wpPost.title} />
-        <meta property="og:description" content={wpPost.excerpt} />
-        <meta
-          property="og:image"
-          content={wpPost.featuredImage.node.mediaItemUrl}
-        />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={window.location.href} />
-        <meta property="twitter:title" content={wpPost.title} />
-        <meta property="twitter:description" content={wpPost.excerpt} />
-        <meta
-          property="twitter:image"
-          content={wpPost.featuredImage.node.mediaItemUrl}
-        />
-      </Helmet>
+      <Seo
+        title={wpPost.title}
+        description={wpPost.excerpt}
+        image={wpPost.featuredImage.node.mediaItemUrl}
+      />
       <Layout>
         <ArticleWrapper>
           <HeadingSection>

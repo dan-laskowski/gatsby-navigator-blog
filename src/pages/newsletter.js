@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
 import { Heading } from "atoms/heading";
+import Seo from "molecules/seo";
 import Layout from "organisms/layout";
 import NewsletterForm from "molecules/newsletterForm";
 
 const Wrapper = styled.div``;
-
 const FormContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -26,9 +25,10 @@ const FormContainer = styled.section`
 const Newsletter = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Zapisz się na newsletter | Navigator</title>
-      </Helmet>
+      <Seo
+        title="Zapisz się na newsletter | Navigator"
+        description="Zapisz się do newslettera Navigator, aby otrzymywać od nas interesujące treści"
+      />
       <Wrapper>
         <FormContainer>
           <Heading text="Bądźmy w kontakcie!" />

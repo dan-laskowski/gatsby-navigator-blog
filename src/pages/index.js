@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 import { graphql } from "gatsby";
+import Seo from "molecules/seo";
 import PostLarge from "molecules/postLarge";
 import PostMedium from "molecules/postMedium";
 import PostSmall from "molecules/postSmall";
@@ -218,13 +219,10 @@ const IndexPage = ({
   }
   return (
     <>
-      <Helmet>
-        <title>{"Navigator Blog"}</title>
-        <meta
-          name="description"
-          content="Magazyn o zrównoważonym rozwoju i etycznym biznesie"
-        />
-      </Helmet>
+      <Seo
+        title="Navigator Blog"
+        description="Magazyn o zrównoważonym rozwoju i etycznym biznesie"
+      />
       <Layout>
         <PageWrapper>
           <CarouselWrapper>

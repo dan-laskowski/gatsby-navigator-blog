@@ -2,8 +2,8 @@ import React from "react";
 import { window } from "browser-monads";
 import { navigate } from "gatsby";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
 import { Heading } from "atoms/heading";
+import Seo from "molecules/seo";
 import SearchResult from "molecules/searchResult";
 import SearchPagination from "molecules/searchPagination";
 import Layout from "organisms/layout";
@@ -130,9 +130,10 @@ const Search = () => {
   };
   return (
     <Layout>
-      <Helmet>
-        <title>Wyszukiwanie | Navigator</title>
-      </Helmet>
+      <Seo
+        title="Wyszukiwanie | Navigator"
+        description={q || `Strona wyszukiwania postów`}
+      />
       <Wrapper
         searchClient={searchClient}
         indexName={GATSBY_ALGOLIA_INDEX_NAME}
