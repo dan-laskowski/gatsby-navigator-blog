@@ -193,7 +193,14 @@ export const query = graphql`
         }
         featuredImage {
           node {
-            srcSet
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: TRACED_SVG
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
         }
         categories {
