@@ -2,10 +2,10 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import truncate from "utils/truncate";
 import { window } from "browser-monads";
-import betterLogo from "assets/images/betterLogo.svg";
+import OGLogo from "assets/images/OGLogo.png";
 
 const Seo = ({ title, description, image }) => {
-  const tagImage = image ? image : betterLogo;
+  const tagImage = image ? image : OGLogo;
   return (
     <Helmet>
       <title>{title}</title>
