@@ -221,8 +221,8 @@ const IndexPage = ({
     <>
       <Layout>
         <Seo
-          title="Navigator Blog"
-          description="Magazyn o zrównoważonym rozwoju i etycznym biznesie związanym z zrównoważonym rozwojem"
+          title={`Navigator Blog`}
+          description={`Magazyn o zrównoważonym rozwoju i etycznym biznesie związanym z zrównoważonym rozwojem`}
         />
         <PageWrapper>
           <CarouselWrapper>
