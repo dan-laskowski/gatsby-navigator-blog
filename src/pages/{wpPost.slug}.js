@@ -189,10 +189,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://metatags.io/" />
         <meta property="og:title" content={wpPost.title} />
-        <meta
-          property="og:description"
-          content={ReactHtmlParser(wpPost.excerpt)}
-        />
+        <meta property="og:description" content={wpPost.excerpt} />
         <meta
           property="og:image"
           content={wpPost.featuredImage.node.mediaItemUrl}
