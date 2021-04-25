@@ -184,7 +184,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
       <Helmet>
         //Primary Meta Tags
         <title>{wpPost.title}</title>
-        <meta name="description" content={wpPost.excerpt} />
+        <meta name="description" content={ReactHtmlParser(wpPost.excerpt)} />
         //Open Graph / Facebook
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://metatags.io/" />
@@ -308,6 +308,7 @@ export const query = graphql`
       }
       featuredImage {
         node {
+          mediaItemUrl
           localFile {
             childImageSharp {
               gatsbyImageData(
