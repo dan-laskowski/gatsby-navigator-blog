@@ -21,8 +21,8 @@ import searchPhase from "assets/images/searchPhaseGray.svg";
 import algoliaIcon from "assets/images/algolia.svg";
 
 const searchClient = algoliasearch(
-  process.env.ALGOLIA_APP_ID,
-  process.env.ALGOLIA_SEACH_ONLY_API_KEY
+  process.env.GATSBY_ALGOLIA_APP_ID,
+  process.env.GATSBY_ALGOLIA_SEACH_ONLY_API_KEY
 );
 const Wrapper = styled(InstantSearch)`
   display: flex;

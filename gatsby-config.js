@@ -6,7 +6,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: process.env.SITE_URL,
+    siteUrl: process.env.GATSBY_SITE_URL,
     title: `Navigator blog`,
     description: `This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@daniello110`,
