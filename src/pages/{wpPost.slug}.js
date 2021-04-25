@@ -182,10 +182,8 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
         charSet="utf-8"
       ></script>
       <Helmet>
-        //Primary Meta Tags
         <title>{wpPost.title}</title>
         <meta name="description" content={wpPost.excerpt} />
-        //Open Graph / Facebook
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://metatags.io/" />
         <meta property="og:title" content={wpPost.title} />
@@ -194,7 +192,6 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
           property="og:image"
           content={wpPost.featuredImage.node.mediaItemUrl}
         />
-        //Twitter
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={window.location.href} />
         <meta property="twitter:title" content={wpPost.title} />
