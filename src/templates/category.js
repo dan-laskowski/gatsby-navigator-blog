@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { Heading } from "atoms/heading";
+import Seo from "molecules/seo";
 import Pagination from "molecules/Pagination";
 import Aside from "organisms/aside";
 import PostLarge from "molecules/postLarge";
@@ -85,9 +85,10 @@ const Category = ({
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
   return (
     <Layout>
-      <Helmet>
-        <title>{wpCategory.name} | Navigator</title>
-      </Helmet>
+      <Seo
+        title={wpCategory.name | `Navigator`}
+        description={`Wszystkie posty z kategorii ${wpCategory.name}`}
+      />
       <Wrapper>
         <CategoryName>
           {wpCategory.wpChildren.nodes.length ? (
