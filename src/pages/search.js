@@ -130,7 +130,7 @@ const Search = () => {
       </Helmet>
       <Wrapper
         searchClient={searchClient}
-        indexName={process.env.ALGOLIA_INDEX_NAME}
+        indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
       >
         <SearchBar>
           <StyledSearchBox
