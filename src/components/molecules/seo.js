@@ -2,10 +2,9 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import truncate from "utils/truncate";
 import { window } from "browser-monads";
-import OGLogo from "assets/images/OGLogo.png";
 
 const Seo = ({ title, description, image }) => {
-  const tagImage = image ? image : OGLogo;
+  const tagImage = image ? image : `./assets/images/OGLogo.png`;
   return (
     <Helmet>
       <title>{title}</title>
