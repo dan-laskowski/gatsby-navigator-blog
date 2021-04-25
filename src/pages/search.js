@@ -20,9 +20,14 @@ import {
 import searchPhase from "assets/images/searchPhaseGray.svg";
 import algoliaIcon from "assets/images/algolia.svg";
 
+const GATSBY_ALGOLIA_APP_ID = process.env.GATSBY_ALGOLIA_APP_ID;
+const GATSBY_ALGOLIA_SEACH_ONLY_API_KEY =
+  process.env.GATSBY_ALGOLIA_SEACH_ONLY_API_KEY;
+const GATSBY_ALGOLIA_INDEX_NAME = process.env.GATSBY_ALGOLIA_INDEX_NAME;
+
 const searchClient = algoliasearch(
-  process.env.GATSBY_ALGOLIA_APP_ID,
-  process.env.GATSBY_ALGOLIA_SEACH_ONLY_API_KEY
+  GATSBY_ALGOLIA_APP_ID,
+  GATSBY_ALGOLIA_SEACH_ONLY_API_KEY
 );
 const Wrapper = styled(InstantSearch)`
   display: flex;
@@ -130,7 +135,7 @@ const Search = () => {
       </Helmet>
       <Wrapper
         searchClient={searchClient}
-        indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME}
+        indexName={GATSBY_ALGOLIA_INDEX_NAME}
       >
         <SearchBar>
           <StyledSearchBox
