@@ -189,7 +189,10 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://metatags.io/" />
         <meta property="og:title" content={wpPost.title} />
-        <meta property="og:description" content={wpPost.subtitle.podtytul} />
+        <meta
+          property="og:description"
+          content={ReactHtmlParser(wpPost.excerpt)}
+        />
         <meta
           property="og:image"
           content={wpPost.featuredImage.node.mediaItemUrl}
@@ -200,7 +203,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
         <meta property="twitter:title" content={wpPost.title} />
         <meta
           property="twitter:description"
-          content={wpPost.subtitle.podtytul}
+          content={ReactHtmlParser(wpPost.excerpt)}
         />
         <meta
           property="twitter:image"
