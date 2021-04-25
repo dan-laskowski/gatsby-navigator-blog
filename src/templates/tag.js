@@ -75,7 +75,7 @@ const Tag = ({ data: { wpTag, allWpPost, asideQuery }, pageContext }) => {
   return (
     <Layout>
       <Seo
-        title={wpTag.name | `Navigator`}
+        title={`${wpTag.name} | Navigator`}
         description={`Wszystkie posty z tagiem ${wpTag.name}`}
       />
       <Wrapper>

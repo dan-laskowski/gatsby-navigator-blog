@@ -219,11 +219,11 @@ const IndexPage = ({
   }
   return (
     <>
-      <Seo
-        title="Navigator Blog"
-        description="Magazyn o zrównoważonym rozwoju i etycznym biznesie"
-      />
       <Layout>
+        <Seo
+          title="Navigator Blog"
+          description="Magazyn o zrównoważonym rozwoju i etycznym biznesie"
+        />
         <PageWrapper>
           <CarouselWrapper>
             <Splide

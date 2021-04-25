@@ -86,7 +86,7 @@ const Category = ({
   return (
     <Layout>
       <Seo
-        title={wpCategory.name | `Navigator`}
+        title={`${wpCategory.name} | Navigator`}
         description={`Wszystkie posty z kategorii ${wpCategory.name}`}
       />
       <Wrapper>

@@ -180,7 +180,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
         charSet="utf-8"
       ></script>
       <Seo
-        title={wpPost.title}
+        title={`${wpPost.title} | Navigator`}
         description={wpPost.excerpt}
         image={wpPost.featuredImage.node.mediaItemUrl}
       />
