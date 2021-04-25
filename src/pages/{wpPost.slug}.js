@@ -184,7 +184,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
       <Helmet>
         //Primary Meta Tags
         <title>{wpPost.title}</title>
-        <meta name="description" content={ReactHtmlParser(wpPost.excerpt)} />
+        <meta name="description" content={wpPost.excerpt} />
         //Open Graph / Facebook
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://metatags.io/" />
@@ -201,10 +201,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={window.location.href} />
         <meta property="twitter:title" content={wpPost.title} />
-        <meta
-          property="twitter:description"
-          content={ReactHtmlParser(wpPost.excerpt)}
-        />
+        <meta property="twitter:description" content={wpPost.excerpt} />
         <meta
           property="twitter:image"
           content={wpPost.featuredImage.node.mediaItemUrl}
