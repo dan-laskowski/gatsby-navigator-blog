@@ -30,6 +30,7 @@ const Pagination = ({ pageContext }) => {
       {numberOfPages > 1 && (
         <>
           <PaginationButton
+            aria-label="Poprzednia strona"
             as={Link}
             to={previousPagePath ? previousPagePath : ``}
             prev
@@ -41,6 +42,7 @@ const Pagination = ({ pageContext }) => {
             />
           </div>
           <PaginationButton
+            aria-label="Następna strona"
             as={Link}
             to={nextPagePath}
             active={+humanPageNumber < numberOfPages}

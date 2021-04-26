@@ -17,7 +17,7 @@ const NewsletterForm = () => {
         required
       />
       <Input text="Twój email" required />
-      <Button text="Zapisz się" />
+      <Button aria-label="Zapisz się" text="Zapisz się" />
     </form>
   );
 };

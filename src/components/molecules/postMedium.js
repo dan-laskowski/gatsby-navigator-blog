@@ -69,7 +69,7 @@ const PostMedium = ({
   ...props
 }) => {
   return (
-    <Wrapper as={Link} to={`/${slug}`} {...props}>
+    <Wrapper as={Link} to={`/${slug}`} aria-label={title} {...props}>
       <Article>
         <FeaturedImg>
           <GatsbyImage

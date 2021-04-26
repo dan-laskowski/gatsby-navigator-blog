@@ -44,7 +44,7 @@ const FeaturedImg = styled.div`
 
 const PostSmall = ({ title, category, tags, img, slug }) => {
   return (
-    <Wrapper as={Link} to={`/${slug}`}>
+    <Wrapper as={Link} to={`/${slug}`} aria-label={title}>
       <Article>
         <Category to={`/${category.slug}`}>{category.name}</Category>
         <StyledHeading text={title} />

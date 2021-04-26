@@ -56,7 +56,13 @@ const handleCategoryNode = post =>
 const SearchResult = ({ hit, ...props }) => {
   const category = hit.categories.nodes[handleCategoryNode(hit)];
   return (
-    <Wrapper key={hit.slug} as={Link} to={`/${hit.slug}`} {...props}>
+    <Wrapper
+      key={hit.slug}
+      as={Link}
+      to={`/${hit.slug}`}
+      aria-label={hit.title}
+      {...props}
+    >
       <Article>
         <div>
           <Category to={`/${category.slug}`}>{category.name}</Category>

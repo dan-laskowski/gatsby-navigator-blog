@@ -64,7 +64,7 @@ const TagSection = styled.div`
 
 const PostLarge = ({ title, excerpt, category, tags, img, slug, ...props }) => {
   return (
-    <Wrapper key={slug} as={Link} to={`/${slug}`} {...props}>
+    <Wrapper key={slug} as={Link} to={`/${slug}`} aria-label={title} {...props}>
       <Article {...props}>
         <div>
           <Category to={`/${category.slug}`}>{category.name}</Category>

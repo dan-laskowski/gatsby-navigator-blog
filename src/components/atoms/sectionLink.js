@@ -13,7 +13,7 @@ const StyledLink = styled(Link)`
 
 const SectionLink = ({ to, children, ...props }) => {
   return (
-    <StyledLink to={to} {...props}>
+    <StyledLink aria-label="Więcej" to={to} {...props}>
       {children}
     </StyledLink>
   );

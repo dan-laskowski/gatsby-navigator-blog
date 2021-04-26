@@ -33,29 +33,78 @@ const Navbar = () => {
   return (
     <StyledNav>
       <ul>
-        <SubmenuItem text="Teksty" slug="/teksty">
-          <MenuItem text="Wywiady" slug="/wywiady" />
-          <MenuItem text="Artykuły" slug="/artykuly" />
+        <SubmenuItem aria-label="Teksty" text="Teksty" slug="/teksty">
+          <MenuItem aria-label="Wywiady" text="Wywiady" slug="/wywiady" />
+          <MenuItem aria-label="Artykuły" text="Artykuły" slug="/artykuly" />
         </SubmenuItem>
-        <SubmenuItem text="Aktualności" slug="/aktualnosci">
-          <MenuItem text="Dobre praktyki" slug="/dobre-praktyki" />
-          <MenuItem text="Wydarzenia" slug="/wydarzenia" />
-        </SubmenuItem>
-        <MenuItem text="Baza firm" slug="#" />
-        <SubmenuItem text="B Corp" slug="/b-corp">
-          <MenuItem text="Czym są B Corpy?" slug="/czym-sa-b-corpy" />
-          <MenuItem text="Jak zostać B Corpem" slug="/jak-zostac-b-corpem" />
-          <MenuItem text="Baza polskich B Corpów" slug="/bcorp" />
-          <MenuItem text="Teksty o B Corpach" slug="/teksty-o-b-corpach" />
-        </SubmenuItem>
-        <SubmenuItem text="Polecamy" slug="/polecamy">
-          <MenuItem text="Publikacje/raporty" slug="/publikacje-i-raporty" />
-          <MenuItem text="Księgarnia" slug="/ksiegarnia" />
-        </SubmenuItem>
-        <SubmenuItem text="Navigator in English" slug="/navigator-in-english">
-          <MenuItem text="B Corps in Poland" slug="/b-corps-in-poland" />
-          <MenuItem text="Sustainbility on CEE" slug="/sustainbility-on-cee" />
+        <SubmenuItem
+          aria-label="Aktualności"
+          text="Aktualności"
+          slug="/aktualnosci"
+        >
           <MenuItem
+            aria-label="Dobre praktyki"
+            text="Dobre praktyki"
+            slug="/dobre-praktyki"
+          />
+          <MenuItem
+            aria-label="Wydarzenia"
+            text="Wydarzenia"
+            slug="/wydarzenia"
+          />
+        </SubmenuItem>
+        <MenuItem aria-label="Baza firm" text="Baza firm" slug="#" />
+        <SubmenuItem aria-label="B Corp" text="B Corp" slug="/b-corp">
+          <MenuItem
+            aria-label="Czym są B Corpy"
+            text="Czym są B Corpy?"
+            slug="/czym-sa-b-corpy"
+          />
+          <MenuItem
+            aria-label="Jak zostać B Corpem"
+            text="Jak zostać B Corpem"
+            slug="/jak-zostac-b-corpem"
+          />
+          <MenuItem
+            aria-label="Baza polskich B Corpów"
+            text="Baza polskich B Corpów"
+            slug="/bcorp"
+          />
+          <MenuItem
+            aria-label="Teksty o B Corpach"
+            text="Teksty o B Corpach"
+            slug="/teksty-o-b-corpach"
+          />
+        </SubmenuItem>
+        <SubmenuItem aria-label="Polecamy" text="Polecamy" slug="/polecamy">
+          <MenuItem
+            aria-label="Publikacje/raporty"
+            text="Publikacje/raporty"
+            slug="/publikacje-i-raporty"
+          />
+          <MenuItem
+            aria-label="Księgarnia"
+            text="Księgarnia"
+            slug="/ksiegarnia"
+          />
+        </SubmenuItem>
+        <SubmenuItem
+          aria-label="Navigator in English"
+          text="Navigator in English"
+          slug="/navigator-in-english"
+        >
+          <MenuItem
+            aria-label="B Corps in Poland"
+            text="B Corps in Poland"
+            slug="/b-corps-in-poland"
+          />
+          <MenuItem
+            aria-label="Sustainbility on CEE"
+            text="Sustainbility on CEE"
+            slug="/sustainbility-on-cee"
+          />
+          <MenuItem
+            aria-label="Articles and Interviews"
             text="Articles and Interviews"
             slug="/articles-and-interviews"
           />

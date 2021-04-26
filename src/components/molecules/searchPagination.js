@@ -44,6 +44,7 @@ const SearchPagination = ({ nbPages, params }) => {
       <StyledList>
         <li>
           <PaginationButton
+            aria-label="Poprzednia strona"
             prev
             active={params.get("page") > 1}
             onClick={e => {
@@ -62,6 +63,7 @@ const SearchPagination = ({ nbPages, params }) => {
             };
             return (
               <StyledButton
+                aria-label={`Strona numer ${page}`}
                 key={index}
                 onClick={e => {
                   e.preventDefault();
@@ -76,6 +78,7 @@ const SearchPagination = ({ nbPages, params }) => {
         </li>
         <li>
           <PaginationButton
+            aria-label="Następna strona"
             prev={false}
             active={params.get("page") < nbPages}
             onClick={e => {

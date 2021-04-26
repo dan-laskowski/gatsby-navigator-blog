@@ -169,7 +169,7 @@ const Header = () => {
             text="Magazyn o zrównoważonym 
 rozwoju i etycznym biznesie"
           /> */}
-          <Link to="/">
+          <Link aria-label="Główna strona" to="/">
             <img
               src={headerLogo}
               alt="navigator logo"
@@ -189,6 +189,7 @@ rozwoju i etycznym biznesie"
       <Navigation>
         <NavigationWrapper>
           <StyledButton
+            aria-label="Wyszukiwanie"
             onClick={
               window.location.href.includes("search")
                 ? null
@@ -198,38 +199,54 @@ rozwoju i etycznym biznesie"
             <img src={searchLogo} alt="wyszukiwanie" width="24" height="24" />
           </StyledButton>
           <Navbar />
-          <Newsletter to="/newsletter">Newsletter</Newsletter>
+          <Newsletter aria-label="Newsletter" to="/newsletter">
+            Newsletter
+          </Newsletter>
         </NavigationWrapper>
       </Navigation>
       <Search ref={searchEl}>
         <SearchWrapper>
-          <ExitButton onClick={handleSearchToggle}>
-            <img src={exit} width="80" height="80" alt="wyjdź" />
+          <ExitButton aria-label="Zamknij" onClick={handleSearchToggle}>
+            <img src={exit} width="80" height="80" alt="Zamknij" />
           </ExitButton>
           <SearchForm onSubmit={handleFormSubmit}>
             <input
+              aria-label="Wyszukiwarka"
               ref={inputEl}
               placeholder="Czego szukasz?"
               onChange={e => setQuery(e.target.value)}
             />
-            <button>
-              <img src={searchPhase} alt="szukaj" />
+            <button aria-label="Szukaj">
+              <img src={searchPhase} alt="Szukaj" />
             </button>
           </SearchForm>
           <SuggestionWrapper>
             <h2>Sugestie</h2>
             <SuggestionBox>
               <div>
-                <SuggestionLink to={`/bcorp`}>b corp</SuggestionLink>
-                <SuggestionLink to={`/wydarzenia`}>wydarzenia</SuggestionLink>
-                <SuggestionLink to={`/dobre-praktyki`}>
+                <SuggestionLink aria-label="b corp" to={`/bcorp`}>
+                  b corp
+                </SuggestionLink>
+                <SuggestionLink aria-label="wydarzenia" to={`/wydarzenia`}>
+                  wydarzenia
+                </SuggestionLink>
+                <SuggestionLink
+                  aria-label="dobre praktyki"
+                  to={`/dobre-praktyki`}
+                >
                   dobre praktyki
                 </SuggestionLink>
               </div>
               <div>
-                <SuggestionLink to={`/artykuly`}>artykuły</SuggestionLink>
-                <SuggestionLink to={`/wywiady`}>wywiady</SuggestionLink>
-                <SuggestionLink to={`/baza-firm`}>baza firm</SuggestionLink>
+                <SuggestionLink aria-label="artykuły" to={`/artykuly`}>
+                  artykuły
+                </SuggestionLink>
+                <SuggestionLink aria-label="wywiady" to={`/wywiady`}>
+                  wywiady
+                </SuggestionLink>
+                <SuggestionLink aria-label="baza firm" to={`/baza-firm`}>
+                  baza firm
+                </SuggestionLink>
               </div>
             </SuggestionBox>
           </SuggestionWrapper>

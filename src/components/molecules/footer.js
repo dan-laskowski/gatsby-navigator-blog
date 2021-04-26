@@ -59,29 +59,38 @@ const Footer = () => {
         <Content>
           <Icon src={footerLogo} alt="logo navigatora" />
           <LinksSection>
-            <StyledSectionLink to="/zespol">zespół</StyledSectionLink>
-            <StyledSectionLink to="/historia">nasza historia</StyledSectionLink>
-            <StyledSectionLink to="/kontakt">kontakt</StyledSectionLink>
-            <StyledSectionLink to="/polityka-prywatnosci">
+            <StyledSectionLink aria-label="Zespół" to="/zespol">
+              zespół
+            </StyledSectionLink>
+            <StyledSectionLink aria-label="Nasza historia" to="/historia">
+              nasza historia
+            </StyledSectionLink>
+            <StyledSectionLink aria-label="Kontakt" to="/kontakt">
+              kontakt
+            </StyledSectionLink>
+            <StyledSectionLink
+              aria-label="Polityka prywatności"
+              to="/polityka-prywatnosci"
+            >
               polityka prywatności
             </StyledSectionLink>
           </LinksSection>
           <SocialSection>
-            <a href="https://instagram.com/">
+            <a aria-label="Profil na Instagramie" href="https://instagram.com/">
               <Icon src={instagram} />
             </a>
-            <a href="https://itwitter.com/">
+            <a aria-label="Profil na Twitterze" href="https://itwitter.com/">
               <Icon src={twitter} />
             </a>
-            <a href="https://facebook.com/">
+            <a aria-label="Profil na Facebooku" href="https://facebook.com/">
               <Icon src={facebook} />
             </a>
-            <a href="https://linkein.com/">
+            <a aria-label="Profil na LinkedIn" href="https://linkedin.com/">
               <Icon src={linkedin} />
             </a>
           </SocialSection>
         </Content>
-        <Copyright>
+        <Copyright aria-label="Copyright">
           BeNavigator.pl © {new Date().getFullYear()} grupa Better
         </Copyright>
       </StyledFooter>
