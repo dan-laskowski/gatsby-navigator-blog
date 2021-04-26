@@ -74,6 +74,7 @@ const Aside = ({ children, ...props }) => {
             <Heading text={allWpPost.edges[0].node.title} />
             <Subheading text={allWpPost.edges[0].node.subtitle.podtytul} />
             <Button
+              as="a"
               target="_blank"
               rel="noreferrer"
               text="Pobierz"

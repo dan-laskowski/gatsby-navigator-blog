@@ -74,7 +74,7 @@ const PostMedium = ({
         <FeaturedImg>
           <GatsbyImage
             image={img.node.localFile.childImageSharp.gatsbyImageData}
-            alt={img.node.altText}
+            alt={img.node.altText || ``}
           />
         </FeaturedImg>
         <MetaWrapper>

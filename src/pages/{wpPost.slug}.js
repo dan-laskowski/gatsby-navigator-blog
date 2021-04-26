@@ -202,7 +202,10 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
               </HeadingWrapper>
             </ArticleInfo>
             <FeaturedImg>
-              <GatsbyImage image={image} alt={wpPost.featuredImage.altText} />
+              <GatsbyImage
+                image={image}
+                alt={wpPost.featuredImage.altText || ``}
+              />
             </FeaturedImg>
           </HeadingSection>
           <ArticleMain>
@@ -290,7 +293,7 @@ export const query = graphql`
             childImageSharp {
               gatsbyImageData(
                 width: 960
-                quality: 60
+                quality: 70
                 placeholder: TRACED_SVG
                 formats: [AUTO, WEBP, AVIF]
               )

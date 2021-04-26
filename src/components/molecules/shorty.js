@@ -27,7 +27,11 @@ const Shorty = ({ posts, ...props }) => {
   return (
     <ShortyWrapper {...props}>
       {posts.nodes.slice(0, 3).map(node => (
-        <ShortyLink aria-label={node.title} to={`/${node.slug}`}>
+        <ShortyLink
+          key={node.title}
+          aria-label={node.title}
+          to={`/${node.slug}`}
+        >
           <h2 key={node.title}>{node.title}</h2>
         </ShortyLink>
       ))}

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
 
 const StyledButton = styled.button`
   font-family: ${({ theme }) => theme.font.button.family};
@@ -22,9 +21,9 @@ const StyledButton = styled.button`
 `;
 const Button = ({ text, uri, ...props }) => {
   return (
-    <Link to={uri} {...props}>
+    <a href={uri} {...props}>
       <StyledButton {...props}>{text}</StyledButton>
-    </Link>
+    </a>
   );
 };
 

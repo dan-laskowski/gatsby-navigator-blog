@@ -12,15 +12,14 @@ const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  justify-content: ${props => (props.to ? "space-between" : "flex-start")};
 `;
 
 const AsideSection = ({ title, to, children, ...props }) => {
   return (
     <Wrapper {...props}>
-      <NameWrapper to>
+      <NameWrapper>
         <SectionName>{title.toUpperCase()}</SectionName>
-        <SectionLink to={to}>{to ? `Więcej` : null}</SectionLink>
+        {to && <SectionLink to={to}>{`Więcej`}</SectionLink>}
       </NameWrapper>
       {children}
     </Wrapper>

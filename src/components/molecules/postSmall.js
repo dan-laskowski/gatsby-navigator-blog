@@ -58,7 +58,7 @@ const PostSmall = ({ title, category, tags, img, slug }) => {
       <FeaturedImg>
         <GatsbyImage
           image={img.node.localFile.childImageSharp.gatsbyImageData}
-          alt={img.node.altText}
+          alt={img.node.altText || ``}
         />
       </FeaturedImg>
     </Wrapper>

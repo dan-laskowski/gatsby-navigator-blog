@@ -78,7 +78,7 @@ const PostLarge = ({ title, excerpt, category, tags, img, slug, ...props }) => {
       <FeaturedImg>
         <GatsbyImage
           image={img.node.localFile.childImageSharp.gatsbyImageData}
-          alt={img.node.altText}
+          alt={img.node.altText || ``}
         />
       </FeaturedImg>
     </Wrapper>
