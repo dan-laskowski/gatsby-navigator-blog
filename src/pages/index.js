@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 import ReactHtmlParser from "react-html-parser";
-import { Helmet } from "react-helmet";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 import { graphql } from "gatsby";

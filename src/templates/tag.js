@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import { Heading } from "atoms/heading";
 import Seo from "molecules/seo";
@@ -154,6 +153,8 @@ export const query = graphql`
               localFile {
                 childImageSharp {
                   gatsbyImageData(
+                    width: 572
+                    quality: 70
                     placeholder: TRACED_SVG
                     formats: [AUTO, WEBP, AVIF]
                   )
@@ -193,6 +194,7 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 gatsbyImageData(
+                  width: 260
                   placeholder: TRACED_SVG
                   formats: [AUTO, WEBP, AVIF]
                 )
