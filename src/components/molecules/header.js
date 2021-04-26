@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 import { Link, navigate } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { window } from "browser-monads";
 // import { Subheading } from "atoms/heading";
 import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
-import headerLogo from "assets/images/headerLogo.svg";
 // import betterLogo from "assets/images/betterLogo.svg";
 import searchLogo from "assets/images/search.svg";
 import searchPhase from "assets/images/searchPhase.svg";
@@ -170,9 +170,9 @@ const Header = () => {
 rozwoju i etycznym biznesie"
           /> */}
           <Link aria-label="Główna strona" to="/">
-            <img
-              src={headerLogo}
-              alt="navigator logo"
+            <StaticImage
+              src="../../assets/images/OGLogo.png"
+              alt="Navigator logo"
               width="430"
               height="152"
             />
