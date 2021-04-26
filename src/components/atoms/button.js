@@ -21,7 +21,7 @@ const StyledButton = styled.button`
 `;
 const Button = ({ text, uri, ...props }) => {
   return (
-    <a href={uri} {...props}>
+    <a href={uri} aria-label={text} {...props}>
       <StyledButton {...props}>{text}</StyledButton>
     </a>
   );

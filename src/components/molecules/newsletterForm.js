@@ -1,7 +1,26 @@
 import React from "react";
-import Button from "atoms/button";
+import styled from "styled-components";
 import Checkbox from "atoms/checkbox";
 import Input from "atoms/input";
+
+const StyledButton = styled.button`
+  font-family: ${({ theme }) => theme.font.button.family};
+  font-weight: ${({ theme }) => theme.font.button.weight};
+  font-style: ${({ theme }) => theme.font.button.weight};
+  font-size: ${({ theme }) => theme.font.button.size};
+  background: ${({ theme }) => theme.color.orange};
+  color: ${({ theme }) => theme.color.white};
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 14px 0;
+  :focus {
+    outline: none;
+  }
+`;
 
 const NewsletterForm = () => {
   return (
@@ -16,8 +35,13 @@ const NewsletterForm = () => {
         aria-required="true"
         required
       />
-      <Input text="Twój email" required />
-      <Button aria-label="Zapisz się" text="Zapisz się" />
+      <Input
+        aria-label="Twój email"
+        text="Twój email"
+        aria-required="true"
+        required
+      />
+      <StyledButton aria-label="Zapisz się">Zapisz się</StyledButton>
     </form>
   );
 };
