@@ -10,6 +10,8 @@ const Seo = ({ title, description, image }) => {
   return (
     <Helmet>
       <title>{title}</title>
+      <meta name="robots" content="index" />
+      <meta name="AdsBot-Google" content="index" />
       <meta name="description" content={truncate(description)} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={window.location.href} />
