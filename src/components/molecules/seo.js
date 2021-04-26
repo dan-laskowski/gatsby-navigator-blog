@@ -7,9 +7,6 @@ const Seo = ({ title, description, image }) => {
   if (typeof image === "undefined") {
     image = `https://i.imgur.com/ElSdyuJ.png`;
   }
-  console.log(title);
-  console.log(description);
-  console.log(image);
   return (
     <Helmet>
       <title>{title}</title>
@@ -24,6 +21,7 @@ const Seo = ({ title, description, image }) => {
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />
+      <html lang="pl" />
     </Helmet>
   );
 };

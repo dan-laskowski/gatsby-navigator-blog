@@ -9,6 +9,7 @@ module.exports = {
     siteUrl: process.env.GATSBY_SITE_URL,
     title: `Navigator blog`,
     description: `This barebones starter ships with the main Gatsby configuration files you might need.`,
+    url: `https://navigator82042.gtsb.io`,
     author: `@daniello110`,
   },
   plugins: [
