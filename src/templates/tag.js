@@ -58,7 +58,7 @@ const StyledPostLarge = styled(PostLarge)`
     font-size: 20px;
     line-height: 34px;
   }
-  img {
+  .gatsby-image-wrapper {
     max-width: 572px;
     height: 320px;
   }
