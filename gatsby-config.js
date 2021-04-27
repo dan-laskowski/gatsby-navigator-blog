@@ -56,9 +56,21 @@ module.exports = {
         // matchFields: ["dateGmt"],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Navigator blog`,
+        short_name: `Navigator`,
+        start_url: `/`,
+        background_color: `#ffffff`,
+        theme_color: `#f07538`,
+        icon: "./src/assets/images/gatsby-icon.png",
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-gatsby-cloud`,
   ],
 };

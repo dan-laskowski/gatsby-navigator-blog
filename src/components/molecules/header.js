@@ -173,8 +173,8 @@ rozwoju i etycznym biznesie"
             <StaticImage
               src="../../assets/images/OGLogo.png"
               alt="Navigator logo"
-              width="430"
-              height="152"
+              width={430}
+              height={152}
             />
           </Link>
           {/* <div>
