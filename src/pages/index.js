@@ -236,7 +236,7 @@ const IndexPage = ({
               hasSliderWrapper
             >
               {carouselPosts.nodes.map(node => (
-                <SplideSlide key={node.title}>
+                <SplideSlide aria-hidden={false} key={node.title}>
                   <CarouselPostLarge
                     key={node.title}
                     title={node.title}
