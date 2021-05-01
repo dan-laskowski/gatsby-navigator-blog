@@ -203,6 +203,10 @@ const GlobalStyle = createGlobalStyle`
 	fill: #DBDBDB;
 	width: 50px;
 	height: 50px;
+	@media only screen and (max-width: 1280px) {
+		width: 24px;
+		height:24px;
+	}
 }
 
 .splide__arrow svg:hover {
@@ -211,10 +215,27 @@ const GlobalStyle = createGlobalStyle`
 
 .splide__arrow--prev {
     left: -110px;
+	@media only screen and (max-width: 1910px) {
+		left: -12px;
+		margin-left: 9px;
+	}
+	@media only screen and (max-width: 1280px) {
+		left:1vw;
+	}
 }
 
 .splide__arrow--next {
     right: -110px;
+	@media only screen and (max-width: 1910px) {
+		right: -12px;
+		margin-right: 12px;
+	}
+	@media only screen and (max-width: 1280px) {
+		right:1vw;
+	}
+	@media only screen and (max-width: 1230px) {
+		right:0;
+	}
 }
 
 .splide__pagination__page {

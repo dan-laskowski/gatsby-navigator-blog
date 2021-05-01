@@ -6,7 +6,8 @@ import SectionLink from "atoms/sectionLink";
 const Wrapper = styled.section`
   border-top: 4px solid ${({ theme }) => theme.color.black};
   margin-bottom: 62px;
-  width: 380px;
+  width: auto;
+  min-width: 222px;
 `;
 const NameWrapper = styled.div`
   display: flex;

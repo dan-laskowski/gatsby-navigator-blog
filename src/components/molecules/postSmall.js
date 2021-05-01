@@ -10,6 +10,17 @@ const Wrapper = styled.section`
   grid-template-columns: 1fr 110px;
   margin-bottom: 20px;
   min-height: 110px;
+  @media only screen and (max-width: 1370px) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    article {
+      order: 1;
+    }
+    img {
+      order: 0;
+    }
+  }
 `;
 const Article = styled.article`
   display: flex;
@@ -35,10 +46,14 @@ const StyledHeading = styled(Heading)`
 const FeaturedImg = styled.div`
   overflow: hidden;
   .gatsby-image-wrapper {
+    aspect-ratio: 16/9;
     width: 100%;
     height: 100%;
     overflow: hidden;
     object-fit: cover;
+  }
+  @media only screen and (max-width: 1370px) {
+    order: 0;
   }
 `;
 

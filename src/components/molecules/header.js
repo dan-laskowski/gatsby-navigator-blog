@@ -65,7 +65,7 @@ const Newsletter = styled(Link)`
 const Search = styled.div`
   display: none;
   min-height: 540px;
-  width: 100vw;
+  width: 99vw;
   background: ${({ theme }) => theme.color.white};
   position: absolute;
   justify-content: center;

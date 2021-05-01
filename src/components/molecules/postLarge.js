@@ -53,7 +53,8 @@ const FeaturedImg = styled.div`
   max-height: 523px;
   .gatsby-image-wrapper {
     width: 100%;
-    height: 525px;
+    height: auto;
+    max-height: 525px;
     overflow: hidden;
     object-fit: cover;
   }
