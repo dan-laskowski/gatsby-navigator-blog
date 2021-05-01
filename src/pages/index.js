@@ -294,12 +294,19 @@ const EventSection = styled(AsideSection)`
   grid-column-start: sm1;
   grid-column-end: sm3;
   margin-bottom: 0;
+  @media only screen and (max-width: 1370px) {
+    grid-column-start: sm1;
+    grid-column-end: com;
+  }
 `;
 const EventSectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
-  @media only screen and (max-width: 1420px) {
+  @media only screen and (max-width: 1370px) {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    grid-template-areas: "s2 s3 s1 s1";
     h1 {
       font-size: 18px;
       line-height: 20px;
@@ -308,6 +315,16 @@ const EventSectionWrapper = styled.div`
       font-size: 12px;
       line-height: 14px;
     }
+    a:nth-of-type(3) {
+      display: none;
+    }
+  }
+`;
+
+const EventLargePostLarge = styled(LargePostLarge)`
+  display: none;
+  @media only screen and (max-width: 1370px) {
+    display: flex;
   }
 `;
 const CommercialVertical = styled.aside`
@@ -324,10 +341,16 @@ const CommercialHorizontal = styled.div`
   margin-top: 38px;
   margin-bottom: 96px;
   background: #2d3048;
+  @media only screen and (max-width: 1370px) {
+    display: none;
+  }
 `;
 const ShortyWrapper = styled.section`
   grid-column-start: s;
   grid-column-end: s;
+  @media only screen and (max-width: 1370px) {
+    display: none;
+  }
 `;
 const ShortyRow = styled.div`
   display: flex;
@@ -468,6 +491,19 @@ const IndexPage = ({
                     slug={node.slug}
                   />
                 ))}
+                <EventLargePostLarge
+                  key={eventPosts.nodes[2].title}
+                  title={eventPosts.nodes[2].title}
+                  excerpt={eventPosts.nodes[2].subtitle.podtytul}
+                  category={
+                    eventPosts.nodes[2].categories.nodes[
+                      handleCategoryNode(eventPosts.nodes[2])
+                    ]
+                  }
+                  tags={eventPosts.nodes[2].tags}
+                  img={eventPosts.nodes[2].featuredImage}
+                  slug={eventPosts.nodes[2].slug}
+                />
               </EventSectionWrapper>
             </EventSection>
             <CommercialVertical />
