@@ -4,7 +4,8 @@ import styled from "styled-components";
 import AsideSection from "molecules/asideSection";
 
 const ShortyWrapper = styled(AsideSection)`
-  width: 520px;
+  max-width: 520px;
+  min-width: unset;
 `;
 const ShortyLink = styled(Link)`
   display: block;

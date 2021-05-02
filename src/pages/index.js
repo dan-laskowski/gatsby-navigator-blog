@@ -34,6 +34,10 @@ const PageWrapper = styled.div`
     "cm cm cs com"
     "es es es com"
     "comh comh comh comh";
+  @media only screen and (max-width: 1745px) {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 `;
 const CarouselWrapper = styled.section`
   margin-top: 94px;
@@ -100,9 +104,6 @@ const ArticleSection = styled(AsideSection)`
   grid-column-end: sm3;
   width: auto;
   margin-bottom: 0;
-  @media only screen and (max-width: 1745px) {
-    margin-left: 30px;
-  }
   @media only screen and (max-width: 1420px) {
     h1 {
       font-size: 18px;
@@ -177,10 +178,6 @@ const TipsSection = styled(AsideSection)`
   width: auto;
   grid-column-start: s;
   grid-column-end: s;
-  @media only screen and (max-width: 1745px) {
-    margin-left: 30px;
-    margin-right: 30px;
-  }
   @media only screen and (max-width: 1420px) {
     a h1 {
       font-size: 18px;
@@ -348,13 +345,16 @@ const CommercialHorizontal = styled.div`
 const ShortyWrapper = styled.section`
   grid-column-start: s;
   grid-column-end: s;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
   @media only screen and (max-width: 1370px) {
     display: none;
   }
 `;
 const ShortyRow = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
 `;
 
