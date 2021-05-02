@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
-import { Heading } from "atoms/heading";
+import { Heading, Subheading } from "atoms/heading";
 import Tag from "atoms/tag";
 
 const Wrapper = styled.section`
@@ -35,6 +35,10 @@ const Category = styled(Link)`
   color: ${({ theme }) => theme.color.gray};
   text-transform: uppercase;
   margin-bottom: 8px;
+  @media only screen and (max-width: 1370px) {
+    font-size: 8px;
+    line-height: 10px;
+  }
 `;
 const StyledHeading = styled(Heading)`
   margin: 0;
@@ -42,7 +46,21 @@ const StyledHeading = styled(Heading)`
   margin-bottom: 10px;
   font-size: 20px;
   text-transform: uppercase;
+  @media only screen and (max-width: 1370px) {
+    font-size: 18px;
+    line-height: 20px;
+  }
 `;
+
+const StyledSubheading = styled(Subheading)`
+  display: none;
+  font-size: 12px;
+  line-height: 14px;
+  @media only screen and (max-width: 1370px) {
+    display: block;
+  }
+`;
+
 const FeaturedImg = styled.div`
   overflow: hidden;
   .gatsby-image-wrapper {
@@ -57,12 +75,15 @@ const FeaturedImg = styled.div`
   }
 `;
 
-const PostSmall = ({ title, category, tags, img, slug }) => {
+const PostSmall = ({ title, category, tags, img, slug, excerpt }) => {
   return (
     <Wrapper as={Link} to={`/${slug}`} aria-label={title}>
       <Article>
-        <Category to={`/${category.slug}`}>{category.name}</Category>
-        <StyledHeading text={title} />
+        <div>
+          <Category to={`/${category.slug}`}>{category.name}</Category>
+          <StyledHeading text={title} />
+          <StyledSubheading text={excerpt} />
+        </div>
         <div>
           {tags.nodes.slice(0, 2).map(node => (
             <Tag key={node.slug} name={node.name} slug={node.slug} />

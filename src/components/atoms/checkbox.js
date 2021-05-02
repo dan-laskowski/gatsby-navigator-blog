@@ -159,6 +159,24 @@ const StyledContain = styled.label`
   :first-child .b-input::before {
     visibility: hidden;
   }
+  @media only screen and (max-width: 1370px) {
+    padding-left: 28px;
+    span {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    input[type="checkbox"] ~ .b-input {
+      width: 10px;
+      height: 10px;
+    }
+
+    input[type="checkbox"] ~ .b-input::after {
+      left: 4px;
+      top: 0px;
+      width: 2px;
+      height: 7px;
+    }
+  }
 `;
 
 const Checkbox = ({ text, ...props }) => {

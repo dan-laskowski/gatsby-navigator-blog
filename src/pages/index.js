@@ -37,6 +37,12 @@ const PageWrapper = styled.div`
   @media only screen and (max-width: 1745px) {
     margin-left: 30px;
     margin-right: 30px;
+    column-gap: 30px;
+  }
+  @media only screen and (max-width: 828px) {
+    margin-left: 16px;
+    margin-right: 16px;
+    column-gap: 30px;
   }
 `;
 const CarouselWrapper = styled.section`
@@ -45,7 +51,7 @@ const CarouselWrapper = styled.section`
   * {
     border: none;
   }
-  @media only screen and (max-width: 1280px) {
+  @media only screen and (max-width: 1370px) {
     margin-top: 46px;
   }
 `;
@@ -94,9 +100,6 @@ const StyledAside = styled(Aside)`
   padding-left: 0;
   margin-top: 10px;
   border-left: none;
-  @media only screen and (max-width: 1745px) {
-    margin-right: 30px;
-  }
 `;
 const ArticleSection = styled(AsideSection)`
   margin-top: 60px;
@@ -159,6 +162,9 @@ const ArticlePostMediumWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
+  @media only screen and (max-width: 1370px) {
+    column-gap: 30px;
+  }
 `;
 const ArticlePostMedium = styled(PostMedium)`
   display: block;
@@ -168,6 +174,14 @@ const ArticlePostMedium = styled(PostMedium)`
   }
   .gatsby-image-wrapper {
     aspect-ratio: 16/9;
+  }
+  h2 {
+    display: none;
+  }
+  @media only screen and (max-width: 1370px) {
+    h2 {
+      display: block;
+    }
   }
 
   /* padding-right: 20px;
@@ -193,6 +207,9 @@ const TipsSectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 40px;
+  @media only screen and (max-width: 1370px) {
+    column-gap: 30px;
+  }
 `;
 const BcorpSection = styled(AsideSection)`
   width: auto;
@@ -212,7 +229,7 @@ const BcorpSectionWrapper = styled.div`
 
   @media only screen and (max-width: 1370px) {
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 40px;
+    column-gap: 30px;
     grid-template-areas: "s1 s1 s2 s3";
     h1 {
       font-size: 18px;
@@ -274,7 +291,7 @@ const MiniPostWrapper = styled.div`
   @media only screen and (max-width: 1370px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 40px;
+    column-gap: 30px;
     max-width: none;
     flex-direction: row;
     width: auto;
@@ -300,9 +317,14 @@ const EventSectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
+  ${ArticlePostMedium} {
+    h2 {
+      display: none;
+    }
+  }
   @media only screen and (max-width: 1370px) {
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 40px;
+    column-gap: 30px;
     grid-template-areas: "s2 s3 s1 s1";
     h1 {
       font-size: 18px;
@@ -315,9 +337,13 @@ const EventSectionWrapper = styled.div`
     a:nth-of-type(3) {
       display: none;
     }
+    ${ArticlePostMedium} {
+      h2 {
+        display: block;
+      }
+    }
   }
 `;
-
 const EventLargePostLarge = styled(LargePostLarge)`
   display: none;
   @media only screen and (max-width: 1370px) {
@@ -427,6 +453,7 @@ const IndexPage = ({
                   <ArticlePostMedium
                     key={node.title}
                     title={node.title}
+                    excerpt={ReactHtmlParser(truncate(node.excerpt, 19))}
                     category={node.categories.nodes[handleCategoryNode(node)]}
                     tags={node.tags}
                     img={node.featuredImage}
@@ -470,6 +497,7 @@ const IndexPage = ({
                     <PostSmall
                       key={node.title}
                       title={node.title}
+                      excerpt={ReactHtmlParser(truncate(node.excerpt, 19))}
                       category={node.categories.nodes[handleCategoryNode(node)]}
                       tags={node.tags}
                       img={node.featuredImage}
@@ -485,6 +513,7 @@ const IndexPage = ({
                   <ArticlePostMedium
                     key={node.title}
                     title={node.title}
+                    excerpt={ReactHtmlParser(truncate(node.excerpt, 19))}
                     category={node.categories.nodes[handleCategoryNode(node)]}
                     tags={node.tags}
                     img={node.featuredImage}
@@ -621,6 +650,7 @@ export const query = graphql`
         subtitle {
           podtytul
         }
+        excerpt
         slug
         tags {
           nodes {
@@ -718,6 +748,7 @@ export const query = graphql`
         subtitle {
           podtytul
         }
+        excerpt
         slug
         tags {
           nodes {
@@ -765,6 +796,7 @@ export const query = graphql`
         subtitle {
           podtytul
         }
+        excerpt
         slug
         tags {
           nodes {
@@ -812,6 +844,7 @@ export const query = graphql`
         subtitle {
           podtytul
         }
+        excerpt
         slug
         tags {
           nodes {

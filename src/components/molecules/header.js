@@ -27,6 +27,11 @@ const LogoSectionWrapper = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1645px;
+  @media only screen and (max-width: 1370px) {
+    .logo {
+      width: 240px;
+    }
+  }
 `;
 const StyledButton = styled.button`
   border: none;
@@ -34,6 +39,9 @@ const StyledButton = styled.button`
   cursor: pointer;
   :focus {
     outline: none;
+  }
+  @media only screen and (max-width: 1370px) {
+    display: none;
   }
 `;
 const Navigation = styled.section`
@@ -44,6 +52,9 @@ const Navigation = styled.section`
   border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
   width: 100%;
   height: 73px;
+  @media only screen and (max-width: 1370px) {
+    height: 40px;
+  }
 `;
 const NavigationWrapper = styled.div`
   display: flex;
@@ -54,6 +65,13 @@ const NavigationWrapper = styled.div`
   width: 100%;
   height: 74px;
   z-index: 10000;
+  @media only screen and (max-width: 1745px) {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+  @media only screen and (max-width: 1370px) {
+    justify-content: center;
+  }
 `;
 const Newsletter = styled(Link)`
   font-family: ${({ theme }) => theme.font.menuItem.family};
@@ -61,6 +79,11 @@ const Newsletter = styled(Link)`
   font-style: ${({ theme }) => theme.font.menuItem.weight};
   font-size: ${({ theme }) => theme.font.menuItem.size};
   color: ${({ theme }) => theme.color.orange};
+  @media only screen and (max-width: 1370px) {
+    font-size: 11px;
+    line-height: 13px;
+    padding: 15px 10px;
+  }
 `;
 const Search = styled.div`
   display: none;
@@ -171,6 +194,7 @@ rozwoju i etycznym biznesie"
           /> */}
           <Link aria-label="Główna strona" to="/">
             <StaticImage
+              className="logo"
               src="../../assets/images/OGLogo.png"
               alt="Navigator logo"
               width={430}

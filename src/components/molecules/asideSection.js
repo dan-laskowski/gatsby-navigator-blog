@@ -7,7 +7,12 @@ const Wrapper = styled.section`
   border-top: 4px solid ${({ theme }) => theme.color.black};
   margin-bottom: 62px;
   width: auto;
-  min-width: 222px;
+  min-width: 153px;
+
+  @media only screen and (max-width: 1370px) {
+    border-top: 3px solid ${({ theme }) => theme.color.black};
+    margin-bottom: 30px;
+  }
 `;
 const NameWrapper = styled.div`
   display: flex;

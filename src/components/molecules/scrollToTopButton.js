@@ -22,7 +22,11 @@ const StyledContainer = styled.div`
 
 const ScrollToTopButton = () => {
   return (
-    <ScrollToTop showUnder={360} aria-label="Na górę strony">
+    <ScrollToTop
+      showUnder={360}
+      aria-label="Na górę strony"
+      style={{ zIndex: 1 }}
+    >
       <StyledContainer>
         <StyledIcon src={searchPhase} />
       </StyledContainer>

@@ -8,15 +8,28 @@ import AsideSection from "molecules/asideSection";
 import NewsletterForm from "molecules/newsletterForm";
 
 const AsideWrapper = styled.aside`
-  padding-left: 21px;
-  width: 60%;
-  border-left: 1px solid ${({ theme }) => theme.color.lightGray};
+  max-width: 93%;
+  /* border-left: 1px solid ${({ theme }) => theme.color.lightGray}; */
 `;
 const StickyContainer = styled.div`
   position: ${({ search }) => (search ? `sticky` : `relative`)};
-
   top: 40px;
   bottom: 40px;
+`;
+
+const StyledHeading = styled(Heading)`
+  @media only screen and (max-width: 1370px) {
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+`;
+
+const StyledSubheading = styled(Subheading)`
+  @media only screen and (max-width: 1370px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
 `;
 
 const Aside = ({ children, ...props }) => {
@@ -71,8 +84,10 @@ const Aside = ({ children, ...props }) => {
         </AsideSection>
         <AsideSection title="sprawdź!" to={`/publikacje-i-raporty`}>
           <Link to={`/${allWpPost.edges[0].node.slug}`}>
-            <Heading text={allWpPost.edges[0].node.title} />
-            <Subheading text={allWpPost.edges[0].node.subtitle.podtytul} />
+            <StyledHeading text={allWpPost.edges[0].node.title} />
+            <StyledSubheading
+              text={allWpPost.edges[0].node.subtitle.podtytul}
+            />
             <Button
               target="_blank"
               rel="noreferrer"

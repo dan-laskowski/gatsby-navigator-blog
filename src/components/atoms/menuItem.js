@@ -14,6 +14,13 @@ const StyledLink = styled(Link)`
   :hover {
     color: ${({ theme }) => theme.color.orange};
   }
+  @media only screen and (max-width: 1370px) {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    line-height: 13px;
+    padding: 5px 10px;
+  }
 `;
 
 export const MenuItem = ({ text, slug }) => {

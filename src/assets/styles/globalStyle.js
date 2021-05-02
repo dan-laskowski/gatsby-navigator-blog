@@ -230,12 +230,6 @@ const GlobalStyle = createGlobalStyle`
 		right: -12px;
 		margin-right: 12px;
 	}
-	@media only screen and (max-width: 1280px) {
-		right:1vw;
-	}
-	@media only screen and (max-width: 1230px) {
-		right:0;
-	}
 }
 
 .splide__pagination__page {

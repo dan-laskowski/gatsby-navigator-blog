@@ -21,6 +21,10 @@ const StyledFooter = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media only screen and (max-width: 1745px) {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 `;
 const Content = styled.div`
   display: flex;

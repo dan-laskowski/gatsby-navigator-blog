@@ -17,6 +17,14 @@ const StyledInput = styled.input`
     outline-color: ${({ theme }) => theme.color.orange};
     outline-style: solid;
   }
+  @media only screen and (max-width: 1370px) {
+    font-size: 8px;
+    line-height: 10px;
+    padding: 6px 0;
+    padding-left: 10px;
+    width: calc(100% - 12px);
+    margin-bottom: 8px;
+  }
 `;
 
 const Input = ({ text, ...props }) => {

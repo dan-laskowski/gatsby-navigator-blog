@@ -8,6 +8,10 @@ const StyledSectionName = styled.h1`
   font-size: ${({ theme }) => theme.font.sectionName.size};
   color: ${({ theme }) => theme.color.black};
   margin: 10px 0 19px 0;
+  @media only screen and (max-width: 1370px) {
+    font-size: 10px;
+    line-height: 12px;
+  }
 `;
 
 const SectionName = ({ children }) => {
