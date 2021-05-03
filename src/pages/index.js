@@ -52,18 +52,18 @@ const CarouselWrapper = styled.section`
 `;
 const CarouselPostLarge = styled(PostLarge)`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   column-gap: 50px;
   margin-bottom: 48px;
 
   .text {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 5;
   }
   .image {
     aspect-ratio: 16/9;
-    grid-column-start: 3;
-    grid-column-end: 5;
+    grid-column-start: 6;
+    grid-column-end: 13;
   }
 
   @media only screen and (max-width: 1370px) {
