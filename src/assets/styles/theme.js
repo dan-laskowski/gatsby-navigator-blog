@@ -17,7 +17,7 @@ const theme = {
       family: `'Chivo', sans-serif`,
       weight: `700`,
       style: `normal`,
-      size: `65px`,
+      size: `58px`,
     },
     subheading: {
       family: `'Inria Serif', serif`,

@@ -28,7 +28,7 @@ const PageWrapper = styled.div`
   grid-template-rows: auto;
   grid-template-areas:
     "s s s s"
-    "bt bi bi a"
+    "pl pl pl a"
     "sm1 sm2 sm3 a"
     "dp dp dp dp"
     "cm cm cs com"
@@ -37,11 +37,6 @@ const PageWrapper = styled.div`
   @media only screen and (max-width: 1745px) {
     margin-left: 30px;
     margin-right: 30px;
-    column-gap: 30px;
-  }
-  @media only screen and (max-width: 828px) {
-    margin-left: 16px;
-    margin-right: 16px;
     column-gap: 30px;
   }
 `;
@@ -56,42 +51,99 @@ const CarouselWrapper = styled.section`
   }
 `;
 const CarouselPostLarge = styled(PostLarge)`
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 50px;
+  margin-bottom: 48px;
 
-  @media only screen and (max-width: 1910px) {
-    margin-left: 53px;
-    margin-right: 53px;
+  .text {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .image {
+    aspect-ratio: 16/9;
+    grid-column-start: 3;
+    grid-column-end: 5;
   }
 
-  @media only screen and (max-width: 1620px) {
-    .gatsby-image-wrapper {
-      width: 48vw;
-      height: 100%;
-      aspect-ratio: 16/9;
-      object-fit: contain;
-    }
-    justify-content: space-around;
-  }
-  @media only screen and (max-width: 1420px) {
-    align-items: stretch;
-    margin-left: 34px;
-    margin-right: 34px;
+  @media only screen and (max-width: 1370px) {
     h1 {
-      font-size: 34px;
-      line-height: 33px;
-      max-width: 400px;
+      font-size: 40px;
+      line-height: 42px;
     }
+    h2 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
 
+  @media only screen and (max-width: 1137px) {
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 10px;
+    .text {
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
+    .image {
+      grid-column-start: 6;
+      grid-column-end: 13;
+    }
+    h1 {
+      font-size: 26px;
+      line-height: 31px;
+    }
     h2 {
       font-size: 14px;
       line-height: 20px;
-      max-width: 400px;
     }
   }
-
-  @media only screen and (max-width: 1280px) {
-    margin-left: 24px;
-    margin-right: 24px;
+  @media only screen and (max-width: 912px) {
+    column-gap: 55px;
+    .text {
+      grid-column-start: 1;
+      grid-column-end: 6;
+    }
+    .image {
+      grid-column-start: 6;
+      grid-column-end: 13;
+    }
+    h1 {
+      font-size: 22px;
+      line-height: 24px;
+    }
+    h2 {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+  @media only screen and (max-width: 834px) {
+    .text {
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
+    .image {
+      grid-column-start: 5;
+      grid-column-end: 13;
+    }
+    h1 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+    h2 {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+  @media only screen and (max-width: 710px) {
+    column-gap: 25px;
+    h1 {
+      font-size: 18px;
+      line-height: 20px;
+    }
+    h2 {
+      font-size: 12px;
+      line-height: 14px;
+    }
   }
 `;
 const StyledAside = styled(Aside)`
@@ -100,6 +152,9 @@ const StyledAside = styled(Aside)`
   padding-left: 0;
   margin-top: 10px;
   border-left: none;
+  @media only screen and (max-width: 1370px) {
+    margin-top: 0;
+  }
 `;
 const ArticleSection = styled(AsideSection)`
   margin-top: 60px;
@@ -117,37 +172,55 @@ const ArticleSection = styled(AsideSection)`
       line-height: 14px;
     }
   }
+  @media only screen and (max-width: 1370px) {
+    margin-top: 40px;
+  }
+  @media only screen and (max-width: 787px) {
+    h2 {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
 `;
 const ArticlePostLarge = styled(PostLarge)`
-  grid-column-start: sm1;
-  grid-column-end: sm3;
-  justify-content: space-between;
-  padding-bottom: 18px;
-  margin-bottom: 0;
-  article {
-    grid-area: bt;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 40px;
+  grid-template-areas: "txt img img";
+  .text {
+    grid-column-start: txt;
+    grid-column-end: txt;
+    display: flex;
     justify-content: space-between;
   }
-  div {
-    grid-area: bi;
-  }
   h1 {
-    font-size: 48px;
-    line-height: 57px;
-    max-width: 379px;
+    font-size: 38px;
+    line-height: 48px;
   }
   h2 {
     font-size: 16px;
     line-height: 20px;
-    max-width: 379px;
+  }
+  .image {
+    grid-column-start: img;
+    grid-column-end: img;
   }
   .gatsby-image-wrapper {
     aspect-ratio: 16/9;
-    max-width: 800px;
-
-    max-height: 432px;
   }
+
   @media only screen and (max-width: 1420px) {
+    h1 {
+      font-size: 30px;
+      line-height: 32px;
+    }
+    h2 {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+
+  @media only screen and (max-width: 1120px) {
     h1 {
       font-size: 18px;
       line-height: 20px;
@@ -178,6 +251,7 @@ const ArticlePostMedium = styled(PostMedium)`
   h2 {
     display: none;
   }
+
   @media only screen and (max-width: 1370px) {
     h2 {
       display: block;
@@ -200,6 +274,12 @@ const TipsSection = styled(AsideSection)`
     h2 {
       font-size: 12px;
       line-height: 14px;
+    }
+    @media only screen and (max-width: 787px) {
+      h2 {
+        font-size: 11px;
+        line-height: 13px;
+      }
     }
   }
 `;
@@ -240,28 +320,41 @@ const BcorpSectionWrapper = styled.div`
       line-height: 14px;
     }
   }
+  @media only screen and (max-width: 787px) {
+    h2 {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
 `;
 const LargePostLarge = styled(PostLarge)`
-  grid-area: s1;
-  max-width: 800px;
-  justify-content: center;
-  padding-bottom: 18px;
-  margin-bottom: 0;
+  grid-column-start: s1;
+  grid-column-end: s1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+  grid-template-areas: "txt img";
+
   h1 {
     font-size: 26px;
-    max-width: 318px;
   }
   h2 {
     font-size: 16px;
-    max-width: 357px;
     line-height: 20px;
+  }
+  .text {
+    grid-column-start: txt;
+    grid-column-end: txt;
+    display: flex;
+    justify-content: space-between;
+  }
+  .image {
+    grid-column-start: img;
+    grid-column-end: img;
   }
   .gatsby-image-wrapper {
     aspect-ratio: 16/9;
-    height: 100%;
-    max-height: 250px;
   }
-  /* border: none; */
   margin-bottom: 0;
   border-bottom: none;
   @media only screen and (max-width: 1370px) {
@@ -271,12 +364,14 @@ const LargePostLarge = styled(PostLarge)`
     article {
       order: 1;
     }
-    h1,
-    h2 {
-      max-width: unset;
+    h1 {
+      font-size: 18px;
+      line-height: 20px;
+      margin-bottom: 10px;
     }
-    .gatsby-image-wrapper {
-      max-height: unset;
+    h2 {
+      font-size: 12px;
+      line-height: 14px;
     }
   }
 `;
@@ -285,8 +380,6 @@ const MiniPostWrapper = styled.div`
   grid-column-end: s3;
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
-  margin-top: 30px;
 
   @media only screen and (max-width: 1370px) {
     display: grid;
@@ -318,6 +411,7 @@ const EventSectionWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
   ${ArticlePostMedium} {
+    margin-top: 0;
     h2 {
       display: none;
     }
@@ -343,11 +437,23 @@ const EventSectionWrapper = styled.div`
       }
     }
   }
+  @media only screen and (max-width: 787px) {
+    h2 {
+      font-size: 11px;
+      line-height: 13px;
+    }
+  }
 `;
 const EventLargePostLarge = styled(LargePostLarge)`
   display: none;
   @media only screen and (max-width: 1370px) {
     display: flex;
+  }
+  @media only screen and (max-width: 787px) {
+    h2 {
+      font-size: 11px;
+      line-height: 13px;
+    }
   }
 `;
 const CommercialVertical = styled.aside`
@@ -453,7 +559,7 @@ const IndexPage = ({
                   <ArticlePostMedium
                     key={node.title}
                     title={node.title}
-                    excerpt={ReactHtmlParser(truncate(node.excerpt, 19))}
+                    excerpt={ReactHtmlParser(truncate(node.excerpt, 25))}
                     category={node.categories.nodes[handleCategoryNode(node)]}
                     tags={node.tags}
                     img={node.featuredImage}

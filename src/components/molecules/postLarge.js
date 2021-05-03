@@ -8,14 +8,10 @@ import TagBox from "molecules/tagBox";
 
 const Wrapper = styled.section`
   display: flex;
-  justify-content: space-between;
-  /* padding-bottom: 28px; */
-  margin-top: 30px;
-  margin-bottom: 49px;
   border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
+  padding-bottom: 18px;
 `;
 const Article = styled.article`
-  grid-area: text;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,30 +28,20 @@ const Category = styled(Link)`
 const StyledHeading = styled(Heading)`
   margin: 0;
   margin-top: 10px;
-  margin-bottom: 26px;
-  font-size: 28px;
+  margin-bottom: 20px;
   text-transform: uppercase;
-  max-width: 603px;
-  font-size: 60px;
+  font-size: 58px;
 `;
 const StyledSubheading = styled(Subheading)`
-  font-size: 28px;
-  line-height: 34px;
-  max-width: 525px;
+  font-size: 24px;
+  line-height: 32px;
   .more-link {
     display: none;
   }
 `;
 const FeaturedImg = styled.div`
-  grid-area: img;
-  overflow: hidden;
-  max-width: 905px;
-  max-height: 523px;
-  .gatsby-image-wrapper {
-    width: 100%;
-    height: auto;
-    max-height: 525px;
-    overflow: hidden;
+  .gatsby-image-wrapper img {
+    aspect-ratio: 16/9;
     object-fit: cover;
   }
 `;
@@ -66,7 +52,7 @@ const TagSection = styled.div`
 const PostLarge = ({ title, excerpt, category, tags, img, slug, ...props }) => {
   return (
     <Wrapper key={slug} as={Link} to={`/${slug}`} aria-label={title} {...props}>
-      <Article {...props}>
+      <Article className="text">
         <div>
           <Category to={`/${category.slug}`}>{category.name}</Category>
           <StyledHeading text={title} />
@@ -76,7 +62,7 @@ const PostLarge = ({ title, excerpt, category, tags, img, slug, ...props }) => {
           <TagBox tags={tags} amount={2} />
         </TagSection>
       </Article>
-      <FeaturedImg>
+      <FeaturedImg className="image">
         <GatsbyImage
           image={img.node.localFile.childImageSharp.gatsbyImageData}
           alt={img.node.altText || ``}

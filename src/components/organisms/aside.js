@@ -8,7 +8,6 @@ import AsideSection from "molecules/asideSection";
 import NewsletterForm from "molecules/newsletterForm";
 
 const AsideWrapper = styled.aside`
-  max-width: 93%;
   /* border-left: 1px solid ${({ theme }) => theme.color.lightGray}; */
 `;
 const StickyContainer = styled.div`

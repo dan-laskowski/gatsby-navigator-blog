@@ -54,8 +54,17 @@ const StyledHeading = styled(Heading)`
   margin-bottom: ${({ excerpt }) => (!excerpt ? "26px" : "10px")};
   font-size: 28px;
   text-transform: uppercase;
+  @media only screen and (max-width: 787px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 `;
-const StyledSubheading = styled(Subheading)``;
+const StyledSubheading = styled(Subheading)`
+  @media only screen and (max-width: 787px) {
+    font-size: 11px;
+    line-height: 13px;
+  }
+`;
 const TagSection = styled.div`
   margin-bottom: 17px;
 `;
