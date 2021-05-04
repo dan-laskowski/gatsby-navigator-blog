@@ -19,11 +19,11 @@ const StyledButton = styled.button`
     outline: none;
   }
   @media only screen and (max-width: 1370px) {
-    font-size: 10px;
+    font-size: 11px;
     line-height: 12px;
     padding-top: 6px;
     padding-bottom: 6px;
-    height: 23px;
+    height: 26px;
   }
 `;
 const Button = ({ text, uri, ...props }) => {

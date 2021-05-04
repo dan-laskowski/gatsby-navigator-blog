@@ -18,8 +18,8 @@ const StyledInput = styled.input`
     outline-style: solid;
   }
   @media only screen and (max-width: 1370px) {
-    font-size: 8px;
-    line-height: 10px;
+    font-size: 11px;
+    line-height: 12px;
     padding: 6px 0;
     padding-left: 10px;
     width: calc(100% - 12px);

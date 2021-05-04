@@ -8,6 +8,7 @@ import Tag from "atoms/tag";
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr 110px;
+  column-gap: 20px;
   margin-bottom: 20px;
   min-height: 110px;
   @media only screen and (max-width: 1370px) {
@@ -75,14 +76,16 @@ const FeaturedImg = styled.div`
   }
 `;
 
-const PostSmall = ({ title, category, tags, img, slug, excerpt }) => {
+const PostSmall = ({ title, category, tags, img, slug, excerpt, ...props }) => {
   return (
-    <Wrapper as={Link} to={`/${slug}`} aria-label={title}>
+    <Wrapper as={Link} to={`/${slug}`} aria-label={title} {...props}>
       <Article>
         <div>
-          <Category to={`/${category.slug}`}>{category.name}</Category>
-          <StyledHeading text={title} />
-          <StyledSubheading text={excerpt} />
+          <Category className="category" to={`/${category.slug}`}>
+            {category.name}
+          </Category>
+          <StyledHeading className="title" text={title} />
+          <StyledSubheading className="excerpt" text={excerpt} />
         </div>
         <div>
           {tags.nodes.slice(0, 2).map(node => (
@@ -91,7 +94,7 @@ const PostSmall = ({ title, category, tags, img, slug, excerpt }) => {
           <Tag key="last" name="..." slug="tags" />
         </div>
       </Article>
-      <FeaturedImg>
+      <FeaturedImg className="image">
         <GatsbyImage
           image={img.node.localFile.childImageSharp.gatsbyImageData}
           alt={img.node.altText || ``}

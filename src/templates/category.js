@@ -181,7 +181,36 @@ const StyledAside = styled(Aside)`
     display: none;
   }
 `;
-const AsidePostSmall = styled(PostSmall)``;
+const AsidePostSmall = styled(PostSmall)`
+  .title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  @media only screen and (max-width: 1370px) {
+    .category {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    .title {
+      font-size: 18px;
+      line-height: 20px;
+    }
+    .excerpt {
+      display: none;
+    }
+    .image {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 930px) {
+    .title {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+`;
 
 const Category = ({
   data: { wpCategory, allWpPost, asideQuery },
@@ -348,7 +377,7 @@ export const query = graphql`
         }
       }
     }
-    asideQuery: allWpPost(limit: 3) {
+    asideQuery: allWpPost(limit: 4) {
       nodes {
         title
         slug
