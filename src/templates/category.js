@@ -66,6 +66,7 @@ const SubcategoryName = styled.div`
 const StyledHeading = styled(Heading)`
   font-size: ${({ theme }) => theme.font.heading.size};
   margin-bottom: 22px;
+  text-transform: uppercase;
   @media only screen and (max-width: 880px) {
     margin-bottom: 12px;
     margin-top: 0px;
@@ -188,6 +189,7 @@ const Category = ({
 }) => {
   const handleCategoryNode = post =>
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
+  console.log(wpCategory.name);
   return (
     <Layout>
       <Seo
@@ -198,12 +200,11 @@ const Category = ({
         <CategoryName>
           {wpCategory.wpChildren.nodes.length ? (
             <>
-              <Link
-                key={wpCategory.slug}
-                style={{ color: "red" }}
-                to={`/${wpCategory.slug}`}
-              >
-                <StyledHeading text={wpCategory.name} />
+              <Link key={wpCategory.slug} to={`/${wpCategory.slug}`}>
+                <StyledHeading
+                  text={wpCategory.name}
+                  style={{ color: `rgb(240, 117, 56)` }}
+                />
               </Link>
               <SubcategoryName>
                 {wpCategory.wpChildren.nodes.map(node => (
