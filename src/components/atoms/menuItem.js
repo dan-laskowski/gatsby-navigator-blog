@@ -14,9 +14,15 @@ const StyledLink = styled(Link)`
   :hover {
     color: ${({ theme }) => theme.color.orange};
   }
-  @media only screen and (max-width: 1370px) {
+
+  @media only screen and (max-width: 1110px) {
     display: flex;
     align-items: center;
+    font-size: 16px;
+    padding: 5px 8px;
+  }
+
+  @media only screen and (max-width: 850px) {
     font-size: 11px;
     line-height: 13px;
     padding: 5px 10px;

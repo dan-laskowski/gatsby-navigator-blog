@@ -9,7 +9,7 @@ const StyledNav = styled.nav`
     position: relative;
     padding: 21px 0;
     background: ${({ theme }) => theme.color.white};
-    @media only screen and (max-width: 1370px) {
+    @media only screen and (max-width: 850px) {
       padding: 5px 0;
     }
   }

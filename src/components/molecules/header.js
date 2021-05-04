@@ -27,7 +27,7 @@ const LogoSectionWrapper = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1645px;
-  @media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 850px) {
     .logo {
       width: 240px;
     }
@@ -40,7 +40,7 @@ const StyledButton = styled.button`
   :focus {
     outline: none;
   }
-  @media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 850px) {
     display: none;
   }
 `;
@@ -52,7 +52,7 @@ const Navigation = styled.section`
   border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
   width: 100%;
   height: 73px;
-  @media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 850px) {
     height: 40px;
   }
 `;
@@ -69,7 +69,7 @@ const NavigationWrapper = styled.div`
     margin-left: 30px;
     margin-right: 30px;
   }
-  @media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 850px) {
     justify-content: center;
   }
 `;
@@ -79,7 +79,11 @@ const Newsletter = styled(Link)`
   font-style: ${({ theme }) => theme.font.menuItem.weight};
   font-size: ${({ theme }) => theme.font.menuItem.size};
   color: ${({ theme }) => theme.color.orange};
-  @media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 1110px) {
+    font-size: 16px;
+    padding: 5px 8px;
+  }
+  @media only screen and (max-width: 850px) {
     font-size: 11px;
     line-height: 13px;
     padding: 15px 10px;
