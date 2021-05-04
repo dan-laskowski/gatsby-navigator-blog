@@ -162,7 +162,6 @@ const StyledPostLarge = styled(PostLarge)`
     }
     padding-bottom: 10px;
   }
-
   @media only screen and (max-width: 720px) {
     .text {
       grid-column-start: 1;
@@ -181,6 +180,7 @@ const StyledAside = styled(Aside)`
     display: none;
   }
 `;
+const AsidePostSmall = styled(PostSmall)``;
 
 const Category = ({
   data: { wpCategory, allWpPost, asideQuery },
@@ -254,7 +254,7 @@ const Category = ({
           <StyledAside>
             <AsideSection title="ostatnie" to={`/`}>
               {asideQuery.nodes.map(node => (
-                <PostSmall
+                <AsidePostSmall
                   key={node.title}
                   title={node.title}
                   category={node.categories.nodes[handleCategoryNode(node)]}

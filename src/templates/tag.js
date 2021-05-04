@@ -14,7 +14,6 @@ import truncate from "utils/truncate";
 const Wrapper = styled.div`
   min-height: 100vh;
 `;
-
 const ContentWrapper = styled.div`
   display: grid;
   justify-content: center;
