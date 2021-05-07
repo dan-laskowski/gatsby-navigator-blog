@@ -254,7 +254,7 @@ export const query = graphql`
                     width: 572
                     quality: 70
                     placeholder: TRACED_SVG
-                    formats: [AUTO, WEBP, AVIF]
+                    formats: [AVIF, WEBP]
                   )
                 }
               }
@@ -294,7 +294,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 260
                   placeholder: TRACED_SVG
-                  formats: [AUTO, WEBP, AVIF]
+                  formats: [AVIF, WEBP]
                 )
               }
             }

@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledHeading = styled.h1`
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   font-family: ${({ theme }) => theme.font.heading.family};
   font-weight: ${({ theme }) => theme.font.heading.weight};
   font-style: ${({ theme }) => theme.font.heading.style};
@@ -12,6 +14,9 @@ const StyledHeading = styled.h1`
 `;
 
 const StyledSubheading = styled.h2`
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-family: ${({ theme }) => theme.font.subheading.family};
   font-weight: ${({ theme }) => theme.font.subheading.weight};
   font-style: ${({ theme }) => theme.font.subheading.style};

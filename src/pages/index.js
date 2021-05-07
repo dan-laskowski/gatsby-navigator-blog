@@ -70,13 +70,14 @@ const CarouselPostLarge = styled(PostLarge)`
     h1 {
       font-size: 40px;
       line-height: 42px;
+      -webkit-line-clamp: 3;
     }
     h2 {
       font-size: 18px;
       line-height: 24px;
+      -webkit-line-clamp: 3;
     }
   }
-
   @media only screen and (max-width: 1137px) {
     grid-template-columns: repeat(12, 1fr);
     column-gap: 10px;
@@ -253,8 +254,17 @@ const ArticlePostMedium = styled(PostMedium)`
   }
 
   @media only screen and (max-width: 1370px) {
+    h1 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
     h2 {
-      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
     }
   }
 
@@ -574,7 +584,7 @@ const IndexPage = ({
                   <ArticlePostMedium
                     key={node.title}
                     title={node.title}
-                    excerpt={ReactHtmlParser(truncate(node.excerpt, 19))}
+                    excerpt={ReactHtmlParser(truncate(node.excerpt, 25))}
                     category={node.categories.nodes[handleCategoryNode(node)]}
                     tags={node.tags}
                     img={node.featuredImage}
@@ -723,7 +733,7 @@ export const query = graphql`
                   width: 910
                   quality: 76
                   placeholder: TRACED_SVG
-                  formats: [AUTO, WEBP, AVIF]
+                  formats: [AVIF, WEBP]
                 )
               }
             }
@@ -771,7 +781,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 800
                   placeholder: TRACED_SVG
-                  formats: [AUTO, WEBP, AVIF]
+                  formats: [AVIF, WEBP]
                 )
               }
             }
@@ -819,7 +829,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 380
                   placeholder: TRACED_SVG
-                  formats: [AUTO, WEBP, AVIF]
+                  formats: [AVIF, WEBP]
                 )
               }
             }
@@ -869,7 +879,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 400
                   placeholder: TRACED_SVG
-                  formats: [AUTO, WEBP, AVIF]
+                  formats: [AVIF, WEBP]
                 )
               }
             }
@@ -917,7 +927,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 380
                   placeholder: TRACED_SVG
-                  formats: [AUTO, WEBP, AVIF]
+                  formats: [AVIF, WEBP]
                 )
               }
             }
@@ -962,10 +972,7 @@ export const query = graphql`
           node {
             localFile {
               childImageSharp {
-                gatsbyImageData(
-                  placeholder: TRACED_SVG
-                  formats: [AUTO, WEBP, AVIF]
-                )
+                gatsbyImageData(placeholder: TRACED_SVG, formats: [AVIF, WEBP])
               }
             }
           }

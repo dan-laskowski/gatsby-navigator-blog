@@ -201,6 +201,7 @@ rozwoju i etycznym biznesie"
               className="logo"
               src="../../assets/images/OGLogo.png"
               alt="Navigator logo"
+              loading="eager"
               width={430}
               height={152}
             />
