@@ -67,10 +67,15 @@ module.exports = {
         icon: "./src/assets/images/gatsby-icon.png",
       },
     },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://navigator82042.gtsb.io/`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-gatsby-cloud`,
   ],
 };
