@@ -70,7 +70,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: `https://navigator82042.gtsb.io/`,
+        host: `https://navigator82042.gtsb.io`,
       },
     },
     `gatsby-transformer-sharp`,
