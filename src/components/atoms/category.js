@@ -9,12 +9,17 @@ const CategoryLink = styled(Link)`
   font-size: ${({ theme }) => theme.font.tag.size};
   color: ${({ theme }) => theme.color.gray};
   text-transform: uppercase;
+  margin-top: 10px;
   margin-bottom: 10px;
+
+  @media only screen and (max-width: 1168px) {
+    font-size: 10px;
+  }
 `;
 
 const Category = ({ name, slug, ...props }) => {
   return (
-    <CategoryLink to={`/${slug}`} {...props}>
+    <CategoryLink as="div" to={`/${slug}`} {...props}>
       {name}
     </CategoryLink>
   );

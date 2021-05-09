@@ -11,6 +11,7 @@ const StyledHeading = styled.h1`
   color: ${({ theme }) => theme.color.black};
   margin-top: 28px;
   margin-bottom: 10px;
+  text-transform: uppercase;
 `;
 
 const StyledSubheading = styled.h2`
@@ -23,7 +24,7 @@ const StyledSubheading = styled.h2`
   font-size: 16px;
   color: ${({ theme }) => theme.color.gray};
   line-height: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 `;
 
 export const Heading = ({ text, ...props }) => {

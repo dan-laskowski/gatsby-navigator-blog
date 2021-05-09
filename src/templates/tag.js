@@ -5,11 +5,9 @@ import { Heading } from "atoms/heading";
 import Seo from "molecules/seo";
 import Pagination from "molecules/Pagination";
 import Aside from "organisms/aside";
-import PostLarge from "molecules/postLarge";
 import AsideSection from "molecules/asideSection";
-import PostSmall from "molecules/postSmall";
 import Layout from "organisms/layout";
-import truncate from "utils/truncate";
+import Post from "molecules/post";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -69,93 +67,9 @@ const PostsWrapper = styled.div`
   a:last-child {
     border-bottom: none;
   }
-`;
-const StyledPostLarge = styled(PostLarge)`
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(9, 1fr);
-  column-gap: 16px;
-  margin-top: 28px;
-  .text {
-    grid-column-start: 1;
-    grid-column-end: 5;
-  }
-  .image {
-    grid-column-start: 6;
-    grid-column-end: 10;
-  }
-  h1 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    font-size: 28px;
-    line-height: 33px;
-  }
-  h2 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    font-size: 20px;
-    line-height: 34px;
-  }
-  padding-bottom: 28px;
-  @media only screen and (max-width: 1600px) {
-    h1 {
-      font-size: 24px;
-      line-height: 28px;
-    }
-    h2 {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      overflow: hidden;
-      font-size: 18px;
-      line-height: 28px;
-    }
-  }
-  @media only screen and (max-width: 1370px) {
-    h1 {
-      font-size: 18px;
-      line-height: 20px;
-      margin-bottom: 10px;
-    }
-    h2 {
-      font-size: 12px;
-      line-height: 15px;
-      -webkit-line-clamp: 4;
-      margin-bottom: 14px;
-    }
-  }
-  @media only screen and (max-width: 1040px) {
-    h1 {
-      -webkit-line-clamp: 2;
-    }
-    h2 {
-      -webkit-line-clamp: 3;
-    }
-  }
-  @media only screen and (max-width: 946px) {
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 30px;
-    .text {
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-    .image {
-      grid-column-start: 3;
-      grid-column-end: 5;
-    }
-    padding-bottom: 10px;
-  }
+
   @media only screen and (max-width: 720px) {
-    .text {
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-    .image {
-      grid-column-start: 3;
-      grid-column-end: 6;
-    }
+    grid-column-end: 13;
   }
 `;
 const StyledAside = styled(Aside)`
@@ -163,6 +77,51 @@ const StyledAside = styled(Aside)`
   grid-column-end: 13;
   @media only screen and (max-width: 720px) {
     display: none;
+  }
+`;
+const AsidePost = styled(Post)`
+  grid-template-columns: 1fr 110px;
+  border-bottom: none;
+  padding: 0;
+
+  .category {
+    margin-bottom: 8px;
+  }
+
+  article {
+    margin: 20px 0;
+    column-gap: 26px;
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 24px;
+    -webkit-line-clamp: 2;
+  }
+
+  .image {
+    height: 110px;
+  }
+
+  @media only screen and (max-width: 1380px) {
+    grid-template-columns: 1fr;
+    .image {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 1248px) {
+    .title {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 920px) {
+    .title {
+      font-size: 14px;
+      line-height: 16px;
+    }
   }
 `;
 
@@ -184,28 +143,13 @@ const Tag = ({ data: { wpTag, allWpPost, asideQuery }, pageContext }) => {
         <ContentWrapper>
           <PostsWrapper>
             {allWpPost.edges.map(({ node }) => (
-              <StyledPostLarge
-                key={node.title}
-                title={node.title}
-                excerpt={truncate(node.excerpt, 30)}
-                category={node.categories.nodes[handleCategoryNode(node)]}
-                tags={node.tags}
-                img={node.featuredImage}
-                slug={node.slug}
-              />
+              <Post horizontal post={node} />
             ))}
           </PostsWrapper>
           <StyledAside>
             <AsideSection title="ostatnie" to={`/`}>
               {asideQuery.nodes.map(node => (
-                <PostSmall
-                  key={node.title}
-                  title={node.title}
-                  category={node.categories.nodes[handleCategoryNode(node)]}
-                  tags={node.tags}
-                  img={node.featuredImage}
-                  slug={node.slug}
-                />
+                <AsidePost horizontal post={node} />
               ))}
             </AsideSection>
           </StyledAside>
