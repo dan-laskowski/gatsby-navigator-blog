@@ -10,6 +10,7 @@ const Seo = ({ title, description, image }) => {
   return (
     <Helmet>
       <title>{title}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="robots" content="index" />
       <meta name="AdsBot-Google" content="index" />
       <meta name="description" content={truncate(description)} />
