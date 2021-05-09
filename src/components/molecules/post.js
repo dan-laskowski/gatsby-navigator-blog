@@ -1,32 +1,110 @@
 import React from "react";
 import styled from "styled-components";
+import ReactHtmlParser from "react-html-parser";
 import { Link, useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import Category from "molecules/category";
+import Category from "atoms/category";
 import { Heading, Subheading } from "atoms/heading";
 import TagBox from "molecules/tagBox";
 
 const PostWrapper = styled.article`
-  display: grid;
+  display: ${({ horizontal }) => (horizontal ? `grid` : `flex`)};
+  flex-direction: ${({ horizontal }) => (horizontal ? `unset` : `column`)};
+  grid-template-columns: ${({ horizontal }) =>
+    horizontal ? `1fr 1.02fr` : `unset`};
+  column-gap: ${({ horizontal }) => (horizontal ? `120px` : `unset`)};
+  border-bottom: ${({ horizontal, theme }) =>
+    horizontal ? `1px solid ${theme.color.lightGray}` : `unset`};
+  padding-top: ${({ horizontal }) => (horizontal ? `28px` : `unset`)};
+  padding-bottom: ${({ horizontal }) => (horizontal ? `28px` : `unset`)};
+
+  @media only screen and (max-width: 1380px) {
+    column-gap: ${({ horizontal }) => (horizontal ? `60px` : `unset`)};
+    grid-template-columns: ${({ horizontal }) =>
+      horizontal ? `1fr 1.4fr` : `unset`};
+  }
+
+  @media only screen and (max-width: 930px) {
+    grid-template-columns: ${({ horizontal }) =>
+      horizontal ? `1fr 2fr` : `unset`};
+  }
 `;
 
 const Text = styled.section`
+  grid-area: ${({ horizontal }) => (horizontal ? 1 : `unset`)};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: ${({ horizontal }) =>
+    horizontal ? `space-between` : `unset`};
 `;
 
-const Thumbnail = styled(GatsbyImage)``;
+const Thumbnail = styled(GatsbyImage)`
+  grid-column-start: ${({ horizontal }) => (horizontal ? 2 : `unset`)};
+  grid-column-end: ${({ horizontal }) => (horizontal ? 3 : `unset`)};
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `unset`)};
 
-const PostTitle = styled(Heading)``;
+  @media only screen and (max-width: 930px) {
+    aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `unset`)};
+  }
 
-const PostSubtitle = styled(Subheading)``;
+  @media only screen and (max-width: 720px) {
+    aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `unset`)};
+  }
+`;
 
-const Post = ({
-  horizontal,
-  post: { title, excerpt, categories, tags, slug, featuredImage },
-  ...props
-}) => {
+const PostTitle = styled(Heading)`
+  font-size: ${({ horizontal }) => (horizontal ? `28px` : `unset`)};
+  line-height: ${({ horizontal }) => (horizontal ? `33px` : `unset`)};
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-top: ${({ horizontal }) => (horizontal ? `0` : `unset`)};
+
+  @media only screen and (max-width: 1380px) {
+    font-size: ${({ horizontal }) => (horizontal ? `24px` : `unset`)};
+    line-height: ${({ horizontal }) => (horizontal ? `27px` : `unset`)};
+  }
+
+  @media only screen and (max-width: 1100px) {
+    font-size: ${({ horizontal }) => (horizontal ? `18px` : `unset`)};
+    line-height: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
+  }
+
+  @media only screen and (max-width: 930px) {
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 3 : 3)};
+  }
+`;
+
+const PostSubtitle = styled(Subheading)`
+  font-size: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
+  line-height: ${({ horizontal }) => (horizontal ? `34px` : `unset`)};
+  -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
+  overflow: hidden;
+
+  @media only screen and (max-width: 1380px) {
+    font-size: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
+    line-height: ${({ horizontal }) => (horizontal ? `24px` : `unset`)};
+    margin-bottom: ${({ horizontal }) => (horizontal ? `14px` : `unset`)};
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
+  }
+
+  @media only screen and (max-width: 1200px) {
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
+  }
+
+  @media only screen and (max-width: 1100px) {
+    font-size: ${({ horizontal }) => (horizontal ? `12px` : `unset`)};
+    line-height: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
+  }
+`;
+
+const StyledTagBox = styled(TagBox)`
+  margin-bottom: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
+`;
+
+const Post = ({ post, ...props }) => {
   const handleCategoryNode = post =>
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
   const data = useStaticQuery(graphql`
@@ -44,29 +122,37 @@ const Post = ({
     }
   `);
   return (
-    <PostWrapper as={Link} to={`/${slug}`} aria-label={title} {...props}>
-      <Text>
-        <div>
-          <Category
-            className="category"
-            name={categories.nodes[handleCategoryNode(post)].name}
-            slug={categories.nodes[handleCategoryNode(post)].slug}
-          />
-          <PostTitle className="title" text={title} />
-          {excerpt ? (
-            <PostSubtitle className="subtitle" text={excerpt} />
-          ) : null}
-        </div>
-        <TagBox tags={tags} amount={2} />
-      </Text>
-      <Thumbnail
-        image={
-          featuredImage.node?.localFile?.childImageSharp?.gatsbyImageData ||
-          data.placeholderImage.gatsbyImageData
-        }
-        alt={featuredImage.node.altText || ``}
-      />
-    </PostWrapper>
+    <Link to={`/${post.slug}`} aria-label={post.title} {...props}>
+      <PostWrapper {...props}>
+        <Thumbnail
+          className="image"
+          horizontal
+          image={
+            post.featuredImage.node?.localFile?.childImageSharp
+              ?.gatsbyImageData || data.placeholderImage.gatsbyImageData
+          }
+          alt={post.featuredImage.node.altText || ``}
+        />
+        <Text horizontal>
+          <div>
+            <Category
+              className="category"
+              name={post.categories.nodes[handleCategoryNode(post)].name}
+              slug={post.categories.nodes[handleCategoryNode(post)].slug}
+            />
+            <PostTitle className="title" text={post.title} horizontal />
+            {post.excerpt ? (
+              <PostSubtitle
+                className="subtitle"
+                text={ReactHtmlParser(post.excerpt)}
+                horizontal
+              />
+            ) : null}
+          </div>
+          <StyledTagBox tags={post.tags} amount={2} />
+        </Text>
+      </PostWrapper>
+    </Link>
   );
 };
 
