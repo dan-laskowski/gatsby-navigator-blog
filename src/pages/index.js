@@ -41,6 +41,68 @@ const PageWrapper = styled.div`
     column-gap: 30px;
   }
 `;
+const MobilePostsWrapper = styled.section`
+  grid-column-start: s;
+  grid-column-end: s;
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
+`;
+const MobileMainPostWrapper = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
+  padding-bottom: 22px;
+  @media only screen and (max-width: 600px) {
+    .title {
+      -webkit-line-clamp: 2;
+    }
+    .subtitle {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+    }
+    .image {
+      aspect-ratio: 16/9;
+    }
+  }
+`;
+const MobileSidePostWrapper = styled.div`
+  a article {
+    padding: 18px 0;
+  }
+  .title {
+    -webkit-line-clamp: 4;
+  }
+  .subtitle {
+    display: none;
+  }
+`;
+const MobileSmallPostWrapper = styled.div`
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 24px;
+  grid-template-rows: repeat(2, 1fr);
+  row-gap: 24px;
+  .title {
+    font-size: 17px;
+    line-height: 19px;
+    -webkit-line-clamp: 4;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    line-height: 13px;
+    -webkit-line-clamp: 5;
+  }
+
+  .image {
+    aspect-ratio: 16/9;
+  }
+
+  @media only screen and (max-width: 600px) {
+    display: grid;
+  }
+`;
 const CarouselWrapper = styled.section`
   margin-top: 94px;
   grid-area: s;
@@ -49,6 +111,10 @@ const CarouselWrapper = styled.section`
   }
   @media only screen and (max-width: 1370px) {
     margin-top: 46px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 `;
 const CarouselPostLarge = styled(PostLarge)`
@@ -60,6 +126,9 @@ const CarouselPostLarge = styled(PostLarge)`
   .text {
     grid-column-start: 1;
     grid-column-end: 5;
+    h1 {
+      overflow: hidden;
+    }
   }
   .image {
     aspect-ratio: 16/9;
@@ -163,10 +232,17 @@ const StyledAside = styled(Aside)`
 `;
 const ArticleSection = styled(AsideSection)`
   margin-top: 60px;
+
   grid-column-start: sm1;
   grid-column-end: sm3;
   width: auto;
   margin-bottom: 0;
+
+  article:first-of-type {
+    padding-bottom: 38px;
+    margin-bottom: 16px;
+  }
+
   @media only screen and (max-width: 1420px) {
     h1 {
       font-size: 18px;
@@ -183,62 +259,32 @@ const ArticleSection = styled(AsideSection)`
   @media only screen and (max-width: 800px) {
     grid-column-end: a;
   }
-
   @media only screen and (max-width: 787px) {
     h2 {
       font-size: 11px;
       line-height: 13px;
     }
   }
-`;
-const ArticlePostLarge = styled(PostLarge)`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 40px;
-  grid-template-areas: "txt img img";
-  margin-bottom: 18px;
-  .text {
-    grid-column-start: txt;
-    grid-column-end: txt;
-    display: flex;
-    justify-content: space-between;
-  }
-  h1 {
-    font-size: 38px;
-    line-height: 48px;
-  }
-  h2 {
-    font-size: 16px;
-    line-height: 20px;
-  }
-  .image {
-    grid-column-start: img;
-    grid-column-end: img;
-  }
-  .gatsby-image-wrapper {
-    aspect-ratio: 16/9;
-  }
-
-  @media only screen and (max-width: 1420px) {
+  @media only screen and (max-width: 600px) {
     h1 {
-      font-size: 30px;
-      line-height: 32px;
+      font-size: 20px;
+      line-height: 24px;
+      -webkit-line-clamp: 3;
     }
     h2 {
       font-size: 16px;
-      line-height: 18px;
-    }
-  }
-
-  @media only screen and (max-width: 1120px) {
-    h1 {
-      font-size: 18px;
       line-height: 20px;
+      -webkit-line-clamp: 2;
     }
-    h2 {
-      font-size: 12px;
-      line-height: 14px;
+    article:first-of-type {
+      padding: 18px 0;
     }
+    margin-top: 46px;
+  }
+`;
+const ArticleWrapper = styled.div`
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 `;
 const ArticlePostMediumWrapper = styled.div`
@@ -304,16 +350,31 @@ const TipsSection = styled(AsideSection)`
       font-size: 12px;
       line-height: 14px;
     }
-    @media only screen and (max-width: 1370px) {
-      margin-top: 76px;
+  }
+  @media only screen and (max-width: 1370px) {
+    margin-top: 76px;
+  }
+  @media only screen and (max-width: 787px) {
+    h2 {
+      font-size: 11px;
+      line-height: 13px;
     }
-
-    @media only screen and (max-width: 787px) {
-      h2 {
-        font-size: 11px;
-        line-height: 13px;
-      }
+  }
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 20px;
+      line-height: 24px;
+      -webkit-line-clamp: 3;
     }
+    h2 {
+      font-size: 16px;
+      line-height: 20px;
+      -webkit-line-clamp: 2;
+    }
+    article:first-of-type {
+      padding: 18px 0;
+    }
+    margin-top: 46px;
   }
 `;
 const TipsSectionWrapper = styled.div`
@@ -328,6 +389,9 @@ const TipsSectionWrapper = styled.div`
     a:last-child {
       display: none;
     }
+  }
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 `;
 const BcorpSection = styled(AsideSection)`
@@ -364,6 +428,9 @@ const BcorpSectionWrapper = styled.div`
       font-size: 11px;
       line-height: 13px;
     }
+  }
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 `;
 const LargePostLarge = styled(PostLarge)`
@@ -443,6 +510,9 @@ const EventSection = styled(AsideSection)`
   @media only screen and (max-width: 1370px) {
     grid-column-start: sm1;
     grid-column-end: com;
+  }
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 `;
 const EventSectionWrapper = styled.div`
@@ -553,6 +623,18 @@ const IndexPage = ({
         />
         <MainWrapper>
           <PageWrapper>
+            <MobilePostsWrapper>
+              <MobileMainPostWrapper>
+                {carouselPosts.nodes.slice(0, 1).map(node => (
+                  <Post post={node} />
+                ))}
+              </MobileMainPostWrapper>
+              <MobileSidePostWrapper>
+                {carouselPosts.nodes.slice(1, 3).map(node => (
+                  <Post horizontal post={node} />
+                ))}
+              </MobileSidePostWrapper>
+            </MobilePostsWrapper>
             <CarouselWrapper>
               <Splide
                 options={{
@@ -580,26 +662,42 @@ const IndexPage = ({
               </Splide>
             </CarouselWrapper>
             <ArticleSection title="artykuły" to={`/artykuly`}>
-              <ArticlePostLarge
-                key={articlePosts.nodes[0].title}
-                title={articlePosts.nodes[0].title}
-                excerpt={articlePosts.nodes[0].subtitle.podtytul}
-                category={
-                  articlePosts.nodes[0].categories.nodes[
-                    handleCategoryNode(articlePosts.nodes[0])
-                  ]
-                }
-                tags={articlePosts.nodes[0].tags}
-                img={articlePosts.nodes[0].featuredImage}
-                slug={articlePosts.nodes[0].slug}
-              />
-              <ArticlePostMediumWrapper>
-                {articlePosts.nodes.slice(1, 4).map(node => (
-                  <Post post={node} />
+              <MobilePostsWrapper>
+                <MobileMainPostWrapper>
+                  {articlePosts.nodes.slice(0, 1).map(node => (
+                    <Post post={node} />
+                  ))}
+                </MobileMainPostWrapper>
+                <MobileSidePostWrapper>
+                  {articlePosts.nodes.slice(1, 3).map(node => (
+                    <Post horizontal post={node} />
+                  ))}
+                </MobileSidePostWrapper>
+              </MobilePostsWrapper>
+              <ArticleWrapper>
+                {articlePosts.nodes.slice(0, 1).map(node => (
+                  <Post horizontal post={node} />
                 ))}
-              </ArticlePostMediumWrapper>
+                <ArticlePostMediumWrapper>
+                  {articlePosts.nodes.slice(1, 4).map(node => (
+                    <Post post={node} />
+                  ))}
+                </ArticlePostMediumWrapper>
+              </ArticleWrapper>
             </ArticleSection>
             <TipsSection title="Dobre praktyki" to={`/dobre-praktyki`}>
+              <MobilePostsWrapper>
+                <MobileMainPostWrapper>
+                  {tipsPosts.nodes.slice(0, 1).map(node => (
+                    <Post post={node} />
+                  ))}
+                </MobileMainPostWrapper>
+                <MobileSidePostWrapper>
+                  {tipsPosts.nodes.slice(1, 3).map(node => (
+                    <Post horizontal post={node} />
+                  ))}
+                </MobileSidePostWrapper>
+              </MobilePostsWrapper>
               <TipsSectionWrapper>
                 {tipsPosts.nodes.map(node => (
                   <Post post={node} />
@@ -607,6 +705,11 @@ const IndexPage = ({
               </TipsSectionWrapper>
             </TipsSection>
             <BcorpSection title="B Corp" to={`/dobre-praktyki`}>
+              <MobileSmallPostWrapper>
+                {bcorpPosts.nodes.map(node => (
+                  <Post post={node} />
+                ))}
+              </MobileSmallPostWrapper>
               <BcorpSectionWrapper>
                 <LargePostLarge
                   key={bcorpPosts.nodes[0].title}
@@ -753,6 +856,7 @@ export const query = graphql`
             }
           }
         }
+        excerpt
         categories {
           nodes {
             name
@@ -872,7 +976,7 @@ export const query = graphql`
           nodes: { elemMatch: { name: { eq: "Teksty o B Corpach" } } }
         }
       }
-      limit: 3
+      limit: 4
       sort: { order: DESC, fields: date }
     ) {
       nodes {

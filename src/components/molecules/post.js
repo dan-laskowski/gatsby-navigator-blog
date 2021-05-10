@@ -54,7 +54,7 @@ const Thumbnail = styled(GatsbyImage)`
   aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `16/9`)};
 
   @media only screen and (max-width: 930px) {
-    aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `16/9`)};
+    aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `unset`)};
   }
 
   @media only screen and (max-width: 720px) {
@@ -82,14 +82,14 @@ const PostTitle = styled(Heading)`
   }
 
   @media only screen and (max-width: 930px) {
-    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 2 : 3)};
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 2 : 4)};
   }
 
-  @media only screen and (max-width: 574px) {
-    font-size: ${({ horizontal }) => (horizontal ? `16px` : `unset`)};
-    line-height: ${({ horizontal }) => (horizontal ? `19px` : `unset`)};
+  @media only screen and (max-width: 600px) {
+    font-size: ${({ horizontal }) => (horizontal ? `16px` : `26px`)};
+    line-height: ${({ horizontal }) => (horizontal ? `19px` : `31px`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 3 : 3)};
-    margin-bottom: ${({ horizontal }) => (horizontal ? `19px` : `unset`)};
+    margin-bottom: ${({ horizontal }) => (horizontal ? `19px` : `10px`)};
   }
 `;
 const PostSubtitle = styled(Subheading)`
@@ -101,7 +101,7 @@ const PostSubtitle = styled(Subheading)`
   @media only screen and (max-width: 1380px) {
     font-size: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `24px` : `unset`)};
-    margin-bottom: ${({ horizontal }) => (horizontal ? `14px` : `10px`)};
+    margin-bottom: ${({ horizontal }) => (horizontal ? `14px` : `19px`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
   }
 
@@ -121,6 +121,10 @@ const PostSubtitle = styled(Subheading)`
 `;
 const StyledDate = styled(Date)`
   margin-bottom: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
+
+  @media only screen and (max-width: 600px) {
+    margin-bottom: ${({ horizontal }) => (horizontal ? `0` : `unset`)};
+  }
 `;
 
 const Post = ({ post, ...props }) => {
