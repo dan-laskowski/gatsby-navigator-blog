@@ -51,10 +51,10 @@ const Thumbnail = styled(GatsbyImage)`
   grid-column-end: ${({ horizontal }) => (horizontal ? 3 : `unset`)};
   width: 100%;
   overflow: hidden;
-  aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `unset`)};
+  aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `16/9`)};
 
   @media only screen and (max-width: 930px) {
-    aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `unset`)};
+    aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `16/9`)};
   }
 
   @media only screen and (max-width: 720px) {
@@ -65,8 +65,8 @@ const Thumbnail = styled(GatsbyImage)`
   }
 `;
 const PostTitle = styled(Heading)`
-  font-size: ${({ horizontal }) => (horizontal ? `28px` : `unset`)};
-  line-height: ${({ horizontal }) => (horizontal ? `33px` : `unset`)};
+  font-size: ${({ horizontal }) => (horizontal ? `28px` : `26px`)};
+  line-height: ${({ horizontal }) => (horizontal ? `33px` : `31px`)};
   -webkit-line-clamp: 2;
   overflow: hidden;
   margin-top: ${({ horizontal }) => (horizontal ? `0` : `unset`)};
@@ -93,15 +93,15 @@ const PostTitle = styled(Heading)`
   }
 `;
 const PostSubtitle = styled(Subheading)`
-  font-size: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
-  line-height: ${({ horizontal }) => (horizontal ? `34px` : `unset`)};
+  font-size: ${({ horizontal }) => (horizontal ? `20px` : `16px`)};
+  line-height: ${({ horizontal }) => (horizontal ? `34px` : `20px`)};
   -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
   overflow: hidden;
 
   @media only screen and (max-width: 1380px) {
     font-size: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `24px` : `unset`)};
-    margin-bottom: ${({ horizontal }) => (horizontal ? `14px` : `unset`)};
+    margin-bottom: ${({ horizontal }) => (horizontal ? `14px` : `10px`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
   }
 
@@ -112,7 +112,7 @@ const PostSubtitle = styled(Subheading)`
   @media only screen and (max-width: 1100px) {
     font-size: ${({ horizontal }) => (horizontal ? `12px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
-    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 5)};
   }
 
   @media only screen and (max-width: 574px) {
@@ -145,30 +145,34 @@ const Post = ({ post, ...props }) => {
       <PostWrapper {...props}>
         <Thumbnail
           className="image"
-          horizontal
+          horizontal={props.horizontal}
           image={
             post.featuredImage.node?.localFile?.childImageSharp
               ?.gatsbyImageData || data.placeholderImage.gatsbyImageData
           }
           alt={post.featuredImage.node.altText || ``}
         />
-        <Text horizontal>
+        <Text horizontal={props.horizontal}>
           <div>
             <Category
               className="category"
               name={post.categories.nodes[handleCategoryNode(post)].name}
               slug={post.categories.nodes[handleCategoryNode(post)].slug}
             />
-            <PostTitle className="title" text={post.title} horizontal />
+            <PostTitle
+              className="title"
+              text={post.title}
+              horizontal={props.horizontal}
+            />
             {post.excerpt ? (
               <PostSubtitle
                 className="subtitle"
                 text={ReactHtmlParser(post.excerpt)}
-                horizontal
+                horizontal={props.horizontal}
               />
             ) : null}
           </div>
-          <StyledDate date={post.dateGmt} />
+          <StyledDate date={post.dateGmt} horizontal={props.horizontal} />
         </Text>
       </PostWrapper>
     </Link>

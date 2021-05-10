@@ -5,6 +5,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 import { graphql } from "gatsby";
 import Seo from "molecules/seo";
+import Post from "molecules/post";
 import PostLarge from "molecules/postLarge";
 import PostMedium from "molecules/postMedium";
 import PostSmall from "molecules/postSmall";
@@ -156,6 +157,9 @@ const StyledAside = styled(Aside)`
   @media only screen and (max-width: 1370px) {
     margin-top: 0;
   }
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 const ArticleSection = styled(AsideSection)`
   margin-top: 60px;
@@ -176,6 +180,10 @@ const ArticleSection = styled(AsideSection)`
   @media only screen and (max-width: 1370px) {
     margin-top: 40px;
   }
+  @media only screen and (max-width: 800px) {
+    grid-column-end: a;
+  }
+
   @media only screen and (max-width: 787px) {
     h2 {
       font-size: 11px;
@@ -188,6 +196,7 @@ const ArticlePostLarge = styled(PostLarge)`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
   grid-template-areas: "txt img img";
+  margin-bottom: 18px;
   .text {
     grid-column-start: txt;
     grid-column-end: txt;
@@ -236,8 +245,17 @@ const ArticlePostMediumWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
+
+  article h2 {
+    display: none;
+  }
+
   @media only screen and (max-width: 1370px) {
     column-gap: 30px;
+    article h2 {
+      display: -webkit-box;
+      margin-bottom: 10px;
+    }
   }
 `;
 const ArticlePostMedium = styled(PostMedium)`
@@ -276,6 +294,7 @@ const TipsSection = styled(AsideSection)`
   width: auto;
   grid-column-start: s;
   grid-column-end: s;
+  margin-top: 94px;
   @media only screen and (max-width: 1420px) {
     a h1 {
       font-size: 18px;
@@ -285,6 +304,10 @@ const TipsSection = styled(AsideSection)`
       font-size: 12px;
       line-height: 14px;
     }
+    @media only screen and (max-width: 1370px) {
+      margin-top: 76px;
+    }
+
     @media only screen and (max-width: 787px) {
       h2 {
         font-size: 11px;
@@ -299,6 +322,12 @@ const TipsSectionWrapper = styled.div`
   column-gap: 40px;
   @media only screen and (max-width: 1370px) {
     column-gap: 30px;
+  }
+  @media only screen and (max-width: 787px) {
+    grid-template-columns: repeat(3, 1fr);
+    a:last-child {
+      display: none;
+    }
   }
 `;
 const BcorpSection = styled(AsideSection)`
@@ -566,30 +595,14 @@ const IndexPage = ({
               />
               <ArticlePostMediumWrapper>
                 {articlePosts.nodes.slice(1, 4).map(node => (
-                  <ArticlePostMedium
-                    key={node.title}
-                    title={node.title}
-                    excerpt={ReactHtmlParser(truncate(node.excerpt, 25))}
-                    category={node.categories.nodes[handleCategoryNode(node)]}
-                    tags={node.tags}
-                    img={node.featuredImage}
-                    slug={node.slug}
-                  />
+                  <Post post={node} />
                 ))}
               </ArticlePostMediumWrapper>
             </ArticleSection>
             <TipsSection title="Dobre praktyki" to={`/dobre-praktyki`}>
               <TipsSectionWrapper>
                 {tipsPosts.nodes.map(node => (
-                  <ArticlePostMedium
-                    key={node.title}
-                    title={node.title}
-                    excerpt={ReactHtmlParser(truncate(node.excerpt, 25))}
-                    category={node.categories.nodes[handleCategoryNode(node)]}
-                    tags={node.tags}
-                    img={node.featuredImage}
-                    slug={node.slug}
-                  />
+                  <Post post={node} />
                 ))}
               </TipsSectionWrapper>
             </TipsSection>
@@ -725,6 +738,7 @@ export const query = graphql`
             slug
           }
         }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         featuredImage {
           node {
             localFile {
@@ -774,6 +788,7 @@ export const query = graphql`
             slug
           }
         }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         featuredImage {
           node {
             localFile {
@@ -822,6 +837,7 @@ export const query = graphql`
             slug
           }
         }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         featuredImage {
           node {
             localFile {
@@ -872,12 +888,13 @@ export const query = graphql`
             slug
           }
         }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         featuredImage {
           node {
             localFile {
               childImageSharp {
                 gatsbyImageData(
-                  width: 400
+                  width: 600
                   placeholder: TRACED_SVG
                   formats: [AVIF, WEBP]
                 )
@@ -920,12 +937,13 @@ export const query = graphql`
             slug
           }
         }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         featuredImage {
           node {
             localFile {
               childImageSharp {
                 gatsbyImageData(
-                  width: 380
+                  width: 600
                   placeholder: TRACED_SVG
                   formats: [AVIF, WEBP]
                 )
@@ -962,12 +980,7 @@ export const query = graphql`
         }
         excerpt
         slug
-        tags {
-          nodes {
-            name
-            slug
-          }
-        }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         featuredImage {
           node {
             localFile {
