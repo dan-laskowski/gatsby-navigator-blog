@@ -6,9 +6,12 @@ import { window } from "browser-monads";
 // import { Subheading } from "atoms/heading";
 import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
+import { MenuItem } from "atoms/menuItem";
 // import betterLogo from "assets/images/betterLogo.svg";
+import mobileSearchLogo from "assets/images/mobileSearchLogo.svg";
 import searchLogo from "assets/images/search.svg";
 import searchPhase from "assets/images/searchPhase.svg";
+import mobileMenu from "assets/images/mobileMenu.svg";
 import exit from "assets/images/exit.svg";
 
 const StyledHeader = styled.header`
@@ -44,6 +47,75 @@ const StyledButton = styled.button`
     display: none;
   }
 `;
+const SearchButton = styled(StyledButton)`
+  display: none;
+  img {
+    width: 15px;
+  }
+  @media only screen and (max-width: 850px) {
+    display: block;
+  }
+  @media only screen and (max-width: 615px) {
+    display: none;
+  }
+`;
+const MobileMenuButton = styled(StyledButton)`
+  display: none;
+  @media only screen and (max-width: 615px) {
+    display: block;
+    position: absolute;
+    left: 23px;
+  }
+  @media only screen and (max-width: 400px) {
+    left: 4px;
+  }
+`;
+const MobileMenu = styled.nav`
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 88px);
+  background: ${({ theme }) => theme.color.black};
+  position: absolute;
+  z-index: 10000;
+
+  nav {
+    margin-bottom: 46px;
+  }
+
+  .exit-mobile {
+    margin-top: 18px;
+    margin-bottom: 36px;
+  }
+  .newsletter-mobile {
+    font-size: 26px;
+    line-height: 31px;
+  }
+  .form-mobile {
+    width: 100%;
+    border-bottom: 1px solid ${({ theme }) => theme.color.white};
+    input {
+      text-transform: capitalize;
+      font-size: 26px;
+      line-height: 31px;
+      margin-bottom: 10px;
+    }
+    button {
+      margin-bottom: 0;
+    }
+  }
+`;
+const MobileMenuWrapper = styled.div`
+  margin: 0 24px;
+  display: flex;
+  flex-direction: column;
+`;
+const MobileMenuItem = styled(MenuItem)`
+  color: ${({ theme }) => theme.color.offWhite};
+  font-size: 26px;
+  line-height: 31px;
+  margin-bottom: 12px;
+`;
 const Navigation = styled.section`
   display: flex;
   justify-content: center;
@@ -54,6 +126,9 @@ const Navigation = styled.section`
   height: 73px;
   @media only screen and (max-width: 850px) {
     height: 40px;
+  }
+  @media only screen and (max-width: 615px) {
+    display: none;
   }
 `;
 const NavigationWrapper = styled.div`
@@ -92,7 +167,7 @@ const Newsletter = styled(Link)`
 const Search = styled.div`
   display: none;
   min-height: 540px;
-  width: 99vw;
+  width: 100%;
   background: ${({ theme }) => theme.color.white};
   position: absolute;
   justify-content: center;
@@ -176,14 +251,23 @@ const SuggestionLink = styled(StyledLink)`
 
 const Header = () => {
   const [showSearch, setSearch] = useState(false);
+  const [showMobileMenu, setMobileMenu] = useState(false);
   const [query, setQuery] = useState("");
   const inputEl = useRef(null);
   const searchEl = useRef(null);
+  const mobileMenuEl = useRef(null);
   const handleSearchToggle = () => {
     setSearch(prevState => !prevState);
     searchEl.current.style.display = showSearch ? "none" : "flex";
     inputEl.current.focus();
   };
+
+  const handleMobileMenu = () => {
+    console.log(showMobileMenu);
+    setMobileMenu(prevState => !prevState);
+    mobileMenuEl.current.style.display = showMobileMenu ? "none" : "flex";
+  };
+
   const handleFormSubmit = e => {
     e.preventDefault();
     navigate(`/search?q=${query}&page=1`);
@@ -192,6 +276,19 @@ const Header = () => {
     <StyledHeader>
       <LogoSection>
         <LogoSectionWrapper>
+          <MobileMenuButton aria-label="Menu" onClick={handleMobileMenu}>
+            <img src={mobileMenu} alt="menu" width="30" height="30" />
+          </MobileMenuButton>
+          <SearchButton
+            aria-label="Wyszukiwanie"
+            onClick={
+              window.location.href.includes("search")
+                ? null
+                : handleSearchToggle
+            }
+          >
+            <img src={searchLogo} alt="wyszukiwanie" width="24" height="24" />
+          </SearchButton>
           {/* <StyledSubheading
             text="Magazyn o zrównoważonym 
 rozwoju i etycznym biznesie"
@@ -214,7 +311,6 @@ rozwoju i etycznym biznesie"
           </div> */}
         </LogoSectionWrapper>
       </LogoSection>
-
       <Navigation>
         <NavigationWrapper>
           <StyledButton
@@ -281,6 +377,69 @@ rozwoju i etycznym biznesie"
           </SuggestionWrapper>
         </SearchWrapper>
       </Search>
+      <MobileMenu ref={mobileMenuEl}>
+        <MobileMenuWrapper>
+          <ExitButton
+            className="exit-mobile"
+            aria-label="Zamknij menu"
+            onClick={handleMobileMenu}
+          >
+            <img src={exit} width="20" height="20" alt="Zamknij menu" />
+          </ExitButton>
+          <nav>
+            <ul>
+              <MobileMenuItem
+                aria-label="Dobre praktyki"
+                text="Dobre praktyki"
+                slug="/dobre-praktyki"
+              />
+              <MobileMenuItem
+                aria-label="Baza firm"
+                text="Baza firm"
+                slug="#"
+              />
+              <MobileMenuItem
+                aria-label="B Corp"
+                text="B Corp"
+                slug="/b-corp"
+              />
+              <MobileMenuItem
+                aria-label="Wydarzenia"
+                text="Wydarzenia"
+                slug="/wydarzenia"
+              />
+              <MobileMenuItem
+                aria-label="Księgarnia"
+                text="Księgarnia"
+                slug="/ksiegarnia"
+              />
+              <MobileMenuItem
+                aria-label="Navigator in English"
+                text="Navigator in English"
+                slug="/navigator-in-english"
+              />
+              <Newsletter
+                className="newsletter-mobile"
+                aria-label="Newsletter"
+                to="/newsletter"
+              >
+                Newsletter
+              </Newsletter>
+            </ul>
+          </nav>
+          <SearchForm className="form-mobile" onSubmit={handleFormSubmit}>
+            <input
+              aria-label="Wyszukiwarka"
+              ref={inputEl}
+              placeholder="Szukaj"
+              onChange={e => setQuery(e.target.value)}
+            />
+            <button aria-label="Szukaj">
+              <img src={mobileSearchLogo} alt="Szukaj" />
+            </button>
+          </SearchForm>
+        </MobileMenuWrapper>
+      </MobileMenu>
     </StyledHeader>
   );
 };

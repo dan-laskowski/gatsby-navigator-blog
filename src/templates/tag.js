@@ -25,6 +25,10 @@ const ContentWrapper = styled.div`
     margin-right: 30px;
     column-gap: 30px;
   }
+  @media only screen and (max-width: 574px) {
+    display: block;
+    margin: 0 24px;
+  }
 `;
 const CategoryName = styled.div`
   background: ${({ theme }) => theme.color.lightGray};
@@ -34,7 +38,8 @@ const CategoryName = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 41px;
-  *:visited {
+  *:visited,
+  *:link {
     color: ${({ theme }) => theme.color.black};
   }
   @media only screen and (max-width: 1370px) {
@@ -69,6 +74,7 @@ const PostsWrapper = styled.div`
   }
 
   @media only screen and (max-width: 720px) {
+    grid-column-start: 1;
     grid-column-end: 13;
   }
 `;
@@ -126,8 +132,6 @@ const AsidePost = styled(Post)`
 `;
 
 const Tag = ({ data: { wpTag, allWpPost, asideQuery }, pageContext }) => {
-  const handleCategoryNode = post =>
-    !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
   return (
     <Layout>
       <Seo
@@ -212,12 +216,7 @@ export const query = graphql`
           excerpt
           slug
           uri
-          tags {
-            nodes {
-              name
-              slug
-            }
-          }
+          dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         }
       }
     }
@@ -225,12 +224,7 @@ export const query = graphql`
       nodes {
         title
         slug
-        tags {
-          nodes {
-            name
-            slug
-          }
-        }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         featuredImage {
           node {
             localFile {

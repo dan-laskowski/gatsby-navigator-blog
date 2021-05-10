@@ -5,7 +5,7 @@ import { Link, useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import Category from "atoms/category";
 import { Heading, Subheading } from "atoms/heading";
-import TagBox from "molecules/tagBox";
+import Date from "atoms/date";
 
 const PostWrapper = styled.article`
   display: ${({ horizontal }) => (horizontal ? `grid` : `flex`)};
@@ -23,13 +23,22 @@ const PostWrapper = styled.article`
     grid-template-columns: ${({ horizontal }) =>
       horizontal ? `1fr 1.4fr` : `unset`};
   }
-
   @media only screen and (max-width: 930px) {
     grid-template-columns: ${({ horizontal }) =>
-      horizontal ? `1fr 2fr` : `unset`};
+      horizontal ? `1.5fr 1.7fr` : `unset`};
+    column-gap: ${({ horizontal }) => (horizontal ? `30px` : `unset`)};
+  }
+  @media only screen and (max-width: 574px) {
+    column-gap: ${({ horizontal }) => (horizontal ? `46px` : `unset`)};
+    grid-template-columns: ${({ horizontal }) =>
+      horizontal ? `2fr 1.02fr` : `unset`};
+  }
+  @media only screen and (max-width: 400px) {
+    column-gap: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
+    grid-template-columns: ${({ horizontal }) =>
+      horizontal ? `1fr 100px` : `unset`};
   }
 `;
-
 const Text = styled.section`
   grid-area: ${({ horizontal }) => (horizontal ? 1 : `unset`)};
   display: flex;
@@ -37,7 +46,6 @@ const Text = styled.section`
   justify-content: ${({ horizontal }) =>
     horizontal ? `space-between` : `unset`};
 `;
-
 const Thumbnail = styled(GatsbyImage)`
   grid-column-start: ${({ horizontal }) => (horizontal ? 2 : `unset`)};
   grid-column-end: ${({ horizontal }) => (horizontal ? 3 : `unset`)};
@@ -52,8 +60,10 @@ const Thumbnail = styled(GatsbyImage)`
   @media only screen and (max-width: 720px) {
     aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `unset`)};
   }
+  @media only screen and (max-width: 574px) {
+    aspect-ratio: ${({ horizontal }) => (horizontal ? `1/1` : `unset`)};
+  }
 `;
-
 const PostTitle = styled(Heading)`
   font-size: ${({ horizontal }) => (horizontal ? `28px` : `unset`)};
   line-height: ${({ horizontal }) => (horizontal ? `33px` : `unset`)};
@@ -72,10 +82,16 @@ const PostTitle = styled(Heading)`
   }
 
   @media only screen and (max-width: 930px) {
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 2 : 3)};
+  }
+
+  @media only screen and (max-width: 574px) {
+    font-size: ${({ horizontal }) => (horizontal ? `16px` : `unset`)};
+    line-height: ${({ horizontal }) => (horizontal ? `19px` : `unset`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 3 : 3)};
+    margin-bottom: ${({ horizontal }) => (horizontal ? `19px` : `unset`)};
   }
 `;
-
 const PostSubtitle = styled(Subheading)`
   font-size: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
   line-height: ${({ horizontal }) => (horizontal ? `34px` : `unset`)};
@@ -98,9 +114,12 @@ const PostSubtitle = styled(Subheading)`
     line-height: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
   }
-`;
 
-const StyledTagBox = styled(TagBox)`
+  @media only screen and (max-width: 574px) {
+    display: none;
+  }
+`;
+const StyledDate = styled(Date)`
   margin-bottom: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
 `;
 
@@ -149,7 +168,7 @@ const Post = ({ post, ...props }) => {
               />
             ) : null}
           </div>
-          <StyledTagBox tags={post.tags} amount={2} />
+          <StyledDate date={post.dateGmt} />
         </Text>
       </PostWrapper>
     </Link>

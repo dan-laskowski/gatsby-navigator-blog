@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="29" viewBox="0 0 30 29">
+  <g id="Group_320" data-name="Group 320" transform="translate(-575 -150)">
+    <rect id="background" width="20" height="20" transform="translate(575 150)" fill="none"/>
+    <rect id="Rectangle_232" data-name="Rectangle 232" width="15" height="2" transform="translate(575 159)" fill="#202020"/>
+    <rect id="Rectangle_439" data-name="Rectangle 439" width="10" height="2" transform="translate(575 165)" fill="#202020"/>
+    <rect id="Rectangle_438" data-name="Rectangle 438" width="20" height="2" transform="translate(575 153)" fill="#202020"/>
+    <g id="WKND-icon" transform="translate(585 159)">
+      <rect id="background-2" data-name="background" width="20" height="20" fill="none"/>
+      <g id="Dribbble-Light-Preview">
+        <g id="icons">
+          <path id="search_left-_1504_" data-name="search_left-[#1504]" d="M243,138.586,244.414,140l4.243-4.242-1.414-1.415ZM255,134a6,6,0,1,0-6-6,6.007,6.007,0,0,0,6,6Zm0-14a8,8,0,1,1-8,8,8,8,0,0,1,8-8Z" transform="translate(-243 -120)" fill="#202020" fill-rule="evenodd"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

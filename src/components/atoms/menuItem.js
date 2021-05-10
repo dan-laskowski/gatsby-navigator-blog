@@ -29,10 +29,12 @@ const StyledLink = styled(Link)`
   }
 `;
 
-export const MenuItem = ({ text, slug }) => {
+export const MenuItem = ({ text, slug, ...props }) => {
   return (
     <li>
-      <StyledLink to={slug}>{text}</StyledLink>
+      <StyledLink {...props} to={slug}>
+        {text}
+      </StyledLink>
     </li>
   );
 };
