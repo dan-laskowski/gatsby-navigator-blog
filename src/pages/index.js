@@ -127,6 +127,7 @@ const CarouselPostLarge = styled(PostLarge)`
     grid-column-start: 1;
     grid-column-end: 5;
     h1 {
+      -webkit-line-clamp: 3;
       overflow: hidden;
     }
   }

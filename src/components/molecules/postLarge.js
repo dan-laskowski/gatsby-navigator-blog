@@ -64,6 +64,7 @@ const PostLarge = ({ title, excerpt, category, tags, img, slug, ...props }) => {
       </Article>
       <FeaturedImg className="image">
         <GatsbyImage
+          loading="eager"
           image={img.node.localFile.childImageSharp.gatsbyImageData}
           alt={img.node.altText || ``}
         />
