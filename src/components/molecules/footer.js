@@ -72,6 +72,10 @@ const StyledSectionLink = styled(SectionLink)`
   line-height: 22px;
   text-transform: capitalize;
   margin-top: 0;
+  @media only screen and (max-width: 760px) {
+    font-size: 14px;
+    line-height: 20px;
+  }
 `;
 const SocialSection = styled.section`
   grid-column-start: 4;

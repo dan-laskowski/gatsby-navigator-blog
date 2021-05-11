@@ -10,10 +10,15 @@ const ShortyWrapper = styled(AsideSection)`
 const ShortyLink = styled(Link)`
   display: block;
   h2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
     font-family: ${({ theme }) => theme.font.paragraph.family};
     font-weight: ${({ theme }) => theme.font.paragraph.weight};
     font-style: ${({ theme }) => theme.font.paragraph.style};
     color: ${({ theme }) => theme.color.black};
+    line-height: 17px;
   }
   :not(:first-child) {
     padding-top: 23px;

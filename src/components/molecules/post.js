@@ -146,7 +146,7 @@ const Post = ({ post, ...props }) => {
   `);
   return (
     <Link to={`/${post.slug}`} aria-label={post.title} {...props}>
-      <PostWrapper {...props}>
+      <PostWrapper className="article" horizontal={props.horizontal}>
         <Thumbnail
           className="image"
           horizontal={props.horizontal}
@@ -156,7 +156,7 @@ const Post = ({ post, ...props }) => {
           }
           alt={post.featuredImage.node.altText || ``}
         />
-        <Text horizontal={props.horizontal}>
+        <Text className="text" horizontal={props.horizontal}>
           <div>
             <Category
               className="category"
@@ -176,7 +176,11 @@ const Post = ({ post, ...props }) => {
               />
             ) : null}
           </div>
-          <StyledDate date={post.dateGmt} horizontal={props.horizontal} />
+          <StyledDate
+            className="date"
+            date={post.dateGmt}
+            horizontal={props.horizontal}
+          />
         </Text>
       </PostWrapper>
     </Link>

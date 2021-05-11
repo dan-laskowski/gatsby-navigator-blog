@@ -112,109 +112,73 @@ const CarouselWrapper = styled.section`
   @media only screen and (max-width: 1370px) {
     margin-top: 46px;
   }
-
   @media only screen and (max-width: 600px) {
     display: none;
   }
-`;
-const CarouselPostLarge = styled(PostLarge)`
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 50px;
-  margin-bottom: 48px;
 
-  .text {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    h1 {
-      -webkit-line-clamp: 3;
-      overflow: hidden;
+  .article {
+    grid-template-columns: 1.2fr 2fr;
+    margin-bottom: 49px;
+    border-bottom: none;
+    @media only screen and (max-width: 1180px) {
+      margin-bottom: 22px;
     }
-  }
-  .image {
-    aspect-ratio: 16/9;
-    grid-column-start: 6;
-    grid-column-end: 13;
   }
 
-  @media only screen and (max-width: 1370px) {
-    h1 {
-      font-size: 40px;
-      line-height: 42px;
-      -webkit-line-clamp: 3;
+  .title {
+    font-size: 65px;
+    line-height: 77px;
+    -webkit-line-clamp: 3;
+    @media only screen and (max-width: 1570px) {
+      font-size: 54px;
+      line-height: 62px;
     }
-    h2 {
-      font-size: 18px;
-      line-height: 24px;
-      -webkit-line-clamp: 3;
+    @media only screen and (max-width: 1370px) {
+      font-size: 44px;
+      line-height: 50px;
     }
-  }
-  @media only screen and (max-width: 1137px) {
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 10px;
-    .text {
-      grid-column-start: 1;
-      grid-column-end: 5;
+    @media only screen and (max-width: 1180px) {
+      font-size: 29px;
+      line-height: 37px;
     }
-    .image {
-      grid-column-start: 6;
-      grid-column-end: 13;
-    }
-    h1 {
+    @media only screen and (max-width: 830px) {
       font-size: 26px;
       line-height: 31px;
+      -webkit-line-clamp: 3;
     }
-    h2 {
+  }
+  .subtitle {
+    font-size: 28px;
+    line-height: 38px;
+    -webkit-line-clamp: 3;
+    @media only screen and (max-width: 1570px) {
+      font-size: 21px;
+      line-height: 35px;
+    }
+    @media only screen and (max-width: 1370px) {
+      font-size: 20px;
+      line-height: 31px;
+    }
+    @media only screen and (max-width: 1180px) {
+      font-size: 18px;
+      line-height: 28px;
+    }
+    @media only screen and (max-width: 830px) {
       font-size: 14px;
       line-height: 20px;
     }
   }
-  @media only screen and (max-width: 912px) {
-    column-gap: 55px;
-    .text {
-      grid-column-start: 1;
-      grid-column-end: 6;
-    }
-    .image {
-      grid-column-start: 6;
-      grid-column-end: 13;
-    }
-    h1 {
-      font-size: 22px;
-      line-height: 24px;
-    }
-    h2 {
+  .date {
+    font-size: 16px;
+    line-height: 23px;
+    @media only screen and (max-width: 1180px) {
       font-size: 12px;
-      line-height: 16px;
+      line-height: 13px;
     }
   }
-  @media only screen and (max-width: 834px) {
-    .text {
-      grid-column-start: 1;
-      grid-column-end: 5;
-    }
-    .image {
-      grid-column-start: 5;
-      grid-column-end: 13;
-    }
-    h1 {
-      font-size: 18px;
-      line-height: 20px;
-    }
-    h2 {
-      font-size: 12px;
-      line-height: 14px;
-    }
-  }
-  @media only screen and (max-width: 710px) {
-    column-gap: 25px;
-    h1 {
-      font-size: 18px;
-      line-height: 20px;
-    }
-    h2 {
-      font-size: 12px;
-      line-height: 14px;
+  .image {
+    @media only screen and (max-width: 930px) {
+      aspect-ratio: 16/9;
     }
   }
 `;
@@ -288,6 +252,71 @@ const ArticleWrapper = styled.div`
     display: none;
   }
 `;
+const ArticlePostLargeWrapper = styled.div`
+  .article {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 40px;
+    @media only screen and (max-width: 1150px) {
+      grid-template-columns: 1.3fr 2fr;
+    }
+    @media only screen and (max-width: 640px) {
+      grid-template-columns: 1.7fr 2fr;
+      column-gap: 20px;
+    }
+  }
+  .text {
+    grid-column-start: 1;
+  }
+  .image {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    @media only screen and (max-width: 720px) {
+      aspect-ratio: unset;
+    }
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 57px;
+    -webkit-line-clamp: 4;
+    @media only screen and (max-width: 1520px) {
+      font-size: 41px;
+      line-height: 46px;
+    }
+    @media only screen and (max-width: 1330px) {
+      font-size: 34px;
+      line-height: 38px;
+    }
+    @media only screen and (max-width: 1150px) {
+      font-size: 28px;
+      line-height: 34px;
+      -webkit-line-clamp: 3;
+    }
+    @media only screen and (max-width: 720px) {
+      font-size: 22px;
+      line-height: 28px;
+    }
+  }
+
+  .subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    -webkit-line-clamp: 3;
+    @media only screen and (max-width: 1330px) {
+      font-size: 14px;
+    }
+    @media only screen and (max-width: 1150px) {
+      font-size: 12px;
+      line-height: 18px;
+      -webkit-line-clamp: 5;
+    }
+  }
+  .date {
+    @media only screen and (max-width: 720px) {
+      margin-bottom: 0;
+    }
+  }
+`;
 const ArticlePostMediumWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -356,6 +385,7 @@ const TipsSection = styled(AsideSection)`
     margin-top: 76px;
   }
   @media only screen and (max-width: 787px) {
+    margin-top: 12px;
     h2 {
       font-size: 11px;
       line-height: 13px;
@@ -403,6 +433,9 @@ const BcorpSection = styled(AsideSection)`
   @media only screen and (max-width: 1370px) {
     grid-column-start: sm1;
     grid-column-end: com;
+  }
+  @media only screen and (max-width: 787px) {
+    margin-top: 12px;
   }
 `;
 const BcorpSectionWrapper = styled.div`
@@ -511,6 +544,9 @@ const EventSection = styled(AsideSection)`
   @media only screen and (max-width: 1370px) {
     grid-column-start: sm1;
     grid-column-end: com;
+  }
+  @media only screen and (max-width: 787px) {
+    margin-top: 12px;
   }
   @media only screen and (max-width: 600px) {
     display: none;
@@ -649,15 +685,7 @@ const IndexPage = ({
               >
                 {carouselPosts.nodes.map(node => (
                   <SplideSlide aria-hidden={false} key={node.title}>
-                    <CarouselPostLarge
-                      key={node.title}
-                      title={node.title}
-                      excerpt={node.subtitle.podtytul}
-                      category={node.categories.nodes[handleCategoryNode(node)]}
-                      tags={node.tags}
-                      img={node.featuredImage}
-                      slug={node.slug}
-                    />
+                    <Post horizontal post={node} />
                   </SplideSlide>
                 ))}
               </Splide>
@@ -676,9 +704,11 @@ const IndexPage = ({
                 </MobileSidePostWrapper>
               </MobilePostsWrapper>
               <ArticleWrapper>
-                {articlePosts.nodes.slice(0, 1).map(node => (
-                  <Post horizontal post={node} />
-                ))}
+                <ArticlePostLargeWrapper>
+                  {articlePosts.nodes.slice(0, 1).map(node => (
+                    <Post horizontal post={node} />
+                  ))}
+                </ArticlePostLargeWrapper>
                 <ArticlePostMediumWrapper>
                   {articlePosts.nodes.slice(1, 4).map(node => (
                     <Post post={node} />
