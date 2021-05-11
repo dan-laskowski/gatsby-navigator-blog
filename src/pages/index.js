@@ -6,14 +6,10 @@ import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 import { graphql } from "gatsby";
 import Seo from "molecules/seo";
 import Post from "molecules/post";
-import PostLarge from "molecules/postLarge";
-import PostMedium from "molecules/postMedium";
-import PostSmall from "molecules/postSmall";
 import Shorty from "molecules/shorty";
 import AsideSection from "molecules/asideSection";
 import Layout from "organisms/layout";
 import Aside from "organisms/aside";
-import truncate from "utils/truncate";
 
 const MainWrapper = styled.main`
   display: flex;
@@ -334,38 +330,6 @@ const ArticlePostMediumWrapper = styled.div`
     }
   }
 `;
-const ArticlePostMedium = styled(PostMedium)`
-  display: block;
-  width: auto;
-  div {
-    margin-left: 0;
-  }
-  .gatsby-image-wrapper {
-    aspect-ratio: 16/9;
-  }
-  h2 {
-    display: none;
-  }
-
-  @media only screen and (max-width: 1370px) {
-    h1 {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      overflow: hidden;
-    }
-    h2 {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      overflow: hidden;
-    }
-  }
-
-  /* padding-right: 20px;
-  padding-left: 20px;
-  border-right: 1px solid ${({ theme }) => theme.color.lightGray}; */
-`;
 const TipsSection = styled(AsideSection)`
   width: auto;
   grid-column-start: s;
@@ -442,97 +406,119 @@ const BcorpSectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
-  grid-template-areas: "s1 s1 s2";
-
   @media only screen and (max-width: 1370px) {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 30px;
-    grid-template-areas: "s1 s1 s2 s3";
-    h1 {
-      font-size: 18px;
-      line-height: 20px;
-    }
-    h2 {
-      font-size: 12px;
-      line-height: 14px;
-    }
   }
-  @media only screen and (max-width: 787px) {
-    h2 {
-      font-size: 11px;
-      line-height: 13px;
-    }
+  @media only screen and (max-width: 680px) {
+    grid-template-columns: 1fr 1fr 1.4fr 1.4fr;
   }
   @media only screen and (max-width: 600px) {
     display: none;
   }
 `;
-const LargePostLarge = styled(PostLarge)`
-  grid-column-start: s1;
-  grid-column-end: s1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
-  grid-template-areas: "txt img";
+const BCorpPostLargeWrapper = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 3;
 
-  h1 {
-    font-size: 26px;
+  .article {
+    column-gap: 82px;
+    border-bottom: none;
+    padding: 18px 0;
   }
-  h2 {
+
+  .title {
+    font-size: 26px;
+    line-height: 31px;
+  }
+  .subtitle {
     font-size: 16px;
     line-height: 20px;
+    -webkit-line-clamp: 3;
   }
-  .text {
-    grid-column-start: txt;
-    grid-column-end: txt;
-    display: flex;
-    justify-content: space-between;
+  .date {
+    margin-bottom: 0;
   }
-  .image {
-    grid-column-start: img;
-    grid-column-end: img;
-  }
-  .gatsby-image-wrapper {
-    aspect-ratio: 16/9;
-  }
-  margin-bottom: 0;
-  border-bottom: none;
   @media only screen and (max-width: 1370px) {
-    max-width: none;
-    display: flex;
-    flex-direction: column;
-    article {
-      order: 1;
+    .article {
+      display: flex;
+      flex-direction: column;
     }
-    h1 {
+    .image {
+      aspect-ratio: 16/9;
+    }
+  }
+  @media only screen and (max-width: 860px) {
+    .title {
       font-size: 18px;
-      line-height: 20px;
-      margin-bottom: 10px;
+      line-height: 22px;
     }
-    h2 {
+    .subtitle {
       font-size: 12px;
       line-height: 14px;
     }
   }
 `;
-const MiniPostWrapper = styled.div`
-  grid-column-start: s2;
-  grid-column-end: s3;
-  display: flex;
-  flex-direction: column;
+const BCorpPostMediumWrapper = styled.div`
+  grid-column-start: 3;
+  grid-column-end: 4;
+
+  .article {
+    grid-template-columns: 2.4fr 1.1fr;
+    column-gap: 24px;
+    padding: 10px 0;
+    border-bottom: none;
+  }
+  .title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .subtitle {
+    display: none;
+  }
+  .image {
+    aspect-ratio: 1/1;
+    max-width: 110px;
+  }
 
   @media only screen and (max-width: 1370px) {
+    grid-column-end: 5;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 30px;
-    max-width: none;
-    flex-direction: row;
-    width: auto;
-    a:nth-of-type(1) {
-      grid-area: 0/1;
+    .article {
+      display: flex;
+      flex-direction: column;
     }
-    a:nth-of-type(2) {
-      grid-area: 1/2;
+    .title {
+      -webkit-line-clamp: 3;
+    }
+    .subtitle {
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      font-size: 12px;
+      line-height: 14px;
+    }
+    .image {
+      aspect-ratio: 16/9;
+      max-width: unset;
+    }
+  }
+  @media only screen and (max-width: 860px) {
+    .title {
+      -webkit-line-clamp: 4;
+    }
+  }
+  @media only screen and (max-width: 820px) {
+    .title {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+  @media only screen and (max-width: 740px) {
+    .title {
+      font-size: 16px;
+      line-height: 18px;
     }
   }
 `;
@@ -540,7 +526,7 @@ const EventSection = styled(AsideSection)`
   width: auto;
   grid-column-start: sm1;
   grid-column-end: sm3;
-  margin-bottom: 0;
+  margin-bottom: 28px;
   @media only screen and (max-width: 1370px) {
     grid-column-start: sm1;
     grid-column-end: com;
@@ -556,50 +542,15 @@ const EventSectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
-  ${ArticlePostMedium} {
-    margin-top: 0;
-    h2 {
-      display: none;
-    }
-  }
   @media only screen and (max-width: 1370px) {
     grid-template-columns: repeat(4, 1fr);
     column-gap: 30px;
-    grid-template-areas: "s2 s3 s1 s1";
-    h1 {
-      font-size: 18px;
-      line-height: 20px;
-    }
-    h2 {
-      font-size: 12px;
-      line-height: 14px;
-    }
-    a:nth-of-type(3) {
-      display: none;
-    }
-    ${ArticlePostMedium} {
-      h2 {
-        display: block;
-      }
-    }
   }
-  @media only screen and (max-width: 787px) {
-    h2 {
-      font-size: 11px;
-      line-height: 13px;
-    }
+  @media only screen and (max-width: 680px) {
+    grid-template-columns: 1fr 1fr 1.4fr 1.4fr;
   }
-`;
-const EventLargePostLarge = styled(LargePostLarge)`
-  display: none;
-  @media only screen and (max-width: 1370px) {
-    display: flex;
-  }
-  @media only screen and (max-width: 787px) {
-    h2 {
-      font-size: 11px;
-      line-height: 13px;
-    }
+  @media only screen and (max-width: 600px) {
+    display: none;
   }
 `;
 const CommercialVertical = styled.aside`
@@ -742,60 +693,30 @@ const IndexPage = ({
                 ))}
               </MobileSmallPostWrapper>
               <BcorpSectionWrapper>
-                <LargePostLarge
-                  key={bcorpPosts.nodes[0].title}
-                  title={bcorpPosts.nodes[0].title}
-                  excerpt={bcorpPosts.nodes[0].subtitle.podtytul}
-                  category={
-                    bcorpPosts.nodes[0].categories.nodes[
-                      handleCategoryNode(bcorpPosts.nodes[0])
-                    ]
-                  }
-                  tags={bcorpPosts.nodes[0].tags}
-                  img={bcorpPosts.nodes[0].featuredImage}
-                  slug={bcorpPosts.nodes[0].slug}
-                />
-                <MiniPostWrapper>
-                  {bcorpPosts.nodes.slice(1, 3).map(node => (
-                    <PostSmall
-                      key={node.title}
-                      title={node.title}
-                      excerpt={ReactHtmlParser(truncate(node.excerpt, 19))}
-                      category={node.categories.nodes[handleCategoryNode(node)]}
-                      tags={node.tags}
-                      img={node.featuredImage}
-                      slug={node.slug}
-                    />
+                <BCorpPostLargeWrapper>
+                  {bcorpPosts.nodes.slice(0, 1).map(node => (
+                    <Post horizontal post={node} />
                   ))}
-                </MiniPostWrapper>
+                </BCorpPostLargeWrapper>
+                <BCorpPostMediumWrapper>
+                  {bcorpPosts.nodes.slice(1, 3).map(node => (
+                    <Post horizontal post={node} />
+                  ))}
+                </BCorpPostMediumWrapper>
               </BcorpSectionWrapper>
             </BcorpSection>
             <EventSection title="Wydarzenia" to={`/wydarzenia`}>
               <EventSectionWrapper>
-                {eventPosts.nodes.map(node => (
-                  <ArticlePostMedium
-                    key={node.title}
-                    title={node.title}
-                    excerpt={ReactHtmlParser(truncate(node.excerpt, 19))}
-                    category={node.categories.nodes[handleCategoryNode(node)]}
-                    tags={node.tags}
-                    img={node.featuredImage}
-                    slug={node.slug}
-                  />
-                ))}
-                <EventLargePostLarge
-                  key={eventPosts.nodes[2].title}
-                  title={eventPosts.nodes[2].title}
-                  excerpt={eventPosts.nodes[2].subtitle.podtytul}
-                  category={
-                    eventPosts.nodes[2].categories.nodes[
-                      handleCategoryNode(eventPosts.nodes[2])
-                    ]
-                  }
-                  tags={eventPosts.nodes[2].tags}
-                  img={eventPosts.nodes[2].featuredImage}
-                  slug={eventPosts.nodes[2].slug}
-                />
+                <BCorpPostLargeWrapper>
+                  {eventPosts.nodes.slice(0, 1).map(node => (
+                    <Post horizontal post={node} />
+                  ))}
+                </BCorpPostLargeWrapper>
+                <BCorpPostMediumWrapper>
+                  {eventPosts.nodes.slice(1, 3).map(node => (
+                    <Post horizontal post={node} />
+                  ))}
+                </BCorpPostMediumWrapper>
               </EventSectionWrapper>
             </EventSection>
             <CommercialVertical />
