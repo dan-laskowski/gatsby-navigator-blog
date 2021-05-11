@@ -68,6 +68,8 @@ const MobileSidePostWrapper = styled.div`
   }
   .title {
     -webkit-line-clamp: 4;
+    font-size: 16px;
+    line-height: 19px;
   }
   .subtitle {
     display: none;
