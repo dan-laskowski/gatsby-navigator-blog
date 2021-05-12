@@ -274,7 +274,6 @@ const ArticlePostLargeWrapper = styled.div`
       aspect-ratio: unset;
     }
   }
-
   .title {
     font-size: 48px;
     line-height: 57px;
@@ -299,7 +298,6 @@ const ArticlePostLargeWrapper = styled.div`
       line-height: 28px;
     }
   }
-
   .subtitle {
     font-size: 16px;
     line-height: 20px;
@@ -650,11 +648,7 @@ const IndexPage = ({
   },
 }) => {
   if (typeof window === "undefined") {
-    return (
-      <p style={{ display: "grid", placeItems: "center" }}>
-        Ładowanie elementów...
-      </p>
-    );
+    return <p></p>;
   }
   return (
     <>

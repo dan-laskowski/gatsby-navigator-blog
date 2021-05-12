@@ -74,7 +74,7 @@ const MobileMenu = styled.nav`
   display: none;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - 88px);
+  min-height: calc(100vh - 88px);
   background: ${({ theme }) => theme.color.black};
   position: absolute;
   z-index: 10000;
