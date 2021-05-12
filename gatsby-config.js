@@ -76,6 +76,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-preact`,
     `gatsby-plugin-gatsby-cloud`,
   ],
 };
