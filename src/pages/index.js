@@ -701,16 +701,6 @@ const IndexPage = ({
               </Splide>
             </CarouselWrapper>
             <ArticleSection title="artykuły" to={`/artykuly`}>
-              {/* <MobilePostsWrapper>
-                {articlePosts.nodes.slice(0, 1).map(node => (
-                  <Post post={node} />
-                ))}
-                <SectionMobileSidePostWrapper>
-                  {articlePosts.nodes.slice(1, 3).map(node => (
-                    <Post horizontal post={node} />
-                  ))}
-                </SectionMobileSidePostWrapper>
-              </MobilePostsWrapper> */}
               <ArticleWrapper>
                 <ArticlePostLargeWrapper>
                   {articlePosts.nodes.slice(0, 1).map(node => (
