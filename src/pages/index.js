@@ -69,38 +69,6 @@ const SectionMobileSidePostWrapper = styled(MobileSidePostWrapper)`
     line-clamp: 3;
   }
 `;
-const MobileSmallPostWrapper = styled.div`
-  display: none;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 24px;
-  grid-template-rows: repeat(2, 1fr);
-  row-gap: 24px;
-  .article {
-    border-bottom: none;
-  }
-  .title {
-    font-size: 17px;
-    line-height: 19px;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-  }
-
-  .subtitle {
-    display: -webkit-box;
-    font-size: 11px;
-    line-height: 13px;
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
-  }
-
-  .image {
-    aspect-ratio: 16/9;
-  }
-
-  @media only screen and (max-width: 600px) {
-    display: grid;
-  }
-`;
 const CarouselWrapper = styled.section`
   margin-top: 94px;
   grid-area: s;
@@ -424,7 +392,6 @@ const BcorpSectionWrapper = styled.div`
   @media only screen and (max-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 24px;
-    grid-template-rows: repeat(2, 1fr);
     row-gap: 24px;
   }
 `;
@@ -471,10 +438,7 @@ const BCorpPostLargeWrapper = styled.div`
     }
   }
   @media only screen and (max-width: 600px) {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    display: none;
   }
 `;
 const BCorpPostMediumWrapper = styled.div`
@@ -499,7 +463,8 @@ const BCorpPostMediumWrapper = styled.div`
     max-width: 110px;
   }
 
-  &:last-child > a.bcorp:last-child article {
+  &:last-child > a.bcorp:last-child,
+  &:last-child > a.bcorp:first-child {
     display: none;
   }
 
@@ -549,26 +514,9 @@ const BCorpPostMediumWrapper = styled.div`
   @media only screen and (max-width: 600px) {
     grid-column-start: 1;
     grid-column-end: 3;
-    &:last-child > a.bcorp:last-child article {
+    &:last-child > a.bcorp:last-child,
+    &:last-child > a.bcorp:first-child {
       display: block;
-    }
-    a:nth-child(1) {
-      grid-column-start: 2;
-      grid-column-end: 3;
-      grid-row-start: 1;
-      grid-row-end: 2;
-    }
-    a:nth-child(2) {
-      grid-column-start: 1;
-      grid-column-end: 2;
-      grid-row-start: 2;
-      grid-row-end: 3;
-    }
-    a:nth-child(3) {
-      grid-column-start: 2;
-      grid-column-end: 3;
-      grid-row-start: 2;
-      grid-row-end: 3;
     }
   }
 `;
@@ -728,12 +676,7 @@ const IndexPage = ({
                 ))}
               </TipsSectionWrapper>
             </TipsSection>
-            <BcorpSection title="B Corp" to={`/dobre-praktyki`}>
-              <MobileSmallPostWrapper>
-                {bcorpPosts.nodes.map(node => (
-                  <Post post={node} />
-                ))}
-              </MobileSmallPostWrapper>
+            <BcorpSection title="B Corp" to={`/teksty-o-b-corpach`}>
               <BcorpSectionWrapper>
                 <BCorpPostLargeWrapper>
                   {bcorpPosts.nodes.slice(0, 1).map(node => (
