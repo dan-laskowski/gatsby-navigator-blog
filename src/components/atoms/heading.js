@@ -4,6 +4,8 @@ import styled from "styled-components";
 const StyledHeading = styled.h1`
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
   font-family: ${({ theme }) => theme.font.heading.family};
   font-weight: ${({ theme }) => theme.font.heading.weight};
   font-style: ${({ theme }) => theme.font.heading.style};
@@ -26,6 +28,10 @@ const StyledSubheading = styled.h2`
   color: ${({ theme }) => theme.color.gray};
   line-height: 20px;
   margin-bottom: 22px;
+
+  p a {
+    display: none;
+  }
 `;
 
 export const Heading = ({ text, ...props }) => {
