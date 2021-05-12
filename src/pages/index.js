@@ -192,7 +192,6 @@ const StyledAside = styled(Aside)`
 `;
 const ArticleSection = styled(AsideSection)`
   margin-top: 60px;
-
   grid-column-start: sm1;
   grid-column-end: sm3;
   width: auto;
@@ -204,10 +203,6 @@ const ArticleSection = styled(AsideSection)`
   }
 
   @media only screen and (max-width: 1420px) {
-    h1 {
-      font-size: 18px;
-      line-height: 20px;
-    }
     h2 {
       font-size: 12px;
       line-height: 14px;

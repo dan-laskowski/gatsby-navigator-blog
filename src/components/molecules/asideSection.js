@@ -13,7 +13,7 @@ const Wrapper = styled.section`
     border-top: 3px solid ${({ theme }) => theme.color.black};
     margin-bottom: 30px;
   }
-  @media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 600px) {
     margin-left: 24px;
     margin-right: 24px;
     margin-bottom: 0;

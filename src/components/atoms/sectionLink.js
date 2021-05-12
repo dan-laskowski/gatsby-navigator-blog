@@ -8,7 +8,6 @@ const StyledLink = styled(Link)`
   font-style: ${({ theme }) => theme.font.tag.weight};
   font-size: 14px;
   color: ${({ theme }) => theme.color.orange};
-  margin-top: 10px;
   @media only screen and (max-width: 1370px) {
     font-size: 12px;
     line-height: 14px;
