@@ -42,7 +42,7 @@ const PostWrapper = styled.article`
       horizontal ? `1fr 100px` : `unset`};
   }
   .category {
-    margin-top: ${({ horizontal }) => (horizontal ? `0` : `12px`)};
+    margin-top: ${({ horizontal }) => (horizontal ? `10px` : `12px`)};
     font-size: 12px;
     line-height: 14px;
   }
@@ -75,6 +75,7 @@ const PostTitle = styled(Heading)`
   font-size: ${({ horizontal }) => (horizontal ? `28px` : `26px`)};
   line-height: ${({ horizontal }) => (horizontal ? `33px` : `31px`)};
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
   margin-top: ${({ horizontal }) => (horizontal ? `0` : `unset`)};
 
@@ -82,18 +83,19 @@ const PostTitle = styled(Heading)`
     font-size: ${({ horizontal }) => (horizontal ? `24px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `27px` : `unset`)};
   }
-
   @media only screen and (max-width: 1100px) {
     font-size: ${({ horizontal }) => (horizontal ? `18px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
   }
   @media only screen and (max-width: 930px) {
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 2 : 4)};
+    line-clamp: ${({ horizontal }) => (horizontal ? 2 : 4)};
   }
   @media only screen and (max-width: 600px) {
     font-size: ${({ horizontal }) => (horizontal ? `16px` : `20px`)};
     line-height: ${({ horizontal }) => (horizontal ? `19px` : `24px`)};
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     margin-bottom: 10px;
   }
 `;
@@ -101,6 +103,7 @@ const PostSubtitle = styled(Subheading)`
   font-size: ${({ horizontal }) => (horizontal ? `20px` : `16px`)};
   line-height: ${({ horizontal }) => (horizontal ? `34px` : `20px`)};
   -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
+  line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
   overflow: hidden;
 
   @media only screen and (max-width: 1380px) {
@@ -108,20 +111,24 @@ const PostSubtitle = styled(Subheading)`
     line-height: ${({ horizontal }) => (horizontal ? `24px` : `unset`)};
     margin-bottom: ${({ horizontal }) => (horizontal ? `14px` : `19px`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
+    line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
   }
   @media only screen and (max-width: 1200px) {
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
+    line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
   }
   @media only screen and (max-width: 1100px) {
     font-size: ${({ horizontal }) => (horizontal ? `12px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 5)};
+    line-clamp: ${({ horizontal }) => (horizontal ? 5 : 5)};
   }
   @media only screen and (max-width: 600px) {
     display: ${({ horizontal }) => (horizontal ? `none` : `-webkit-box`)};
     font-size: ${({ horizontal }) => (horizontal ? `unset` : `16px`)};
     line-height: ${({ horizontal }) => (horizontal ? `unset` : `20px`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? `unset` : 2)};
+    line-clamp: ${({ horizontal }) => (horizontal ? `unset` : 2)};
   }
 `;
 const StyledDate = styled(Date)`
@@ -152,8 +159,13 @@ const Post = ({ post, ...props }) => {
     }
   `);
   return (
-    <Link to={`/${post.slug}`} aria-label={post.title} {...props}>
-      <PostWrapper className="article" horizontal={props.horizontal}>
+    <Link
+      className={props.bcorp}
+      to={`/${post.slug}`}
+      aria-label={post.title}
+      {...props}
+    >
+      <PostWrapper horizontal={props.horizontal} className="article">
         <Thumbnail
           className="image"
           horizontal={props.horizontal}

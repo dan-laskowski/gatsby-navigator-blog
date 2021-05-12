@@ -115,6 +115,7 @@ const AsidePost = styled(Post)`
     font-size: 20px;
     line-height: 24px;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 
   .image {

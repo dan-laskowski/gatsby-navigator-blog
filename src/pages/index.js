@@ -66,6 +66,7 @@ const SectionMobileSidePostWrapper = styled(MobileSidePostWrapper)`
   }
   .title {
     -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 `;
 const MobileSmallPostWrapper = styled.div`
@@ -81,6 +82,7 @@ const MobileSmallPostWrapper = styled.div`
     font-size: 17px;
     line-height: 19px;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
   }
 
   .subtitle {
@@ -88,6 +90,7 @@ const MobileSmallPostWrapper = styled.div`
     font-size: 11px;
     line-height: 13px;
     -webkit-line-clamp: 5;
+    line-clamp: 5;
   }
 
   .image {
@@ -124,6 +127,7 @@ const CarouselWrapper = styled.section`
     font-size: 65px;
     line-height: 77px;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     @media only screen and (max-width: 1570px) {
       font-size: 54px;
       line-height: 62px;
@@ -140,12 +144,14 @@ const CarouselWrapper = styled.section`
       font-size: 26px;
       line-height: 31px;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
     }
   }
   .subtitle {
     font-size: 28px;
     line-height: 38px;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     @media only screen and (max-width: 1570px) {
       font-size: 21px;
       line-height: 35px;
@@ -227,11 +233,13 @@ const ArticleSection = styled(AsideSection)`
       font-size: 20px;
       line-height: 24px;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
     }
     h2 {
       font-size: 16px;
       line-height: 20px;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
     }
     article:first-of-type {
       padding: 18px 0;
@@ -271,6 +279,7 @@ const ArticlePostLargeWrapper = styled.div`
     font-size: 48px;
     line-height: 57px;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     @media only screen and (max-width: 1520px) {
       font-size: 41px;
       line-height: 46px;
@@ -283,6 +292,7 @@ const ArticlePostLargeWrapper = styled.div`
       font-size: 28px;
       line-height: 34px;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
     }
     @media only screen and (max-width: 720px) {
       font-size: 22px;
@@ -294,6 +304,7 @@ const ArticlePostLargeWrapper = styled.div`
     font-size: 16px;
     line-height: 20px;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     @media only screen and (max-width: 1330px) {
       font-size: 14px;
     }
@@ -301,6 +312,7 @@ const ArticlePostLargeWrapper = styled.div`
       font-size: 12px;
       line-height: 18px;
       -webkit-line-clamp: 5;
+      line-clamp: 5;
     }
   }
   .date {
@@ -356,11 +368,13 @@ const TipsSection = styled(AsideSection)`
       font-size: 20px;
       line-height: 24px;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
     }
     h2 {
       font-size: 16px;
       line-height: 20px;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
     }
     article:first-of-type {
       padding: 18px 0;
@@ -410,13 +424,16 @@ const BcorpSectionWrapper = styled.div`
     grid-template-columns: 1fr 1fr 1.4fr 1.4fr;
   }
   @media only screen and (max-width: 600px) {
-    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 24px;
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 24px;
   }
 `;
 const BCorpPostLargeWrapper = styled.div`
   grid-column-start: 1;
   grid-column-end: 3;
-
+  border-bottom: 0;
   .article {
     column-gap: 82px;
     border-bottom: none;
@@ -431,6 +448,7 @@ const BCorpPostLargeWrapper = styled.div`
     font-size: 16px;
     line-height: 20px;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
   .date {
     margin-bottom: 0;
@@ -453,6 +471,12 @@ const BCorpPostLargeWrapper = styled.div`
       font-size: 12px;
       line-height: 14px;
     }
+  }
+  @media only screen and (max-width: 600px) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
   }
 `;
 const BCorpPostMediumWrapper = styled.div`
@@ -477,6 +501,10 @@ const BCorpPostMediumWrapper = styled.div`
     max-width: 110px;
   }
 
+  &:last-child > a.bcorp:last-child article {
+    display: none;
+  }
+
   @media only screen and (max-width: 1370px) {
     grid-column-end: 5;
     display: grid;
@@ -488,10 +516,12 @@ const BCorpPostMediumWrapper = styled.div`
     }
     .title {
       -webkit-line-clamp: 3;
+      line-clamp: 3;
     }
     .subtitle {
       display: -webkit-box;
       -webkit-line-clamp: 5;
+      line-clamp: 5;
       font-size: 12px;
       line-height: 14px;
     }
@@ -503,6 +533,7 @@ const BCorpPostMediumWrapper = styled.div`
   @media only screen and (max-width: 860px) {
     .title {
       -webkit-line-clamp: 4;
+      line-clamp: 4;
     }
   }
   @media only screen and (max-width: 820px) {
@@ -515,6 +546,31 @@ const BCorpPostMediumWrapper = styled.div`
     .title {
       font-size: 16px;
       line-height: 18px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    &:last-child > a.bcorp:last-child article {
+      display: block;
+    }
+    a:nth-child(1) {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+    }
+    a:nth-child(2) {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 3;
+    }
+    a:nth-child(3) {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
     }
   }
 `;
@@ -687,8 +743,8 @@ const IndexPage = ({
                   ))}
                 </BCorpPostLargeWrapper>
                 <BCorpPostMediumWrapper>
-                  {bcorpPosts.nodes.slice(1, 3).map(node => (
-                    <Post horizontal post={node} />
+                  {bcorpPosts.nodes.map(node => (
+                    <Post className="bcorp" horizontal post={node} />
                   ))}
                 </BCorpPostMediumWrapper>
               </BcorpSectionWrapper>

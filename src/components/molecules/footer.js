@@ -27,7 +27,7 @@ const StyledFooter = styled.div`
     margin-left: 30px;
     margin-right: 30px;
   }
-  @media only screen and (max-width: 532px) {
+  @media only screen and (max-width: 600px) {
     grid-template-columns: none;
     place-items: center;
     column-gap: none;
@@ -40,7 +40,7 @@ const StyledIcon = styled(Icon)`
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 3;
-  @media only screen and (max-width: 532px) {
+  @media only screen and (max-width: 600px) {
     grid-column-start: 1;
     grid-column-end: 1;
   }
@@ -90,7 +90,7 @@ const SocialSection = styled.section`
     grid-row-start: 4;
     grid-row-end: 5;
   }
-  @media only screen and (max-width: 532px) {
+  @media only screen and (max-width: 600px) {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 4;
@@ -107,7 +107,7 @@ const Copyright = styled(SectionLink)`
   color: ${({ theme }) => theme.color.gray};
   font-size: 12px;
   margin-bottom: 40px;
-  @media only screen and (max-width: 532px) {
+  @media only screen and (max-width: 600px) {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 5;

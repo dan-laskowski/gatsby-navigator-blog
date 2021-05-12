@@ -17,6 +17,7 @@ const StyledHeading = styled.h1`
 const StyledSubheading = styled.h2`
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
   overflow: hidden;
   font-family: ${({ theme }) => theme.font.subheading.family};
   font-weight: ${({ theme }) => theme.font.subheading.weight};
