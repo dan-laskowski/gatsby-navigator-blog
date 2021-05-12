@@ -650,7 +650,11 @@ const IndexPage = ({
   },
 }) => {
   if (typeof window === "undefined") {
-    return <p>Ładowanie elementów...</p>;
+    return (
+      <p style={{ display: "grid", placeItems: "center" }}>
+        Ładowanie elementów...
+      </p>
+    );
   }
   return (
     <>
