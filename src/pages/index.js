@@ -211,14 +211,15 @@ const ArticleSection = styled(AsideSection)`
     }
     article:first-of-type {
       padding: 18px 0;
+      margin-bottom: 0;
     }
-    margin-top: 46px;
+    margin-top: 6px;
   }
 `;
 const ArticleWrapper = styled.div`
-  @media only screen and (max-width: 600px) {
+  /* @media only screen and (max-width: 600px) {
     display: none;
-  }
+  } */
 `;
 const ArticlePostLargeWrapper = styled.div`
   .article {
@@ -231,6 +232,10 @@ const ArticlePostLargeWrapper = styled.div`
       grid-template-columns: 1.7fr 2fr;
       column-gap: 20px;
     }
+    @media only screen and (max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
   .text {
     grid-column-start: 1;
@@ -240,6 +245,9 @@ const ArticlePostLargeWrapper = styled.div`
     grid-column-end: 4;
     @media only screen and (max-width: 720px) {
       aspect-ratio: unset;
+    }
+    @media only screen and (max-width: 600px) {
+      aspect-ratio: 16/9;
     }
   }
   .title {
@@ -265,6 +273,11 @@ const ArticlePostLargeWrapper = styled.div`
       font-size: 22px;
       line-height: 28px;
     }
+    @media only screen and (max-width: 600px) {
+      font-size: 20px;
+      line-height: 24px;
+      -webkit-line-clamp: 3;
+    }
   }
   .subtitle {
     font-size: 16px;
@@ -278,7 +291,13 @@ const ArticlePostLargeWrapper = styled.div`
       font-size: 12px;
       line-height: 18px;
       -webkit-line-clamp: 5;
-      line-clamp: 5;
+    }
+    @media only screen and (max-width: 600px) {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 19px;
     }
   }
   .date {
@@ -301,6 +320,52 @@ const ArticlePostMediumWrapper = styled.div`
     article h2 {
       display: -webkit-box;
       margin-bottom: 10px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    display: block;
+
+    a:first-child article {
+      border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
+    }
+    a:last-child article {
+      display: none;
+    }
+    .article {
+      border-bottom: none;
+      display: grid;
+      grid-template-columns: 2fr 1.02fr;
+      column-gap: 46px;
+      margin-bottom: 0;
+      @media only screen and (max-width: 400px) {
+        grid-template-columns: 1fr 100px;
+        column-gap: 20px;
+      }
+    }
+    .text {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .title {
+      font-size: 16px;
+      line-height: 19px;
+      -webkit-line-clamp: 3;
+    }
+
+    .subtitle {
+      display: none;
+    }
+    .image {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      aspect-ratio: 1/1;
     }
   }
 `;
@@ -345,7 +410,7 @@ const TipsSection = styled(AsideSection)`
     article:first-of-type {
       padding: 18px 0;
     }
-    margin-top: 46px;
+    margin-top: 6px;
   }
 `;
 const TipsSectionWrapper = styled.div`
@@ -636,7 +701,7 @@ const IndexPage = ({
               </Splide>
             </CarouselWrapper>
             <ArticleSection title="artykuły" to={`/artykuly`}>
-              <MobilePostsWrapper>
+              {/* <MobilePostsWrapper>
                 {articlePosts.nodes.slice(0, 1).map(node => (
                   <Post post={node} />
                 ))}
@@ -645,7 +710,7 @@ const IndexPage = ({
                     <Post horizontal post={node} />
                   ))}
                 </SectionMobileSidePostWrapper>
-              </MobilePostsWrapper>
+              </MobilePostsWrapper> */}
               <ArticleWrapper>
                 <ArticlePostLargeWrapper>
                   {articlePosts.nodes.slice(0, 1).map(node => (
