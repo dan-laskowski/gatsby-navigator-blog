@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import ReactHtmlParser from "react-html-parser";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 import { graphql } from "gatsby";
@@ -36,6 +35,10 @@ const PageWrapper = styled.div`
     margin-right: 30px;
     column-gap: 30px;
   }
+  @media only screen and (max-width: 600px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 const MobilePostsWrapper = styled.section`
   grid-column-start: s;
@@ -48,23 +51,64 @@ const MobilePostsWrapper = styled.section`
 `;
 const MobileMainPostWrapper = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
-  padding-bottom: 22px;
   @media only screen and (max-width: 600px) {
+    .article {
+      padding-bottom: 24px;
+    }
+    .text {
+      margin-left: 24px;
+      margin-right: 24px;
+    }
+    .category {
+      font-size: 12px;
+      line-height: 14px;
+    }
     .title {
       -webkit-line-clamp: 2;
+      font-size: 26px;
+      line-height: 31px;
     }
     .subtitle {
+      font-size: 16px;
+      line-height: 20px;
       display: -webkit-box;
       -webkit-line-clamp: 4;
     }
     .image {
       aspect-ratio: 16/9;
+      width: 100%;
+    }
+    .date {
+      font-size: 12px;
+      line-height: 14px;
     }
   }
 `;
+const SectionMobileMainPostWrapper = styled(MobileMainPostWrapper)`
+  .text {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .title {
+    font-size: 20px;
+    line-height: 24px;
+    -webkit-line-clamp: 3;
+  }
+  .subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    -webkit-line-clamp: 2;
+  }
+`;
 const MobileSidePostWrapper = styled.div`
-  a article {
-    padding: 18px 0;
+  .article {
+    padding: 22px 0;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  .category {
+    margin-top: 0;
   }
   .title {
     -webkit-line-clamp: 4;
@@ -73,6 +117,15 @@ const MobileSidePostWrapper = styled.div`
   }
   .subtitle {
     display: none;
+  }
+`;
+const SectionMobileSidePostWrapper = styled(MobileSidePostWrapper)`
+  .article {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .title {
+    -webkit-line-clamp: 3;
   }
 `;
 const MobileSmallPostWrapper = styled.div`
@@ -88,6 +141,7 @@ const MobileSmallPostWrapper = styled.div`
   }
 
   .subtitle {
+    display: -webkit-box;
     font-size: 11px;
     line-height: 13px;
     -webkit-line-clamp: 5;
@@ -229,6 +283,8 @@ const ArticleSection = styled(AsideSection)`
     }
   }
   @media only screen and (max-width: 600px) {
+    margin-left: 24px;
+    margin-right: 24px;
     h1 {
       font-size: 20px;
       line-height: 24px;
@@ -599,8 +655,6 @@ const IndexPage = ({
     interviewPosts,
   },
 }) => {
-  const handleCategoryNode = post =>
-    !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
   if (typeof window === "undefined") {
     return <p></p>;
   }
@@ -645,16 +699,16 @@ const IndexPage = ({
             </CarouselWrapper>
             <ArticleSection title="artykuły" to={`/artykuly`}>
               <MobilePostsWrapper>
-                <MobileMainPostWrapper>
+                <SectionMobileMainPostWrapper>
                   {articlePosts.nodes.slice(0, 1).map(node => (
                     <Post post={node} />
                   ))}
-                </MobileMainPostWrapper>
-                <MobileSidePostWrapper>
+                </SectionMobileMainPostWrapper>
+                <SectionMobileSidePostWrapper>
                   {articlePosts.nodes.slice(1, 3).map(node => (
                     <Post horizontal post={node} />
                   ))}
-                </MobileSidePostWrapper>
+                </SectionMobileSidePostWrapper>
               </MobilePostsWrapper>
               <ArticleWrapper>
                 <ArticlePostLargeWrapper>
@@ -671,16 +725,16 @@ const IndexPage = ({
             </ArticleSection>
             <TipsSection title="Dobre praktyki" to={`/dobre-praktyki`}>
               <MobilePostsWrapper>
-                <MobileMainPostWrapper>
+                <SectionMobileMainPostWrapper>
                   {tipsPosts.nodes.slice(0, 1).map(node => (
                     <Post post={node} />
                   ))}
-                </MobileMainPostWrapper>
-                <MobileSidePostWrapper>
+                </SectionMobileMainPostWrapper>
+                <SectionMobileSidePostWrapper>
                   {tipsPosts.nodes.slice(1, 3).map(node => (
                     <Post horizontal post={node} />
                   ))}
-                </MobileSidePostWrapper>
+                </SectionMobileSidePostWrapper>
               </MobilePostsWrapper>
               <TipsSectionWrapper>
                 {tipsPosts.nodes.map(node => (

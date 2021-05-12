@@ -58,7 +58,7 @@ const LinksSection = styled.section`
     grid-column-start: 2;
     grid-column-end: 3;
   }
-  @media only screen and (max-width: 532px) {
+  @media only screen and (max-width: 600px) {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 3;
