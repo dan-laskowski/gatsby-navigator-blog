@@ -28,7 +28,10 @@ const PostWrapper = styled.article`
       horizontal ? `1.5fr 1.7fr` : `unset`};
     column-gap: ${({ horizontal }) => (horizontal ? `30px` : `unset`)};
   }
-  @media only screen and (max-width: 574px) {
+  @media only screen and (max-width: 600px) {
+    padding-top: ${({ horizontal }) => (horizontal ? `16px` : `10px`)};
+    padding-bottom: ${({ horizontal }) => (horizontal ? `16px` : `22px`)};
+    border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
     column-gap: ${({ horizontal }) => (horizontal ? `46px` : `unset`)};
     grid-template-columns: ${({ horizontal }) =>
       horizontal ? `2fr 1.02fr` : `unset`};
@@ -37,6 +40,11 @@ const PostWrapper = styled.article`
     column-gap: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
     grid-template-columns: ${({ horizontal }) =>
       horizontal ? `1fr 100px` : `unset`};
+  }
+  .category {
+    margin-top: ${({ horizontal }) => (horizontal ? `0` : `12px`)};
+    font-size: 12px;
+    line-height: 14px;
   }
 `;
 const Text = styled.section`
@@ -56,12 +64,11 @@ const Thumbnail = styled(GatsbyImage)`
   @media only screen and (max-width: 930px) {
     aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `unset`)};
   }
-
   @media only screen and (max-width: 720px) {
     aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `unset`)};
   }
-  @media only screen and (max-width: 574px) {
-    aspect-ratio: ${({ horizontal }) => (horizontal ? `1/1` : `unset`)};
+  @media only screen and (max-width: 600px) {
+    aspect-ratio: ${({ horizontal }) => (horizontal ? `1/1` : `16/9`)};
   }
 `;
 const PostTitle = styled(Heading)`
@@ -80,16 +87,14 @@ const PostTitle = styled(Heading)`
     font-size: ${({ horizontal }) => (horizontal ? `18px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
   }
-
   @media only screen and (max-width: 930px) {
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 2 : 4)};
   }
-
   @media only screen and (max-width: 600px) {
-    font-size: ${({ horizontal }) => (horizontal ? `16px` : `26px`)};
-    line-height: ${({ horizontal }) => (horizontal ? `19px` : `31px`)};
-    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 3 : 3)};
-    margin-bottom: ${({ horizontal }) => (horizontal ? `19px` : `10px`)};
+    font-size: ${({ horizontal }) => (horizontal ? `16px` : `20px`)};
+    line-height: ${({ horizontal }) => (horizontal ? `19px` : `24px`)};
+    -webkit-line-clamp: 3;
+    margin-bottom: 10px;
   }
 `;
 const PostSubtitle = styled(Subheading)`
@@ -104,25 +109,27 @@ const PostSubtitle = styled(Subheading)`
     margin-bottom: ${({ horizontal }) => (horizontal ? `14px` : `19px`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
   }
-
   @media only screen and (max-width: 1200px) {
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
   }
-
   @media only screen and (max-width: 1100px) {
     font-size: ${({ horizontal }) => (horizontal ? `12px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 5)};
   }
-
-  @media only screen and (max-width: 574px) {
-    display: none;
+  @media only screen and (max-width: 600px) {
+    display: ${({ horizontal }) => (horizontal ? `none` : `-webkit-box`)};
+    font-size: ${({ horizontal }) => (horizontal ? `unset` : `16px`)};
+    line-height: ${({ horizontal }) => (horizontal ? `unset` : `20px`)};
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? `unset` : 2)};
   }
 `;
 const StyledDate = styled(Date)`
   margin-bottom: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
 
   @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    line-height: 14px;
     margin-bottom: ${({ horizontal }) => (horizontal ? `0` : `unset`)};
   }
 `;

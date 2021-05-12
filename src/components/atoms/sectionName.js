@@ -12,6 +12,10 @@ const StyledSectionName = styled.h1`
     font-size: 10px;
     line-height: 12px;
   }
+
+  @media only screen and (max-width: 600px) {
+    margin: 10px 0 10px 0;
+  }
 `;
 
 const SectionName = ({ children }) => {

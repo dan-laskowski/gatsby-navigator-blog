@@ -13,6 +13,11 @@ const StyledLink = styled(Link)`
     font-size: 12px;
     line-height: 14px;
   }
+  @media only screen and (max-width: 600px) {
+    font-size: 15px;
+    line-height: 15px;
+    margin: 0;
+  }
 `;
 
 const SectionLink = ({ to, children, ...props }) => {

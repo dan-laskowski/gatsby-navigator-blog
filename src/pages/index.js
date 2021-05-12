@@ -48,75 +48,15 @@ const MobilePostsWrapper = styled.section`
   @media only screen and (max-width: 600px) {
     display: block;
   }
-`;
-const MobileMainPostWrapper = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
-  @media only screen and (max-width: 600px) {
-    .article {
-      padding-bottom: 24px;
-    }
-    .text {
-      margin-left: 24px;
-      margin-right: 24px;
-    }
-    .category {
-      font-size: 12px;
-      line-height: 14px;
-    }
-    .title {
-      -webkit-line-clamp: 2;
-      font-size: 26px;
-      line-height: 31px;
-    }
-    .subtitle {
-      font-size: 16px;
-      line-height: 20px;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-    }
-    .image {
-      aspect-ratio: 16/9;
-      width: 100%;
-    }
-    .date {
-      font-size: 12px;
-      line-height: 14px;
-    }
-  }
-`;
-const SectionMobileMainPostWrapper = styled(MobileMainPostWrapper)`
-  .text {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .title {
-    font-size: 20px;
-    line-height: 24px;
-    -webkit-line-clamp: 3;
-  }
-  .subtitle {
-    font-size: 16px;
-    line-height: 20px;
-    -webkit-line-clamp: 2;
+  &:first-child > a:first-child article .text {
+    margin-left: 24px;
+    margin-right: 24px;
   }
 `;
 const MobileSidePostWrapper = styled.div`
   .article {
-    padding: 22px 0;
     margin-left: 24px;
     margin-right: 24px;
-  }
-
-  .category {
-    margin-top: 0;
-  }
-  .title {
-    -webkit-line-clamp: 4;
-    font-size: 16px;
-    line-height: 19px;
-  }
-  .subtitle {
-    display: none;
   }
 `;
 const SectionMobileSidePostWrapper = styled(MobileSidePostWrapper)`
@@ -134,6 +74,9 @@ const MobileSmallPostWrapper = styled.div`
   column-gap: 24px;
   grid-template-rows: repeat(2, 1fr);
   row-gap: 24px;
+  .article {
+    border-bottom: none;
+  }
   .title {
     font-size: 17px;
     line-height: 19px;
@@ -668,11 +611,9 @@ const IndexPage = ({
         <MainWrapper>
           <PageWrapper>
             <MobilePostsWrapper>
-              <MobileMainPostWrapper>
-                {carouselPosts.nodes.slice(0, 1).map(node => (
-                  <Post post={node} />
-                ))}
-              </MobileMainPostWrapper>
+              {carouselPosts.nodes.slice(0, 1).map(node => (
+                <Post post={node} />
+              ))}
               <MobileSidePostWrapper>
                 {carouselPosts.nodes.slice(1, 3).map(node => (
                   <Post horizontal post={node} />
@@ -699,11 +640,9 @@ const IndexPage = ({
             </CarouselWrapper>
             <ArticleSection title="artykuły" to={`/artykuly`}>
               <MobilePostsWrapper>
-                <SectionMobileMainPostWrapper>
-                  {articlePosts.nodes.slice(0, 1).map(node => (
-                    <Post post={node} />
-                  ))}
-                </SectionMobileMainPostWrapper>
+                {articlePosts.nodes.slice(0, 1).map(node => (
+                  <Post post={node} />
+                ))}
                 <SectionMobileSidePostWrapper>
                   {articlePosts.nodes.slice(1, 3).map(node => (
                     <Post horizontal post={node} />
@@ -725,11 +664,9 @@ const IndexPage = ({
             </ArticleSection>
             <TipsSection title="Dobre praktyki" to={`/dobre-praktyki`}>
               <MobilePostsWrapper>
-                <SectionMobileMainPostWrapper>
-                  {tipsPosts.nodes.slice(0, 1).map(node => (
-                    <Post post={node} />
-                  ))}
-                </SectionMobileMainPostWrapper>
+                {tipsPosts.nodes.slice(0, 1).map(node => (
+                  <Post post={node} />
+                ))}
                 <SectionMobileSidePostWrapper>
                   {tipsPosts.nodes.slice(1, 3).map(node => (
                     <Post horizontal post={node} />

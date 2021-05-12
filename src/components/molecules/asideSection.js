@@ -16,12 +16,14 @@ const Wrapper = styled.section`
   @media only screen and (max-width: 1370px) {
     margin-left: 24px;
     margin-right: 24px;
+    margin-bottom: 0;
   }
 `;
 const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const AsideSection = ({ title, to, children, ...props }) => {
