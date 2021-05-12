@@ -6,6 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import Category from "atoms/category";
 import { Heading, Subheading } from "atoms/heading";
 import Date from "atoms/date";
+import truncate from "utils/truncate";
 
 const PostWrapper = styled.article`
   display: ${({ horizontal }) => (horizontal ? `grid` : `flex`)};
@@ -190,7 +191,7 @@ const Post = ({ post, ...props }) => {
             {post.excerpt ? (
               <PostSubtitle
                 className="subtitle"
-                text={ReactHtmlParser(post.excerpt)}
+                text={ReactHtmlParser(truncate(post.excerpt, 30))}
                 horizontal={props.horizontal}
               />
             ) : null}
