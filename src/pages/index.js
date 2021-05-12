@@ -595,9 +595,9 @@ const IndexPage = ({
     interviewPosts,
   },
 }) => {
-  // if (typeof window === "undefined") {
-  //   return <p></p>;
-  // }
+  if (typeof window === "undefined") {
+    return <p></p>;
+  }
   return (
     <>
       <Layout>
@@ -617,7 +617,7 @@ const IndexPage = ({
                 ))}
               </MobileSidePostWrapper>
             </MobilePostsWrapper>
-            {/* <CarouselWrapper>
+            <CarouselWrapper>
               <Splide
                 options={{
                   type: "loop",
@@ -634,7 +634,7 @@ const IndexPage = ({
                   </SplideSlide>
                 ))}
               </Splide>
-            </CarouselWrapper> */}
+            </CarouselWrapper>
             <ArticleSection title="artykuły" to={`/artykuly`}>
               <MobilePostsWrapper>
                 {articlePosts.nodes.slice(0, 1).map(node => (
