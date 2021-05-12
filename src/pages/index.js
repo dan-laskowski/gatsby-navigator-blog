@@ -650,7 +650,7 @@ const IndexPage = ({
   },
 }) => {
   if (typeof window === "undefined") {
-    return <p></p>;
+    return <Heading text="Ładowanie elementów..." />;
   }
   return (
     <>
