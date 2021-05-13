@@ -695,7 +695,7 @@ const IndexPage = ({
               >
                 {carouselPosts.nodes.map(node => (
                   <SplideSlide aria-hidden={false} key={node.title}>
-                    <Post horizontal eager post={node} />
+                    <Post horizontal post={node} />
                   </SplideSlide>
                 ))}
               </Splide>
