@@ -10,11 +10,16 @@ const Wrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  @media only screen and (max-width: 1685px) {
+    margin: 40px 24px;
+  }
 `;
 const StyledHeading = styled(Heading)`
   margin: 0 5px;
   font-size: 14px;
+  line-height: 17px;
   letter-spacing: 40;
+  text-transform: none;
 `;
 
 const Pagination = ({ pageContext }) => {
