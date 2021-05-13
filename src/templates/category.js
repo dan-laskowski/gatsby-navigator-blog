@@ -98,17 +98,17 @@ const StyledAside = styled(Aside)`
   }
 `;
 const AsidePost = styled(Post)`
-  grid-template-columns: 1fr 110px;
-  border-bottom: none;
-  padding: 0;
-
-  .category {
-    margin-bottom: 8px;
-  }
-
-  article {
-    margin: 20px 0;
+  .article {
+    grid-template-columns: 1fr 110px;
     column-gap: 26px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    border: none;
+  }
+  .category {
+    margin-top: 0;
+    margin-bottom: 8px;
   }
 
   .title {
@@ -117,13 +117,18 @@ const AsidePost = styled(Post)`
     -webkit-line-clamp: 2;
     line-clamp: 2;
   }
-
   .image {
+    aspect-ratio: 1/1;
     height: 110px;
+  }
+  .date {
+    margin-bottom: 0;
   }
 
   @media only screen and (max-width: 1380px) {
-    grid-template-columns: 1fr;
+    .article {
+      grid-template-columns: 1fr;
+    }
     .image {
       display: none;
     }

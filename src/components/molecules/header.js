@@ -189,6 +189,9 @@ const ExitButton = styled.button`
   :focus {
     outline: none;
   }
+  @media only screen and (max-width: 1675px) {
+    margin-right: 24px;
+  }
 `;
 const SearchForm = styled.form`
   align-self: center;
