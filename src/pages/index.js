@@ -674,11 +674,11 @@ const IndexPage = ({
           <PageWrapper>
             <MobilePostsWrapper>
               {carouselPosts.nodes.slice(0, 1).map(node => (
-                <Post post={node} />
+                <Post eager post={node} />
               ))}
               <MobileSidePostWrapper>
                 {carouselPosts.nodes.slice(1, 3).map(node => (
-                  <Post horizontal post={node} />
+                  <Post eager horizontal post={node} />
                 ))}
               </MobileSidePostWrapper>
             </MobilePostsWrapper>
@@ -695,7 +695,7 @@ const IndexPage = ({
               >
                 {carouselPosts.nodes.map(node => (
                   <SplideSlide aria-hidden={false} key={node.title}>
-                    <Post horizontal post={node} />
+                    <Post horizontal eager post={node} />
                   </SplideSlide>
                 ))}
               </Splide>
