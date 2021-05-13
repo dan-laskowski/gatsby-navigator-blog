@@ -812,7 +812,7 @@ const IndexPage = ({
               </MobilePostsWrapper>
               <TipsSectionWrapper>
                 {tipsPosts.nodes.map(node => (
-                  <Post key={node.slug} key={node.slug} post={node} />
+                  <Post key={node.slug} post={node} />
                 ))}
               </TipsSectionWrapper>
             </TipsSection>
