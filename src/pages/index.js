@@ -463,13 +463,13 @@ const BcorpSectionWrapper = styled.div`
 const BCorpPostLargeWrapper = styled.div`
   grid-column-start: 1;
   grid-column-end: 3;
+  grid-row-start: 1;
   border-bottom: 0;
   .article {
     column-gap: 82px;
     border-bottom: none;
     padding: 18px 0;
   }
-
   .title {
     font-size: 26px;
     line-height: 31px;
@@ -480,8 +480,21 @@ const BCorpPostLargeWrapper = styled.div`
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
+  .image {
+    aspect-ratio: 8/5;
+  }
   .date {
     margin-bottom: 0;
+  }
+  @media only screen and (max-width: 1700px) {
+    .image {
+      aspect-ratio: 4/3;
+    }
+  }
+  @media only screen and (max-width: 1560px) {
+    .image {
+      aspect-ratio: 5/4;
+    }
   }
   @media only screen and (max-width: 1370px) {
     .article {
@@ -489,7 +502,7 @@ const BCorpPostLargeWrapper = styled.div`
       flex-direction: column;
     }
     .image {
-      aspect-ratio: 16/9;
+      aspect-ratio: 21/9;
     }
   }
   @media only screen and (max-width: 860px) {
@@ -502,6 +515,11 @@ const BCorpPostLargeWrapper = styled.div`
       line-height: 14px;
     }
   }
+  @media only screen and (max-width: 680px) {
+    .image {
+      aspect-ratio: 16/9;
+    }
+  }
   @media only screen and (max-width: 600px) {
     display: none;
   }
@@ -511,10 +529,13 @@ const BCorpPostMediumWrapper = styled.div`
   grid-column-end: 4;
 
   .article {
-    grid-template-columns: 2.4fr 1.1fr;
+    grid-template-columns: 2.4fr 110px;
     column-gap: 24px;
     padding: 10px 0;
     border-bottom: none;
+  }
+  .category {
+    margin-bottom: 8px;
   }
   .title {
     font-size: 20px;
@@ -525,11 +546,12 @@ const BCorpPostMediumWrapper = styled.div`
   }
   .image {
     aspect-ratio: 1/1;
-    max-width: 110px;
+    width: 110px;
+    height: auto;
   }
 
-  &:last-child > a.bcorp:last-child,
-  &:last-child > a.bcorp:first-child {
+  &:first-child > a.bcorp:last-child,
+  &:first-child > a.bcorp:first-child {
     display: none;
   }
 
@@ -555,7 +577,7 @@ const BCorpPostMediumWrapper = styled.div`
     }
     .image {
       aspect-ratio: 16/9;
-      max-width: unset;
+      width: unset;
     }
   }
   @media only screen and (max-width: 860px) {
@@ -579,8 +601,8 @@ const BCorpPostMediumWrapper = styled.div`
   @media only screen and (max-width: 600px) {
     grid-column-start: 1;
     grid-column-end: 3;
-    &:last-child > a.bcorp:last-child,
-    &:last-child > a.bcorp:first-child {
+    &:first-child > a.bcorp:last-child,
+    &:first-child > a.bcorp:first-child {
       display: block;
     }
   }
@@ -605,12 +627,70 @@ const EventSectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
+
+  @media only screen and (max-width: 1560px) {
+    .image {
+      aspect-ratio: 5/4;
+    }
+  }
   @media only screen and (max-width: 1370px) {
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 30px;
+    a:first-child {
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+    a:first-child,
+    a:nth-child(2) {
+      .title {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      .subtitle {
+        font-size: 12px;
+        line-height: 14px;
+        -webkit-line-clamp: 5;
+      }
+      .image {
+        aspect-ratio: 16/9;
+      }
+    }
+    a:last-child {
+      grid-column-start: 3;
+      grid-column-end: 5;
+    }
+    .article {
+      display: flex;
+      flex-direction: column;
+    }
+    .image {
+      aspect-ratio: 21/9;
+    }
+  }
+  @media only screen and (max-width: 860px) {
+    .title {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    .subtitle {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+  @media only screen and (max-width: 820px) {
+    a:first-child,
+    a:nth-child(2) {
+      .title {
+        font-size: 18px;
+        line-height: 20px;
+      }
+    }
   }
   @media only screen and (max-width: 680px) {
-    grid-template-columns: 1fr 1fr 1.4fr 1.4fr;
+    grid-template-columns: 1.4fr 1.4fr 2fr;
+    column-gap: 30px;
+    .image {
+      aspect-ratio: 16/9;
+    }
   }
   @media only screen and (max-width: 600px) {
     display: none;
@@ -733,30 +813,23 @@ const IndexPage = ({
             </TipsSection>
             <BcorpSection title="B Corp" to={`/teksty-o-b-corpach`}>
               <BcorpSectionWrapper>
-                <BCorpPostLargeWrapper>
-                  {bcorpPosts.nodes.slice(0, 1).map(node => (
-                    <Post horizontal post={node} />
-                  ))}
-                </BCorpPostLargeWrapper>
                 <BCorpPostMediumWrapper>
                   {bcorpPosts.nodes.map(node => (
                     <Post className="bcorp" horizontal post={node} />
                   ))}
                 </BCorpPostMediumWrapper>
+                <BCorpPostLargeWrapper>
+                  {bcorpPosts.nodes.slice(0, 1).map(node => (
+                    <Post horizontal post={node} />
+                  ))}
+                </BCorpPostLargeWrapper>
               </BcorpSectionWrapper>
             </BcorpSection>
             <EventSection title="Wydarzenia" to={`/wydarzenia`}>
               <EventSectionWrapper>
-                <BCorpPostLargeWrapper>
-                  {eventPosts.nodes.slice(0, 1).map(node => (
-                    <Post horizontal post={node} />
-                  ))}
-                </BCorpPostLargeWrapper>
-                <BCorpPostMediumWrapper>
-                  {eventPosts.nodes.slice(1, 3).map(node => (
-                    <Post horizontal post={node} />
-                  ))}
-                </BCorpPostMediumWrapper>
+                {eventPosts.nodes.map(node => (
+                  <Post post={node} />
+                ))}
               </EventSectionWrapper>
             </EventSection>
             <CommercialVertical />
