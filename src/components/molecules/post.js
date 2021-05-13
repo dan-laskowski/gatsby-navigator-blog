@@ -169,7 +169,7 @@ const Post = ({ post, ...props }) => {
       <PostWrapper horizontal={props.horizontal} className="article">
         <Thumbnail
           className="image"
-          loading={props.eager ? "eager" : "lazy"}
+          loading={props.loading || "lazy"}
           horizontal={props.horizontal}
           image={
             post.featuredImage.node?.localFile?.childImageSharp

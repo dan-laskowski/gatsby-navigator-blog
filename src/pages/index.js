@@ -754,11 +754,16 @@ const IndexPage = ({
           <PageWrapper>
             <MobilePostsWrapper>
               {carouselPosts.nodes.slice(0, 1).map(node => (
-                <Post eager post={node} />
+                <Post key={node.slug} loading="eager" post={node} />
               ))}
               <MobileSidePostWrapper>
                 {carouselPosts.nodes.slice(1, 3).map(node => (
-                  <Post eager horizontal post={node} />
+                  <Post
+                    key={node.slug}
+                    loading="eager"
+                    horizontal
+                    post={node}
+                  />
                 ))}
               </MobileSidePostWrapper>
             </MobilePostsWrapper>
@@ -775,7 +780,7 @@ const IndexPage = ({
               >
                 {carouselPosts.nodes.map(node => (
                   <SplideSlide aria-hidden={false} key={node.title}>
-                    <Post horizontal post={node} />
+                    <Post key={node.slug} horizontal post={node} />
                   </SplideSlide>
                 ))}
               </Splide>
@@ -784,12 +789,12 @@ const IndexPage = ({
               <ArticleWrapper>
                 <ArticlePostLargeWrapper>
                   {articlePosts.nodes.slice(0, 1).map(node => (
-                    <Post horizontal post={node} />
+                    <Post key={node.slug} horizontal post={node} />
                   ))}
                 </ArticlePostLargeWrapper>
                 <ArticlePostMediumWrapper>
                   {articlePosts.nodes.slice(1, 4).map(node => (
-                    <Post post={node} />
+                    <Post key={node.slug} post={node} />
                   ))}
                 </ArticlePostMediumWrapper>
               </ArticleWrapper>
@@ -807,7 +812,7 @@ const IndexPage = ({
               </MobilePostsWrapper>
               <TipsSectionWrapper>
                 {tipsPosts.nodes.map(node => (
-                  <Post key={node.slug} post={node} />
+                  <Post key={node.slug} key={node.slug} post={node} />
                 ))}
               </TipsSectionWrapper>
             </TipsSection>
