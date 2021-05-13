@@ -797,17 +797,17 @@ const IndexPage = ({
             <TipsSection title="Dobre praktyki" to={`/dobre-praktyki`}>
               <MobilePostsWrapper>
                 {tipsPosts.nodes.slice(0, 1).map(node => (
-                  <Post post={node} />
+                  <Post key={node.slug} post={node} />
                 ))}
                 <SectionMobileSidePostWrapper>
                   {tipsPosts.nodes.slice(1, 3).map(node => (
-                    <Post horizontal post={node} />
+                    <Post key={node.slug} horizontal post={node} />
                   ))}
                 </SectionMobileSidePostWrapper>
               </MobilePostsWrapper>
               <TipsSectionWrapper>
                 {tipsPosts.nodes.map(node => (
-                  <Post post={node} />
+                  <Post key={node.slug} post={node} />
                 ))}
               </TipsSectionWrapper>
             </TipsSection>
@@ -815,12 +815,17 @@ const IndexPage = ({
               <BcorpSectionWrapper>
                 <BCorpPostMediumWrapper>
                   {bcorpPosts.nodes.map(node => (
-                    <Post className="bcorp" horizontal post={node} />
+                    <Post
+                      key={node.slug}
+                      className="bcorp"
+                      horizontal
+                      post={node}
+                    />
                   ))}
                 </BCorpPostMediumWrapper>
                 <BCorpPostLargeWrapper>
                   {bcorpPosts.nodes.slice(0, 1).map(node => (
-                    <Post horizontal post={node} />
+                    <Post key={node.slug} horizontal post={node} />
                   ))}
                 </BCorpPostLargeWrapper>
               </BcorpSectionWrapper>
@@ -828,7 +833,7 @@ const IndexPage = ({
             <EventSection title="Wydarzenia" to={`/wydarzenia`}>
               <EventSectionWrapper>
                 {eventPosts.nodes.map(node => (
-                  <Post post={node} />
+                  <Post key={node.slug} post={node} />
                 ))}
               </EventSectionWrapper>
             </EventSection>
