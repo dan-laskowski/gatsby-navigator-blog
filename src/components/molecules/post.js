@@ -9,6 +9,7 @@ import Date from "atoms/date";
 import truncate from "utils/truncate";
 
 const PostWrapper = styled.article`
+  overflow: hidden;
   display: ${({ horizontal }) => (horizontal ? `grid` : `flex`)};
   flex-direction: ${({ horizontal }) => (horizontal ? `unset` : `column`)};
   grid-template-columns: ${({ horizontal }) =>
@@ -55,21 +56,40 @@ const Text = styled.section`
   justify-content: ${({ horizontal }) =>
     horizontal ? `space-between` : `unset`};
 `;
+
+const ThumbnailWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%;
+
+  @media only screen and (max-width: 720px) {
+    padding-top: ${({ horizontal }) => (horizontal ? `56.25%` : `unset`)};
+  }
+  @media only screen and (max-width: 600px) {
+    aspect-ratio: ${({ horizontal }) => (horizontal ? `50%` : `56.25%`)};
+  }
+`;
+
 const Thumbnail = styled(GatsbyImage)`
+  position: absolute;
+  top: 0;
+  left: 0;
   grid-column-start: ${({ horizontal }) => (horizontal ? 2 : `unset`)};
   grid-column-end: ${({ horizontal }) => (horizontal ? 3 : `unset`)};
   width: 100%;
+  height: 100%;
   overflow: hidden;
-  aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `16/9`)};
+  /* aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `16/9`)}; */
 
   @media only screen and (max-width: 930px) {
-    aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `unset`)};
+    /* aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `unset`)}; */
   }
   @media only screen and (max-width: 720px) {
-    aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `unset`)};
+    /* aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `unset`)}; */
   }
   @media only screen and (max-width: 600px) {
-    aspect-ratio: ${({ horizontal }) => (horizontal ? `1/1` : `16/9`)};
+    /* aspect-ratio: ${({ horizontal }) => (horizontal ? `1/1` : `16/9`)}; */
   }
 `;
 const PostTitle = styled(Heading)`
@@ -167,16 +187,18 @@ const Post = ({ post, ...props }) => {
       {...props}
     >
       <PostWrapper horizontal={props.horizontal} className="article">
-        <Thumbnail
-          className="image"
-          loading={props.loading || "lazy"}
-          horizontal={props.horizontal}
-          image={
-            post.featuredImage.node?.localFile?.childImageSharp
-              ?.gatsbyImageData || data.placeholderImage.gatsbyImageData
-          }
-          alt={post.featuredImage.node.altText || ``}
-        />
+        <ThumbnailWrapper className="image image-wrapper">
+          <Thumbnail
+            className="image"
+            loading={props.loading || "lazy"}
+            horizontal={props.horizontal}
+            image={
+              post.featuredImage.node?.localFile?.childImageSharp
+                ?.gatsbyImageData || data.placeholderImage.gatsbyImageData
+            }
+            alt={post.featuredImage.node.altText || ``}
+          />
+        </ThumbnailWrapper>
         <Text className="text" horizontal={props.horizontal}>
           <div>
             <Category

@@ -105,8 +105,9 @@ const AsidePost = styled(Post)`
     -webkit-line-clamp: 2;
     line-clamp: 2;
   }
-  .image {
-    aspect-ratio: 1/1;
+  .image-wrapper {
+    /* aspect-ratio: 1/1; */
+    padding-top: 56.25%;
     height: 110px;
   }
   .date {
