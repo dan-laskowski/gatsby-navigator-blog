@@ -484,7 +484,7 @@ const BCorpPostLargeWrapper = styled.div`
     -webkit-line-clamp: 3;
     line-clamp: 3;
   }
-  .image {
+  .image-wrapper {
     /* aspect-ratio: 8/5; */
     padding-top: 62.5%;
   }
@@ -492,13 +492,13 @@ const BCorpPostLargeWrapper = styled.div`
     margin-bottom: 0;
   }
   @media only screen and (max-width: 1700px) {
-    .image {
+    .image-wrapper {
       /* aspect-ratio: 4/3; */
       padding-top: 75%;
     }
   }
   @media only screen and (max-width: 1560px) {
-    .image {
+    .image-wrapper {
       /* aspect-ratio: 5/4; */
       padding-top: 80%;
     }
