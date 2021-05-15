@@ -110,7 +110,6 @@ const AsidePost = styled(Post)`
     margin-top: 0;
     margin-bottom: 8px;
   }
-
   .title {
     font-size: 20px;
     line-height: 24px;
@@ -124,7 +123,6 @@ const AsidePost = styled(Post)`
   .date {
     margin-bottom: 0;
   }
-
   @media only screen and (max-width: 1380px) {
     .article {
       grid-template-columns: 1fr;

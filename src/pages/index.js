@@ -442,6 +442,12 @@ const BcorpSection = styled(AsideSection)`
   @media only screen and (max-width: 787px) {
     margin-top: 12px;
   }
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
 `;
 const BcorpSectionWrapper = styled.div`
   display: grid;
@@ -628,11 +634,11 @@ const EventSectionWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
 
-  @media only screen and (max-width: 1560px) {
+  /* @media only screen and (max-width: 1560px) {
     .image {
       aspect-ratio: 5/4;
     }
-  }
+  } */
   @media only screen and (max-width: 1370px) {
     grid-template-columns: repeat(4, 1fr);
     a:first-child {

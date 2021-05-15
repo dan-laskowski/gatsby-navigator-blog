@@ -7,8 +7,10 @@ import ProgressBar from "react-scroll-progress-bar";
 import ReactHtmlParser from "react-html-parser";
 import { Heading, Subheading } from "atoms/heading";
 import Button from "atoms/button";
+import Date from "atoms/date";
+import Aside from "organisms/aside";
 import AsideSection from "molecules/asideSection";
-import PostSmall from "molecules/postSmall";
+import Post from "molecules/post";
 import TagBox from "molecules/tagBox";
 import Layout from "organisms/layout";
 import facebook from "assets/images/facebook.svg";
@@ -16,6 +18,7 @@ import twitter from "assets/images/twitter.svg";
 import linkedin from "assets/images/linkedin.svg";
 
 const ArticleWrapper = styled.article``;
+
 const HeadingSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -66,14 +69,15 @@ const FeaturedImg = styled.div`
 `;
 const ArticleMain = styled.div`
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(12, 122px);
-  column-gap: 16px;
+  max-width: 1645px;
+  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 40px;
   grid-template-rows: auto;
-  grid-template-areas: "meta meta . content content content content content content aside aside aside";
 `;
 const MetaSection = styled.div`
-  grid-area: meta;
+  grid-column-start: 1;
+  grid-column-end: 2;
 `;
 const AuthorName = styled.p`
   font-family: ${({ theme }) => theme.font.sectionName.family};
@@ -83,12 +87,7 @@ const AuthorName = styled.p`
   color: ${({ theme }) => theme.color.gray};
   margin-bottom: 20px;
 `;
-const Date = styled.p`
-  font-family: ${({ theme }) => theme.font.tag.family};
-  font-weight: ${({ theme }) => theme.font.tag.weight};
-  font-style: ${({ theme }) => theme.font.tag.weight};
-  font-size: 20px;
-  color: ${({ theme }) => theme.color.gray};
+const StyledDate = styled(Date)`
   margin-bottom: 30px;
 `;
 const Socials = styled.div`
@@ -106,19 +105,30 @@ const SocialIcon = styled.a`
   }
 `;
 const ArticleContent = styled.div`
-  grid-area: content;
+  grid-column-start: 2;
+  grid-column-end: 4;
   font-family: ${({ theme }) => theme.font.paragraph.family};
   font-weight: ${({ theme }) => theme.font.paragraph.weight};
   font-style: ${({ theme }) => theme.font.paragraph.weight};
   font-size: ${({ theme }) => theme.font.paragraph.size};
   line-height: 39px;
-  color: ${({ theme }) => theme.color.gray};
+  color: ${({ theme }) => theme.color.navy};
   overflow-wrap: break-word;
 
   div,
   p {
     margin-right: 21px;
     margin-bottom: 46px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: ${({ theme }) => theme.font.heading.weight};
+    color: ${({ theme }) => theme.color.black};
+    margin-bottom: 60px;
   }
   blockquote {
     p {
@@ -138,9 +148,27 @@ const ArticleContent = styled.div`
       width: 20%;
     }
   }
+
+  ol,
   ul {
-    list-style-type: circle;
+    list-style-position: outside;
+    margin: 0 25px;
+    margin-bottom: 56px;
   }
+  ol {
+    list-style-type: decimal;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  ol li {
+    margin-bottom: 39px;
+    padding-left: 10px;
+  }
+  ul li {
+    margin-bottom: 30px;
+  }
+
   strong {
     font-weight: ${({ theme }) => theme.font.sectionName.weight};
   }
@@ -148,7 +176,10 @@ const ArticleContent = styled.div`
   em {
     font-style: italic;
   }
-
+  a {
+    color: ${({ theme }) => theme.color.orange};
+    text-decoration: underline;
+  }
   ::after {
     display: block;
     content: "";
@@ -157,6 +188,13 @@ const ArticleContent = styled.div`
     transform: translateX(100%);
     margin-bottom: 30px;
   }
+
+  .wp-caption {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    object-fit: cover;
+  }
 `;
 const StyledButton = styled(Button)`
   width: 200px;
@@ -164,11 +202,61 @@ const StyledButton = styled(Button)`
   display: block;
   margin-bottom: 68px;
 `;
-const Aside = styled.div`
-  grid-area: aside;
+const StyledAside = styled(Aside)`
+  grid-column-start: 4;
+  grid-column-end: 5;
+`;
+const AsidePost = styled(Post)`
+  .article {
+    grid-template-columns: 1fr 110px;
+    column-gap: 26px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    border: none;
+  }
+  .category {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  .title {
+    font-size: 20px;
+    line-height: 24px;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+  .image {
+    aspect-ratio: 1/1;
+    height: 110px;
+  }
+  .date {
+    margin-bottom: 0;
+  }
+  @media only screen and (max-width: 1380px) {
+    .article {
+      grid-template-columns: 1fr;
+    }
+    .image {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 1248px) {
+    .title {
+      font-size: 18px;
+      line-height: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 920px) {
+    .title {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
 `;
 
-const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
+const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
   const handleCategoryNode = post =>
     !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
   const image = getImage(wpPost.featuredImage.node.localFile);
@@ -211,7 +299,7 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
           <ArticleMain>
             <MetaSection>
               <AuthorName>{wpPost.author.node.name}</AuthorName>
-              <Date>{wpPost.dateGmt}</Date>
+              <StyledDate>{wpPost.dateGmt}</StyledDate>
               <Socials>
                 <SocialIcon
                   href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.SITE_URL}${wpPost.slug}`}
@@ -252,25 +340,13 @@ const WpPostTemplate = ({ data: { wpPost, allWpTag, allWpPost } }) => {
                 />
               )}
             </ArticleContent>
-            <Aside>
-              <AsideSection title="tagi">
-                <div>
-                  <TagBox tags={allWpTag} />
-                </div>
-              </AsideSection>
-              <AsideSection title="ostatnie">
-                {allWpPost.nodes.map(node => (
-                  <PostSmall
-                    key={node.title}
-                    title={node.title}
-                    category={node.categories.nodes[handleCategoryNode(node)]}
-                    tags={node.tags}
-                    img={node.featuredImage}
-                    slug={node.slug}
-                  />
+            <StyledAside>
+              <AsideSection title="ostatnie" to={`/`}>
+                {asideQuery.nodes.map(node => (
+                  <AsidePost horizontal post={node} />
                 ))}
               </AsideSection>
-            </Aside>
+            </StyledAside>
           </ArticleMain>
         </ArticleWrapper>
       </Layout>
@@ -335,28 +411,13 @@ export const query = graphql`
       content
       dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
     }
-    allWpTag {
-      nodes {
-        name
-        slug
-      }
-    }
-    allWpPost(
-      filter: { id: { ne: $id }, status: { eq: "publish" } }
-      limit: 3
-    ) {
+    asideQuery: allWpPost(limit: 4) {
       nodes {
         title
         slug
-        tags {
-          nodes {
-            name
-            slug
-          }
-        }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
         featuredImage {
           node {
-            mediaItemUrl
             localFile {
               childImageSharp {
                 gatsbyImageData(
