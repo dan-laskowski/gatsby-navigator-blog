@@ -118,7 +118,7 @@ const AsidePost = styled(Post)`
   }
   .image-wrapper {
     /* aspect-ratio: 1/1; */
-    padding-top: 56.25%;
+    padding-top: 0;
     height: 110px;
   }
   .date {
@@ -128,7 +128,7 @@ const AsidePost = styled(Post)`
     .article {
       grid-template-columns: 1fr;
     }
-    .image {
+    .image-wrapper {
       display: none;
     }
   }
