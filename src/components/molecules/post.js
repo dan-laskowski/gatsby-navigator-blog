@@ -64,10 +64,10 @@ const ThumbnailWrapper = styled.div`
   padding-top: 56.25%;
 
   @media only screen and (max-width: 720px) {
-    padding-top: ${({ horizontal }) => (horizontal ? `56.25%` : `unset`)};
+    padding-top: ${({ horizontal }) => (horizontal ? `56.25%` : `56.25%`)};
   }
   @media only screen and (max-width: 600px) {
-    aspect-ratio: ${({ horizontal }) => (horizontal ? `50%` : `56.25%`)};
+    padding-top: ${({ horizontal }) => (horizontal ? `50%` : `56.25%`)};
   }
 `;
 
@@ -80,17 +80,6 @@ const Thumbnail = styled(GatsbyImage)`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  /* aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `16/9`)}; */
-
-  @media only screen and (max-width: 930px) {
-    /* aspect-ratio: ${({ horizontal }) => (horizontal ? `unset` : `unset`)}; */
-  }
-  @media only screen and (max-width: 720px) {
-    /* aspect-ratio: ${({ horizontal }) => (horizontal ? `16/9` : `unset`)}; */
-  }
-  @media only screen and (max-width: 600px) {
-    /* aspect-ratio: ${({ horizontal }) => (horizontal ? `1/1` : `16/9`)}; */
-  }
 `;
 const PostTitle = styled(Heading)`
   font-size: ${({ horizontal }) => (horizontal ? `28px` : `26px`)};

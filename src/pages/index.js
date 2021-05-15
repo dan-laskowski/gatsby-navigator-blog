@@ -147,7 +147,8 @@ const CarouselWrapper = styled.section`
   }
   .image-wrapper {
     @media only screen and (max-width: 930px) {
-      aspect-ratio: 16/9;
+      /* aspect-ratio: 16/9; */
+      padding-top: 56.25%;
     }
   }
 `;
