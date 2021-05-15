@@ -58,6 +58,9 @@ const MobileSidePostWrapper = styled.div`
     margin-left: 24px;
     margin-right: 24px;
   }
+  a:last-child article {
+    border-bottom: none;
+  }
 `;
 const SectionMobileSidePostWrapper = styled(MobileSidePostWrapper)`
   .article {
@@ -332,13 +335,16 @@ const ArticlePostMediumWrapper = styled.div`
     .article {
       border-bottom: none;
       display: grid;
-      grid-template-columns: 2fr 1.02fr;
+      grid-template-columns: 1fr 110px;
       column-gap: 46px;
       margin-bottom: 0;
       @media only screen and (max-width: 400px) {
         grid-template-columns: 1fr 100px;
         column-gap: 20px;
       }
+    }
+    .category {
+      margin-top: 0;
     }
     .text {
       grid-column-start: 1;
@@ -364,7 +370,7 @@ const ArticlePostMediumWrapper = styled.div`
       grid-row-start: 1;
       grid-row-end: 2;
       /* aspect-ratio: 1/1; */
-      padding-top: 50%;
+      padding-top: 100%;
     }
   }
 `;
@@ -639,12 +645,6 @@ const EventSectionWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
-
-  /* @media only screen and (max-width: 1560px) {
-    .image {
-      aspect-ratio: 5/4;
-    }
-  } */
   @media only screen and (max-width: 1370px) {
     grid-template-columns: repeat(4, 1fr);
     a:first-child {
@@ -702,7 +702,7 @@ const EventSectionWrapper = styled.div`
   @media only screen and (max-width: 680px) {
     grid-template-columns: 1.4fr 1.4fr 2fr;
     column-gap: 30px;
-    .image {
+    .image-wrapper {
       /* aspect-ratio: 16/9; */
       padding-top: 56.25%;
     }
