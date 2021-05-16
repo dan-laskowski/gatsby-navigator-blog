@@ -48,6 +48,7 @@ const MobilePostsWrapper = styled.section`
 
   @media only screen and (max-width: 600px) {
     display: block;
+    content-visibility: visible;
   }
   &:first-child > a:first-child article .text {
     margin-left: 24px;
@@ -83,6 +84,7 @@ const CarouselWrapper = styled.section`
     margin-top: 46px;
   }
   @media only screen and (max-width: 600px) {
+    content-visibility: hidden;
     display: none;
   }
 
@@ -628,6 +630,7 @@ const BCorpPostMediumWrapper = styled.div`
     &:first-child > a.bcorp:last-child,
     &:first-child > a.bcorp:first-child {
       display: block;
+      content-visibility: auto;
     }
   }
 `;
