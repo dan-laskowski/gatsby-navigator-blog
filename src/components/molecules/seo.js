@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import truncate from "utils/truncate";
 import { window } from "browser-monads";
 
-const Seo = ({ title, description, image }) => {
+const Seo = ({ title, description, image, children }) => {
   if (typeof image === "undefined") {
     image = `https://i.imgur.com/ElSdyuJ.png`;
   }
@@ -25,6 +25,7 @@ const Seo = ({ title, description, image }) => {
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />
       <html lang="pl" />
+      {children}
     </Helmet>
   );
 };

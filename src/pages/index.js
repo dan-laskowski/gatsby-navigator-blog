@@ -764,7 +764,12 @@ const IndexPage = ({
         <Seo
           title={`Navigator Blog`}
           description={`Magazyn o zrównoważonym rozwoju i etycznym biznesie związanym z zrównoważonym rozwojem`}
-        />
+        >
+          <meta
+            name="google-site-verification"
+            content="gfZEjdj2MLF7AyKIFr1GCPBkJpAV7zZTf7qSEKECZNQ"
+          />
+        </Seo>
         <MainWrapper>
           <PageWrapper>
             <MobilePostsWrapper>

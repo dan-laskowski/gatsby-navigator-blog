@@ -56,7 +56,6 @@ const Text = styled.section`
   justify-content: ${({ horizontal }) =>
     horizontal ? `space-between` : `unset`};
 `;
-
 const ThumbnailWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -70,7 +69,6 @@ const ThumbnailWrapper = styled.div`
     padding-top: ${({ horizontal }) => (horizontal ? `50%` : `56.25%`)};
   }
 `;
-
 const Thumbnail = styled(GatsbyImage)`
   position: absolute;
   top: 0;
