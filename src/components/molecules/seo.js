@@ -25,6 +25,15 @@ const Seo = ({ title, description, image, children }) => {
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />
       <html lang="pl" />
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-DTLQYJPM7M"
+      ></script>
+      <script>
+        window.dataLayer = window.dataLayer || []; function gtag()
+        {dataLayer.push(arguments)}
+        gtag('js', new Date()); gtag('config', 'G-DTLQYJPM7M');
+      </script>
       {children}
     </Helmet>
   );
