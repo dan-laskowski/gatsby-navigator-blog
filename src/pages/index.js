@@ -60,6 +60,13 @@ const MobileSidePostWrapper = styled.div`
   .article {
     margin-left: 24px;
     margin-right: 24px;
+    border-bottom: none;
+    display: grid;
+    grid-template-columns: 1fr 110px;
+    column-gap: 46px;
+  }
+  .image-wrapper {
+    padding-top: 100%;
   }
   a:last-child article {
     border-bottom: none;
