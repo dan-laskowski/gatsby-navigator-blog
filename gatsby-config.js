@@ -73,6 +73,12 @@ module.exports = {
         host: `https://navigator82042.gtsb.io`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `G-DTLQYJPM7M`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
