@@ -48,7 +48,8 @@ const MobilePostsWrapper = styled.section`
 
   @media only screen and (max-width: 600px) {
     display: block;
-    content-visibility: visible;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
   }
   &:first-child > a:first-child article .text {
     margin-left: 24px;
