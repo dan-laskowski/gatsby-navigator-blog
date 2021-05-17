@@ -223,6 +223,11 @@ const ArticleContent = styled.div`
       margin-right: 0;
     }
   }
+  [class~="wp-caption"]:nth-of-type(3) {
+    grid-column: 1/5;
+    .gatsby-image-wrapper {
+    }
+  }
 `;
 const StyledButton = styled(Button)`
   width: 200px;
