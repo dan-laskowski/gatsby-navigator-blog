@@ -5,7 +5,7 @@ import styled from "styled-components";
 const StyledTag = styled.button`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
-  font-style: ${({ theme }) => theme.font.tag.weight};
+  font-style: ${({ theme }) => theme.font.tag.style};
   font-size: ${({ theme }) => theme.font.tag.size};
   background: ${({ theme }) => theme.color.lightOrange};
   color: ${({ theme }) => theme.color.orange};

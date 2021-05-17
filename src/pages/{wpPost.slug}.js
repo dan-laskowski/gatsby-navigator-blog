@@ -190,10 +190,38 @@ const ArticleContent = styled.div`
   }
 
   .wp-caption {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    object-fit: cover;
+    margin: 70px auto;
+    width: 100% !important;
+    max-width: 100%;
+  }
+  .gatsby-image-wrapper {
+    display: block;
+    margin-bottom: 10px !important;
+  }
+  .wp-caption-text {
+    font-family: ${({ theme }) => theme.font.tag.family};
+    font-weight: ${({ theme }) => theme.font.tag.weight};
+    font-style: ${({ theme }) => theme.font.tag.style};
+    color: ${({ theme }) => theme.color.gray};
+    font-size: 16px;
+    line-height: 22px;
+    margin-right: 0;
+  }
+  .aligncenter {
+    .gatsby-image-wrapper {
+      margin: 0 auto;
+    }
+  }
+  .alignleft,
+  .alignnone {
+    .gatsby-image-wrapper {
+      margin-left: 0;
+    }
+  }
+  .alignright {
+    .gatsby-image-wrapper {
+      margin-right: 0;
+    }
   }
 `;
 const StyledButton = styled(Button)`
@@ -225,9 +253,10 @@ const AsidePost = styled(Post)`
     -webkit-line-clamp: 2;
     line-clamp: 2;
   }
-  .image {
-    aspect-ratio: 1/1;
-    height: 110px;
+  .image-wrapper {
+    padding-top: 100%;
+    /* aspect-ratio: 1/1;
+    height: 110px; */
   }
   .date {
     margin-bottom: 0;
