@@ -301,7 +301,7 @@ export const query = graphql`
               childImageSharp {
                 gatsbyImageData(
                   width: 260
-                  placeholder: TRACED_SVG
+                  placeholder: BLURRED
                   formats: [AVIF, WEBP]
                 )
               }
