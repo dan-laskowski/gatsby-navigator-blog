@@ -32,7 +32,7 @@ const ContentWrapper = styled.div`
   }
 `;
 const CategoryName = styled.div`
-  background: ${({ theme }) => theme.color.lightGray};
+  background: #f6f6f6;
   height: 400px;
   display: flex;
   flex-direction: column;
