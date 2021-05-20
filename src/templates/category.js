@@ -275,7 +275,7 @@ export const query = graphql`
                   gatsbyImageData(
                     width: 572
                     quality: 70
-                    placeholder: TRACED_SVG
+                    placeholder: BLURRED
                     formats: [AVIF, WEBP]
                   )
                 }
