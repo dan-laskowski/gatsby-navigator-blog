@@ -87,5 +87,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-preact`,
     `gatsby-plugin-gatsby-cloud`,
+    `gatsby-plugin-webpack-bundle-analyser-v2`,
   ],
 };
