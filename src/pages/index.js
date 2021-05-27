@@ -822,7 +822,12 @@ const IndexPage = ({
               >
                 {carouselPosts.nodes.map(node => (
                   <SplideSlide aria-hidden={false} key={node.title}>
-                    <Post key={node.slug} horizontal post={node} />
+                    <Post
+                      key={node.slug}
+                      loading="eager"
+                      horizontal
+                      post={node}
+                    />
                   </SplideSlide>
                 ))}
               </Splide>
@@ -831,12 +836,17 @@ const IndexPage = ({
               <ArticleWrapper>
                 <ArticlePostLargeWrapper>
                   {articlePosts.nodes.slice(0, 1).map(node => (
-                    <Post key={node.slug} horizontal post={node} />
+                    <Post
+                      key={node.slug}
+                      loading="eager"
+                      horizontal
+                      post={node}
+                    />
                   ))}
                 </ArticlePostLargeWrapper>
                 <ArticlePostMediumWrapper>
                   {articlePosts.nodes.slice(1, 4).map(node => (
-                    <Post key={node.slug} post={node} />
+                    <Post key={node.slug} loading="eager" post={node} />
                   ))}
                 </ArticlePostMediumWrapper>
               </ArticleWrapper>
