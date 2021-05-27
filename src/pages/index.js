@@ -966,9 +966,8 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 910
                   quality: 76
-                  placeholder: TRACED_SVG
-                  tracedSVGOptions: { color: "#f07538" }
-                  formats: [AVIF, WEBP, AUTO]
+                  placeholder: BLURRED
+                  formats: [AUTO, AVIF, WEBP]
                 )
               }
             }
@@ -1020,7 +1019,7 @@ export const query = graphql`
                   quality: 76
                   placeholder: TRACED_SVG
                   tracedSVGOptions: { color: "#f07538" }
-                  formats: [AVIF, WEBP, AUTO]
+                  formats: [AUTO, AVIF, WEBP]
                 )
               }
             }
@@ -1071,7 +1070,7 @@ export const query = graphql`
                   quality: 70
                   placeholder: TRACED_SVG
                   tracedSVGOptions: { color: "#f07538" }
-                  formats: [AVIF, WEBP, AUTO]
+                  formats: [AUTO, AVIF, WEBP]
                 )
               }
             }
@@ -1124,7 +1123,7 @@ export const query = graphql`
                   quality: 76
                   placeholder: TRACED_SVG
                   tracedSVGOptions: { color: "#f07538" }
-                  formats: [AVIF, WEBP, AUTO]
+                  formats: [AUTO, AVIF, WEBP]
                 )
               }
             }
@@ -1175,7 +1174,7 @@ export const query = graphql`
                   quality: 76
                   placeholder: TRACED_SVG
                   tracedSVGOptions: { color: "#f07538" }
-                  formats: [AVIF, WEBP, AUTO]
+                  formats: [AUTO, AVIF, WEBP]
                 )
               }
             }
@@ -1218,7 +1217,7 @@ export const query = graphql`
                 gatsbyImageData(
                   placeholder: TRACED_SVG
                   tracedSVGOptions: { color: "#f07538" }
-                  formats: [AVIF, WEBP, AUTO]
+                  formats: [AUTO, AVIF, WEBP]
                 )
               }
             }
