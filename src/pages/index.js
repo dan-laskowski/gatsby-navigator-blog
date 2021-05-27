@@ -966,7 +966,8 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 910
                   quality: 76
-                  placeholder: BLURRED
+                  placeholder: TRACED_SVG
+                  tracedSVGOptions: { color: "#f07538" }
                   formats: [AUTO, AVIF, WEBP]
                 )
               }
