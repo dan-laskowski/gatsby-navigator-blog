@@ -85,8 +85,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-preact`,
     `gatsby-plugin-gatsby-cloud`,
-    `gatsby-plugin-webpack-bundle-analyser-v2`,
   ],
 };
