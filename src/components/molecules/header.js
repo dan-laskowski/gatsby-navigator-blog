@@ -7,7 +7,7 @@ import { window } from "browser-monads";
 import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
 import { MenuItem } from "atoms/menuItem";
-// import betterLogo from "assets/images/betterLogo.svg";
+import betterLogo from "assets/images/betterHeader.svg";
 import mobileSearchLogo from "assets/images/mobileSearchLogo.svg";
 import searchLogo from "assets/images/search.svg";
 import searchPhase from "assets/images/searchPhase.svg";
@@ -30,6 +30,9 @@ const LogoSectionWrapper = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1645px;
+  .logo {
+    padding: 40px 10px;
+  }
   @media only screen and (max-width: 850px) {
     .logo {
       width: 240px;
@@ -297,14 +300,15 @@ const Header = () => {
 rozwoju i etycznym biznesie"
           /> */}
           <Link aria-label="Główna strona" to="/">
-            <StaticImage
+            <img className="logo" src={betterLogo} alt="logo" width="340" />
+            {/* <StaticImage
               className="logo"
               src="../../assets/images/OGLogo.png"
               alt="Navigator logo"
               loading="eager"
               width={430}
               height={152}
-            />
+            /> */}
           </Link>
           {/* <div>
             <StyledLogoSubheading text="Powered by" />
