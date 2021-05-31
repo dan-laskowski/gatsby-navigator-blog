@@ -36,6 +36,7 @@ const LogoSectionWrapper = styled.div`
   @media only screen and (max-width: 850px) {
     .logo {
       width: 240px;
+      padding: 20px 30px;
     }
   }
 `;
