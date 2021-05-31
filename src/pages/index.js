@@ -976,8 +976,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 910
                   quality: 76
-                  placeholder: TRACED_SVG
-                  tracedSVGOptions: { color: "#f07538" }
+                  placeholder: BLURRED
                   formats: [AUTO, AVIF, WEBP]
                 )
               }
@@ -1028,8 +1027,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 800
                   quality: 76
-                  placeholder: TRACED_SVG
-                  tracedSVGOptions: { color: "#f07538" }
+                  placeholder: BLURRED
                   formats: [AUTO, AVIF, WEBP]
                 )
               }
@@ -1079,8 +1077,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 380
                   quality: 70
-                  placeholder: TRACED_SVG
-                  tracedSVGOptions: { color: "#f07538" }
+                  placeholder: BLURRED
                   formats: [AUTO, AVIF, WEBP]
                 )
               }
@@ -1132,8 +1129,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 600
                   quality: 76
-                  placeholder: TRACED_SVG
-                  tracedSVGOptions: { color: "#f07538" }
+                  placeholder: BLURRED
                   formats: [AUTO, AVIF, WEBP]
                 )
               }
@@ -1183,8 +1179,7 @@ export const query = graphql`
                 gatsbyImageData(
                   width: 600
                   quality: 76
-                  placeholder: TRACED_SVG
-                  tracedSVGOptions: { color: "#f07538" }
+                  placeholder: BLURRED
                   formats: [AUTO, AVIF, WEBP]
                 )
               }
@@ -1226,8 +1221,7 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 gatsbyImageData(
-                  placeholder: TRACED_SVG
-                  tracedSVGOptions: { color: "#f07538" }
+                  placeholder: BLURRED
                   formats: [AUTO, AVIF, WEBP]
                 )
               }

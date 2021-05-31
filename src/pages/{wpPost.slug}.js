@@ -404,8 +404,7 @@ export const query = graphql`
               gatsbyImageData(
                 width: 960
                 quality: 70
-                placeholder: TRACED_SVG
-                tracedSVGOptions: { color: "#f07538" }
+                placeholder: BLURRED
                 formats: [AUTO, AVIF, WEBP]
               )
             }
@@ -457,8 +456,7 @@ export const query = graphql`
               childImageSharp {
                 gatsbyImageData(
                   width: 260
-                  placeholder: TRACED_SVG
-                  tracedSVGOptions: { color: "#f07538" }
+                  placeholder: BLURRED
                   formats: [AUTO, AVIF, WEBP]
                 )
               }

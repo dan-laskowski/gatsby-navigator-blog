@@ -73,15 +73,15 @@ module.exports = {
         host: `https://navigator82042.gtsb.io`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [`G-DTLQYJPM7M`],
-        pluginConfig: {
-          head: true,
-        },
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-gtag`,
+    //   options: {
+    //     trackingIds: [`G-DTLQYJPM7M`],
+    //     pluginConfig: {
+    //       head: true,
+    //     },
+    //   },
+    // },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
