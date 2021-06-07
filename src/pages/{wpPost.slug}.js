@@ -83,19 +83,23 @@ const AuthorName = styled.p`
   font-family: ${({ theme }) => theme.font.sectionName.family};
   font-weight: ${({ theme }) => theme.font.sectionName.weight};
   font-style: ${({ theme }) => theme.font.sectionName.weight};
-  font-size: ${({ theme }) => theme.font.sectionName.size};
+  font-size: 16px;
   color: ${({ theme }) => theme.color.gray};
   margin-bottom: 20px;
 `;
-const StyledDate = styled(Date)`
-  margin-bottom: 30px;
+const StyledDate = styled.p`
+  font-family: ${({ theme }) => theme.font.heading.family};
+  font-size: 12px;
+  line-height: 22px;
+  margin-bottom: 31px;
+  color: ${({ theme }) => theme.color.gray};
 `;
 const Socials = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 144px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 `;
 const SocialIcon = styled.a`
   display: block;
@@ -110,8 +114,8 @@ const ArticleContent = styled.div`
   font-family: ${({ theme }) => theme.font.paragraph.family};
   font-weight: ${({ theme }) => theme.font.paragraph.weight};
   font-style: ${({ theme }) => theme.font.paragraph.weight};
-  font-size: ${({ theme }) => theme.font.paragraph.size};
-  line-height: 39px;
+  font-size: 20px;
+  line-height: 29px;
   color: ${({ theme }) => theme.color.navy};
   overflow-wrap: break-word;
 
@@ -128,7 +132,7 @@ const ArticleContent = styled.div`
   h6 {
     font-weight: ${({ theme }) => theme.font.heading.weight};
     color: ${({ theme }) => theme.color.black};
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
   blockquote {
     p {
@@ -203,7 +207,7 @@ const ArticleContent = styled.div`
     font-weight: ${({ theme }) => theme.font.tag.weight};
     font-style: ${({ theme }) => theme.font.tag.style};
     color: ${({ theme }) => theme.color.gray};
-    font-size: 16px;
+    font-size: 12px;
     line-height: 22px;
     margin-right: 0;
   }
