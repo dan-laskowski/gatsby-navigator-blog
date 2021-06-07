@@ -18,7 +18,7 @@ const Wrapper = styled.footer`
 const StyledFooter = styled.div`
   max-width: 1645px;
   width: 100%;
-  height: 360px;
+  height: 61px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 212px;
   grid-template-rows: 60px 160px 80px 60px;

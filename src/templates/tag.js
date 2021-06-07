@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { graphql, Link } from "gatsby";
-import { Heading } from "atoms/heading";
+import { graphql } from "gatsby";
+import { Subheading } from "atoms/heading";
 import Seo from "molecules/seo";
 import Pagination from "molecules/Pagination";
 import Aside from "organisms/aside";
 import AsideSection from "molecules/asideSection";
 import Layout from "organisms/layout";
 import Post from "molecules/post";
+import TagItem from "atoms/tag";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -32,16 +33,9 @@ const ContentWrapper = styled.div`
 `;
 const CategoryName = styled.div`
   background: #f6f6f6;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  height: 86px;
+
   margin-bottom: 41px;
-  *:visited,
-  *:link {
-    color: ${({ theme }) => theme.color.black};
-  }
   @media only screen and (max-width: 1370px) {
     height: 320px;
   }
@@ -53,15 +47,21 @@ const CategoryName = styled.div`
     }
   }
 `;
-const StyledHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.font.heading.size};
-  text-transform: uppercase;
-  margin-bottom: 26px;
-  @media only screen and (max-width: 880px) {
-    margin-bottom: 12px;
-    margin-top: 0px;
-  }
+
+const CategoryContent = styled.div`
+  max-width: 1645px;
 `;
+
+const StyledSubheading = styled(Subheading)`
+  display: inline;
+`;
+
+const StyledTag = styled(TagItem)`
+  margin-left: 9px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+`;
+
 const PostsWrapper = styled.div`
   grid-column-start: 1;
   grid-column-end: 10;
@@ -147,9 +147,10 @@ const Tag = ({ data: { wpTag, allWpPost, asideQuery }, pageContext }) => {
       />
       <Wrapper>
         <CategoryName>
-          <Link key={wpTag.slug} to={`/${wpTag.slug}`}>
-            <StyledHeading text={wpTag.name} />
-          </Link>
+          <CategoryContent>
+            <StyledSubheading text={`Wybrano: `} />
+            <StyledTag name={`${wpTag.name} x`} slug={``} />
+          </CategoryContent>
         </CategoryName>
         <ContentWrapper>
           <PostsWrapper>
