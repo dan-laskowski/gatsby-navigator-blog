@@ -18,7 +18,8 @@ const ShortyLink = styled(Link)`
     font-weight: ${({ theme }) => theme.font.paragraph.weight};
     font-style: ${({ theme }) => theme.font.paragraph.style};
     color: ${({ theme }) => theme.color.black};
-    line-height: 17px;
+    font-size: 20px;
+    line-height: 30px;
   }
   :not(:first-child) {
     padding-top: 23px;

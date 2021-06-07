@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Checkbox from "atoms/checkbox";
+import { Subheading } from "atoms/heading";
+// import Checkbox from "atoms/checkbox";
 import Input from "atoms/input";
 
 const StyledButton = styled.button`
@@ -32,7 +33,11 @@ const StyledButton = styled.button`
 const NewsletterForm = () => {
   return (
     <form>
-      <Checkbox
+      <Subheading
+        text=" Zarejestruj się, aby otrzymywać nasz biuletyn co dwa tygodnie
+        bezpośrednio na swoją skrzynkę odbiorczą w każdy drugi czwartek."
+      />
+      {/* <Checkbox
         text="Wyrażam zgodę na przetwarzanie moich danych przez Navigator Blog"
         aria-required="true"
         required
@@ -41,7 +46,7 @@ const NewsletterForm = () => {
         text="Wyrażam zgodę na otrzymywanie treści na podany poniżej adres email"
         aria-required="true"
         required
-      />
+      /> */}
       <Input
         aria-label="Twój email"
         text="Twój email"

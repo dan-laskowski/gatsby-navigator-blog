@@ -105,9 +105,13 @@ const CarouselWrapper = styled.section`
     }
   }
 
+  .category {
+    color: ${({ theme }) => theme.color.orange};
+  }
+
   .title {
-    font-size: 65px;
-    line-height: 77px;
+    font-size: 60px;
+    line-height: 65px;
     -webkit-line-clamp: 3;
     line-clamp: 3;
     @media only screen and (max-width: 1570px) {
@@ -130,8 +134,8 @@ const CarouselWrapper = styled.section`
     }
   }
   .subtitle {
-    font-size: 28px;
-    line-height: 38px;
+    font-size: 20px;
+    line-height: 25px;
     -webkit-line-clamp: 3;
     line-clamp: 3;
     @media only screen and (max-width: 1570px) {
@@ -152,8 +156,8 @@ const CarouselWrapper = styled.section`
     }
   }
   .date {
-    font-size: 16px;
-    line-height: 23px;
+    font-size: 15px;
+    line-height: 19px;
     @media only screen and (max-width: 1180px) {
       font-size: 12px;
       line-height: 13px;
@@ -263,9 +267,14 @@ const ArticlePostLargeWrapper = styled.div`
       /* aspect-ratio: 16/9; */
     }
   }
+
+  .category {
+    margin-top: 0;
+  }
+
   .title {
-    font-size: 48px;
-    line-height: 57px;
+    font-size: 42px;
+    line-height: 50px;
     -webkit-line-clamp: 4;
     line-clamp: 4;
     @media only screen and (max-width: 1520px) {
@@ -324,15 +333,10 @@ const ArticlePostMediumWrapper = styled.div`
   grid-template-columns: repeat(3, 1fr);
   column-gap: 40px;
 
-  article h2 {
-    display: none;
-  }
-
   @media only screen and (max-width: 1370px) {
     column-gap: 30px;
     article h2 {
       display: -webkit-box;
-      margin-bottom: 10px;
     }
   }
   @media only screen and (max-width: 600px) {
@@ -496,14 +500,13 @@ const BCorpPostLargeWrapper = styled.div`
     padding: 18px 0;
   }
   .title {
-    font-size: 26px;
-    line-height: 31px;
+    font-size: 24px;
+    line-height: 29px;
   }
   .subtitle {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 20px;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    -webkit-line-clamp: 4;
   }
   .image-wrapper {
     /* aspect-ratio: 8/5; */
@@ -571,15 +574,15 @@ const BCorpPostMediumWrapper = styled.div`
   .title {
     font-size: 20px;
     line-height: 24px;
+    margin-bottom: 20px;
   }
   .subtitle {
     display: none;
   }
   .image-wrapper {
     /* aspect-ratio: 1/1; */
-    padding-top: 50%;
+    padding-top: 100%;
     width: 110px;
-    height: auto;
   }
 
   &:first-child > a.bcorp:last-child,

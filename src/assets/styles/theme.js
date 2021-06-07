@@ -59,7 +59,7 @@ const theme = {
       family: `'Chivo', sans-serif`,
       weight: `700`,
       style: `normal`,
-      size: `20px`,
+      size: `15px`,
     },
   },
 };

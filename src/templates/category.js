@@ -33,7 +33,7 @@ const ContentWrapper = styled.div`
 `;
 const CategoryName = styled.div`
   background: #f6f6f6;
-  height: 400px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,9 +56,10 @@ const CategoryName = styled.div`
 `;
 const SubcategoryName = styled.div`
   font-family: ${({ theme }) => theme.font.heading.family};
-  font-weight: ${({ theme }) => theme.font.heading.weight};
+  font-weight: ${({ theme }) => theme.font.paragraph.weight};
   font-style: ${({ theme }) => theme.font.heading.style};
   font-size: 20px;
+  text-decoration: underline;
   *:not(:last-child) {
     margin-right: 40px;
   }
@@ -68,7 +69,7 @@ const SubcategoryName = styled.div`
   }
 `;
 const StyledHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.font.heading.size};
+  font-size: 60px;
   margin-bottom: 22px;
   text-transform: uppercase;
   @media only screen and (max-width: 880px) {

@@ -80,8 +80,8 @@ const Thumbnail = styled(GatsbyImage)`
   overflow: hidden;
 `;
 const PostTitle = styled(Heading)`
-  font-size: ${({ horizontal }) => (horizontal ? `28px` : `26px`)};
-  line-height: ${({ horizontal }) => (horizontal ? `33px` : `31px`)};
+  font-size: ${({ horizontal }) => (horizontal ? `24px` : `24px`)};
+  line-height: ${({ horizontal }) => (horizontal ? `29px` : `29px`)};
   -webkit-line-clamp: 2;
   line-clamp: 2;
   overflow: hidden;
@@ -108,8 +108,8 @@ const PostTitle = styled(Heading)`
   }
 `;
 const PostSubtitle = styled(Subheading)`
-  font-size: ${({ horizontal }) => (horizontal ? `20px` : `16px`)};
-  line-height: ${({ horizontal }) => (horizontal ? `34px` : `20px`)};
+  font-size: ${({ horizontal }) => (horizontal ? `20px` : `15px`)};
+  line-height: ${({ horizontal }) => (horizontal ? `25px` : `20px`)};
   -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
   line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
   overflow: hidden;

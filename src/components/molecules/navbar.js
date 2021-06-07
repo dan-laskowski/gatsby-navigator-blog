@@ -7,7 +7,7 @@ const StyledNav = styled.nav`
     display: inline-block;
     list-style-type: none;
     position: relative;
-    padding: 21px 0;
+    padding: 12px 0;
     background: ${({ theme }) => theme.color.white};
     @media only screen and (max-width: 850px) {
       padding: 5px 0;

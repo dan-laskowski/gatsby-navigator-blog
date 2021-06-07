@@ -31,11 +31,11 @@ const LogoSectionWrapper = styled.div`
   width: 100%;
   max-width: 1645px;
   .logo {
-    padding: 40px 10px;
+    padding: 20px 10px;
   }
   @media only screen and (max-width: 850px) {
     .logo {
-      width: 240px;
+      width: 210px;
       padding: 20px 30px;
     }
   }
@@ -124,10 +124,10 @@ const Navigation = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid ${({ theme }) => theme.color.lightGray};
-  border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
   width: 100%;
-  height: 73px;
+  height: 57px;
   @media only screen and (max-width: 850px) {
     height: 40px;
   }
@@ -301,7 +301,7 @@ const Header = () => {
 rozwoju i etycznym biznesie"
           /> */}
           <Link aria-label="Główna strona" to="/">
-            <img className="logo" src={betterLogo} alt="logo" width="340" />
+            <img className="logo" src={betterLogo} alt="logo" width="210" />
             {/* <StaticImage
               className="logo"
               src="../../assets/images/OGLogo.png"

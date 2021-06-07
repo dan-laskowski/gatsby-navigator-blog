@@ -11,8 +11,8 @@ const StyledHeading = styled.h1`
   font-style: ${({ theme }) => theme.font.heading.style};
   font-size: 26px;
   color: ${({ theme }) => theme.color.black};
-  margin-top: 28px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 33px;
   text-transform: uppercase;
 `;
 
