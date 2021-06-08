@@ -109,9 +109,9 @@ const PostTitle = styled(Heading)`
 `;
 const PostSubtitle = styled(Subheading)`
   font-size: ${({ horizontal }) => (horizontal ? `20px` : `15px`)};
+  font-weight: 300;
   line-height: ${({ horizontal }) => (horizontal ? `25px` : `20px`)};
   -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
-  line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
   overflow: hidden;
 
   @media only screen and (max-width: 1380px) {
