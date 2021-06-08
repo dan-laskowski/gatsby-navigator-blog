@@ -170,6 +170,19 @@ const Category = ({
                 />
               </Link>
               <SubcategoryName>
+                {wpCategory.name === "B Corp" && (
+                  <>
+                    <Link key={`czym`} to={`/czym-sa-b-corpy`}>
+                      Czym są B Corpy?
+                    </Link>
+                    <Link key={`zostac`} to={`/jak-zostac-b-corpem`}>
+                      Jak zostać B Corpem
+                    </Link>
+                    <Link key={`firm`} to={`/baza`}>
+                      Baza polskich B Corpów
+                    </Link>
+                  </>
+                )}
                 {wpCategory.wpChildren.nodes.map(node => (
                   <Link key={node.uri} to={`/${node.slug}`}>
                     {node.name}
