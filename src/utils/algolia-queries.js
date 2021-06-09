@@ -7,6 +7,11 @@ const postQuery = `
           nodes {
             name
             slug
+            author {
+              node {
+                name
+              }
+            }
             wpChildren {
               nodes {
                 name
