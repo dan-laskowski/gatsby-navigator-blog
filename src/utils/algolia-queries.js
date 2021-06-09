@@ -3,15 +3,15 @@ const postQuery = `
     posts: allWpPost {
       nodes {
         objectID:id
+        author {
+          node {
+            name
+          }
+        }
         categories {
           nodes {
             name
             slug
-            author {
-              node {
-                name
-              }
-            }
             wpChildren {
               nodes {
                 name
