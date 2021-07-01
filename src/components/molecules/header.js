@@ -262,6 +262,7 @@ const SuggestionBox = styled.div`
 `;
 const SuggestionLink = styled(StyledLink)`
   color: ${({ theme }) => theme.color.gray};
+  margin-top: 0;
   text-align: center;
 `;
 
