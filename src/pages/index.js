@@ -826,7 +826,7 @@ const IndexPage = ({
                   interval: 5000,
                   gap: "1rem",
                   autoplay: true,
-                  arrows: "slider",
+                  arrows: false,
                 }}
                 hasSliderWrapper
               >
@@ -842,7 +842,7 @@ const IndexPage = ({
                 ))}
               </Splide>
             </CarouselWrapper>
-            <ArticleSection title="artykuły" to={`/artykuly`}>
+            <ArticleSection title="Teksty" to={`/teksty`}>
               <ArticleWrapper>
                 <ArticlePostLargeWrapper>
                   {articlePosts.nodes.slice(0, 1).map(node => (
@@ -1011,7 +1011,7 @@ export const query = graphql`
     articlePosts: allWpPost(
       filter: {
         status: { eq: "publish" }
-        categories: { nodes: { elemMatch: { name: { eq: "Artykuły" } } } }
+        categories: { nodes: { elemMatch: { name: { eq: "Teksty" } } } }
       }
       limit: 4
       sort: { order: DESC, fields: date }

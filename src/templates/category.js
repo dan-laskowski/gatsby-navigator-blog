@@ -311,7 +311,7 @@ export const query = graphql`
         }
       }
     }
-    asideQuery: allWpPost(limit: 4) {
+    asideQuery: allWpPost(limit: 3) {
       nodes {
         title
         slug

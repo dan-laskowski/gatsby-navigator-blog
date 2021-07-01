@@ -449,7 +449,7 @@ export const query = graphql`
       content
       dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
     }
-    asideQuery: allWpPost(limit: 4) {
+    asideQuery: allWpPost(limit: 3) {
       nodes {
         title
         slug

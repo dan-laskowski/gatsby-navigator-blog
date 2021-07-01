@@ -199,76 +199,7 @@ const GlobalStyle = createGlobalStyle`
 
 /* SLIDER */
 
-.splide__arrow svg {
-	fill: #DBDBDB;
-	height: 50px;
-	@media only screen and (max-width: 1280px) {
-		width: 24px;
-		height:24px;
-	}
-}
 
-.splide__arrow svg:hover {
-	fill: rgb(240,117,56);
-}
-
-.splide__arrow--prev {
-    left: -110px;
-	@media only screen and (max-width: 1910px) {
-		/* left: -12px; */
-		margin-left: 10px;
-	}
-	@media only screen and (max-width: 1870px) {
-		/* left: -12px; */
-		margin-left: 20px;
-	}
-	@media only screen and (max-width: 1842px) {
-		/* left: -12px; */
-		margin-left: 50px;
-	}
-	@media only screen and (max-width: 1782px) {
-		/* left: -12px; */
-		margin-left: 60px;
-	}
-	@media only screen and (max-width: 1762px) {
-		/* left: -12px; */
-		margin-left: 70px;
-	}
-	@media only screen and (max-width: 1745px) {
-		margin-left: 80px;
-  }
-
-	/* @media only screen and (max-width: 1280px) {
-		left:1vw;
-	} */
-}
-
-.splide__arrow--next {
-    right: -110px;
-	@media only screen and (max-width: 1910px) {
-		/* left: -12px; */
-		margin-right: 10px;
-	}
-	@media only screen and (max-width: 1870px) {
-		/* left: -12px; */
-		margin-right: 20px;
-	}
-	@media only screen and (max-width: 1842px) {
-		/* left: -12px; */
-		margin-right: 50px;
-	}
-	@media only screen and (max-width: 1782px) {
-		/* left: -12px; */
-		margin-right: 60px;
-	}
-	@media only screen and (max-width: 1762px) {
-		/* left: -12px; */
-		margin-right: 70px;
-	}
-	@media only screen and (max-width: 1745px) {
-		margin-right: 80px;
-  }
-}
 
 .splide__pagination__page {
 	height:8px;
