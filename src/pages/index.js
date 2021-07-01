@@ -15,6 +15,13 @@ const MainWrapper = styled.main`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-top: 152px;
+  @media only screen and (max-width: 850px) {
+    padding-top: 136px;
+  }
+  @media only screen and (max-width: 616px) {
+    padding-top: 94px;
+  }
 `;
 const PageWrapper = styled.div`
   display: grid;

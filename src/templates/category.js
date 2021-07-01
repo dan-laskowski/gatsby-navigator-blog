@@ -11,6 +11,13 @@ import Post from "molecules/post";
 
 const Wrapper = styled.div`
   min-height: 100vh;
+  padding-top: 152px;
+  @media only screen and (max-width: 850px) {
+    padding-top: 136px;
+  }
+  @media only screen and (max-width: 616px) {
+    padding-top: 94px;
+  }
 `;
 const ContentWrapper = styled.div`
   display: grid;

@@ -7,6 +7,7 @@ import { window } from "browser-monads";
 import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
 import { MenuItem } from "atoms/menuItem";
+import useScrollPosition from "utils/useScrollPosition";
 import betterLogo from "assets/images/betterHeader.svg";
 import mobileSearchLogo from "assets/images/mobileSearchLogo.svg";
 import searchLogo from "assets/images/search.svg";
@@ -16,7 +17,15 @@ import exit from "assets/images/exit.svg";
 
 const StyledHeader = styled.header`
   display: block;
+  position: fixed;
   margin: 0 auto;
+  width: 100%;
+  z-index: 100;
+  background-color: white;
+  opacity: ${props => (props.sticky ? 1 : 0)};
+  transform: ${props =>
+    props.sticky ? "translateY(0%)" : "translateY(-100%)"};
+  transition: 0.3s cubic-bezier(0.4, 0, 1, 1);
 `;
 const LogoSection = styled.section`
   display: flex;
@@ -258,11 +267,22 @@ const SuggestionLink = styled(StyledLink)`
 
 const Header = () => {
   const [showSearch, setSearch] = useState(false);
+  const [sticky, setSticky] = useState(true);
   const [showMobileMenu, setMobileMenu] = useState(false);
   const [query, setQuery] = useState("");
   const inputEl = useRef(null);
   const searchEl = useRef(null);
   const mobileMenuEl = useRef(null);
+
+  useScrollPosition(
+    ({ prevPos, currPos }) => {
+      const isShow = currPos.y > prevPos.y;
+      if (isShow !== sticky) {
+        setSticky(isShow);
+      }
+    },
+    [sticky]
+  );
   const handleSearchToggle = () => {
     setSearch(prevState => !prevState);
     searchEl.current.style.display = showSearch ? "none" : "flex";
@@ -279,8 +299,9 @@ const Header = () => {
     e.preventDefault();
     navigate(`/search?q=${query}&page=1`);
   };
+
   return (
-    <StyledHeader>
+    <StyledHeader sticky={sticky}>
       <LogoSection>
         <LogoSectionWrapper>
           <MobileMenuButton aria-label="Menu" onClick={handleMobileMenu}>

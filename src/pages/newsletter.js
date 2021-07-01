@@ -5,7 +5,15 @@ import Seo from "molecules/seo";
 import Layout from "organisms/layout";
 import NewsletterForm from "molecules/newsletterForm";
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding-top: 152px;
+  @media only screen and (max-width: 850px) {
+    padding-top: 136px;
+  }
+  @media only screen and (max-width: 616px) {
+    padding-top: 94px;
+  }
+`;
 const FormContainer = styled.section`
   display: flex;
   flex-direction: column;

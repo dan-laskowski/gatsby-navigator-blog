@@ -31,6 +31,13 @@ const searchClient = algoliasearch(
 );
 const Wrapper = styled(InstantSearch)`
   display: flex;
+  padding-top: 152px;
+  @media only screen and (max-width: 850px) {
+    padding-top: 136px;
+  }
+  @media only screen and (max-width: 616px) {
+    padding-top: 94px;
+  }
 `;
 const ContentWrapper = styled.div`
   display: grid;
@@ -49,6 +56,13 @@ const ContentWrapper = styled.div`
   }
 `;
 const SearchBar = styled.div`
+  padding-top: 152px;
+  @media only screen and (max-width: 850px) {
+    padding-top: 136px;
+  }
+  @media only screen and (max-width: 616px) {
+    padding-top: 94px;
+  }
   grid-column-start: results;
   grid-column-end: aside;
   display: flex;
