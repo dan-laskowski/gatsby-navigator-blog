@@ -1,42 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import Button from "atoms/button";
 import { Subheading } from "atoms/heading";
-// import Checkbox from "atoms/checkbox";
 import Input from "atoms/input";
 
-const StyledButton = styled.button`
-  font-family: ${({ theme }) => theme.font.button.family};
-  font-weight: ${({ theme }) => theme.font.button.weight};
-  font-style: ${({ theme }) => theme.font.button.weight};
-  font-size: ${({ theme }) => theme.font.button.size};
-  background: ${({ theme }) => theme.color.orange};
-  color: ${({ theme }) => theme.color.white};
-  text-decoration: none;
-  text-align: center;
-  display: block;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  padding: 14px 0;
-  :focus {
-    outline: none;
-  }
-  @media only screen and (max-width: 1370px) {
-    font-size: 11px;
-    line-height: 12px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    height: 26px;
+const StyledSubheading = styled(Subheading)`
+  @media only screen and (max-width: 1180px) {
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 0 !important;
   }
 `;
 
-const NewsletterForm = () => {
+const NewsletterForm = ({ children }) => {
   return (
     <form>
-      <Subheading
+      <StyledSubheading
         text=" Zarejestruj się, aby otrzymywać nasz biuletyn co dwa tygodnie
         bezpośrednio na swoją skrzynkę odbiorczą w każdy drugi czwartek."
       />
+      {children}
       {/* <Checkbox
         text="Wyrażam zgodę na przetwarzanie moich danych przez Navigator Blog"
         aria-required="true"
@@ -53,7 +36,7 @@ const NewsletterForm = () => {
         aria-required="true"
         required
       />
-      <StyledButton aria-label="Zapisz się">Zapisz się</StyledButton>
+      <Button aria-label="Zapisz się" text="Zapisz się" />
     </form>
   );
 };

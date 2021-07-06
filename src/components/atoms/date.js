@@ -5,7 +5,8 @@ const PostDate = styled.p`
   font-family: ${({ theme }) => theme.font.paragraph.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
   font-style: ${({ theme }) => theme.font.tag.style};
-  font-size: ${({ theme }) => theme.font.tag.size};
+  font-size: 15px;
+  line-height: 19px;
   color: ${({ theme }) => theme.color.gray};
 `;
 

@@ -7,10 +7,10 @@ const StyledSectionName = styled.h1`
   font-style: ${({ theme }) => theme.font.sectionName.weight};
   font-size: ${({ theme }) => theme.font.sectionName.size};
   color: ${({ theme }) => theme.color.black};
-  margin: 10px 0 19px 0;
+  margin: 4px 0 24px 0;
   @media only screen and (max-width: 1370px) {
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 14px;
+    line-height: 17px;
   }
 
   @media only screen and (max-width: 600px) {

@@ -15,7 +15,7 @@ const TagBox = ({ tags, amount, ...props }) => {
         <Tag key={node.slug} name={node.name} slug={node.slug} />
       ))}
       {amount !== tags.nodes.length && amount && !tags && (
-        <Tag key="last" name="..." slug="tags" />
+        <Tag className="last-tag" key="last" name="..." slug="tags" />
       )}
     </Wrapper>
   );

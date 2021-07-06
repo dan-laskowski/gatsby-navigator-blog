@@ -45,7 +45,6 @@ const StyledIcon = styled(Icon)`
     grid-column-end: 1;
   }
 `;
-
 const LinksSection = styled.section`
   grid-column-start: 2;
   grid-column-end: 4;
@@ -98,7 +97,6 @@ const SocialSection = styled.section`
     width: 212px;
   }
 `;
-
 const Copyright = styled(SectionLink)`
   grid-column-start: 1;
   grid-column-end: 3;

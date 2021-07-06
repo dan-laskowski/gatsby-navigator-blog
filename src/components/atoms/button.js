@@ -18,12 +18,10 @@ const StyledButton = styled.button`
   :focus {
     outline: none;
   }
-  @media only screen and (max-width: 1370px) {
-    font-size: 11px;
-    line-height: 12px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    height: 26px;
+  @media only screen and (max-width: 1180px) {
+    font-size: 12px;
+    line-height: 15px;
+    padding: 10px 0;
   }
 `;
 const Button = ({ text, uri, ...props }) => {

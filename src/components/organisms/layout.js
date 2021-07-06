@@ -9,7 +9,7 @@ import GlobalStyle from "assets/styles/globalStyle";
 import theme from "assets/styles/theme";
 import ScrollToTopButton from "molecules/scrollToTopButton";
 import Header from "molecules/header";
-import Footer from "molecules/footer";
+import Footer from "molecules/footerNew";
 
 const Layout = ({ children }) => {
   return (

@@ -5,15 +5,16 @@ import { Link } from "gatsby";
 const CategoryLink = styled(Link)`
   font-family: ${({ theme }) => theme.font.tag.family};
   font-weight: ${({ theme }) => theme.font.tag.weight};
-  font-style: ${({ theme }) => theme.font.tag.weight};
-  font-size: ${({ theme }) => theme.font.tag.size};
+  font-style: ${({ theme }) => theme.font.tag.style};
+  font-size: 15px;
+  line-height: 18px;
   color: ${({ theme }) => theme.color.gray};
   text-transform: uppercase;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 
-  @media only screen and (max-width: 1168px) {
-    font-size: 10px;
+  @media only screen and (max-width: 1180px) {
+    font-size: 12px;
+    line-height: 14px;
   }
 `;
 

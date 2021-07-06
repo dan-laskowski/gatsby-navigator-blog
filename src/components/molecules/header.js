@@ -1,9 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Link, navigate } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { window } from "browser-monads";
-// import { Subheading } from "atoms/heading";
 import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
 import { MenuItem } from "atoms/menuItem";
@@ -56,25 +54,19 @@ const StyledButton = styled.button`
   :focus {
     outline: none;
   }
-  @media only screen and (max-width: 850px) {
-    display: none;
+  @media only screen and (max-width: 850px) and (min-width: 621px) {
+    img {
+      width: 15px;
+      height: 15px;
+    }
   }
-`;
-const SearchButton = styled(StyledButton)`
-  display: none;
-  img {
-    width: 15px;
-  }
-  @media only screen and (max-width: 850px) {
-    display: block;
-  }
-  @media only screen and (max-width: 615px) {
+  @media only screen and (max-width: 620px) {
     display: none;
   }
 `;
 const MobileMenuButton = styled(StyledButton)`
   display: none;
-  @media only screen and (max-width: 615px) {
+  @media only screen and (max-width: 620px) {
     display: block;
     position: absolute;
     left: 23px;
@@ -140,7 +132,7 @@ const Navigation = styled.section`
   @media only screen and (max-width: 850px) {
     height: 40px;
   }
-  @media only screen and (max-width: 615px) {
+  @media only screen and (max-width: 620px) {
     display: none;
   }
 `;
@@ -157,9 +149,6 @@ const NavigationWrapper = styled.div`
     margin-left: 30px;
     margin-right: 30px;
   }
-  @media only screen and (max-width: 850px) {
-    justify-content: center;
-  }
 `;
 const Newsletter = styled(Link)`
   font-family: ${({ theme }) => theme.font.menuItem.family};
@@ -172,8 +161,8 @@ const Newsletter = styled(Link)`
     padding: 5px 8px;
   }
   @media only screen and (max-width: 850px) {
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 12px;
+    line-height: 14px;
     padding: 15px 10px;
   }
 `;
@@ -308,37 +297,9 @@ const Header = () => {
           <MobileMenuButton aria-label="Menu" onClick={handleMobileMenu}>
             <img src={mobileMenu} alt="menu" width="30" height="30" />
           </MobileMenuButton>
-          <SearchButton
-            aria-label="Wyszukiwanie"
-            onClick={
-              window.location.href.includes("search")
-                ? null
-                : handleSearchToggle
-            }
-          >
-            <img src={searchLogo} alt="wyszukiwanie" width="24" height="24" />
-          </SearchButton>
-          {/* <StyledSubheading
-            text="Magazyn o zrównoważonym 
-rozwoju i etycznym biznesie"
-          /> */}
           <Link aria-label="Główna strona" to="/">
             <img className="logo" src={betterLogo} alt="logo" width="210" />
-            {/* <StaticImage
-              className="logo"
-              src="../../assets/images/OGLogo.png"
-              alt="Navigator logo"
-              loading="eager"
-              width={430}
-              height={152}
-            /> */}
           </Link>
-          {/* <div>
-            <StyledLogoSubheading text="Powered by" />
-            <a href="http://b-better.pl/">
-              <img src={betterLogo} width="57" height="61" />
-            </a>
-          </div> */}
         </LogoSectionWrapper>
       </LogoSection>
       <Navigation>

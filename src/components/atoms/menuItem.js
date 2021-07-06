@@ -23,9 +23,12 @@ const StyledLink = styled(Link)`
   }
 
   @media only screen and (max-width: 850px) {
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 12px;
+    line-height: 14px;
     padding: 5px 10px;
+  }
+  @media only screen and (max-width: 960px) {
+    padding: 5px 5px;
   }
 `;
 

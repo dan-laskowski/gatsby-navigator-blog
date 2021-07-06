@@ -17,13 +17,12 @@ const StyledInput = styled.input`
     outline-color: ${({ theme }) => theme.color.orange};
     outline-style: solid;
   }
-  @media only screen and (max-width: 1370px) {
-    font-size: 11px;
-    line-height: 12px;
-    padding: 6px 0;
-    padding-left: 10px;
-    width: calc(100% - 12px);
-    margin-bottom: 8px;
+  @media only screen and (max-width: 1180px) {
+    font-size: 12px;
+    line-height: 15px;
+    padding: 10px 0;
+    padding-left: 20px;
+    margin: 12px 0 10px 0;
   }
 `;
 

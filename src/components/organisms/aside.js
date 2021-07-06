@@ -9,6 +9,38 @@ import NewsletterForm from "molecules/newsletterForm";
 
 const AsideWrapper = styled.aside`
   /* border-left: 1px solid ${({ theme }) => theme.color.lightGray}; */
+  h2 {
+    font-weight: 300;
+  }
+  .tags {
+    margin-bottom: 36px;
+    @media only screen and (max-width: 1180px) {
+      a.tag
+        + a.tag
+        + a.tag
+        + a.tag
+        + a.tag
+        + a.tag
+        + a.tag
+        + a.tag
+        + a.tag
+        + a.tag {
+        display: none;
+      }
+      a.tag:last-child {
+        display: block;
+      }
+    }
+  }
+
+  .form-section {
+    h1 {
+      margin-bottom: 8px;
+    }
+    h2 {
+      margin-bottom: 26px;
+    }
+  }
 `;
 const StickyContainer = styled.div`
   position: ${({ search }) => (search ? `sticky` : `relative`)};
@@ -22,12 +54,20 @@ const StyledHeading = styled(Heading)`
     font-size: 18px;
     line-height: 22px;
   }
+  @media only screen and (max-width: 1180px) {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 const StyledSubheading = styled(Subheading)`
-  @media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 1180px) {
     font-size: 12px;
     line-height: 14px;
+  }
+  @media only screen and (max-width: 1180px) {
+    margin-bottom: 10px;
+    -webkit-line-clamp: 7;
   }
 `;
 
@@ -62,7 +102,7 @@ const Aside = ({ children, ...props }) => {
           }
         }
       }
-      allWpTag {
+      allWpTag(limit: 18) {
         nodes {
           name
           slug
@@ -73,12 +113,12 @@ const Aside = ({ children, ...props }) => {
   return (
     <AsideWrapper {...props}>
       <StickyContainer {...props}>
-        <AsideSection title="tagi" to={`/tags`}>
+        <AsideSection className="tags" title="tagi" to={`/tags`}>
           <div>
             {allWpTag.nodes.map(node => (
               <Tag key={node.slug} name={node.name} slug={node.slug} />
             ))}
-            <Tag key="last" name="..." slug="tags" />
+            <Tag className="last-tag" key="last" name="..." slug="tags" />
           </div>
         </AsideSection>
         <AsideSection title="sprawdź!" to={`/publikacje-i-raporty`}>
@@ -95,7 +135,7 @@ const Aside = ({ children, ...props }) => {
             />
           </Link>
         </AsideSection>
-        <AsideSection title="newsletter">
+        <AsideSection className="form-section" title="newsletter">
           <NewsletterForm />
         </AsideSection>
         {children}

@@ -12,7 +12,7 @@ const StyledHeading = styled.h1`
   font-size: 26px;
   color: ${({ theme }) => theme.color.black};
   margin-top: 10px;
-  margin-bottom: 33px;
+  margin-bottom: 20px;
   text-transform: uppercase;
 `;
 
@@ -27,7 +27,7 @@ const StyledSubheading = styled.h2`
   font-size: 16px;
   color: ${({ theme }) => theme.color.gray};
   line-height: 20px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 
   p a {
     display: none;

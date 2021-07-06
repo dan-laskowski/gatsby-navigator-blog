@@ -17,7 +17,7 @@ const PostWrapper = styled.article`
   column-gap: ${({ horizontal }) => (horizontal ? `120px` : `unset`)};
   border-bottom: ${({ horizontal, theme }) =>
     horizontal ? `1px solid ${theme.color.lightGray}` : `unset`};
-  padding-top: ${({ horizontal }) => (horizontal ? `28px` : `unset`)};
+  /* padding-top: ${({ horizontal }) => (horizontal ? `28px` : `unset`)}; */
   padding-bottom: ${({ horizontal }) => (horizontal ? `28px` : `unset`)};
 
   @media only screen and (max-width: 1380px) {
@@ -44,17 +44,14 @@ const PostWrapper = styled.article`
       horizontal ? `1fr 100px` : `unset`};
   }
   .category {
-    margin-top: ${({ horizontal }) => (horizontal ? `10px` : `12px`)};
-    font-size: 12px;
-    line-height: 14px;
+    margin-top: ${({ horizontal }) => (horizontal ? `0` : `12px`)};
+    @media only screen and (max-width: 1180px) {
+      margin-bottom: 4px;
+    }
   }
 `;
 const Text = styled.section`
   grid-area: ${({ horizontal }) => (horizontal ? 1 : `unset`)};
-  display: flex;
-  flex-direction: column;
-  justify-content: ${({ horizontal }) =>
-    horizontal ? `space-between` : `unset`};
 `;
 const ThumbnailWrapper = styled.div`
   position: relative;
@@ -83,27 +80,24 @@ const PostTitle = styled(Heading)`
   font-size: ${({ horizontal }) => (horizontal ? `24px` : `24px`)};
   line-height: ${({ horizontal }) => (horizontal ? `29px` : `29px`)};
   -webkit-line-clamp: 2;
-  line-clamp: 2;
   overflow: hidden;
   margin-top: ${({ horizontal }) => (horizontal ? `0` : `unset`)};
 
   @media only screen and (max-width: 1380px) {
-    font-size: ${({ horizontal }) => (horizontal ? `24px` : `unset`)};
-    line-height: ${({ horizontal }) => (horizontal ? `27px` : `unset`)};
+    font-size: ${({ horizontal }) => (horizontal ? `24px` : `18px`)};
+    line-height: ${({ horizontal }) => (horizontal ? `27px` : `20px`)};
   }
   @media only screen and (max-width: 1100px) {
     font-size: ${({ horizontal }) => (horizontal ? `18px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `20px` : `unset`)};
   }
   @media only screen and (max-width: 930px) {
-    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 2 : 4)};
-    line-clamp: ${({ horizontal }) => (horizontal ? 2 : 4)};
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 2 : 3)};
   }
   @media only screen and (max-width: 600px) {
     font-size: ${({ horizontal }) => (horizontal ? `16px` : `20px`)};
     line-height: ${({ horizontal }) => (horizontal ? `19px` : `24px`)};
     -webkit-line-clamp: 3;
-    line-clamp: 3;
     margin-bottom: 10px;
   }
 `;
@@ -111,25 +105,22 @@ const PostSubtitle = styled(Subheading)`
   font-size: ${({ horizontal }) => (horizontal ? `20px` : `15px`)};
   font-weight: 300;
   line-height: ${({ horizontal }) => (horizontal ? `25px` : `20px`)};
-  -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
+  -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 4)};
   overflow: hidden;
 
   @media only screen and (max-width: 1380px) {
-    font-size: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
-    line-height: ${({ horizontal }) => (horizontal ? `24px` : `unset`)};
+    font-size: ${({ horizontal }) => (horizontal ? `17px` : `13px`)};
+    line-height: ${({ horizontal }) => (horizontal ? `24px` : `16px`)};
     margin-bottom: ${({ horizontal }) => (horizontal ? `14px` : `19px`)};
-    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
-    line-clamp: ${({ horizontal }) => (horizontal ? 5 : 3)};
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 4)};
   }
   @media only screen and (max-width: 1200px) {
-    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
-    line-clamp: ${({ horizontal }) => (horizontal ? 4 : 3)};
+    -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 4 : 4)};
   }
   @media only screen and (max-width: 1100px) {
     font-size: ${({ horizontal }) => (horizontal ? `12px` : `unset`)};
     line-height: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 5 : 5)};
-    line-clamp: ${({ horizontal }) => (horizontal ? 5 : 5)};
   }
   @media only screen and (max-width: 600px) {
     display: ${({ horizontal }) => (horizontal ? `none` : `-webkit-box`)};
@@ -142,7 +133,7 @@ const PostSubtitle = styled(Subheading)`
 const StyledDate = styled(Date)`
   margin-bottom: ${({ horizontal }) => (horizontal ? `17px` : `unset`)};
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1380px) {
     font-size: 12px;
     line-height: 14px;
     margin-bottom: ${({ horizontal }) => (horizontal ? `0` : `unset`)};

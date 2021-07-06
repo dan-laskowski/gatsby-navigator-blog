@@ -33,7 +33,8 @@ const PageWrapper = styled.div`
     "s s s s"
     "pl pl pl a"
     "sm1 sm2 sm3 a"
-    "dp dp dp dp"
+    "dp dp dp acom"
+    "mob mob mob mob"
     "cm cm cs com"
     "es es es com"
     "comh comh comh comh";
@@ -113,7 +114,10 @@ const CarouselWrapper = styled.section`
   }
 
   .category {
-    color: ${({ theme }) => theme.color.orange};
+    @media only screen and (max-width: 1180px) {
+      font-size: 13px;
+      line-height: 15px;
+    }
   }
 
   .title {
@@ -144,7 +148,6 @@ const CarouselWrapper = styled.section`
     font-size: 20px;
     line-height: 25px;
     -webkit-line-clamp: 3;
-    line-clamp: 3;
     @media only screen and (max-width: 1570px) {
       font-size: 21px;
       line-height: 35px;
@@ -156,9 +159,10 @@ const CarouselWrapper = styled.section`
     @media only screen and (max-width: 1180px) {
       font-size: 18px;
       line-height: 28px;
+      -webkit-line-clamp: 4;
     }
     @media only screen and (max-width: 830px) {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 20px;
     }
   }
@@ -166,8 +170,8 @@ const CarouselWrapper = styled.section`
     font-size: 15px;
     line-height: 19px;
     @media only screen and (max-width: 1180px) {
-      font-size: 12px;
-      line-height: 13px;
+      font-size: 13px;
+      line-height: 16px;
     }
   }
   .image-wrapper {
@@ -199,11 +203,14 @@ const ArticleSection = styled(AsideSection)`
   margin-bottom: 0;
 
   article:first-of-type {
-    padding-bottom: 38px;
-    margin-bottom: 16px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+    .title {
+      margin-bottom: 12px;
+    }
   }
 
-  @media only screen and (max-width: 1420px) {
+  @media only screen and (max-width: 1180px) {
     h2 {
       font-size: 12px;
       line-height: 14px;
@@ -283,7 +290,6 @@ const ArticlePostLargeWrapper = styled.div`
     font-size: 42px;
     line-height: 50px;
     -webkit-line-clamp: 4;
-    line-clamp: 4;
     @media only screen and (max-width: 1520px) {
       font-size: 41px;
       line-height: 46px;
@@ -296,30 +302,26 @@ const ArticlePostLargeWrapper = styled.div`
       font-size: 28px;
       line-height: 34px;
       -webkit-line-clamp: 3;
-      line-clamp: 3;
     }
-    @media only screen and (max-width: 720px) {
-      font-size: 22px;
-      line-height: 28px;
-    }
-    @media only screen and (max-width: 600px) {
-      font-size: 20px;
-      line-height: 24px;
-      -webkit-line-clamp: 3;
+    @media only screen and (max-width: 960px) {
+      font-size: 18px;
+      line-height: 20px;
     }
   }
   .subtitle {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 18px;
+    line-height: 21px;
     -webkit-line-clamp: 3;
     line-clamp: 3;
     @media only screen and (max-width: 1330px) {
       font-size: 14px;
     }
     @media only screen and (max-width: 1150px) {
-      font-size: 12px;
-      line-height: 18px;
       -webkit-line-clamp: 5;
+    }
+    @media only screen and (max-width: 960px) {
+      font-size: 12px;
+      line-height: 15px;
     }
     @media only screen and (max-width: 600px) {
       display: -webkit-box;
@@ -401,8 +403,11 @@ const TipsSection = styled(AsideSection)`
   width: auto;
   grid-column-start: s;
   grid-column-end: s;
-  margin-top: 94px;
-  @media only screen and (max-width: 1420px) {
+  margin-top: 16px;
+  @media only screen and (max-width: 1370px) {
+    margin-top: 76px;
+  }
+  @media only screen and (max-width: 1180px) {
     a h1 {
       font-size: 18px;
       line-height: 20px;
@@ -411,9 +416,10 @@ const TipsSection = styled(AsideSection)`
       font-size: 12px;
       line-height: 14px;
     }
+    grid-column-end: sm3;
   }
-  @media only screen and (max-width: 1370px) {
-    margin-top: 76px;
+  @media only screen and (max-width: 800px) {
+    grid-column-end: s;
   }
   @media only screen and (max-width: 787px) {
     margin-top: 12px;
@@ -448,13 +454,14 @@ const TipsSectionWrapper = styled.div`
   @media only screen and (max-width: 1370px) {
     column-gap: 30px;
   }
-  @media only screen and (max-width: 787px) {
+  @media only screen and (max-width: 1180px) {
     grid-template-columns: repeat(3, 1fr);
     a:last-child {
       display: none;
       content-visibility: hidden;
     }
   }
+
   @media only screen and (max-width: 600px) {
     display: none;
     content-visibility: hidden;
@@ -657,6 +664,9 @@ const EventSection = styled(AsideSection)`
   grid-column-start: sm1;
   grid-column-end: sm3;
   margin-bottom: 28px;
+  .title {
+    margin-bottom: 10px;
+  }
   @media only screen and (max-width: 1370px) {
     grid-column-start: sm1;
     grid-column-end: com;
@@ -742,9 +752,19 @@ const EventSectionWrapper = styled.div`
 `;
 const CommercialVertical = styled.aside`
   grid-area: com;
+  grid-row-start: mob;
   background: #f07538;
   @media only screen and (max-width: 1370px) {
-    grid-area: none;
+    content-visibility: hidden;
+    display: none;
+  }
+  @media only screen and (max-width: 1180px) {
+    grid-area: acom;
+    content-visibility: auto;
+    display: block;
+  }
+
+  @media only screen and (max-width: 800px) {
     content-visibility: hidden;
     display: none;
   }
@@ -756,8 +776,11 @@ const CommercialHorizontal = styled.div`
   margin-bottom: 96px;
   background: #2d3048;
   @media only screen and (max-width: 1370px) {
-    content-visibility: hidden;
-    display: none;
+    grid-area: mob;
+    grid-row-start: dp;
+    height: 150px;
+    margin-top: 21px;
+    margin-bottom: 41px;
   }
 `;
 const ShortyWrapper = styled.section`
@@ -780,11 +803,15 @@ const ShortyRow = styled.div`
 const IndexPage = ({
   data: {
     carouselPosts,
-    articlePosts,
+    newsPosts,
+    textPosts,
     tipsPosts,
     bcorpPosts,
     eventPosts,
+    raportPosts,
     interviewPosts,
+    articlePosts,
+    libraryPosts,
   },
 }) => {
   if (typeof window === "undefined") {
@@ -845,7 +872,7 @@ const IndexPage = ({
             <ArticleSection title="Teksty" to={`/teksty`}>
               <ArticleWrapper>
                 <ArticlePostLargeWrapper>
-                  {articlePosts.nodes.slice(0, 1).map(node => (
+                  {textPosts.nodes.slice(0, 1).map(node => (
                     <Post
                       key={node.slug}
                       loading="eager"
@@ -855,7 +882,7 @@ const IndexPage = ({
                   ))}
                 </ArticlePostLargeWrapper>
                 <ArticlePostMediumWrapper>
-                  {articlePosts.nodes.slice(1, 4).map(node => (
+                  {textPosts.nodes.slice(1, 4).map(node => (
                     <Post key={node.slug} loading="eager" post={node} />
                   ))}
                 </ArticlePostMediumWrapper>
@@ -908,46 +935,46 @@ const IndexPage = ({
             <CommercialHorizontal />
             <ShortyWrapper>
               <ShortyRow>
-                <Shorty posts={eventPosts} title="Wywiady" to={`/wywiady`} />
                 <Shorty
-                  posts={articlePosts}
-                  title="Artykuły"
-                  to={`/artykuly`}
+                  posts={interviewPosts}
+                  title="Wywiady"
+                  to={`/wywiady`}
                 />
-                <Shorty
-                  posts={bcorpPosts}
-                  title="B Corp"
-                  to={`/teksty-o-b-corpach`}
-                />
-              </ShortyRow>
-              <ShortyRow>
                 <Shorty
                   posts={tipsPosts}
                   title="Dobre praktyki"
                   to={`/dobre-praktyki`}
                 />
                 <Shorty
-                  posts={eventPosts}
-                  title="Wydarzenia"
-                  to={`/wydarzenia`}
-                />
-                <Shorty
-                  posts={articlePosts}
-                  title="Księgarnia"
-                  to={`/ksiegarnia`}
+                  posts={raportPosts}
+                  title="Raporty/publikacje"
+                  to={`/publikacje-i-raporty`}
                 />
               </ShortyRow>
               <ShortyRow>
                 <Shorty
-                  posts={eventPosts}
-                  title="Publikacje/raporty"
-                  to={`/publikacje-i-raporty`}
-                />
-                <Shorty posts={tipsPosts} title="Baza firm" />
-                <Shorty
                   posts={articlePosts}
                   title="Artykuły"
                   to={`/artykuly`}
+                />
+                <Shorty
+                  posts={eventPosts}
+                  title="Wydarzenia"
+                  to={`/wydarzenia`}
+                />
+                <Shorty posts={textPosts} title="Teksty" to={`/teksty`} />
+              </ShortyRow>
+              <ShortyRow>
+                <Shorty posts={bcorpPosts} title="B Corp" to={`/b-corp`} />
+                <Shorty
+                  posts={libraryPosts}
+                  title="Księgarnia"
+                  to={`/ksiegarnia`}
+                />
+                <Shorty
+                  posts={newsPosts}
+                  title="Aktualności"
+                  to={`/aktualnosci`}
                 />
               </ShortyRow>
             </ShortyWrapper>
@@ -1008,7 +1035,7 @@ export const query = graphql`
         }
       }
     }
-    articlePosts: allWpPost(
+    textPosts: allWpPost(
       filter: {
         status: { eq: "publish" }
         categories: { nodes: { elemMatch: { name: { eq: "Teksty" } } } }
@@ -1210,10 +1237,180 @@ export const query = graphql`
         }
       }
     }
-    interviewPost: allWpPost(
+    interviewPosts: allWpPost(
       filter: {
         status: { eq: "publish" }
-        categories: { nodes: { elemMatch: { name: { eq: "Wywiad" } } } }
+        categories: { nodes: { elemMatch: { name: { eq: "Wywiady" } } } }
+      }
+      limit: 3
+      sort: { order: DESC, fields: date }
+    ) {
+      nodes {
+        title
+        subtitle {
+          podtytul
+        }
+        excerpt
+        slug
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  formats: [AUTO, AVIF, WEBP]
+                )
+              }
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            slug
+            wpChildren {
+              nodes {
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+    articlePosts: allWpPost(
+      filter: {
+        status: { eq: "publish" }
+        categories: { nodes: { elemMatch: { name: { eq: "Artykuły" } } } }
+      }
+      limit: 3
+      sort: { order: DESC, fields: date }
+    ) {
+      nodes {
+        title
+        subtitle {
+          podtytul
+        }
+        excerpt
+        slug
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  formats: [AUTO, AVIF, WEBP]
+                )
+              }
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            slug
+            wpChildren {
+              nodes {
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+    raportPosts: allWpPost(
+      filter: {
+        status: { eq: "publish" }
+        categories: {
+          nodes: { elemMatch: { name: { eq: "Publikacje/Raporty" } } }
+        }
+      }
+      limit: 3
+      sort: { order: DESC, fields: date }
+    ) {
+      nodes {
+        title
+        subtitle {
+          podtytul
+        }
+        excerpt
+        slug
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  formats: [AUTO, AVIF, WEBP]
+                )
+              }
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            slug
+            wpChildren {
+              nodes {
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+    libraryPosts: allWpPost(
+      filter: {
+        status: { eq: "publish" }
+        categories: { nodes: { elemMatch: { name: { eq: "Księgarnia" } } } }
+      }
+      limit: 3
+      sort: { order: DESC, fields: date }
+    ) {
+      nodes {
+        title
+        subtitle {
+          podtytul
+        }
+        excerpt
+        slug
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  formats: [AUTO, AVIF, WEBP]
+                )
+              }
+            }
+          }
+        }
+        categories {
+          nodes {
+            name
+            slug
+            wpChildren {
+              nodes {
+                name
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+    newsPosts: allWpPost(
+      filter: {
+        status: { eq: "publish" }
+        categories: { nodes: { elemMatch: { name: { eq: "Aktualności" } } } }
       }
       limit: 3
       sort: { order: DESC, fields: date }
