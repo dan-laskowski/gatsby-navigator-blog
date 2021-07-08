@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { window } from "browser-monads";
 import StyledLink from "atoms/sectionLink";
 import Navbar from "molecules/navbar";
+import SocialSection from "molecules/socialSection";
+import StaticNav from "molecules/staticNav";
+import CopyrightSection from "molecules/copyrightSection";
 import { MenuItem } from "atoms/menuItem";
 import useScrollPosition from "utils/useScrollPosition";
 import betterLogo from "assets/images/betterHeader.svg";
@@ -84,6 +87,10 @@ const MobileMenu = styled.nav`
   position: absolute;
   z-index: 10000;
 
+  @media only screen and (min-width: 621px) {
+    display: none !important;
+    content-visibility: hidden;
+  }
   nav {
     margin-bottom: 46px;
   }
@@ -99,6 +106,7 @@ const MobileMenu = styled.nav`
   .form-mobile {
     width: 100%;
     border-bottom: 1px solid ${({ theme }) => theme.color.white};
+    margin-bottom: 40px;
     input {
       text-transform: capitalize;
       font-size: 26px;
@@ -120,6 +128,52 @@ const MobileMenuItem = styled(MenuItem)`
   font-size: 26px;
   line-height: 31px;
   margin-bottom: 12px;
+`;
+const HeaderCopyrightSection = styled(CopyrightSection)`
+  flex-direction: row-reverse;
+  align-items: center;
+  margin: 0 auto;
+
+  .better-logo {
+    margin-right: 32px;
+    @media only screen and (max-width: 316px) {
+      margin-right: 16px;
+    }
+  }
+  .better-logo path {
+    fill: ${({ theme }) => theme.color.offWhite};
+  }
+  .text {
+    font-family: ${({ theme }) => theme.font.heading.family};
+    color: ${({ theme }) => theme.color.offWhite};
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 14px;
+    margin-bottom: 0;
+  }
+`;
+const HeaderStaticNav = styled(StaticNav)`
+  flex-direction: column;
+  margin-bottom: 40px;
+  .vertical-line {
+    display: none;
+  }
+  .nav-item {
+    font-size: 14px;
+    line-height: 26px;
+    color: ${({ theme }) => theme.color.offWhite};
+    margin-bottom: 8px;
+  }
+`;
+
+const HeaderSocialSection = styled(SocialSection)`
+  align-self: flex-start;
+  margin-bottom: 40px;
+  margin-top: 0;
+  /* svg {
+    fill: ${({ theme }) => theme.color.offWhite};
+    stroke: ${({ theme }) => theme.color.offWhite};
+  } */
 `;
 const Navigation = styled.section`
   display: flex;
@@ -165,6 +219,9 @@ const Newsletter = styled(Link)`
     line-height: 14px;
     padding: 15px 10px;
   }
+  @media only screen and (max-width: 621px) {
+    padding-left: 5px;
+  }
 `;
 const Search = styled.div`
   display: none;
@@ -174,6 +231,10 @@ const Search = styled.div`
   position: absolute;
   justify-content: center;
   z-index: 10000;
+  @media only screen and (max-width: 621px) {
+    display: none !important;
+    content-visibility: hidden;
+  }
 `;
 const SearchWrapper = styled.div`
   display: flex;
@@ -193,6 +254,23 @@ const ExitButton = styled.button`
   }
   @media only screen and (max-width: 1675px) {
     margin-right: 24px;
+  }
+  @media only screen and (max-width: 1180px) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    img {
+      width: 48px;
+    }
+  }
+  @media only screen and (max-width: 621px) {
+    margin-top: 12px !important;
+    margin-bottom: 40px;
+    margin-right: 0;
+    width: 40px;
+    height: 40px;
+    img {
+      width: 34px;
+    }
   }
 `;
 const SearchForm = styled.form`
@@ -221,10 +299,18 @@ const SearchForm = styled.form`
     :focus {
       outline: none;
     }
+    @media only screen and (max-width: 745px) {
+      font-size: 24px;
+    }
   }
   button {
     cursor: pointer;
     margin-bottom: 17px;
+    @media only screen and (max-width: 745px) {
+      img {
+        width: 18px;
+      }
+    }
   }
 `;
 const SuggestionWrapper = styled.div`
@@ -380,33 +466,33 @@ const Header = () => {
           <nav>
             <ul>
               <MobileMenuItem
-                aria-label="Dobre praktyki"
-                text="Dobre praktyki"
-                slug="/dobre-praktyki"
+                aria-label="Teksty"
+                text="Teksty"
+                slug="/teksty"
+              />
+              <MobileMenuItem
+                aria-label="Aktualności"
+                text="Aktualności"
+                slug="/aktualnosci"
               />
               <MobileMenuItem
                 aria-label="Baza firm"
                 text="Baza firm"
-                slug="#"
+                slug="/baza-firm"
               />
               <MobileMenuItem
                 aria-label="B Corp"
-                text="B Corp"
+                text="B CORP"
                 slug="/b-corp"
               />
               <MobileMenuItem
-                aria-label="Wydarzenia"
-                text="Wydarzenia"
-                slug="/wydarzenia"
+                aria-label="Polecamy"
+                text="Polecamy"
+                slug="/polecamy"
               />
               <MobileMenuItem
-                aria-label="Księgarnia"
-                text="Księgarnia"
-                slug="/ksiegarnia"
-              />
-              <MobileMenuItem
-                aria-label="Navigator in English"
-                text="Navigator in English"
+                aria-label="Navigate in english"
+                text="Navigate in english"
                 slug="/navigator-in-english"
               />
               <Newsletter
@@ -429,6 +515,9 @@ const Header = () => {
               <img src={mobileSearchLogo} alt="Szukaj" />
             </button>
           </SearchForm>
+          <HeaderStaticNav />
+          <HeaderSocialSection />
+          <HeaderCopyrightSection />
         </MobileMenuWrapper>
       </MobileMenu>
     </StyledHeader>
