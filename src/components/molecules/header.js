@@ -165,15 +165,10 @@ const HeaderStaticNav = styled(StaticNav)`
     margin-bottom: 8px;
   }
 `;
-
 const HeaderSocialSection = styled(SocialSection)`
   align-self: flex-start;
   margin-bottom: 40px;
   margin-top: 0;
-  /* svg {
-    fill: ${({ theme }) => theme.color.offWhite};
-    stroke: ${({ theme }) => theme.color.offWhite};
-  } */
 `;
 const Navigation = styled.section`
   display: flex;
@@ -353,11 +348,11 @@ const Header = () => {
   useScrollPosition(
     ({ prevPos, currPos }) => {
       const isShow = currPos.y > prevPos.y;
-      if (isShow !== sticky) {
+      if (isShow !== sticky && !showMobileMenu) {
         setSticky(isShow);
       }
     },
-    [sticky]
+    [sticky, showMobileMenu]
   );
   const handleSearchToggle = () => {
     setSearch(prevState => !prevState);
