@@ -408,6 +408,7 @@ const TipsSection = styled(AsideSection)`
     margin-top: 76px;
   }
   @media only screen and (max-width: 1180px) {
+    margin-top: 4px;
     a h1 {
       font-size: 18px;
       line-height: 20px;
@@ -498,9 +499,8 @@ const BcorpSectionWrapper = styled.div`
     grid-template-columns: 1fr 1fr 1.4fr 1.4fr;
   }
   @media only screen and (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 24px;
-    row-gap: 24px;
+    display: none;
+    content-visibility: hidden;
   }
 `;
 const BCorpPostLargeWrapper = styled.div`
@@ -518,13 +518,15 @@ const BCorpPostLargeWrapper = styled.div`
     line-height: 29px;
   }
   .subtitle {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 20px;
     -webkit-line-clamp: 4;
   }
   .image-wrapper {
-    /* aspect-ratio: 8/5; */
     padding-top: 62.5%;
+  }
+  .category {
+    margin-top: 10px;
   }
   .date {
     margin-bottom: 0;
@@ -546,21 +548,36 @@ const BCorpPostLargeWrapper = styled.div`
       display: flex;
       flex-direction: column;
     }
+    .title {
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 16px;
+      line-height: 22px;
+    }
     .image-wrapper {
       /* aspect-ratio: 21/9; */
       padding-top: 42.85%;
     }
   }
-  @media only screen and (max-width: 860px) {
+
+  @media only screen and (max-width: 960px) {
     .title {
       font-size: 18px;
       line-height: 22px;
+      margin-bottom: 6px;
+      -webkit-line-clamp: 2;
     }
     .subtitle {
-      font-size: 12px;
-      line-height: 14px;
+      font-size: 13px;
+      line-height: 16px;
+      margin-bottom: 10px;
+      -webkit-line-clamp: 3;
     }
   }
+
   @media only screen and (max-width: 680px) {
     .image-wrapper {
       /* aspect-ratio: 16/9; */
@@ -568,14 +585,13 @@ const BCorpPostLargeWrapper = styled.div`
     }
   }
   @media only screen and (max-width: 600px) {
-    display: none;
-    content-visibility: hidden;
+    /* display: none;
+    content-visibility: hidden; */
   }
 `;
 const BCorpPostMediumWrapper = styled.div`
   grid-column-start: 3;
   grid-column-end: 4;
-
   .article {
     grid-template-columns: 2.4fr 110px;
     column-gap: 24px;
@@ -599,12 +615,6 @@ const BCorpPostMediumWrapper = styled.div`
     width: 110px;
   }
 
-  &:first-child > a.bcorp:last-child,
-  &:first-child > a.bcorp:first-child {
-    content-visibility: hidden;
-    display: none;
-  }
-
   @media only screen and (max-width: 1370px) {
     grid-column-end: 5;
     display: grid;
@@ -614,16 +624,19 @@ const BCorpPostMediumWrapper = styled.div`
       display: flex;
       flex-direction: column;
     }
+    .category {
+      margin-top: 10px;
+    }
     .title {
       -webkit-line-clamp: 3;
-      line-clamp: 3;
+      margin-bottom: 6px;
     }
     .subtitle {
       display: -webkit-box;
       -webkit-line-clamp: 5;
-      line-clamp: 5;
-      font-size: 12px;
-      line-height: 14px;
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 10px;
     }
     .image-wrapper {
       /* aspect-ratio: 16/9; */
@@ -631,32 +644,19 @@ const BCorpPostMediumWrapper = styled.div`
       width: unset;
     }
   }
-  @media only screen and (max-width: 860px) {
-    .title {
-      -webkit-line-clamp: 4;
-      line-clamp: 4;
-    }
-  }
-  @media only screen and (max-width: 820px) {
+  @media only screen and (max-width: 960px) {
     .title {
       font-size: 18px;
       line-height: 20px;
     }
-  }
-  @media only screen and (max-width: 740px) {
-    .title {
-      font-size: 16px;
-      line-height: 18px;
+    .subtitle {
+      font-size: 13px;
+      line-height: 16px;
     }
   }
   @media only screen and (max-width: 600px) {
     grid-column-start: 1;
     grid-column-end: 3;
-    &:first-child > a.bcorp:last-child,
-    &:first-child > a.bcorp:first-child {
-      display: block;
-      content-visibility: auto;
-    }
   }
 `;
 const EventSection = styled(AsideSection)`
@@ -664,9 +664,6 @@ const EventSection = styled(AsideSection)`
   grid-column-start: sm1;
   grid-column-end: sm3;
   margin-bottom: 28px;
-  .title {
-    margin-bottom: 10px;
-  }
   @media only screen and (max-width: 1370px) {
     grid-column-start: sm1;
     grid-column-end: com;
@@ -675,8 +672,6 @@ const EventSection = styled(AsideSection)`
     margin-top: 12px;
   }
   @media only screen and (max-width: 600px) {
-    content-visibility: hidden;
-    display: none;
   }
 `;
 const EventSectionWrapper = styled.div`
@@ -685,21 +680,22 @@ const EventSectionWrapper = styled.div`
   column-gap: 40px;
   @media only screen and (max-width: 1370px) {
     grid-template-columns: repeat(4, 1fr);
+    .title {
+      font-size: 20px;
+      line-height: 24px;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 10px;
+    }
     a:first-child {
       grid-column-start: 1;
       grid-column-end: 2;
     }
     a:first-child,
     a:nth-child(2) {
-      .title {
-        font-size: 20px;
-        line-height: 24px;
-      }
-      .subtitle {
-        font-size: 12px;
-        line-height: 14px;
-        -webkit-line-clamp: 5;
-      }
       .image-wrapper {
         /* aspect-ratio: 16/9; */
         padding-top: 56.25%;
@@ -718,25 +714,28 @@ const EventSectionWrapper = styled.div`
       padding-top: 42.85%;
     }
   }
-  @media only screen and (max-width: 860px) {
+  @media only screen and (max-width: 960px) {
     .title {
       font-size: 18px;
-      line-height: 22px;
+      line-height: 20px;
+      -webkit-line-clamp: 2;
     }
     .subtitle {
-      font-size: 12px;
-      line-height: 14px;
+      font-size: 13px;
+      line-height: 16px;
+      -webkit-line-clamp: 3;
     }
-  }
-  @media only screen and (max-width: 820px) {
     a:first-child,
     a:nth-child(2) {
       .title {
-        font-size: 18px;
-        line-height: 20px;
+        -webkit-line-clamp: 3;
+      }
+      .subtitle {
+        -webkit-line-clamp: 5;
       }
     }
   }
+
   @media only screen and (max-width: 680px) {
     grid-template-columns: 1.4fr 1.4fr 2fr;
     column-gap: 30px;
@@ -746,8 +745,8 @@ const EventSectionWrapper = styled.div`
     }
   }
   @media only screen and (max-width: 600px) {
-    content-visibility: hidden;
     display: none;
+    content-visibility: hidden;
   }
 `;
 const CommercialVertical = styled.aside`
@@ -906,9 +905,19 @@ const IndexPage = ({
               </TipsSectionWrapper>
             </TipsSection>
             <BcorpSection title="B Corp" to={`/teksty-o-b-corpach`}>
+              <MobilePostsWrapper>
+                {bcorpPosts.nodes.slice(0, 1).map(node => (
+                  <Post key={node.slug} post={node} />
+                ))}
+                <SectionMobileSidePostWrapper>
+                  {bcorpPosts.nodes.slice(1, 3).map(node => (
+                    <Post key={node.slug} horizontal post={node} />
+                  ))}
+                </SectionMobileSidePostWrapper>
+              </MobilePostsWrapper>
               <BcorpSectionWrapper>
                 <BCorpPostMediumWrapper>
-                  {bcorpPosts.nodes.map(node => (
+                  {bcorpPosts.nodes.slice(1, 3).map(node => (
                     <Post
                       key={node.slug}
                       className="bcorp"
@@ -925,6 +934,16 @@ const IndexPage = ({
               </BcorpSectionWrapper>
             </BcorpSection>
             <EventSection title="Wydarzenia" to={`/wydarzenia`}>
+              <MobilePostsWrapper>
+                {eventPosts.nodes.slice(0, 1).map(node => (
+                  <Post key={node.slug} post={node} />
+                ))}
+                <SectionMobileSidePostWrapper>
+                  {eventPosts.nodes.slice(1, 3).map(node => (
+                    <Post key={node.slug} horizontal post={node} />
+                  ))}
+                </SectionMobileSidePostWrapper>
+              </MobilePostsWrapper>
               <EventSectionWrapper>
                 {eventPosts.nodes.map(node => (
                   <Post key={node.slug} post={node} />
@@ -1142,7 +1161,7 @@ export const query = graphql`
           nodes: { elemMatch: { name: { eq: "Teksty o B Corpach" } } }
         }
       }
-      limit: 4
+      limit: 3
       sort: { order: DESC, fields: date }
     ) {
       nodes {

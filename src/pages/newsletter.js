@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Heading } from "atoms/heading";
 import Seo from "molecules/seo";
 import Layout from "organisms/layout";
-import NewsletterForm from "molecules/newsletterForm";
+// import NewsletterForm from "molecules/newsletterForm";
 
 const Wrapper = styled.div`
   padding-top: 152px;
@@ -40,7 +40,7 @@ const Newsletter = () => {
       <Wrapper>
         <FormContainer>
           <Heading text="Bądźmy w kontakcie!" />
-          <NewsletterForm />
+          {/* <NewsletterForm /> */}
         </FormContainer>
       </Wrapper>
     </Layout>

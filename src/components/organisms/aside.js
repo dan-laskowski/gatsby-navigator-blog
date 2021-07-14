@@ -5,7 +5,7 @@ import Tag from "atoms/tag";
 import Button from "atoms/button";
 import { Heading, Subheading } from "atoms/heading";
 import AsideSection from "molecules/asideSection";
-import NewsletterForm from "molecules/newsletterForm";
+import NewsletterRedirect from "molecules/newsletterRedirect";
 
 const AsideWrapper = styled.aside`
   /* border-left: 1px solid ${({ theme }) => theme.color.lightGray}; */
@@ -38,7 +38,7 @@ const AsideWrapper = styled.aside`
       margin-bottom: 8px;
     }
     h2 {
-      margin-bottom: 26px;
+      margin-bottom: 18px;
     }
   }
 `;
@@ -136,7 +136,7 @@ const Aside = ({ children, ...props }) => {
           </Link>
         </AsideSection>
         <AsideSection className="form-section" title="newsletter">
-          <NewsletterForm />
+          <NewsletterRedirect />
         </AsideSection>
         {children}
       </StickyContainer>

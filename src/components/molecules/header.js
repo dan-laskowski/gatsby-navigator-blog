@@ -162,7 +162,9 @@ const HeaderStaticNav = styled(StaticNav)`
     font-size: 14px;
     line-height: 26px;
     color: ${({ theme }) => theme.color.offWhite};
-    margin-bottom: 8px;
+    @media only screen and (max-width: 700px) {
+      margin-bottom: 10px;
+    }
   }
 `;
 const HeaderSocialSection = styled(SocialSection)`
