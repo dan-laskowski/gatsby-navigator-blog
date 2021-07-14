@@ -68,7 +68,7 @@ const MobileSidePostWrapper = styled.div`
   .article {
     margin-left: 24px;
     margin-right: 24px;
-    border-bottom: none;
+    border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
     display: grid;
     grid-template-columns: 1fr 110px;
     column-gap: 46px;
@@ -251,6 +251,7 @@ const ArticleSection = styled(AsideSection)`
   }
 `;
 const ArticleWrapper = styled.div``;
+
 const ArticlePostLargeWrapper = styled.div`
   .article {
     grid-template-columns: repeat(3, 1fr);
