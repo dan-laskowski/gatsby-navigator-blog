@@ -44,7 +44,7 @@ const PostWrapper = styled.article`
       horizontal ? `1fr 100px` : `unset`};
   }
   .category {
-    margin-top: ${({ horizontal }) => (horizontal ? `0` : `12px`)};
+    margin-top: ${({ horizontal }) => (horizontal ? `0` : `10px`)};
     @media only screen and (max-width: 1180px) {
       margin-bottom: 4px;
     }
@@ -95,9 +95,9 @@ const PostTitle = styled(Heading)`
     -webkit-line-clamp: ${({ horizontal }) => (horizontal ? 2 : 3)};
   }
   @media only screen and (max-width: 600px) {
-    font-size: ${({ horizontal }) => (horizontal ? `16px` : `20px`)};
-    line-height: ${({ horizontal }) => (horizontal ? `19px` : `24px`)};
-    -webkit-line-clamp: 3;
+    font-size: ${({ horizontal }) => (horizontal ? `14px` : `20px`)};
+    line-height: ${({ horizontal }) => (horizontal ? `17px` : `24px`)};
+    -webkit-line-clamp: 4;
     margin-bottom: 10px;
   }
 `;

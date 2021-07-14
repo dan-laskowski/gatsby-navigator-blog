@@ -58,6 +58,13 @@ const MobilePostsWrapper = styled.section`
     display: block;
     content-visibility: auto;
     contain-intrinsic-size: 1px 600px;
+    .wide-mobile-post h1 {
+      -webkit-line-clamp: 2;
+    }
+    .wide-mobile-post h2 {
+      -webkit-line-clamp: 4;
+      margin-bottom: 10px;
+    }
   }
   &:first-child > a:first-child article .text {
     margin-left: 24px;
@@ -408,7 +415,7 @@ const TipsSection = styled(AsideSection)`
   @media only screen and (max-width: 1370px) {
     margin-top: 76px;
   }
-  @media only screen and (max-width: 1180px) {
+  @media only screen and (max-width: 1180px) and (min-width: 601px) {
     margin-top: 4px;
     a h1 {
       font-size: 18px;
@@ -423,30 +430,12 @@ const TipsSection = styled(AsideSection)`
   @media only screen and (max-width: 800px) {
     grid-column-end: s;
   }
-  @media only screen and (max-width: 787px) {
+  @media only screen and (max-width: 787px) and (min-width: 601px) {
     margin-top: 12px;
     h2 {
       font-size: 11px;
       line-height: 13px;
     }
-  }
-  @media only screen and (max-width: 600px) {
-    h1 {
-      font-size: 20px;
-      line-height: 24px;
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
-    }
-    h2 {
-      font-size: 16px;
-      line-height: 20px;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-    }
-    article:first-of-type {
-      padding: 18px 0;
-    }
-    margin-top: 6px;
   }
 `;
 const TipsSectionWrapper = styled.div`
@@ -480,12 +469,6 @@ const BcorpSection = styled(AsideSection)`
   }
   @media only screen and (max-width: 787px) {
     margin-top: 12px;
-  }
-  @media only screen and (max-width: 600px) {
-    h1 {
-      font-size: 20px;
-      line-height: 24px;
-    }
   }
 `;
 const BcorpSectionWrapper = styled.div`
@@ -672,8 +655,6 @@ const EventSection = styled(AsideSection)`
   @media only screen and (max-width: 787px) {
     margin-top: 12px;
   }
-  @media only screen and (max-width: 600px) {
-  }
 `;
 const EventSectionWrapper = styled.div`
   display: grid;
@@ -833,7 +814,12 @@ const IndexPage = ({
           <PageWrapper>
             <MobilePostsWrapper>
               {carouselPosts.nodes.slice(0, 1).map(node => (
-                <Post key={node.slug} loading="eager" post={node} />
+                <Post
+                  className="wide-mobile-post"
+                  key={node.slug}
+                  loading="eager"
+                  post={node}
+                />
               ))}
               <MobileSidePostWrapper>
                 {carouselPosts.nodes.slice(1, 3).map(node => (
@@ -895,7 +881,7 @@ const IndexPage = ({
                 ))}
                 <SectionMobileSidePostWrapper>
                   {tipsPosts.nodes.slice(1, 3).map(node => (
-                    <Post key={node.slug} horizontal post={node} />
+                    <Post key={node.slug} horizontal={true} post={node} />
                   ))}
                 </SectionMobileSidePostWrapper>
               </MobilePostsWrapper>
