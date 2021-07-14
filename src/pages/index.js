@@ -237,6 +237,10 @@ const ArticleSection = styled(AsideSection)`
   }
   @media only screen and (max-width: 600px) {
     margin-top: 20px;
+    h2 {
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 `;
 const ArticleWrapper = styled.div`
