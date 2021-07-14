@@ -236,29 +236,15 @@ const ArticleSection = styled(AsideSection)`
     }
   }
   @media only screen and (max-width: 600px) {
-    margin-left: 24px;
-    margin-right: 24px;
-    h1 {
-      font-size: 20px;
-      line-height: 24px;
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
-    }
-    h2 {
-      font-size: 16px;
-      line-height: 20px;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-    }
-    article:first-of-type {
-      padding: 18px 0;
-      margin-bottom: 0;
-    }
-    margin-top: 6px;
+    margin-top: 20px;
   }
 `;
-const ArticleWrapper = styled.div``;
-
+const ArticleWrapper = styled.div`
+  @media only screen and (max-width: 600px) {
+    display: none;
+    content-visibility: hidden;
+  }
+`;
 const ArticlePostLargeWrapper = styled.div`
   .article {
     grid-template-columns: repeat(3, 1fr);
@@ -412,7 +398,7 @@ const TipsSection = styled(AsideSection)`
   grid-column-start: s;
   grid-column-end: s;
   margin-top: 16px;
-  @media only screen and (max-width: 1370px) {
+  @media only screen and (max-width: 1370px) and (min-width: 1179px) {
     margin-top: 76px;
   }
   @media only screen and (max-width: 1180px) and (min-width: 601px) {
@@ -431,7 +417,6 @@ const TipsSection = styled(AsideSection)`
     grid-column-end: s;
   }
   @media only screen and (max-width: 787px) and (min-width: 601px) {
-    margin-top: 12px;
     h2 {
       font-size: 11px;
       line-height: 13px;
@@ -856,6 +841,16 @@ const IndexPage = ({
               </Splide>
             </CarouselWrapper>
             <ArticleSection title="Teksty" to={`/teksty`}>
+              <MobilePostsWrapper>
+                {textPosts.nodes.slice(0, 1).map(node => (
+                  <Post key={node.slug} post={node} />
+                ))}
+                <SectionMobileSidePostWrapper>
+                  {textPosts.nodes.slice(1, 3).map(node => (
+                    <Post key={node.slug} horizontal={true} post={node} />
+                  ))}
+                </SectionMobileSidePostWrapper>
+              </MobilePostsWrapper>
               <ArticleWrapper>
                 <ArticlePostLargeWrapper>
                   {textPosts.nodes.slice(0, 1).map(node => (
