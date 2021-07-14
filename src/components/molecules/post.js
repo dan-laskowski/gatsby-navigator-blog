@@ -48,6 +48,9 @@ const PostWrapper = styled.article`
     @media only screen and (max-width: 1180px) {
       margin-bottom: 4px;
     }
+    @media only screen and (max-width: 600px) {
+      margin-bottom: 6px;
+    }
   }
 `;
 const Text = styled.section`

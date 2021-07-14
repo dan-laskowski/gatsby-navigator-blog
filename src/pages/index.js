@@ -422,6 +422,10 @@ const TipsSection = styled(AsideSection)`
       line-height: 13px;
     }
   }
+  @media only screen and (max-width: 600px) {
+    display: none;
+    content-visibility: hidden;
+  }
 `;
 const TipsSectionWrapper = styled.div`
   display: grid;
@@ -437,11 +441,6 @@ const TipsSectionWrapper = styled.div`
       content-visibility: hidden;
     }
   }
-
-  @media only screen and (max-width: 600px) {
-    display: none;
-    content-visibility: hidden;
-  }
 `;
 const BcorpSection = styled(AsideSection)`
   width: auto;
@@ -454,6 +453,9 @@ const BcorpSection = styled(AsideSection)`
   }
   @media only screen and (max-width: 787px) {
     margin-top: 12px;
+  }
+  @media only screen and (max-width: 600px) {
+    margin-top: 0px;
   }
 `;
 const BcorpSectionWrapper = styled.div`
@@ -748,6 +750,10 @@ const CommercialHorizontal = styled.div`
     margin-top: 21px;
     margin-bottom: 41px;
   }
+  @media only screen and (max-width: 1370px) {
+    grid-row-start: sm1;
+    height: 260px;
+  }
 `;
 const ShortyWrapper = styled.section`
   grid-column-start: s;
@@ -870,16 +876,6 @@ const IndexPage = ({
               </ArticleWrapper>
             </ArticleSection>
             <TipsSection title="Dobre praktyki" to={`/dobre-praktyki`}>
-              <MobilePostsWrapper>
-                {tipsPosts.nodes.slice(0, 1).map(node => (
-                  <Post key={node.slug} post={node} />
-                ))}
-                <SectionMobileSidePostWrapper>
-                  {tipsPosts.nodes.slice(1, 3).map(node => (
-                    <Post key={node.slug} horizontal={true} post={node} />
-                  ))}
-                </SectionMobileSidePostWrapper>
-              </MobilePostsWrapper>
               <TipsSectionWrapper>
                 {tipsPosts.nodes.map(node => (
                   <Post key={node.slug} post={node} />
