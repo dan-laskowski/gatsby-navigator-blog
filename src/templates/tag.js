@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-import { Subheading } from "atoms/heading";
+import { Heading } from "atoms/heading";
 import Seo from "molecules/seo";
 import Pagination from "molecules/Pagination";
 import Aside from "organisms/aside";
 import AsideSection from "molecules/asideSection";
 import Layout from "organisms/layout";
 import Post from "molecules/post";
-import TagItem from "atoms/tag";
+import NewsletterSmall from "molecules/newsletterSmall";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -40,54 +40,143 @@ const ContentWrapper = styled.div`
 `;
 const CategoryName = styled.div`
   background: #f6f6f6;
-  height: 86px;
-
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 41px;
-  @media only screen and (max-width: 1370px) {
-    height: 320px;
+  @media only screen and (max-width: 1180px) {
+    height: 100px;
   }
-  @media only screen and (max-width: 880px) {
-    height: 160px;
-    h1 {
-      font-size: 24px;
-      line-height: 29px;
-    }
+  @media only screen and (max-width: 600px) {
+    min-height: 180px;
+    height: auto;
+    margin-bottom: 20px;
   }
 `;
-
-const CategoryContent = styled.div`
-  max-width: 1645px;
+const StyledHeading = styled(Heading)`
+  font-size: 60px;
+  line-height: 71px;
+  margin-top: 0;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  @media only screen and (max-width: 1180px) {
+    font-size: 25px;
+    line-height: 30px;
+    margin-bottom: 8px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 26px;
+    line-height: 31px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 `;
-
-const StyledSubheading = styled(Subheading)`
-  display: inline;
-`;
-
-const StyledTag = styled(TagItem)`
-  margin-left: 9px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-`;
-
 const PostsWrapper = styled.div`
   grid-column-start: 1;
   grid-column-end: 10;
-  a:first-child {
+  padding-bottom: 52px;
+  border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
+  a:first-child article {
     margin-top: 0;
+    padding-top: 0;
   }
-
-  a:last-child {
+  a:last-child article {
     border-bottom: none;
   }
-
   @media only screen and (max-width: 720px) {
     grid-column-start: 1;
     grid-column-end: 13;
+    border-bottom: none;
+    padding-bottom: 40px;
+  }
+`;
+const PostTag = styled(Post)`
+  .article {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .category {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  .title {
+    margin-bottom: 32px;
+  }
+  .subtitle {
+    margin-bottom: 12px;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .title {
+      margin-bottom: 22px;
+      -webkit-line-clamp: 2;
+    }
+    .subtitle {
+      font-size: 16px;
+      line-height: 18px;
+      -webkit-line-clamp: 4;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    .article {
+      padding-top: 14px;
+      padding-bottom: 14px;
+      border-bottom: none;
+    }
+    .category {
+      font-size: 12px;
+      line-height: 14px;
+      margin-bottom: 0;
+    }
+    .title {
+      font-size: 18px;
+      line-height: 20px;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 12px;
+      line-height: 15px;
+      -webkit-line-clamp: 5;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .article {
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .category {
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+    .title {
+      font-size: 20px;
+      line-height: 24px;
+      -webkit-line-clamp: 3;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      display: -webkit-box;
+      font-size: 14px;
+      line-height: 18px;
+      -webkit-line-clamp: 3;
+      margin-bottom: 10px;
+    }
   }
 `;
 const StyledAside = styled(Aside)`
   grid-column-start: 10;
   grid-column-end: 13;
+  margin-top: -19px;
+  section {
+    margin-bottom: 20px;
+  }
+  .tags {
+    margin-bottom: 14px;
+  }
   @media only screen and (max-width: 720px) {
     display: none;
   }
@@ -105,7 +194,6 @@ const AsidePost = styled(Post)`
     margin-top: 0;
     margin-bottom: 8px;
   }
-
   .title {
     font-size: 20px;
     line-height: 24px;
@@ -120,7 +208,6 @@ const AsidePost = styled(Post)`
   .date {
     margin-bottom: 0;
   }
-
   @media only screen and (max-width: 1380px) {
     .article {
       grid-template-columns: 1fr;
@@ -137,10 +224,23 @@ const AsidePost = styled(Post)`
     }
   }
 
-  @media only screen and (max-width: 920px) {
+  @media only screen and (max-width: 900px) {
+    .article {
+      margin-bottom: 0;
+    }
+    .category {
+      font-size: 10px;
+      line-height: 12px;
+      margin-bottom: 4px;
+    }
     .title {
-      font-size: 14px;
-      line-height: 16px;
+      font-size: 11px;
+      line-height: 13px;
+      margin-bottom: 4px;
+    }
+    .date {
+      font-size: 10px;
+      line-height: 12px;
     }
   }
 `;
@@ -154,15 +254,12 @@ const Tag = ({ data: { wpTag, allWpPost, asideQuery }, pageContext }) => {
       />
       <Wrapper>
         <CategoryName>
-          <CategoryContent>
-            <StyledSubheading text={`Wybrano: `} />
-            <StyledTag name={`${wpTag.name} x`} slug={``} />
-          </CategoryContent>
+          <StyledHeading text={wpTag.name} />
         </CategoryName>
         <ContentWrapper>
           <PostsWrapper>
             {allWpPost.edges.map(({ node }) => (
-              <Post horizontal post={node} />
+              <PostTag horizontal post={node} />
             ))}
           </PostsWrapper>
           <StyledAside>
@@ -174,6 +271,7 @@ const Tag = ({ data: { wpTag, allWpPost, asideQuery }, pageContext }) => {
           </StyledAside>
         </ContentWrapper>
         <Pagination pageContext={pageContext} />
+        <NewsletterSmall />
       </Wrapper>
     </Layout>
   );

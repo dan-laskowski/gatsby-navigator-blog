@@ -7,7 +7,6 @@ import ProgressBar from "react-scroll-progress-bar";
 import ReactHtmlParser from "react-html-parser";
 import { Heading, Subheading } from "atoms/heading";
 import Button from "atoms/button";
-import Date from "atoms/date";
 import Aside from "organisms/aside";
 import AsideSection from "molecules/asideSection";
 import Post from "molecules/post";

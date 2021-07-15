@@ -8,7 +8,6 @@ import AsideSection from "molecules/asideSection";
 import NewsletterRedirect from "molecules/newsletterRedirect";
 
 const AsideWrapper = styled.aside`
-  /* border-left: 1px solid ${({ theme }) => theme.color.lightGray}; */
   h2 {
     font-weight: 300;
   }
@@ -47,7 +46,6 @@ const StickyContainer = styled.div`
   top: 40px;
   bottom: 40px;
 `;
-
 const StyledHeading = styled(Heading)`
   @media only screen and (max-width: 1370px) {
     margin-top: 8px;
@@ -59,7 +57,6 @@ const StyledHeading = styled(Heading)`
     margin-bottom: 10px;
   }
 `;
-
 const StyledSubheading = styled(Subheading)`
   @media only screen and (max-width: 1180px) {
     font-size: 12px;
@@ -70,7 +67,6 @@ const StyledSubheading = styled(Subheading)`
     -webkit-line-clamp: 7;
   }
 `;
-
 const Aside = ({ children, ...props }) => {
   const { allWpPost, allWpTag } = useStaticQuery(graphql`
     query AsideQuery {
