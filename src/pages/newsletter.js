@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Heading } from "atoms/heading";
 import Seo from "molecules/seo";
 import Layout from "organisms/layout";
 import NewsletterForm from "molecules/newsletterForm";
