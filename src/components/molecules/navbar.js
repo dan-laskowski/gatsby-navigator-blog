@@ -56,7 +56,7 @@ const Navbar = () => {
             slug="/wydarzenia"
           />
         </SubmenuItem>
-        <MenuItem aria-label="Baza firm" text="Baza firm" slug="#" />
+        <MenuItem aria-label="Baza firm" text="Baza firm" slug="/coming-soon" />
         <SubmenuItem aria-label="B Corp" text="B Corp" slug="/b-corp">
           <MenuItem
             aria-label="Czym są B Corpy"

@@ -93,7 +93,8 @@ const StyledButton = styled(Button)`
 `;
 
 const NewsletterForm = () => {
-  const [email, setEmail] = useState("");
+  let params = new URLSearchParams(window.location.search.slice(1));
+  const [email, setEmail] = useState(params.get("q") || "");
 
   const handleFormSubmit = e => {
     e.preventDefault();
@@ -121,6 +122,7 @@ const NewsletterForm = () => {
           autocomplete="email"
           required
           aria-required
+          value={email}
           onChange={e => setEmail(e.target.value)}
         />
       </InputContainer>
