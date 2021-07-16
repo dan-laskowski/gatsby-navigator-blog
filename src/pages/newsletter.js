@@ -3,30 +3,19 @@ import styled from "styled-components";
 import { Heading } from "atoms/heading";
 import Seo from "molecules/seo";
 import Layout from "organisms/layout";
-// import NewsletterForm from "molecules/newsletterForm";
+import NewsletterForm from "molecules/newsletterForm";
 
 const Wrapper = styled.div`
-  padding-top: 152px;
-  @media only screen and (max-width: 850px) {
-    padding-top: 136px;
-  }
-  @media only screen and (max-width: 616px) {
-    padding-top: 94px;
-  }
-`;
-const FormContainer = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 400px;
-  margin-bottom: 41px;
-  background: ${({ theme }) => theme.color.lightGray};
-
-  h1 {
-    font-size: 65px;
-    text-transform: uppercase;
-    margin-bottom: 46px;
+  align-items: center;
+  padding-top: 160px;
+  min-height: 70vh;
+  @media only screen and (max-width: 600px) {
+    justify-content: flex-start;
+    padding-top: 164px;
+    min-height: 70vh;
   }
 `;
 
@@ -38,10 +27,7 @@ const Newsletter = () => {
         description="Zapisz się do newslettera Navigator, aby otrzymywać od nas interesujące treści"
       />
       <Wrapper>
-        <FormContainer>
-          <Heading text="Bądźmy w kontakcie!" />
-          {/* <NewsletterForm /> */}
-        </FormContainer>
+        <NewsletterForm />
       </Wrapper>
     </Layout>
   );
