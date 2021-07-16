@@ -47,8 +47,7 @@ const StyledHeading = styled(Heading)`
   @media only screen and (max-width: 600px) {
     font-size: 26px;
     line-height: 31px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 24px;
   }
 `;
 
@@ -59,6 +58,18 @@ const TagsCloud = styled.section`
   margin-top: 64px;
   div {
     max-width: 1206px;
+  }
+
+  @media only screen and (max-width: 1345px) {
+    div {
+      max-width: 70%;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    div {
+      max-width: 86%;
+    }
   }
 `;
 
