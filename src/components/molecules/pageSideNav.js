@@ -10,6 +10,21 @@ const StyledAsideSection = styled(AsideSection)`
     line-height: 24px;
     margin-bottom: 8px;
   }
+  @media only screen and (max-width: 1240px) {
+    margin-top: 64px;
+    h1 {
+      line-height: 20px;
+      margin-bottom: 6px;
+    }
+  }
+  @media only screen and (max-width: 620px) {
+    max-width: 100%;
+    margin-top: 0;
+  }
+  @media only screen and (max-width: 600px) {
+    margin-left: 0;
+    margin-righ: 0;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -22,6 +37,12 @@ const StyledLink = styled(Link)`
   padding-top: 10px;
   padding-bottom: 10px;
   border-top: 1px solid ${({ theme }) => theme.color.lightGray};
+  @media only screen and (max-width: 1240px) {
+    font-size: 14px;
+    line-height: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 `;
 
 const PageSideNav = ({ title, items }) => {
