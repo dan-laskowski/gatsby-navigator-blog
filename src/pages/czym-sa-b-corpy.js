@@ -99,6 +99,7 @@ const PageContent = styled.main`
     @media only screen and (max-width: 620px) {
       font-size: 16px;
       line-height: 26px;
+      margin-bottom: 18px;
     }
     @media only screen and (max-width: 360px) {
       font-size: 14px;
