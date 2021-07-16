@@ -17,6 +17,7 @@ const Wrapper = styled.section`
 const StyledHeading = styled(Heading)`
   font-size: 77px;
   margin-bottom: 24px;
+  text-align: center;
   @media only screen and (max-width: 900px) {
     font-size: 44px;
     margin-bottom: 14px;
