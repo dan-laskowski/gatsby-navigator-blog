@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.section`
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const TagBox = ({ tags, amount, ...props }) => {
