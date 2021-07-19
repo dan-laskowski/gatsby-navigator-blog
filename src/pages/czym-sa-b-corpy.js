@@ -3,6 +3,8 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 import styled from "styled-components";
 import Seo from "molecules/seo";
 import Layout from "organisms/layout";
+import AsideSection from "molecules/asideSection";
+import Post from "molecules/post";
 import ReactHtmlParser from "react-html-parser";
 import PageSideNav from "molecules/pageSideNav";
 import bcorpNavData from "data/bcorpNav";
@@ -21,7 +23,7 @@ const PageWrapper = styled.div`
   grid-template-columns: repeat(8, 1fr);
   column-gap: 40px;
   grid-template-rows: auto;
-  grid-template-areas: ". c c c c . n n";
+  grid-template-areas: "l c c c c . n n";
   @media only screen and (max-width: 1730px) {
     margin-left: 30px;
     margin-right: 30px;
@@ -31,7 +33,7 @@ const PageWrapper = styled.div`
   }
   @media only screen and (max-width: 760px) {
     column-gap: 24px;
-    grid-template-areas: ". c c c c c . n";
+    grid-template-areas: "l c c c c c . n";
   }
   @media only screen and (max-width: 620px) {
     column-gap: 24px;
@@ -61,7 +63,6 @@ const PageContent = styled.main`
     font-weight: bold;
     color: ${({ theme }) => theme.color.black};
   }
-
   h1 {
     font-size: 60px;
     line-height: 71px;
@@ -106,7 +107,6 @@ const PageContent = styled.main`
       line-height: 20px;
     }
   }
-
   p {
     span.alignnone {
       margin-bottom: 120px;
@@ -161,12 +161,83 @@ const Aside = styled.aside`
   grid-row-start: n;
 `;
 
+const LastPosts = styled(AsideSection)`
+  grid-column-start: l;
+  grid-column-end: n;
+  @media only screen and (max-width: 1240px) {
+    margin-bottom: 56px;
+  }
+  @media only screen and (max-width: 760px) {
+    display: none;
+    content-visibility: hidden;
+  }
+`;
+
+const LastPostsContent = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 40px;
+
+  .title {
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    margin-bottom: 12px;
+  }
+
+  @media only screen and (max-width: 1240px) {
+    .title {
+      -webkit-line-clamp: 4;
+    }
+    .subtitle,
+    .date {
+      display: none;
+      content-visibility: hidden;
+    }
+  }
+`;
+
 const CzymJestBCorp = () => {
-  const { wpPage } = useStaticQuery(graphql`
+  const { wpPage, allWpPost } = useStaticQuery(graphql`
     query MyQuery {
       wpPage(title: { eq: "Czym są B Corpy?" }) {
         title
         content
+      }
+      allWpPost(limit: 4, filter: { status: { eq: "publish" } }) {
+        nodes {
+          title
+          slug
+          excerpt
+          dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 380
+                    placeholder: BLURRED
+                    formats: [AUTO, AVIF, WEBP]
+                  )
+                }
+              }
+            }
+          }
+          categories {
+            nodes {
+              name
+              slug
+              wpChildren {
+                nodes {
+                  name
+                  slug
+                }
+              }
+            }
+          }
+        }
       }
     }
   `);
@@ -191,6 +262,13 @@ const CzymJestBCorp = () => {
           <Aside>
             <PageSideNav title="B CORPY" items={bcorpNavData.items} />
           </Aside>
+          <LastPosts title="Ostatnie" to="/">
+            <LastPostsContent>
+              {allWpPost.nodes.map(node => (
+                <Post post={node} />
+              ))}
+            </LastPostsContent>
+          </LastPosts>
         </PageWrapper>
       </MainWrapper>
     </Layout>

@@ -117,7 +117,11 @@ const Aside = ({ children, ...props }) => {
             <Tag className="last-tag" key="last" name="..." slug="tags" />
           </div>
         </AsideSection>
-        <AsideSection title="sprawdź!" to={`/publikacje-i-raporty`}>
+        <AsideSection
+          className="raport"
+          title="sprawdź!"
+          to={`/publikacje-i-raporty`}
+        >
           <Link to={`/${allWpPost.edges[0].node.slug}`}>
             <StyledHeading text={allWpPost.edges[0].node.title} />
             <StyledSubheading

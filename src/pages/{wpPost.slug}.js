@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Seo from "molecules/seo";
 import { graphql, Link } from "gatsby";
+import Date from "atoms/date";
+import Category from "atoms/category";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ProgressBar from "react-scroll-progress-bar";
 import ReactHtmlParser from "react-html-parser";
@@ -16,100 +18,225 @@ import facebook from "assets/images/facebook.svg";
 import twitter from "assets/images/twitter.svg";
 import linkedin from "assets/images/linkedin.svg";
 
-const ArticleWrapper = styled.article``;
-
-const HeadingSection = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 0 auto;
-  margin-bottom: 140px;
-  max-width: 1920px;
-`;
-const ArticleInfo = styled.div`
-  background: ${({ background }) => background};
-  overflow: hidden;
+const MainWrapper = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-const HeadingWrapper = styled.div`
-  margin-left: 10%;
-  margin-right: 10%;
-`;
-const CategoryName = styled(Link)`
-  font-family: ${({ theme }) => theme.font.tag.family};
-  font-weight: ${({ theme }) => theme.font.tag.weight};
-  font-style: ${({ theme }) => theme.font.tag.weight};
-  font-size: ${({ theme }) => theme.font.tag.size};
-  color: ${({ theme }) => theme.color.offWhite};
-  text-transform: uppercase;
-  margin-left: 2px;
-`;
-const StyledHeading = styled(Heading)`
-  font-size: ${({ theme }) => theme.font.heading.size};
-  color: ${({ theme }) => theme.color.offWhite};
-  text-transform: uppercase;
-  margin-top: 10px;
-  margin-bottom: 20px;
-`;
-const StyledSubheading = styled(Subheading)`
-  font-size: ${({ theme }) => theme.font.subheading.size};
-  color: ${({ theme }) => theme.color.offWhite};
-  line-height: 38px;
-`;
-const FeaturedImg = styled.div`
-  overflow: hidden;
-  .gatsby-image-wrapper {
-    width: 100%;
-    overflow: hidden;
-    object-fit: cover;
-    height: 100%;
+  align-items: center;
+  padding-top: 152px;
+  @media only screen and (max-width: 850px) {
+    padding-top: 136px;
+  }
+  @media only screen and (max-width: 616px) {
+    padding-top: 94px;
   }
 `;
-const ArticleMain = styled.div`
+
+const PageWrapper = styled.div`
   display: grid;
   max-width: 1645px;
-  margin: 0 auto;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 40px;
   grid-template-rows: auto;
-`;
-const MetaSection = styled.div`
-  grid-column-start: 1;
-  grid-column-end: 2;
-`;
-const AuthorName = styled.p`
-  font-family: ${({ theme }) => theme.font.sectionName.family};
-  font-weight: ${({ theme }) => theme.font.sectionName.weight};
-  font-style: ${({ theme }) => theme.font.sectionName.weight};
-  font-size: 16px;
-  color: ${({ theme }) => theme.color.gray};
-  margin-bottom: 20px;
-`;
-const StyledDate = styled.p`
-  font-family: ${({ theme }) => theme.font.heading.family};
-  font-size: 12px;
-  line-height: 22px;
-  margin-bottom: 31px;
-  color: ${({ theme }) => theme.color.gray};
-`;
-const Socials = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 144px;
-  margin-bottom: 60px;
-`;
-const SocialIcon = styled.a`
-  display: block;
-  img {
-    width: 22px;
-    height: 22px;
+  grid-template-areas:
+    "d d d d"
+    "m c c a";
+  .article-image-description {
+    grid-area: d;
+    grid-row-start: 1;
+    font-family: ${({ theme }) => theme.font.subheading.family};
+    color: ${({ theme }) => theme.color.gray};
+    font-family: 12px;
+    line-height: 14px;
+    margin-top: 12px;
+    margin-bottom: 90px;
+  }
+  @media only screen and (max-width: 1745px) {
+    margin-left: 30px;
+    margin-right: 30px;
   }
 `;
+
+const MainSection = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "t i";
+  column-gap: 30px;
+  background: ${({ background }) => background};
+  overflow: hidden;
+
+  .article-title {
+    padding-left: calc((100vw - 1645px) / 2);
+    min-height: 640px;
+    grid-area: t;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .category,
+    h1,
+    h2 {
+      color: ${({ theme }) => theme.color.offWhite};
+    }
+
+    .category {
+      font-size: 12px;
+      line-height: 14px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 60px;
+      line-height: 65px;
+      margin-bottom: 14px;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 24px;
+      line-height: 38px;
+    }
+  }
+  .article-image {
+    grid-area: i;
+    .gatsby-image-wrapper {
+      width: 100%;
+      overflow: hidden;
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+  @media only screen and (max-width: 1720px) {
+    .article-title {
+      margin-left: 30px;
+    }
+  }
+`;
+
+const MetaSection = styled.section`
+  grid-area: m;
+  .author {
+    font-size: 16px;
+    font-weight: bold;
+    color: ${({ theme }) => theme.color.gray};
+    margin-bottom: 12px;
+  }
+  .date {
+    font-size: 12px;
+    margin-bottom: 32px;
+  }
+  .author,
+  .date {
+    font-family: ${({ theme }) => theme.font.heading.family};
+    line-height: 22px;
+  }
+  .socials {
+    display: flex;
+    max-width: 145px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 58px;
+  }
+  .tags {
+    max-width: 232px;
+  }
+`;
+
+// const HeadingSection = styled.section`
+//   padding-top: 152px;
+//   @media only screen and (max-width: 850px) {
+//     padding-top: 136px;
+//   }
+//   @media only screen and (max-width: 616px) {
+//     padding-top: 94px;
+//   }
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   margin: 0 auto;
+//   margin-bottom: 140px;
+//   max-width: 1920px;
+// `;
+// const ArticleInfo = styled.div`
+//   background: ${({ background }) => background};
+//   overflow: hidden;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+// `;
+// const HeadingWrapper = styled.div`
+//   margin-left: 10%;
+//   margin-right: 10%;
+// `;
+// const CategoryName = styled(Link)`
+//   font-family: ${({ theme }) => theme.font.tag.family};
+//   font-weight: ${({ theme }) => theme.font.tag.weight};
+//   font-style: ${({ theme }) => theme.font.tag.weight};
+//   font-size: ${({ theme }) => theme.font.tag.size};
+//   color: ${({ theme }) => theme.color.offWhite};
+//   text-transform: uppercase;
+//   margin-left: 2px;
+// `;
+// const StyledHeading = styled(Heading)`
+//   font-size: ${({ theme }) => theme.font.heading.size};
+//   color: ${({ theme }) => theme.color.offWhite};
+//   text-transform: uppercase;
+//   margin-top: 10px;
+//   margin-bottom: 20px;
+// `;
+// const StyledSubheading = styled(Subheading)`
+//   font-size: ${({ theme }) => theme.font.subheading.size};
+//   color: ${({ theme }) => theme.color.offWhite};
+//   line-height: 38px;
+// `;
+// const FeaturedImg = styled.div`
+//   overflow: hidden;
+//   .gatsby-image-wrapper {
+//     width: 100%;
+//     overflow: hidden;
+//     object-fit: cover;
+//     height: 100%;
+//   }
+// `;
+// const ArticleMain = styled.div`
+//   display: grid;
+//   max-width: 1645px;
+//   margin: 0 auto;
+//   grid-template-columns: repeat(4, 1fr);
+//   column-gap: 40px;
+//   grid-template-rows: auto;
+// `;
+// const MetaSection = styled.div`
+//   grid-column-start: 1;
+//   grid-column-end: 2;
+// `;
+// const AuthorName = styled.p`
+//   font-family: ${({ theme }) => theme.font.sectionName.family};
+//   font-weight: ${({ theme }) => theme.font.sectionName.weight};
+//   font-style: ${({ theme }) => theme.font.sectionName.weight};
+//   font-size: 16px;
+//   color: ${({ theme }) => theme.color.gray};
+//   margin-bottom: 20px;
+// `;
+// const StyledDate = styled.p`
+//   font-family: ${({ theme }) => theme.font.heading.family};
+//   font-size: 12px;
+//   line-height: 22px;
+//   margin-bottom: 31px;
+//   color: ${({ theme }) => theme.color.gray};
+// `;
+// const Socials = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   width: 144px;
+//   margin-bottom: 60px;
+// `;
+// const SocialIcon = styled.a`
+//   display: block;
+//   img {
+//     width: 22px;
+//     height: 22px;
+//   }
+// `;
 const ArticleContent = styled.div`
-  grid-column-start: 2;
-  grid-column-end: 4;
+  grid-area: c;
   font-family: ${({ theme }) => theme.font.paragraph.family};
   font-weight: ${({ theme }) => theme.font.paragraph.weight};
   font-style: ${({ theme }) => theme.font.paragraph.weight};
@@ -232,15 +359,21 @@ const ArticleContent = styled.div`
     }
   }
 `;
+const ArticleAside = styled(Aside)`
+  grid-area: a;
+  margin-top: -19px;
+  .raport,
+  .form-section {
+    display: none;
+    content-visibility: hidden;
+  }
+`;
+
 const StyledButton = styled(Button)`
   width: 200px;
   margin: 0 auto;
   display: block;
   margin-bottom: 68px;
-`;
-const StyledAside = styled(Aside)`
-  grid-column-start: 4;
-  grid-column-end: 5;
 `;
 const AsidePost = styled(Post)`
   .article {
@@ -310,62 +443,59 @@ const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
         image={wpPost.featuredImage.node.mediaItemUrl}
       />
       <Layout>
-        <ArticleWrapper>
-          <HeadingSection>
-            <ArticleInfo background={wpPost.subtitle.kolorTlaTytulu}>
-              <ProgressBar bgcolor="#F07539" />
-              <HeadingWrapper>
-                <CategoryName
-                  to={`/${
-                    wpPost.categories.nodes[handleCategoryNode(wpPost)].slug
-                  }`}
-                >
-                  {wpPost.categories.nodes[handleCategoryNode(wpPost)].name}
-                </CategoryName>
-                <StyledHeading text={wpPost.title} />
-                <StyledSubheading text={wpPost.subtitle.podtytul} />
-              </HeadingWrapper>
-            </ArticleInfo>
-            <FeaturedImg>
+        <MainWrapper>
+          <MainSection background={wpPost.subtitle.kolorTlaTytulu}>
+            <div className="article-title">
+              <Category
+                className="category"
+                name={wpPost.categories.nodes[handleCategoryNode(wpPost)].name}
+                slug={wpPost.categories.nodes[handleCategoryNode(wpPost)].slug}
+              />
+              <Heading text={wpPost.title} />
+              <Subheading text={wpPost.subtitle.podtytul} />
+            </div>
+            <div className="article-image">
               <GatsbyImage
                 image={image}
                 alt={wpPost.featuredImage.altText || ``}
               />
-            </FeaturedImg>
-          </HeadingSection>
-          <ArticleMain>
+            </div>
+          </MainSection>
+          <PageWrapper>
             <MetaSection>
-              <AuthorName>{wpPost.author.node.name}</AuthorName>
-              <StyledDate>{wpPost.dateGmt}</StyledDate>
-              <Socials>
-                <SocialIcon
+              <p className="author">{wpPost.author.node.name}</p>
+              <Date className="date" date={wpPost.dateGmt} />
+              <section className="socials">
+                <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.SITE_URL}${wpPost.slug}`}
                 >
-                  <img src={facebook} alt="facebook logo" />
-                </SocialIcon>
-                <SocialIcon>
-                  <a
-                    href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-                    className="twitter-share-button"
-                    data-text={wpPost.title}
-                    data-dnt="true"
-                    data-url={`${process.env.SITE_URL}/${wpPost.slug}`}
-                    data-show-count="false"
-                    data-lang="pl"
-                  >
-                    <img src={twitter} alt="twitter logo" />
-                  </a>
-                </SocialIcon>
-                <SocialIcon
+                  <img src={facebook} alt="ikona facebooka" />
+                </a>
+                <a
+                  href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+                  className="twitter-share-button"
+                  data-text={wpPost.title}
+                  data-dnt="true"
+                  data-url={`${process.env.SITE_URL}/${wpPost.slug}`}
+                  data-show-count="false"
+                  data-lang="pl"
+                >
+                  <img src={twitter} alt="ikona twittera" />
+                </a>
+                <a
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${process.env.SITE_URL}${wpPost.slug}`}
                 >
-                  <img src={linkedin} alt="linkedin logo" />
-                </SocialIcon>
-              </Socials>
-              <div>
+                  <img src={linkedin} alt="ikona linkedina" />
+                </a>
+              </section>
+              <section className="tags">
                 <TagBox tags={wpPost.tags} />
-              </div>
+              </section>
             </MetaSection>
+            <div className="article-image-description">
+              {ReactHtmlParser(wpPost.featuredImage.node.description)}
+            </div>
+
             <ArticleContent>
               {ReactHtmlParser(wpPost.content)}
               {!!wpPost.raport.raportfile && (
@@ -377,15 +507,15 @@ const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
                 />
               )}
             </ArticleContent>
-            <StyledAside>
+            <ArticleAside>
               <AsideSection title="ostatnie" to={`/`}>
                 {asideQuery.nodes.map(node => (
                   <AsidePost horizontal post={node} />
                 ))}
               </AsideSection>
-            </StyledAside>
-          </ArticleMain>
-        </ArticleWrapper>
+            </ArticleAside>
+          </PageWrapper>
+        </MainWrapper>
       </Layout>
     </>
   );
@@ -401,6 +531,7 @@ export const query = graphql`
       }
       featuredImage {
         node {
+          description
           mediaItemUrl
           localFile {
             childImageSharp {
