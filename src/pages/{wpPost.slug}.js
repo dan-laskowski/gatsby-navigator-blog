@@ -67,6 +67,7 @@ const MainSection = styled.section`
 
   .article-title {
     padding-left: calc((100vw - 1645px) / 2);
+    margin-right: 10%;
     min-height: 640px;
     grid-area: t;
     display: flex;
