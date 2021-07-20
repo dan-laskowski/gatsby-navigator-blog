@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ReactHtmlParser from "react-html-parser";
+import { document } from "browser-monads";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Category from "atoms/category";
 import { Heading, Subheading } from "atoms/heading";
