@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Seo from "molecules/seo";
-import { graphql, Link } from "gatsby";
-import Date from "atoms/date";
+import { graphql } from "gatsby";
 import Category from "atoms/category";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ProgressBar from "react-scroll-progress-bar";
@@ -12,11 +11,9 @@ import Button from "atoms/button";
 import Aside from "organisms/aside";
 import AsideSection from "molecules/asideSection";
 import Post from "molecules/post";
-import TagBox from "molecules/tagBox";
 import Layout from "organisms/layout";
-import facebook from "assets/images/facebook.svg";
-import twitter from "assets/images/twitter.svg";
-import linkedin from "assets/images/linkedin.svg";
+import ArticleTitle from "organisms/articleTitle";
+import Meta from "organisms/meta";
 
 const MainWrapper = styled.main`
   display: flex;
@@ -31,261 +28,27 @@ const MainWrapper = styled.main`
     padding-top: 94px;
   }
 `;
-
 const PageWrapper = styled.div`
   display: grid;
   max-width: 1645px;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 40px;
   grid-template-rows: auto;
-  grid-template-areas:
-    "d d d d"
-    "m c c a";
-  .article-image-description {
-    grid-area: d;
-    grid-row-start: 1;
-    font-family: ${({ theme }) => theme.font.subheading.family};
-    color: ${({ theme }) => theme.color.gray};
-    font-size: 12px;
-    line-height: 14px;
-    margin-top: 12px;
-    margin-bottom: 90px;
+  grid-template-areas: "m c c a";
+  .meta {
+    grid-area: m;
   }
   @media only screen and (max-width: 1745px) {
     margin-left: 30px;
     margin-right: 30px;
   }
-  @media only screen and (max-width: 1180px) {
-    .article-image-description {
-      font-size: 11px;
-      line-height: 13px;
-      margin-bottom: 32px;
-    }
+
+  @media only screen and (max-width: 670px) {
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 24px;
+    grid-template-areas: "c c c c c c";
   }
 `;
-
-const MainSection = styled.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "t i";
-  column-gap: 30px;
-  background: ${({ background }) => background};
-  overflow: hidden;
-
-  .article-title {
-    padding-left: calc((100vw - 1645px) / 2);
-    padding-right: 10%;
-    min-height: 640px;
-    grid-area: t;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    .category,
-    h1,
-    h2 {
-      color: ${({ theme }) => theme.color.offWhite};
-    }
-    .category {
-      font-size: 12px;
-      line-height: 14px;
-      margin-bottom: 12px;
-    }
-    h1 {
-      font-size: 60px;
-      line-height: 65px;
-      margin-bottom: 14px;
-      margin-top: 0;
-    }
-    h2 {
-      font-size: 24px;
-      line-height: 38px;
-    }
-  }
-  .article-image {
-    grid-area: i;
-    .gatsby-image-wrapper {
-      width: 100%;
-      overflow: hidden;
-      object-fit: cover;
-      height: 100%;
-    }
-  }
-  @media only screen and (max-width: 1720px) {
-    .article-title {
-      margin-left: 30px;
-      margin-right: 30px;
-    }
-  }
-  @media only screen and (max-width: 1520px) {
-    .article-title {
-      min-height: 500px;
-    }
-    .article-title h1 {
-      font-size: 50px;
-      line-height: 55px;
-    }
-    .article-title h2 {
-      font-size: 20px;
-      line-height: 30px;
-    }
-  }
-  @media only screen and (max-width: 1180px) {
-    .article-title {
-      min-height: 360px;
-    }
-    .category {
-      margin-bottom: 6px;
-    }
-    .article-title h1 {
-      font-size: 26px;
-      line-height: 30px;
-    }
-    .article-title h2 {
-      font-size: 16px;
-      line-height: 18px;
-    }
-  }
-`;
-
-const MetaSection = styled.section`
-  grid-area: m;
-  .author {
-    font-size: 16px;
-    font-weight: bold;
-    color: ${({ theme }) => theme.color.gray};
-    margin-bottom: 12px;
-  }
-  .date {
-    font-size: 12px;
-    margin-bottom: 32px;
-  }
-  .author,
-  .date {
-    font-family: ${({ theme }) => theme.font.heading.family};
-    line-height: 22px;
-  }
-  .socials {
-    display: flex;
-    max-width: 145px;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 58px;
-  }
-  .tags {
-    max-width: 232px;
-  }
-  @media only screen and (max-width: 1180px) {
-    .author {
-      font-size: 12px;
-      line-height: 15px;
-      margin-bottom: 8px;
-    }
-    .date {
-      margin-bottom: 20px;
-    }
-    .socials {
-      max-width: 118px;
-      margin-bottom: 14px;
-    }
-  }
-`;
-
-// const HeadingSection = styled.section`
-//   padding-top: 152px;
-//   @media only screen and (max-width: 850px) {
-//     padding-top: 136px;
-//   }
-//   @media only screen and (max-width: 616px) {
-//     padding-top: 94px;
-//   }
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   margin: 0 auto;
-//   margin-bottom: 140px;
-//   max-width: 1920px;
-// `;
-// const ArticleInfo = styled.div`
-//   background: ${({ background }) => background};
-//   overflow: hidden;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-// `;
-// const HeadingWrapper = styled.div`
-//   margin-left: 10%;
-//   margin-right: 10%;
-// `;
-// const CategoryName = styled(Link)`
-//   font-family: ${({ theme }) => theme.font.tag.family};
-//   font-weight: ${({ theme }) => theme.font.tag.weight};
-//   font-style: ${({ theme }) => theme.font.tag.weight};
-//   font-size: ${({ theme }) => theme.font.tag.size};
-//   color: ${({ theme }) => theme.color.offWhite};
-//   text-transform: uppercase;
-//   margin-left: 2px;
-// `;
-// const StyledHeading = styled(Heading)`
-//   font-size: ${({ theme }) => theme.font.heading.size};
-//   color: ${({ theme }) => theme.color.offWhite};
-//   text-transform: uppercase;
-//   margin-top: 10px;
-//   margin-bottom: 20px;
-// `;
-// const StyledSubheading = styled(Subheading)`
-//   font-size: ${({ theme }) => theme.font.subheading.size};
-//   color: ${({ theme }) => theme.color.offWhite};
-//   line-height: 38px;
-// `;
-// const FeaturedImg = styled.div`
-//   overflow: hidden;
-//   .gatsby-image-wrapper {
-//     width: 100%;
-//     overflow: hidden;
-//     object-fit: cover;
-//     height: 100%;
-//   }
-// `;
-// const ArticleMain = styled.div`
-//   display: grid;
-//   max-width: 1645px;
-//   margin: 0 auto;
-//   grid-template-columns: repeat(4, 1fr);
-//   column-gap: 40px;
-//   grid-template-rows: auto;
-// `;
-// const MetaSection = styled.div`
-//   grid-column-start: 1;
-//   grid-column-end: 2;
-// `;
-// const AuthorName = styled.p`
-//   font-family: ${({ theme }) => theme.font.sectionName.family};
-//   font-weight: ${({ theme }) => theme.font.sectionName.weight};
-//   font-style: ${({ theme }) => theme.font.sectionName.weight};
-//   font-size: 16px;
-//   color: ${({ theme }) => theme.color.gray};
-//   margin-bottom: 20px;
-// `;
-// const StyledDate = styled.p`
-//   font-family: ${({ theme }) => theme.font.heading.family};
-//   font-size: 12px;
-//   line-height: 22px;
-//   margin-bottom: 31px;
-//   color: ${({ theme }) => theme.color.gray};
-// `;
-// const Socials = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   width: 144px;
-//   margin-bottom: 60px;
-// `;
-// const SocialIcon = styled.a`
-//   display: block;
-//   img {
-//     width: 22px;
-//     height: 22px;
-//   }
-// `;
 const ArticleContent = styled.div`
   grid-area: c;
   font-family: ${({ theme }) => theme.font.paragraph.family};
@@ -476,8 +239,11 @@ const ArticleAside = styled(Aside)`
     display: none;
     content-visibility: hidden;
   }
+  @media only screen and (max-width: 670px) {
+    display: none;
+    content-visibility: hidden;
+  }
 `;
-
 const StyledButton = styled(Button)`
   width: 200px;
   margin: 0 auto;
@@ -536,9 +302,6 @@ const AsidePost = styled(Post)`
 `;
 
 const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
-  const handleCategoryNode = post =>
-    !post.categories.nodes[0].wpChildren.nodes.length ? 0 : 1;
-  const image = getImage(wpPost.featuredImage.node.localFile);
   return (
     <>
       <script
@@ -553,58 +316,15 @@ const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
       />
       <Layout>
         <MainWrapper>
-          <MainSection background={wpPost.subtitle.kolorTlaTytulu}>
-            <div className="article-title">
-              <Category
-                className="category"
-                name={wpPost.categories.nodes[handleCategoryNode(wpPost)].name}
-                slug={wpPost.categories.nodes[handleCategoryNode(wpPost)].slug}
-              />
-              <Heading text={wpPost.title} />
-              <Subheading text={wpPost.subtitle.podtytul} />
-            </div>
-            <div className="article-image">
-              <GatsbyImage
-                image={image}
-                alt={wpPost.featuredImage.altText || ``}
-              />
-            </div>
-          </MainSection>
+          <ArticleTitle wpPost={wpPost} />
           <PageWrapper>
-            <MetaSection>
-              <p className="author">{wpPost.author.node.name}</p>
-              <Date className="date" date={wpPost.dateGmt} />
-              <section className="socials">
-                <a
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.SITE_URL}${wpPost.slug}`}
-                >
-                  <img src={facebook} alt="ikona facebooka" />
-                </a>
-                <a
-                  href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-                  className="twitter-share-button"
-                  data-text={wpPost.title}
-                  data-dnt="true"
-                  data-url={`${process.env.SITE_URL}/${wpPost.slug}`}
-                  data-show-count="false"
-                  data-lang="pl"
-                >
-                  <img src={twitter} alt="ikona twittera" />
-                </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${process.env.SITE_URL}${wpPost.slug}`}
-                >
-                  <img src={linkedin} alt="ikona linkedina" />
-                </a>
-              </section>
-              <section className="tags">
-                <TagBox tags={wpPost.tags} />
-              </section>
-            </MetaSection>
-            <div className="article-image-description">
-              {ReactHtmlParser(wpPost.featuredImage.node.description)}
-            </div>
-
+            <Meta
+              author={wpPost.author.node.name}
+              date={wpPost.dateGmt}
+              tags={wpPost.tags}
+              title={wpPost.title}
+              url={document.URL}
+            />
             <ArticleContent>
               {ReactHtmlParser(wpPost.content)}
               {!!wpPost.raport.raportfile && (
