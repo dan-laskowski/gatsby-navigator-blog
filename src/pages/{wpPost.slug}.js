@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Seo from "molecules/seo";
 import { graphql } from "gatsby";
+import { document } from "browser-monads";
 import ProgressBar from "react-scroll-progress-bar";
 import ReactHtmlParser from "react-html-parser";
 import Button from "atoms/button";
