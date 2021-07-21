@@ -69,6 +69,7 @@ const StyledInput = styled.input`
   @media only screen and (max-width: 600px) {
     font-size: 14px;
     line-height: 18px;
+    height: 40px;
   }
 `;
 const StyledCheckbox = styled(Checkbox)`
