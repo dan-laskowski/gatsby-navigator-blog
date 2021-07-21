@@ -29,7 +29,6 @@ const ArticleTitleContent = styled.div`
 const TextContainer = styled.div`
   padding-left: calc((100vw - 1645px) / 2);
   padding-right: 10%;
-  max-height: 640px;
   min-height: 33vw;
   grid-area: t;
   display: flex;
@@ -46,9 +45,16 @@ const TextContainer = styled.div`
     min-height: 40vw;
   }
   @media only screen and (max-width: 1180px) {
-    min-height: 280px;
+    min-height: 300px;
+  }
+  @media only screen and (max-width: 710px) {
+    margin-top: 12px;
+    margin-bottom: 12px;
   }
   @media only screen and (max-width: 670px) {
+    padding-left: calc((100vw - 1645px) / 2);
+    padding-right: 0;
+    min-height: 0px;
     * {
       color: ${({ theme }) => theme.color.black};
     }
@@ -60,39 +66,16 @@ const ArticleCategory = styled(Category)`
   margin-bottom: 12px;
 `;
 const ArticleTitle = styled(Heading)`
-  font-size: 60px;
-  line-height: 65px;
+  font-size: clamp(26px, 6.4vw - 1.6rem, 60px);
+  line-height: clamp(30px, 6.4vw - 1.6rem, 65px);
   margin-bottom: 14px;
   margin-top: 0;
-  @media only screen and (max-width: 1520px) {
-    font-size: 3.2vw;
-    line-height: 4.2vw;
-  }
-  @media only screen and (max-width: 1180px) {
-    font-size: 3vw;
-    line-height: 3.4vw;
-  }
-  @media only screen and (max-width: 670px) {
-    font-size: 9vw;
-    line-height: 8.4vw;
-    margin-bottom: 18px;
-  }
 `;
 const ArticleSubtitle = styled(Subheading)`
-  font-size: 24px;
-  line-height: 38px;
-  @media only screen and (max-width: 1520px) {
-    font-size: 20px;
-    line-height: 30px;
-  }
-  @media only screen and (max-width: 1180px) {
-    font-size: 1.6vw;
-    line-height: 2.2vw;
-  }
-  @media only screen and (max-width: 670px) {
-    font-size: 2.4vw;
-    line-height: 3.4vw;
-  }
+  font-size: clamp(16px, 1.5vw, 24px);
+  line-height: clamp(19px, 1.5vw, 38px);
+  font-weight: 300;
+  margin-bottom: 0;
 `;
 const MobileMeta = styled(Meta)`
   display: none;
@@ -100,9 +83,7 @@ const MobileMeta = styled(Meta)`
   @media only screen and (max-width: 670px) {
     display: block;
     content-visibility: visible;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-bottom: 30px;
+    margin: 18px 30px 30px 30px;
     .content {
       max-width: unset;
       align-items: center;
@@ -131,6 +112,9 @@ const ArticleImageDescription = styled.caption`
   @media only screen and (max-width: 1720px) {
     margin-left: 30px;
     margin-right: 30px;
+  }
+  @media only screen and (max-width: 670px) {
+    margin-bottom: 22px;
   }
 `;
 
