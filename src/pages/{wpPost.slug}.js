@@ -9,6 +9,8 @@ import Button from "atoms/button";
 import Aside from "organisms/aside";
 import AsideSection from "molecules/asideSection";
 import Post from "molecules/post";
+import Commercial from "atoms/commercial";
+import NewsletterSmall from "molecules/newsletterSmall";
 import Layout from "organisms/layout";
 import ArticleTitle from "organisms/articleTitle";
 import Meta from "organisms/meta";
@@ -169,8 +171,9 @@ const ArticleContent = styled.div`
     margin-bottom: 56px;
     div,
     p {
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 16px;
+      line-height: 26px;
+      margin-right: 0;
       margin-bottom: 20px;
     }
     h1,
@@ -183,9 +186,9 @@ const ArticleContent = styled.div`
     }
     blockquote {
       p {
-        font-size: 22px;
+        font-size: 26px;
         color: ${({ theme }) => theme.color.navy};
-        line-height: 25px;
+        line-height: 28px;
         padding-top: 20px;
         margin-bottom: 26px;
       }
@@ -197,8 +200,8 @@ const ArticleContent = styled.div`
 
     ol,
     ul {
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 16px;
+      line-height: 26px;
       margin: 0 25px;
       margin-bottom: 24px;
     }
@@ -298,6 +301,9 @@ const AsidePost = styled(Post)`
     }
   }
 `;
+const BottomNewsletterSmall = styled(NewsletterSmall)`
+  width: 100%;
+`;
 
 const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
   return (
@@ -333,6 +339,7 @@ const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
                   uri={wpPost.raport.raportfile.mediaItemUrl}
                 />
               )}
+              <Commercial />
             </ArticleContent>
             <ArticleAside>
               <AsideSection title="ostatnie" to={`/`}>
@@ -342,6 +349,8 @@ const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
               </AsideSection>
             </ArticleAside>
           </PageWrapper>
+
+          <BottomNewsletterSmall />
         </MainWrapper>
       </Layout>
     </>

@@ -43,9 +43,9 @@ const StyledLink = styled(Link)`
   background: ${({ theme }) => theme.color.orange};
 `;
 
-const NewsletterSmall = () => {
+const NewsletterSmall = ({ ...props }) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Title text="Newsletter" />
       <StyledSubheading aria-label="Bądź na bieżąco" text="Bądź na bieżąco" />
       <StyledLink to="/newsletter" aria-label="Zapisz się">
