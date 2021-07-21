@@ -189,7 +189,6 @@ const ArticleContent = styled.div`
     blockquote {
       p {
         font-size: 26px;
-        color: ${({ theme }) => theme.color.navy};
         line-height: 28px;
         padding-top: 20px;
         margin-bottom: 26px;
@@ -234,6 +233,33 @@ const ArticleContent = styled.div`
     }
   }
   @media only screen and (max-width: 670px) {
+    div,
+    p {
+      margin-bottom: 50px;
+    }
+    blockquote {
+      p {
+        margin-bottom: 32px;
+      }
+      ::before {
+        width: 16%;
+        margin-top: 32px;
+      }
+    }
+    ul li {
+      margin-bottom: 12px;
+    }
+    ol li {
+      margin-bottom: 15px;
+      padding-left: 10px;
+    }
+    .wp-caption {
+      margin: 22px auto;
+    }
+
+    .wp-caption-text {
+      margin-bottom: 0;
+    }
   }
 `;
 const ArticleAside = styled(Aside)`
