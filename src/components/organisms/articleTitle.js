@@ -20,6 +20,7 @@ const ArticleTitleContent = styled.div`
   @media only screen and (max-width: 670px) {
     background: none;
     grid-template-columns: 1fr;
+    column-gap: 24px;
     grid-template-areas:
       "t"
       "i";
@@ -52,9 +53,12 @@ const TextContainer = styled.div`
     margin-bottom: 12px;
   }
   @media only screen and (max-width: 670px) {
-    padding-left: calc((100vw - 1645px) / 2);
+    padding-left: 0;
     padding-right: 0;
+    margin-left: 24px;
+    margin-right: 24px;
     min-height: 0px;
+    margin-bottom: 18px;
     * {
       color: ${({ theme }) => theme.color.black};
     }
@@ -64,6 +68,9 @@ const ArticleCategory = styled(Category)`
   font-size: 12px;
   line-height: 14px;
   margin-bottom: 12px;
+  @media only screen and (max-width: 670px) {
+    margin-bottom: 4px;
+  }
 `;
 const ArticleTitle = styled(Heading)`
   font-size: clamp(26px, 6.4vw - 1.6rem, 60px);
@@ -83,7 +90,7 @@ const MobileMeta = styled(Meta)`
   @media only screen and (max-width: 670px) {
     display: block;
     content-visibility: visible;
-    margin: 18px 30px 30px 30px;
+    margin: 0 24px 30px 24px;
     .content {
       max-width: unset;
       align-items: center;

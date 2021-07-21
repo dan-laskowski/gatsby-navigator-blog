@@ -16,6 +16,7 @@ const Wrapper = styled.section`
   }
   @media only screen and (max-width: 670px) {
     min-width: 140px;
+    margin-bottom: 0;
   }
 `;
 

@@ -47,6 +47,8 @@ const PageWrapper = styled.div`
     grid-template-columns: repeat(6, 1fr);
     column-gap: 24px;
     grid-template-areas: "c c c c c c";
+    margin-left: 24px;
+    margin-right: 24px;
   }
 `;
 const ArticleContent = styled.div`
@@ -226,10 +228,12 @@ const ArticleContent = styled.div`
       margin-bottom: 8px !important;
     }
     .wp-caption-text {
-      font-size: 11px;
-      line-height: 13px;
+      font-size: 12px;
+      line-height: 15px;
       margin-right: 0;
     }
+  }
+  @media only screen and (max-width: 670px) {
   }
 `;
 const ArticleAside = styled(Aside)`

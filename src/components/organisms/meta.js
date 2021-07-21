@@ -36,6 +36,9 @@ const AuthorName = styled(Text)`
     line-height: 15px;
     margin-bottom: 8px;
   }
+  @media only screen and (max-width: 670px) {
+    margin-bottom: 0;
+  }
 `;
 const ArticleDate = styled(Text)`
   font-size: 12px;
@@ -46,6 +49,7 @@ const ArticleDate = styled(Text)`
     margin-bottom: 20px;
   }
   @media only screen and (max-width: 670px) {
+    font-weight: bold;
     margin-bottom: 0px;
   }
 `;
