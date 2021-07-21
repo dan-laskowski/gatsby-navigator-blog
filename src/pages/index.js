@@ -77,8 +77,8 @@ const MobileSidePostWrapper = styled.div`
     margin-right: 24px;
     border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
     display: grid;
-    grid-template-columns: 1fr 110px;
-    column-gap: 46px;
+    grid-template-columns: 1fr 116px;
+    column-gap: 35px;
   }
   .image-wrapper {
     padding-top: 100%;
@@ -236,7 +236,7 @@ const ArticleSection = styled(AsideSection)`
     }
   }
   @media only screen and (max-width: 600px) {
-    margin-top: 20px;
+    margin-top: 15px;
     h2 {
       font-size: 16px;
       line-height: 20px;
@@ -645,6 +645,9 @@ const EventSection = styled(AsideSection)`
   }
   @media only screen and (max-width: 787px) {
     margin-top: 12px;
+  }
+  @media only screen and (max-width: 787px) {
+    margin-bottom: 60px;
   }
 `;
 const EventSectionWrapper = styled.div`

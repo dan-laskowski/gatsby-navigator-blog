@@ -23,7 +23,7 @@ const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const AsideSection = ({ title, to, children, ...props }) => {

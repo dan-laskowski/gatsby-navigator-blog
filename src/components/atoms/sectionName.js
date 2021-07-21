@@ -14,7 +14,7 @@ const StyledSectionName = styled.h1`
   }
 
   @media only screen and (max-width: 600px) {
-    margin: 10px 0 10px 0;
+    margin: 6px 0 10px 0;
   }
 `;
 

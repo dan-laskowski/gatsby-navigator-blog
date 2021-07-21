@@ -31,8 +31,8 @@ const PostWrapper = styled.article`
     column-gap: ${({ horizontal }) => (horizontal ? `30px` : `unset`)};
   }
   @media only screen and (max-width: 600px) {
-    padding-top: ${({ horizontal }) => (horizontal ? `16px` : `10px`)};
-    padding-bottom: ${({ horizontal }) => (horizontal ? `16px` : `22px`)};
+    padding-top: ${({ horizontal }) => (horizontal ? `20px` : `10px`)};
+    padding-bottom: ${({ horizontal }) => (horizontal ? `20px` : `20px`)};
     border-bottom: 1px solid ${({ theme }) => theme.color.lightGray};
     column-gap: ${({ horizontal }) => (horizontal ? `46px` : `unset`)};
     grid-template-columns: ${({ horizontal }) =>
