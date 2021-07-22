@@ -166,6 +166,7 @@ const Results = connectStateResults(({ searchResults, children }) =>
 );
 const PostsWrapper = styled.div`
   grid-area: c;
+  margin-bottom: 48px;
   a:first-child article {
     margin-top: 0;
     padding-top: 0;

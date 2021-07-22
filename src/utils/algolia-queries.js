@@ -20,6 +20,11 @@ const postQuery = `
             }
           }
         }
+        tags {
+          nodes {
+            name
+          }
+        }
         title
         excerpt
         slug
