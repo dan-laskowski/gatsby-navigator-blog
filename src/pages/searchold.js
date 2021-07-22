@@ -1,15 +1,13 @@
 import React from "react";
-import styled from "styled-components";
 import { window } from "browser-monads";
-import { navigate, graphql } from "gatsby";
+import { navigate } from "gatsby";
+import styled from "styled-components";
 import { Heading } from "atoms/heading";
 import Seo from "molecules/seo";
-import Aside from "organisms/aside";
-import AsideSection from "molecules/asideSection";
-import Layout from "organisms/layout";
-import Post from "molecules/post";
 import SearchResult from "molecules/searchResult";
 import SearchPagination from "molecules/searchPagination";
+import Layout from "organisms/layout";
+import Aside from "organisms/aside";
 import algoliasearch from "algoliasearch/lite";
 import {
   Configure,
@@ -31,9 +29,8 @@ const searchClient = algoliasearch(
   GATSBY_ALGOLIA_APP_ID,
   GATSBY_ALGOLIA_SEACH_ONLY_API_KEY
 );
-
 const Wrapper = styled(InstantSearch)`
-  min-height: 100vh;
+  display: flex;
   padding-top: 152px;
   @media only screen and (max-width: 850px) {
     padding-top: 136px;
@@ -44,24 +41,18 @@ const Wrapper = styled(InstantSearch)`
 `;
 const ContentWrapper = styled.div`
   display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 40px;
+  grid-template-columns: 1fr 380px;
+  grid-template-areas: "results aside";
   max-width: 1645px;
-  grid-template-areas:
-    "c c c c c c c c . a a a"
-    "p p p p p p p p p p p p";
-  grid-template-rows: auto;
   margin: 0 auto;
-
-  @media only screen and (max-width: 1745px) {
-    margin-left: 30px;
-    margin-right: 30px;
-    column-gap: 30px;
+  .ais-Hits {
+    width: 80%;
   }
-  @media only screen and (max-width: 574px) {
-    display: block;
-    margin: 0 24px;
+  .ais-Hits-list {
+    li:last-child a {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
   }
 `;
 const SearchBar = styled.div`
@@ -135,105 +126,13 @@ const Results = connectStateResults(({ searchResults, children }) =>
     <Heading text={`Nie znaleziono wyników dla podanego hasła`} />
   )
 );
-const PostsWrapper = styled.div`
-  grid-area: c;
-  a:first-child article {
-    margin-top: 0;
-    padding-top: 0;
-  }
-  .ais-Hits-list {
-    li:last-child a {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-  }
-  @media only screen and (max-width: 720px) {
-    grid-column-start: 1;
-    grid-column-end: 13;
-  }
-`;
 const PaginationWrapper = styled.nav`
-  grid-area: p;
-`;
-const StyledAside = styled(Aside)`
-  grid-area: a;
-  margin-top: -19px;
-  section {
-    margin-bottom: 20px;
-  }
-  .tags {
-    margin-bottom: 14px;
-  }
-  @media only screen and (max-width: 720px) {
-    display: none;
-  }
-`;
-const AsidePost = styled(Post)`
-  .article {
-    grid-template-columns: 1fr 110px;
-    column-gap: 26px;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 20px;
-    border: none;
-  }
-  .category {
-    margin-top: 0;
-    margin-bottom: 8px;
-  }
-  .title {
-    font-size: 20px;
-    line-height: 24px;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-  }
-  .image-wrapper {
-    /* aspect-ratio: 1/1; */
-    padding-top: 0;
-    height: 110px;
-  }
-  .date {
-    margin-bottom: 0;
-  }
-  @media only screen and (max-width: 1380px) {
-    .article {
-      grid-template-columns: 1fr;
-    }
-    .image-wrapper {
-      display: none;
-    }
-  }
-
-  @media only screen and (max-width: 1248px) {
-    .title {
-      font-size: 18px;
-      line-height: 20px;
-    }
-  }
-
-  @media only screen and (max-width: 900px) {
-    .article {
-      margin-bottom: 0;
-    }
-    .category {
-      font-size: 10px;
-      line-height: 12px;
-      margin-bottom: 4px;
-    }
-    .title {
-      font-size: 11px;
-      line-height: 13px;
-      margin-bottom: 4px;
-    }
-    .date {
-      font-size: 10px;
-      line-height: 12px;
-    }
-  }
+  grid-column-start: results;
+  grid-column-end: aside;
 `;
 const CustomPagination = connectPagination(SearchPagination);
 
-const Search = ({ data: { asideQuery } }) => {
+const Search = () => {
   let params = new URLSearchParams(window.location.search.slice(1));
   const q = params.get("q") || "";
   const page = params.get("page");
@@ -246,7 +145,7 @@ const Search = ({ data: { asideQuery } }) => {
   return (
     <Layout>
       <Seo
-        title=" Wyszukiwanie | Navigator"
+        title="Wyszukiwanie | Navigator"
         description={q || `Strona wyszukiwania postów`}
       />
       <Wrapper
@@ -269,63 +168,18 @@ const Search = ({ data: { asideQuery } }) => {
           </span>
         </SearchBar>
         <ContentWrapper>
-          <PostsWrapper>
-            <Results>
-              <Configure hitsPerPage={6} />
-              <Hits hitComponent={SearchResult} />
-            </Results>
-          </PostsWrapper>
-          <StyledAside>
-            <AsideSection title="ostatnie" to={`/`}>
-              {asideQuery.nodes.map(node => (
-                <AsidePost horizontal post={node} />
-              ))}
-            </AsideSection>
-          </StyledAside>
+          <Results>
+            <Configure hitsPerPage={6} />
+            <Hits hitComponent={SearchResult} />
+          </Results>
+          <Aside search />
+          <PaginationWrapper>
+            <CustomPagination params={params} defaultRefinement={page} />
+          </PaginationWrapper>
         </ContentWrapper>
-        <PaginationWrapper>
-          <CustomPagination params={params} defaultRefinement={page} />
-        </PaginationWrapper>
       </Wrapper>
     </Layout>
   );
 };
-
-export const query = graphql`
-  {
-    asideQuery: allWpPost(limit: 3) {
-      nodes {
-        title
-        slug
-        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  width: 260
-                  placeholder: BLURRED
-                  formats: [AUTO, AVIF, WEBP]
-                )
-              }
-            }
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-            wpChildren {
-              nodes {
-                name
-                slug
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
 
 export default Search;

@@ -23,13 +23,7 @@ const postQuery = `
         title
         excerpt
         slug
-        dateGmt
-        tags {
-          nodes {
-            name
-            slug
-          }
-        }
+        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
       }
     }
   }
