@@ -66,21 +66,13 @@ const ContentWrapper = styled.div`
 `;
 const SearchBar = styled.div`
   padding-top: 152px;
-  @media only screen and (max-width: 850px) {
-    padding-top: 136px;
-  }
-  @media only screen and (max-width: 616px) {
-    padding-top: 94px;
-  }
-  grid-column-start: results;
-  grid-column-end: aside;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 400px;
+  height: 250px;
   margin-bottom: 41px;
-  background: ${({ theme }) => theme.color.lightGray};
+  background: #f6f6f6;
   span {
     font-family: ${({ theme }) => theme.font.heading.family};
     color: #b7b5bd;
@@ -89,6 +81,23 @@ const SearchBar = styled.div`
     img {
       margin-left: 3px;
     }
+  }
+  @media only screen and (max-width: 850px) {
+    height: 160px;
+    padding-top: 136px;
+    span {
+      margin-left: 200px;
+    }
+  }
+  @media only screen and (max-width: 616px) {
+    span {
+      margin-left: 125px;
+      font-size: 10px;
+      img {
+        width: 40px;
+      }
+    }
+    padding-top: 94px;
   }
 `;
 const StyledSearchBox = styled(SearchBox)`
@@ -126,6 +135,26 @@ const StyledSearchBox = styled(SearchBox)`
 
   .ais-SearchBox-submit {
     margin-bottom: 17px;
+  }
+  @media only screen and (max-width: 850px) {
+    input {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .ais-SearchBox-submit {
+      margin-bottom: 10px;
+    }
+    .ais-SearchBox-submit img {
+      width: 12px;
+    }
+  }
+  @media only screen and (max-width: 616px) {
+    margin-left: 24px;
+    margin-right: 24px;
+    input {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
   }
 `;
 const Results = connectStateResults(({ searchResults, children }) =>
