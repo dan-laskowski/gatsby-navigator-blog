@@ -1251,36 +1251,7 @@ export const query = graphql`
     ) {
       nodes {
         title
-        subtitle {
-          podtytul
-        }
-        excerpt
         slug
-        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: BLURRED
-                  formats: [AUTO, AVIF, WEBP]
-                )
-              }
-            }
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-            wpChildren {
-              nodes {
-                name
-                slug
-              }
-            }
-          }
-        }
       }
     }
     articlePosts: allWpPost(
@@ -1293,36 +1264,7 @@ export const query = graphql`
     ) {
       nodes {
         title
-        subtitle {
-          podtytul
-        }
-        excerpt
         slug
-        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: BLURRED
-                  formats: [AUTO, AVIF, WEBP]
-                )
-              }
-            }
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-            wpChildren {
-              nodes {
-                name
-                slug
-              }
-            }
-          }
-        }
       }
     }
     raportPosts: allWpPost(
@@ -1337,36 +1279,7 @@ export const query = graphql`
     ) {
       nodes {
         title
-        subtitle {
-          podtytul
-        }
-        excerpt
         slug
-        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: BLURRED
-                  formats: [AUTO, AVIF, WEBP]
-                )
-              }
-            }
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-            wpChildren {
-              nodes {
-                name
-                slug
-              }
-            }
-          }
-        }
       }
     }
     libraryPosts: allWpPost(
@@ -1379,36 +1292,7 @@ export const query = graphql`
     ) {
       nodes {
         title
-        subtitle {
-          podtytul
-        }
-        excerpt
         slug
-        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: BLURRED
-                  formats: [AUTO, AVIF, WEBP]
-                )
-              }
-            }
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-            wpChildren {
-              nodes {
-                name
-                slug
-              }
-            }
-          }
-        }
       }
     }
     newsPosts: allWpPost(
@@ -1421,36 +1305,7 @@ export const query = graphql`
     ) {
       nodes {
         title
-        subtitle {
-          podtytul
-        }
-        excerpt
         slug
-        dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  placeholder: BLURRED
-                  formats: [AUTO, AVIF, WEBP]
-                )
-              }
-            }
-          }
-        }
-        categories {
-          nodes {
-            name
-            slug
-            wpChildren {
-              nodes {
-                name
-                slug
-              }
-            }
-          }
-        }
       }
     }
   }
