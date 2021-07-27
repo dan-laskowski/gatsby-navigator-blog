@@ -24,6 +24,7 @@ const StyledPicture = styled(GatsbyImage)`
   filter: grayscale(100%);
   border-radius: 50%;
   transition: filter 1s;
+  cursor: pointer;
 `;
 
 const StyledButton = styled.button`
@@ -48,7 +49,7 @@ const StyledButton = styled.button`
 const ProfilePicture = ({ image, onClick }) => {
   return (
     <Wrapper>
-      <StyledPicture image={image} />
+      <StyledPicture onClick={onClick} image={image} />
       <StyledButton onClick={onClick}>
         <img src={arrowRight} alt="strzałka" />
       </StyledButton>

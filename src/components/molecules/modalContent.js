@@ -18,7 +18,6 @@ const MetaSection = styled.section`
   align-items: center;
   background-color: #f6f6f6;
   height: 100%;
-  width: 303px;
 `;
 
 const Icons = styled.div`
@@ -33,7 +32,9 @@ const Icons = styled.div`
 const StyledPicture = styled(GatsbyImage)`
   width: 265px;
   height: 265px;
-  filter: grayscale(100%);
+  margin-left: 20px;
+  margin-right: 20px;
+  filter: grayscale(90%);
   border-radius: 50%;
   margin-top: 40px;
   margin-bottom: 32px;

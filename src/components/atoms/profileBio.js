@@ -12,6 +12,19 @@ const Bio = styled.p`
   margin-left: 46px;
   margin-right: 26px;
   max-height: 345px;
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ebebeb;
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #c6c6c6;
+    border-radius: 8px;
+  }
 `;
 
 const ProfileBio = ({ children }) => {

@@ -37,7 +37,7 @@ export const query = graphql`
             localFile {
               childImageSharp {
                 gatsbyImageData(
-                  width: 210
+                  width: 265
                   quality: 90
                   placeholder: BLURRED
                   formats: [AUTO, AVIF, WEBP]

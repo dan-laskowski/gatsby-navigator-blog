@@ -67,6 +67,21 @@ const Icons = styled.div`
   }
 `;
 
+const NameSection = styled.div`
+  margin-left: 46px;
+  margin-top: 40px;
+
+  .name {
+    font-size: 32px;
+    line-height: 46px;
+    margin-bottom: 0;
+  }
+  .position {
+    font-size: 24px;
+    line-height: 24px;
+  }
+`;
+
 const ExitButton = styled.button`
   position: absolute;
   top: 20px;
@@ -122,8 +137,12 @@ const TeamMember = ({ member }) => {
           <ExitButton onClick={handleModalSwitch}>
             <img src={exit} alt="zamknij modal" />
           </ExitButton>
-          <ProfileName>{member.title}</ProfileName>
-          <ProfilePosition>{member.description.stanowisko}</ProfilePosition>
+          <NameSection>
+            <ProfileName className="name">{member.title}</ProfileName>
+            <ProfilePosition className="position">
+              {member.description.stanowisko}
+            </ProfilePosition>
+          </NameSection>
           <ProfileBio>{ReactHtmlParser(member.description.bio)}</ProfileBio>
         </ModalContent>
       </Modal>
