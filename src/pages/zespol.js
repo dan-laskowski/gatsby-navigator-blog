@@ -21,8 +21,9 @@ const PageWrapper = styled.div`
   max-width: 1645px;
   grid-template-columns: repeat(8, 1fr);
   column-gap: 40px;
-  grid-template-rows: auto;
-  grid-template-areas: "l c c c c . n n";
+  grid-template-areas:
+    "l c c c c . n n"
+    "l t t t t . n n ";
   @media only screen and (max-width: 1730px) {
     margin-left: 30px;
     margin-right: 30px;
@@ -45,8 +46,7 @@ const PageWrapper = styled.div`
 `;
 const PageContent = styled.main`
   margin-top: 82px;
-  grid-column-start: c;
-  grid-column-end: c;
+  grid-area: c;
 
   @media only screen and (max-width: 1240px) {
     margin-top: 40px;
@@ -133,11 +133,11 @@ const PageContent = styled.main`
   }
 `;
 
-const StyledTeamMembers = styled(TeamMembers)``;
+const StyledTeamMembers = styled(TeamMembers)`
+  grid-area: t;
+`;
 const Aside = styled.aside`
-  grid-column-start: n;
-  grid-column-end: n;
-  grid-row-start: n;
+  grid-area: n;
 `;
 
 const Zespol = ({ data: { wpPage, allMembers } }) => {
@@ -146,10 +146,8 @@ const Zespol = ({ data: { wpPage, allMembers } }) => {
       <Seo title="Zespół | Navigator" description="Poznaj nasz zespół!" />
       <MainWrapper>
         <PageWrapper>
-          <PageContent>
-            {ReactHtmlParser(wpPage.content)}
-            <StyledTeamMembers members={allMembers} />
-          </PageContent>
+          <PageContent>{ReactHtmlParser(wpPage.content)}</PageContent>
+          <StyledTeamMembers members={allMembers} />
           <Aside>
             <PageSideNav title="Navigator" items={navigatorNavData.items} />
           </Aside>

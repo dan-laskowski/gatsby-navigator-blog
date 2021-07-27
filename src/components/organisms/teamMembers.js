@@ -7,12 +7,12 @@ const Wrapper = styled.section`
   justify-content: space-between;
   flex-wrap: wrap;
   max-width: 800px;
-  min-width: 400px;
+  margin-top: 48px;
 `;
 
-const TeamMembers = ({ members }) => {
+const TeamMembers = ({ members, ...props }) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       {members.nodes.map(member => (
         <TeamMember member={member} />
       ))}

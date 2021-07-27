@@ -6,11 +6,11 @@ import arrowRight from "assets/images/arrowRight.svg";
 const Wrapper = styled.div`
   position: relative;
   width: 210px;
-  transition: filter 1s;
   margin-bottom: 28px;
   &&:hover {
     .gatsby-image-wrapper {
-      filter: sepia(90%);
+      filter: grayscale(100%) brightness(65%) sepia(100%) hue-rotate(332deg)
+        saturate(381%) contrast(0.8);
     }
     button {
       background: ${({ theme }) => theme.color.orange};
@@ -23,7 +23,6 @@ const StyledPicture = styled(GatsbyImage)`
   height: 210px;
   filter: grayscale(100%);
   border-radius: 50%;
-  transition: filter 1s;
   cursor: pointer;
 `;
 

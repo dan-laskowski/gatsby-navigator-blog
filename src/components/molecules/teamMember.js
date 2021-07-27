@@ -13,11 +13,13 @@ import ProfileBio from "atoms/profileBio";
 import ModalContent from "molecules/modalContent";
 
 const Wrapper = styled.div`
-  font-family: ${({ theme }) => theme.font.heading.family};
-  color: ${({ theme }) => theme.color.navy};
-  font-size: 16px;
+  font-family: ${({ theme }) => theme.font.heading.family} !important;
+  color: ${({ theme }) => theme.color.navy} !important;
+  font-size: 16px !important;
   font-weight: 300;
   line-height: 22px;
+  margin-bottom: 56px;
+  width: 210px;
 `;
 
 const Meta = styled.div`
@@ -36,7 +38,6 @@ const ProfileName = styled.p`
   display: inline;
   font-size: 20px;
   font-weight: bold;
-  margin-right: 62px;
 `;
 
 const ProfilePosition = styled.p`
@@ -121,7 +122,7 @@ const ExitButton = styled.button`
 
 Modal.setAppElement("#___gatsby");
 
-const TeamMember = ({ member }) => {
+const TeamMember = ({ member, ...props }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleModalSwitch = () => {
