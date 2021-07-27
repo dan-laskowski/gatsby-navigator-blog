@@ -33,8 +33,10 @@ const Circle = styled.div`
 `;
 
 const ProfileName = styled.p`
+  display: inline;
   font-size: 20px;
   font-weight: bold;
+  margin-right: 62px;
 `;
 
 const ProfilePosition = styled.p`
@@ -80,6 +82,26 @@ const NameSection = styled.div`
     font-size: 24px;
     line-height: 24px;
   }
+  @media only screen and (max-width: 800px) {
+    margin-left: 26px;
+    margin-top: 44px;
+    .name {
+      font-size: 25px;
+      line-height: 27px;
+    }
+    .position {
+      font-size: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    margin-left: 0;
+    margin-top: 18px;
+    text-align: center;
+    .name {
+      margin-right: 0;
+    }
+  }
 `;
 
 const ExitButton = styled.button`
@@ -120,7 +142,9 @@ const TeamMember = ({ member }) => {
           content: {
             position: "absolute",
             maxWidth: "800px",
-            maxHeight: "535px",
+            height: "535px",
+            top: "190px",
+            margin: "0 auto",
             border: "1px solid #ccc",
             background: "#fff",
             overflow: "auto",
@@ -128,6 +152,7 @@ const TeamMember = ({ member }) => {
             borderRadius: "0",
             outline: "none",
             padding: "0",
+            marginTop: "-",
           },
         }}
         isOpen={modalIsOpen}

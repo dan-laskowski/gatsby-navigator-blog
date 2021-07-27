@@ -211,6 +211,22 @@ const GlobalStyle = createGlobalStyle`
 	width: 8px !important;
 	background: #F07539;
 }
+
+/* MODAL */
+
+.ReactModal__Content--after-open {
+	@media only screen and (max-width: 800px) {
+		height: 429px !important;
+	}
+	@media only screen and (max-width: 600px) {	
+		max-width: 8000px !important;
+		height: unset !important;
+		inset: 93px 0 0 0 !important;
+	}
+
+}
+
+
 `;
 
 export default GlobalStyle;

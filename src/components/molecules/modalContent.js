@@ -10,6 +10,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const MetaSection = styled.section`
@@ -18,6 +21,9 @@ const MetaSection = styled.section`
   align-items: center;
   background-color: #f6f6f6;
   height: 100%;
+  @media only screen and (max-width: 600px) {
+    max-height: 310px;
+  }
 `;
 
 const Icons = styled.div`
@@ -25,7 +31,11 @@ const Icons = styled.div`
   flex-direction: row;
   align-items: center;
   a {
-    margin-right: 22px;
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 16px;
   }
 `;
 
@@ -38,6 +48,16 @@ const StyledPicture = styled(GatsbyImage)`
   border-radius: 50%;
   margin-top: 40px;
   margin-bottom: 32px;
+  @media only screen and (max-width: 800px) {
+    width: 26vw;
+    height: 26vw;
+    margin-left: 23px;
+    margin-right: 23px;
+  }
+  @media only screen and (max-width: 600px) {
+    min-width: 180px;
+    min-height: 180px;
+  }
 `;
 
 const ContentSection = styled.section`

@@ -25,6 +25,20 @@ const Bio = styled.p`
     background: #c6c6c6;
     border-radius: 8px;
   }
+  @media only screen and (max-width: 800px) {
+    font-size: 14px;
+    line-height: 18px;
+    max-height: 254px;
+    margin-top: 26px;
+    margin-left: 26px;
+    padding-right: 26px;
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 16px;
+    line-height: 19px;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
 `;
 
 const ProfileBio = ({ children }) => {
