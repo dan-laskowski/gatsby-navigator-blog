@@ -13,7 +13,7 @@ const Wrapper = styled.article`
   * {
     margin-bottom: 38px;
     @media only screen and (max-width: 1240px) {
-      margin-bottom: 21px;
+      margin-bottom: 16px;
     }
     @media only screen and (max-width: 1240px) {
       margin-bottom: 18px;
@@ -42,11 +42,12 @@ const Wrapper = styled.article`
   h2 {
     font-size: 20px;
     line-height: 29px;
-    margin-bottom: 38px;
+    margin-top: 26px;
+    margin-bottom: 32px;
     @media only screen and (max-width: 1240px) {
       font-size: 14px;
       line-height: 18px;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     @media only screen and (max-width: 620px) {
       font-size: 16px;
@@ -60,18 +61,13 @@ const Wrapper = styled.article`
     line-height: 29px;
     margin-bottom: 32px;
     @media only screen and (max-width: 1240px) {
-      font-size: 16px;
-      line-height: 24px;
-      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 16px;
     }
     @media only screen and (max-width: 620px) {
       font-size: 16px;
       line-height: 26px;
-      margin-bottom: 18px;
-    }
-    @media only screen and (max-width: 360px) {
-      font-size: 14px;
-      line-height: 20px;
     }
   }
   p {
@@ -104,10 +100,8 @@ const Wrapper = styled.article`
   ul {
     list-style-position: outside;
     margin: 0 25px;
-    /* margin-bottom: 32px; */
     @media only screen and (max-width: 1240px) {
       margin: 0 25px;
-      /* margin-bottom: 24px; */
     }
   }
   ol {
@@ -117,22 +111,23 @@ const Wrapper = styled.article`
     list-style-type: disc;
   }
   ol li {
-    /* margin-bottom: 39px; */
     padding-left: 10px;
     @media only screen and (max-width: 1240px) {
-      font-size: 16px;
-      /* margin-bottom: 17px; */
+      font-size: 14px;
+      line-height: 18px;
       padding-left: 10px;
+      margin-bottom: 21px;
     }
     @media only screen and (max-width: 620px) {
-      /* margin-bottom: 15px; */
       padding-left: 10px;
     }
   }
   ul li {
     /* margin-bottom: 30px; */
     @media only screen and (max-width: 1240px) {
-      font-size: 16px;
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 21px;
     }
     @media only screen and (max-width: 620px) {
       /* margin-bottom: 12px; */
