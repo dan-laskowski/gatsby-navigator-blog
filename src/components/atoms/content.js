@@ -10,6 +10,16 @@ const Wrapper = styled.article`
   color: ${({ theme }) => theme.color.gray};
   overflow-wrap: break-word;
 
+  * {
+    margin-bottom: 38px;
+    @media only screen and (max-width: 1240px) {
+      margin-bottom: 21px;
+    }
+    @media only screen and (max-width: 1240px) {
+      margin-bottom: 18px;
+    }
+  }
+
   h1,
   h2 {
     font-family: ${({ theme }) => theme.font.heading.family};
@@ -19,18 +29,23 @@ const Wrapper = styled.article`
   h1 {
     font-size: 60px;
     line-height: 71px;
-    margin-bottom: 46px;
+    margin-bottom: 42px;
     @media only screen and (max-width: 1240px) {
-      font-size: 22px;
-      line-height: 27px;
-      margin-bottom: 22px;
+      font-size: 18px;
+      line-height: 22px;
+      margin-bottom: 26px;
+    }
+    @media only screen and (max-width: 620px) {
+      margin-bottom: 18px;
     }
   }
   h2 {
     font-size: 20px;
-    line-height: 24px;
-    margin-bottom: 21px;
+    line-height: 29px;
+    margin-bottom: 38px;
     @media only screen and (max-width: 1240px) {
+      font-size: 14px;
+      line-height: 18px;
       margin-bottom: 12px;
     }
     @media only screen and (max-width: 620px) {
@@ -43,7 +58,7 @@ const Wrapper = styled.article`
     font-family: ${({ theme }) => theme.font.paragraph.family};
     font-size: 20px;
     line-height: 29px;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
     @media only screen and (max-width: 1240px) {
       font-size: 16px;
       line-height: 24px;
@@ -89,10 +104,10 @@ const Wrapper = styled.article`
   ul {
     list-style-position: outside;
     margin: 0 25px;
-    margin-bottom: 56px;
+    /* margin-bottom: 32px; */
     @media only screen and (max-width: 1240px) {
       margin: 0 25px;
-      margin-bottom: 24px;
+      /* margin-bottom: 24px; */
     }
   }
   ol {
@@ -102,21 +117,25 @@ const Wrapper = styled.article`
     list-style-type: disc;
   }
   ol li {
-    margin-bottom: 39px;
+    /* margin-bottom: 39px; */
     padding-left: 10px;
     @media only screen and (max-width: 1240px) {
-      margin-bottom: 17px;
+      font-size: 16px;
+      /* margin-bottom: 17px; */
       padding-left: 10px;
     }
     @media only screen and (max-width: 620px) {
-      margin-bottom: 15px;
+      /* margin-bottom: 15px; */
       padding-left: 10px;
     }
   }
   ul li {
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
+    @media only screen and (max-width: 1240px) {
+      font-size: 16px;
+    }
     @media only screen and (max-width: 620px) {
-      margin-bottom: 12px;
+      /* margin-bottom: 12px; */
     }
   }
 
