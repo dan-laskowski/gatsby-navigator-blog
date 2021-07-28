@@ -173,7 +173,7 @@ const ExitButton = styled.button`
 
 Modal.setAppElement("#___gatsby");
 
-const TeamMember = ({ member, ...props }) => {
+const TeamMember = ({ member }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleModalSwitch = () => {

@@ -1,11 +1,12 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import Seo from "molecules/seo";
-import styled from "styled-components";
-import navigatorNavData from "data/navigatorNav";
 import ReactHtmlParser from "react-html-parser";
+import styled from "styled-components";
+import Content from "atoms/content";
+import Post from "molecules/post";
+import AsideSection from "molecules/asideSection";
 import PageSideNav from "molecules/pageSideNav";
-import TeamMembers from "organisms/teamMembers";
 import Layout from "organisms/layout";
 
 const MainWrapper = styled.div`
@@ -21,9 +22,8 @@ const PageWrapper = styled.div`
   max-width: 1645px;
   grid-template-columns: repeat(8, 1fr);
   column-gap: 40px;
-  grid-template-areas:
-    "l c c c c . n n"
-    "l t t t t t n n ";
+  grid-template-rows: auto;
+  grid-template-areas: "l c c c c . n n";
   @media only screen and (max-width: 1730px) {
     margin-left: 30px;
     margin-right: 30px;
@@ -31,13 +31,9 @@ const PageWrapper = styled.div`
   @media only screen and (max-width: 1240px) {
     column-gap: 30px;
   }
-  @media only screen and (max-width: 870px) {
+  @media only screen and (max-width: 760px) {
     column-gap: 24px;
-    grid-template-areas: "l c c c c c . n" "l t t t t t . n ";
-  }
-  @media only screen and (max-width: 710px) {
-    column-gap: 30px;
-    grid-template-areas: "c c c c c n n n" "t t t t t n n n ";
+    grid-template-areas: "l c c c c c . n";
   }
   @media only screen and (max-width: 620px) {
     column-gap: 24px;
@@ -45,13 +41,14 @@ const PageWrapper = styled.div`
     margin-right: 24px;
     grid-template-areas:
       " n n n n n n n n "
-      " c c c c c c c c "
-      " t t t t t t t t ";
+      " c c c c c c c c ";
   }
 `;
-const PageContent = styled.main`
+
+const PageContent = styled(Content)`
   margin-top: 82px;
-  grid-area: c;
+  grid-column-start: c;
+  grid-column-end: c;
 
   @media only screen and (max-width: 1240px) {
     margin-top: 40px;
@@ -60,7 +57,7 @@ const PageContent = styled.main`
     margin-top: 30px;
   }
 
-  h1,
+  /* h1,
   h2 {
     font-family: ${({ theme }) => theme.font.heading.family};
     font-weight: bold;
@@ -135,64 +132,116 @@ const PageContent = styled.main`
     @media only screen and (max-width: 1240px) {
       margin-bottom: 40px;
     }
-  }
-`;
-const StyledTeamMembers = styled(TeamMembers)`
-  grid-area: t;
-`;
-const Aside = styled.aside`
-  grid-area: n;
+  } */
 `;
 
-const Zespol = ({ data: { wpPage, allMembers } }) => {
+const Aside = styled.aside`
+  grid-column-start: n;
+  grid-column-end: n;
+  grid-row-start: n;
+`;
+
+const LastPosts = styled(AsideSection)`
+  grid-column-start: l;
+  grid-column-end: n;
+  @media only screen and (max-width: 1240px) {
+    margin-bottom: 56px;
+  }
+  @media only screen and (max-width: 760px) {
+    display: none;
+    content-visibility: hidden;
+  }
+`;
+
+const LastPostsContent = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 40px;
+
+  .title {
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    margin-bottom: 12px;
+  }
+
+  @media only screen and (max-width: 1240px) {
+    .title {
+      -webkit-line-clamp: 4;
+    }
+    .subtitle,
+    .date {
+      display: none;
+      content-visibility: hidden;
+    }
+  }
+`;
+
+const StaticPage = ({ meta, content, lastPosts, children, menuItems }) => {
+  const { allWpPost } = useStaticQuery(graphql`
+    query LastPostQuery {
+      allWpPost(limit: 4, filter: { status: { eq: "publish" } }) {
+        nodes {
+          title
+          slug
+          excerpt
+          dateGmt(locale: "pl", formatString: "DD MMMM yyyy")
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 380
+                    placeholder: BLURRED
+                    formats: [AUTO, AVIF, WEBP]
+                  )
+                }
+              }
+            }
+          }
+          categories {
+            nodes {
+              name
+              slug
+              wpChildren {
+                nodes {
+                  name
+                  slug
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
   return (
     <Layout>
-      <Seo title="Zespół | Navigator" description="Poznaj nasz zespół!" />
+      <Seo title={`${meta.title} | Navigator`} description={meta.description} />
       <MainWrapper>
         <PageWrapper>
-          <PageContent>{ReactHtmlParser(wpPage.content)}</PageContent>
-          <StyledTeamMembers members={allMembers} />
+          <PageContent>
+            {ReactHtmlParser(content)}
+            {children}
+          </PageContent>
           <Aside>
-            <PageSideNav title="Navigator" items={navigatorNavData.items} />
+            <PageSideNav title="B CORPY" items={menuItems} />
           </Aside>
+          {lastPosts && (
+            <LastPosts title="Ostatnie" to="/">
+              <LastPostsContent>
+                {allWpPost.nodes.map(node => (
+                  <Post post={node} />
+                ))}
+              </LastPostsContent>
+            </LastPosts>
+          )}
         </PageWrapper>
       </MainWrapper>
     </Layout>
   );
 };
 
-export const query = graphql`
-  query TeamMembersQuery {
-    wpPage(title: { eq: "Zespół" }) {
-      title
-      content
-    }
-    allMembers: allWpTeammember {
-      nodes {
-        title
-        description {
-          bio
-          taglink
-          fotografia {
-            localFile {
-              childImageSharp {
-                gatsbyImageData(
-                  width: 265
-                  quality: 90
-                  placeholder: BLURRED
-                  formats: [AUTO, AVIF, WEBP]
-                )
-              }
-            }
-          }
-          stanowisko
-          instagram
-          linkedin
-          twitter
-        }
-      }
-    }
-  }
-`;
-
-export default Zespol;
+export default StaticPage;
