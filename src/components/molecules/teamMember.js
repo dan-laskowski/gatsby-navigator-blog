@@ -31,6 +31,15 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 752px) {
     margin-right: 0px;
   }
+  @media only screen and (max-width: 570px) {
+    margin-right: 48px;
+  }
+  @media only screen and (max-width: 510px) {
+    margin-right: 0;
+  }
+  @media only screen and (max-width: 420px) {
+    margin-right: 24px;
+  }
 `;
 
 const Meta = styled.div`
