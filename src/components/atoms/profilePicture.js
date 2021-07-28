@@ -16,7 +16,7 @@ const Wrapper = styled.div`
       background: ${({ theme }) => theme.color.orange};
     }
   }
-  @media only screen and (min-width: 412px) and (max-width: 930px) {
+  @media only screen and (min-width: 413px) and (max-width: 930px) {
     width: 144px;
     margin-bottom: 16px;
   }
