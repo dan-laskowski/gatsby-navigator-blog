@@ -16,6 +16,10 @@ const Wrapper = styled.div`
       background: ${({ theme }) => theme.color.orange};
     }
   }
+  @media only screen and (max-width: 930px) {
+    width: 144px;
+    margin-bottom: 16px;
+  }
 `;
 
 const StyledPicture = styled(GatsbyImage)`
@@ -24,6 +28,10 @@ const StyledPicture = styled(GatsbyImage)`
   filter: grayscale(100%);
   border-radius: 50%;
   cursor: pointer;
+  @media only screen and (max-width: 930px) {
+    width: 144px;
+    height: 144px;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -42,6 +50,14 @@ const StyledButton = styled.button`
   &&:hover {
     filter: none;
     background: ${({ theme }) => theme.color.orange};
+  }
+  @media only screen and (max-width: 930px) {
+    width: 37px;
+    height: 37px;
+    img {
+      width: 14px;
+      height: 14px;
+    }
   }
 `;
 

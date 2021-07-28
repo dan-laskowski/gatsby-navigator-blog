@@ -20,6 +20,17 @@ const Wrapper = styled.div`
   line-height: 22px;
   margin-bottom: 56px;
   width: 210px;
+
+  margin-right: 48px;
+
+  @media only screen and (max-width: 930px) {
+    width: 150px;
+    margin-left: 0;
+    margin-right: 24px;
+  }
+  @media only screen and (max-width: 752px) {
+    margin-right: 0px;
+  }
 `;
 
 const Meta = styled.div`
@@ -38,16 +49,29 @@ const ProfileName = styled.p`
   display: inline;
   font-size: 20px;
   font-weight: bold;
+  @media only screen and (max-width: 930px) {
+    font-size: 14px;
+    line-height: 13px;
+  }
 `;
 
 const ProfilePosition = styled.p`
   color: ${({ theme }) => theme.color.orange};
   margin-bottom: 14px;
+  @media only screen and (max-width: 930px) {
+    font-size: 11px;
+    line-height: 11px;
+    margin-bottom: 10px;
+  }
 `;
 
 const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.color.black};
   text-decoration: underline;
+  @media only screen and (max-width: 930px) {
+    font-size: 12px;
+    line-height: 13px;
+  }
 `;
 
 const Socials = styled.section`
@@ -59,6 +83,13 @@ const Socials = styled.section`
     margin-top: 22px;
     margin-bottom: 10px;
   }
+  @media only screen and (max-width: 930px) {
+    p {
+      font-size: 10px;
+      line-height: 13px;
+      margin-top: 10px;
+    }
+  }
 `;
 
 const Icons = styled.div`
@@ -67,6 +98,14 @@ const Icons = styled.div`
   align-items: center;
   a {
     margin-right: 22px;
+  }
+  @media only screen and (max-width: 930px) {
+    a {
+      margin-right: 16px;
+      svg {
+        width: 16px;
+      }
+    }
   }
 `;
 

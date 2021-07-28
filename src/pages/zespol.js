@@ -23,7 +23,7 @@ const PageWrapper = styled.div`
   column-gap: 40px;
   grid-template-areas:
     "l c c c c . n n"
-    "l t t t t . n n ";
+    "l t t t t t n n ";
   @media only screen and (max-width: 1730px) {
     margin-left: 30px;
     margin-right: 30px;
@@ -31,9 +31,13 @@ const PageWrapper = styled.div`
   @media only screen and (max-width: 1240px) {
     column-gap: 30px;
   }
-  @media only screen and (max-width: 760px) {
+  @media only screen and (max-width: 870px) {
     column-gap: 24px;
-    grid-template-areas: "l c c c c c . n";
+    grid-template-areas: "l c c c c c . n" "l t t t t t . n ";
+  }
+  @media only screen and (max-width: 710px) {
+    column-gap: 30px;
+    grid-template-areas: "c c c c c n n n" "t t t t t n n n ";
   }
   @media only screen and (max-width: 620px) {
     column-gap: 24px;
@@ -41,7 +45,8 @@ const PageWrapper = styled.div`
     margin-right: 24px;
     grid-template-areas:
       " n n n n n n n n "
-      " c c c c c c c c ";
+      " c c c c c c c c "
+      " t t t t t t t t ";
   }
 `;
 const PageContent = styled.main`

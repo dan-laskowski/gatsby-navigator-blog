@@ -4,10 +4,13 @@ import TeamMember from "molecules/teamMember";
 
 const Wrapper = styled.section`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   max-width: 800px;
   margin-top: 48px;
+  @media only screen and (max-width: 752px) {
+    justify-content: space-between;
+  }
 `;
 
 const TeamMembers = ({ members, ...props }) => {
