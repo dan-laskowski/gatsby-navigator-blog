@@ -40,6 +40,9 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 420px) {
     margin-right: 24px;
   }
+  @media only screen and (max-width: 413px) {
+    width: 210px;
+  }
 `;
 
 const Meta = styled.div`
@@ -58,7 +61,7 @@ const ProfileName = styled.p`
   display: inline;
   font-size: 20px;
   font-weight: bold;
-  @media only screen and (max-width: 930px) {
+  @media only screen and (min-width: 413px) and (max-width: 930px) {
     font-size: 14px;
     line-height: 13px;
   }
@@ -67,7 +70,7 @@ const ProfileName = styled.p`
 const ProfilePosition = styled.p`
   color: ${({ theme }) => theme.color.orange};
   margin-bottom: 14px;
-  @media only screen and (max-width: 930px) {
+  @media only screen and (min-width: 413px) and (max-width: 930px) {
     font-size: 11px;
     line-height: 11px;
     margin-bottom: 10px;
@@ -77,7 +80,7 @@ const ProfilePosition = styled.p`
 const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.color.black};
   text-decoration: underline;
-  @media only screen and (max-width: 930px) {
+  @media only screen and (min-width: 413px) and (max-width: 930px) {
     font-size: 12px;
     line-height: 13px;
   }
@@ -92,7 +95,7 @@ const Socials = styled.section`
     margin-top: 22px;
     margin-bottom: 10px;
   }
-  @media only screen and (max-width: 930px) {
+  @media only screen and (min-width: 413px) and (max-width: 930px) {
     p {
       font-size: 10px;
       line-height: 13px;
@@ -108,7 +111,7 @@ const Icons = styled.div`
   a {
     margin-right: 22px;
   }
-  @media only screen and (max-width: 930px) {
+  @media screen and (min-width: 413px) and (max-width: 930px) {
     a {
       margin-right: 16px;
       svg {

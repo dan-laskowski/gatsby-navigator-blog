@@ -16,7 +16,7 @@ const Wrapper = styled.div`
       background: ${({ theme }) => theme.color.orange};
     }
   }
-  @media only screen and (max-width: 930px) {
+  @media only screen and (min-width: 412px) and (max-width: 930px) {
     width: 144px;
     margin-bottom: 16px;
   }
@@ -28,7 +28,7 @@ const StyledPicture = styled(GatsbyImage)`
   filter: grayscale(100%);
   border-radius: 50%;
   cursor: pointer;
-  @media only screen and (max-width: 930px) {
+  @media only screen and (min-width: 413px) and (max-width: 930px) {
     width: 144px;
     height: 144px;
   }
@@ -51,7 +51,7 @@ const StyledButton = styled.button`
     filter: none;
     background: ${({ theme }) => theme.color.orange};
   }
-  @media only screen and (max-width: 930px) {
+  @media only screen and (min-width: 413px) and (max-width: 930px) {
     width: 37px;
     height: 37px;
     img {
