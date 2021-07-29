@@ -122,7 +122,14 @@ const NewsletterForm = () => {
       <StyledSubheading
         text={[
           "Wszystkie poprzednie newslettery możesz znaleźć ",
-          <SectionLink to="/coming-soon">tutaj.</SectionLink>,
+          <SectionLink
+            as="a"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="/coming-soon"
+          >
+            tutaj.
+          </SectionLink>,
           " Podaj nam swój adres email, aby regularnie otrzymywać newsletter:",
         ]}
       />
@@ -145,7 +152,14 @@ const NewsletterForm = () => {
       <StyledCheckbox
         text={[
           "Zapoznałam/em się z Polityką Prywatności ",
-          <SectionLink to="/polityka-prywatnosci">(link)</SectionLink>,
+          <SectionLink
+            as="a"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="/polityka-prywatnosci"
+          >
+            (link)
+          </SectionLink>,
         ]}
         aria-required="true"
         required
