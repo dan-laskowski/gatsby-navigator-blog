@@ -45,10 +45,10 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const PageSideNav = ({ title, items }) => {
+const PageSideNav = ({ data }) => {
   return (
-    <StyledAsideSection title={title}>
-      {items.map(item => (
+    <StyledAsideSection title={data.name}>
+      {data.items.map(item => (
         <StyledLink to={item.slug}>{item.name}</StyledLink>
       ))}
     </StyledAsideSection>

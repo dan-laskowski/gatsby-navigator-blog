@@ -260,7 +260,7 @@ const CzymJestBCorp = () => {
             </StyledLink>
           </PageContent>
           <Aside>
-            <PageSideNav title="B CORPY" items={bcorpNavData.items} />
+            <PageSideNav data={bcorpNavData} />
           </Aside>
           <LastPosts title="Ostatnie" to="/">
             <LastPostsContent>

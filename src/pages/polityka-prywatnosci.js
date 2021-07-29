@@ -18,11 +18,7 @@ const TermsofService = () => {
     }
   `);
   return (
-    <StaticPage
-      meta={meta}
-      content={wpPage.content}
-      menuItems={navigatorNavData.items}
-    />
+    <StaticPage meta={meta} content={wpPage.content} data={navigatorNavData} />
   );
 };
 

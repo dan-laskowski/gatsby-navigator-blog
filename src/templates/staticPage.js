@@ -56,83 +56,6 @@ const PageContent = styled(Content)`
   @media only screen and (max-width: 620px) {
     margin-top: 30px;
   }
-
-  /* h1,
-  h2 {
-    font-family: ${({ theme }) => theme.font.heading.family};
-    font-weight: bold;
-    color: ${({ theme }) => theme.color.black};
-  }
-  h1 {
-    font-size: 60px;
-    line-height: 71px;
-    margin-bottom: 46px;
-    @media only screen and (max-width: 1240px) {
-      font-size: 22px;
-      line-height: 27px;
-      margin-bottom: 22px;
-    }
-  }
-  h2 {
-    font-size: 20px;
-    line-height: 24px;
-    margin-bottom: 21px;
-    @media only screen and (max-width: 1240px) {
-      margin-bottom: 12px;
-    }
-    @media only screen and (max-width: 620px) {
-      font-size: 16px;
-      line-height: 19px;
-      margin-bottom: 9px;
-    }
-  }
-  p {
-    font-family: ${({ theme }) => theme.font.paragraph.family};
-    color: ${({ theme }) => theme.color.gray};
-    font-size: 20px;
-    line-height: 29px;
-    margin-bottom: 30px;
-    @media only screen and (max-width: 1240px) {
-      font-size: 16px;
-      line-height: 24px;
-      margin-bottom: 12px;
-    }
-    @media only screen and (max-width: 620px) {
-      font-size: 16px;
-      line-height: 26px;
-      margin-bottom: 18px;
-    }
-    @media only screen and (max-width: 360px) {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-  p {
-    span.alignnone {
-      margin-bottom: 120px;
-      @media only screen and (max-width: 1240px) {
-        margin-bottom: 40px;
-      }
-    }
-  }
-  .gatsby-image-wrapper {
-    max-width: 100% !important;
-    margin-top: 88px;
-    @media only screen and (max-width: 1240px) {
-      margin-top: 30px;
-    }
-  }
-  .wp-caption {
-    max-width: 100% !important;
-  }
-  .wp-caption-text {
-    font-size: 12px;
-    line-height: 18px;
-    margin-bottom: 110px;
-    @media only screen and (max-width: 1240px) {
-      margin-bottom: 40px;
-    }
-  } */
 `;
 
 const Aside = styled.aside`
@@ -179,7 +102,7 @@ const LastPostsContent = styled.div`
   }
 `;
 
-const StaticPage = ({ meta, content, lastPosts, children, menuItems }) => {
+const StaticPage = ({ meta, content, lastPosts, children, data }) => {
   const { allWpPost } = useStaticQuery(graphql`
     query LastPostQuery {
       allWpPost(limit: 4, filter: { status: { eq: "publish" } }) {
@@ -227,7 +150,7 @@ const StaticPage = ({ meta, content, lastPosts, children, menuItems }) => {
             {children}
           </PageContent>
           <Aside>
-            <PageSideNav title="B CORPY" items={menuItems} />
+            <PageSideNav data={data} />
           </Aside>
           {lastPosts && (
             <LastPosts title="Ostatnie" to="/">

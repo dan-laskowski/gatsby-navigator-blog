@@ -1,4 +1,5 @@
 const bcorpNavData = {
+  name: "B CORPY",
   items: [
     {
       name: "TEKSTY O B CORPACH",
@@ -14,7 +15,7 @@ const bcorpNavData = {
     },
     {
       name: "BAZA POLSKICH B CORPÓW",
-      slug: "/baza-polskich-b-corpow",
+      slug: "/coming-soon",
     },
   ],
 };

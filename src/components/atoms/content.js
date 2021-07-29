@@ -9,13 +9,12 @@ const Wrapper = styled.article`
   line-height: 29px;
   color: ${({ theme }) => theme.color.gray};
   overflow-wrap: break-word;
-
   * {
     margin-bottom: 38px;
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       margin-bottom: 16px;
     }
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 426px) {
       margin-bottom: 18px;
     }
   }
@@ -30,12 +29,12 @@ const Wrapper = styled.article`
     font-size: 60px;
     line-height: 71px;
     margin-bottom: 42px;
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       font-size: 18px;
       line-height: 22px;
       margin-bottom: 26px;
     }
-    @media only screen and (max-width: 620px) {
+    @media only screen and (max-width: 426px) {
       margin-bottom: 18px;
     }
   }
@@ -44,12 +43,12 @@ const Wrapper = styled.article`
     line-height: 29px;
     margin-top: 26px;
     margin-bottom: 32px;
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       font-size: 14px;
       line-height: 18px;
       margin-bottom: 16px;
     }
-    @media only screen and (max-width: 620px) {
+    @media only screen and (max-width: 426px) {
       font-size: 16px;
       line-height: 19px;
       margin-bottom: 9px;
@@ -60,20 +59,21 @@ const Wrapper = styled.article`
     font-size: 20px;
     line-height: 29px;
     margin-bottom: 32px;
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       font-size: 14px;
       line-height: 18px;
       margin-bottom: 16px;
     }
-    @media only screen and (max-width: 620px) {
-      font-size: 16px;
-      line-height: 26px;
+    @media only screen and (max-width: 426px) {
+      font-size: 14px;
+      line-height: 18px;
+      margin-bottom: 21px;
     }
   }
   p {
     span.alignnone {
       margin-bottom: 120px;
-      @media only screen and (max-width: 1240px) {
+      @media only screen and (max-width: 1120px) {
         margin-bottom: 40px;
       }
     }
@@ -81,7 +81,7 @@ const Wrapper = styled.article`
   .gatsby-image-wrapper {
     max-width: 100% !important;
     margin-top: 88px;
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       margin-top: 30px;
     }
   }
@@ -92,7 +92,7 @@ const Wrapper = styled.article`
     font-size: 12px;
     line-height: 18px;
     margin-bottom: 110px;
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       margin-bottom: 40px;
     }
   }
@@ -100,7 +100,7 @@ const Wrapper = styled.article`
   ul {
     list-style-position: outside;
     margin: 0 25px;
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       margin: 0 25px;
     }
   }
@@ -112,24 +112,24 @@ const Wrapper = styled.article`
   }
   ol li {
     padding-left: 10px;
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       font-size: 14px;
       line-height: 18px;
       padding-left: 10px;
-      margin-bottom: 21px;
+      margin-bottom: 18px;
     }
-    @media only screen and (max-width: 620px) {
+    @media only screen and (max-width: 426px) {
       padding-left: 10px;
     }
   }
   ul li {
     /* margin-bottom: 30px; */
-    @media only screen and (max-width: 1240px) {
+    @media only screen and (max-width: 1120px) {
       font-size: 14px;
       line-height: 18px;
-      margin-bottom: 21px;
+      margin-bottom: 18px;
     }
-    @media only screen and (max-width: 620px) {
+    @media only screen and (max-width: 426px) {
       /* margin-bottom: 12px; */
     }
   }

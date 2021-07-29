@@ -1,4 +1,5 @@
 const navigatorNavData = {
+  name: "NAVIGATOR",
   items: [
     {
       name: "ZESPÓŁ",
