@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { window } from "browser-monads";
 import styled from "styled-components";
 import SectionLink from "atoms/sectionLink";
+import addToMailChimp from "gatsby-plugin-mailchimp";
 import Button from "atoms/button";
 import { Heading, Subheading } from "atoms/heading";
 import Checkbox from "atoms/checkbox";
@@ -97,14 +98,20 @@ const StyledButton = styled(Button)`
 const NewsletterForm = () => {
   let params = new URLSearchParams(window.location.search.slice(1));
   const [email, setEmail] = useState(params.get("q") || "");
-
+  const [submitText, setSubmitText] = useState("Zapisz się");
+  const formEl = useRef(null);
   const handleFormSubmit = e => {
+    setSubmitText("Zapisywanie..");
     e.preventDefault();
-    // function
+    addToMailChimp(email).then(() => {
+      setSubmitText(`✓ Zapisano!`);
+      formEl.current.reset();
+    });
   };
 
   return (
     <StyledForm
+      ref={formEl}
       onSubmit={handleFormSubmit}
       role="form"
       aria-label="Zapisz się do newslettera"
@@ -113,8 +120,9 @@ const NewsletterForm = () => {
       <StyledHeading text="bądź na bieżąco" />
       <StyledSubheading
         text={[
-          "Wszystkie poprzednie newslettery możesz znaleźć właśnie ",
-          <SectionLink to="/coming-soon">tutaj</SectionLink>,
+          "Wszystkie poprzednie newslettery możesz znaleźć ",
+          <SectionLink to="/coming-soon">tutaj.</SectionLink>,
+          " Podaj nam swój adres email, aby regularnie otrzymywać newsletter:",
         ]}
       />
       <InputContainer>
@@ -129,16 +137,19 @@ const NewsletterForm = () => {
         />
       </InputContainer>
       <StyledCheckbox
-        text="Wyrażam zgodę na przetwarzanie moich danych przez Navigator Blog"
+        text="Wyrażam zgodzę na przetwarzanie moich danych przez BETTER sp. z o.o."
         aria-required="true"
         required
       />
       <StyledCheckbox
-        text="Wyrażam zgodę na otrzymywanie treści na podany poniżej adres email"
+        text={[
+          "Zapoznałam/em się z Polityką Prywatności ",
+          <SectionLink to="/polityka-prywatnosci">(link)</SectionLink>,
+        ]}
         aria-required="true"
         required
       />
-      <StyledButton text="Zapisz się" />
+      <StyledButton text={submitText} />
     </StyledForm>
   );
 };

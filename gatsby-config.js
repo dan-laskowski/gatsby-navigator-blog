@@ -74,6 +74,14 @@ module.exports = {
         host: `https://navigator82042.gtsb.io`,
       },
     },
+    {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint:
+          "https://b-better.us4.list-manage.com/subscribe/post?u=6f37a91ff8cd9f3ecdfdb90ac&amp;id=5c791412a3", // string; add your MC list endpoint here; see instructions below
+        timeout: 3500, // number; the amount of time, in milliseconds, that you want to allow mailchimp to respond to your request before timing out. defaults to 3500
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-google-gtag`,
     //   options: {
