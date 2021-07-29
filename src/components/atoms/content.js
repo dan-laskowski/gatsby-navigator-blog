@@ -128,6 +128,7 @@ const Wrapper = styled.article`
       font-size: 14px;
       line-height: 18px;
       margin-bottom: 18px;
+      margin-top: 16px;
     }
     @media only screen and (max-width: 426px) {
       /* margin-bottom: 12px; */

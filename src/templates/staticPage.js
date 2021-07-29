@@ -49,6 +49,7 @@ const PageContent = styled(Content)`
   margin-top: 82px;
   grid-column-start: c;
   grid-column-end: c;
+  margin-bottom: 100px;
 
   @media only screen and (max-width: 1240px) {
     margin-top: 40px;
