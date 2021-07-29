@@ -153,7 +153,7 @@ const Zespol = ({ data: { wpPage, allMembers } }) => {
           <PageContent>{ReactHtmlParser(wpPage.content)}</PageContent>
           <StyledTeamMembers members={allMembers} />
           <Aside>
-            <PageSideNav title="Navigator" items={navigatorNavData.items} />
+            <PageSideNav data={navigatorNavData} />
           </Aside>
         </PageWrapper>
       </MainWrapper>
