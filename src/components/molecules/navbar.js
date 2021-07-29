@@ -103,8 +103,8 @@ const Navbar = () => {
           />
           <MenuItem
             aria-label="Sustainbility on CEE"
-            text="Sustainbility in CEE"
-            slug="/sustainbility-in-cee"
+            text="Sustainability in CEE"
+            slug="/sustainability-in-cee"
           />
           <MenuItem
             aria-label="Articles and Interviews"
