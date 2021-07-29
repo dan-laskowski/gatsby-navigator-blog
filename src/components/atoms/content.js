@@ -124,11 +124,11 @@ const Wrapper = styled.article`
   }
   ul li {
     /* margin-bottom: 30px; */
+    margin-top: 16px;
     @media only screen and (max-width: 1120px) {
       font-size: 14px;
       line-height: 18px;
       margin-bottom: 18px;
-      margin-top: 16px;
     }
     @media only screen and (max-width: 426px) {
       /* margin-bottom: 12px; */
