@@ -105,6 +105,7 @@ const NewsletterForm = () => {
     e.preventDefault();
     addToMailChimp(email).then(() => {
       setSubmitText(`✓ Zapisano!`);
+      setEmail("");
       formEl.current.reset();
     });
   };
