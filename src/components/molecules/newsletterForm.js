@@ -126,7 +126,7 @@ const NewsletterForm = () => {
             as="a"
             target="_blank"
             rel="noopener noreferrer"
-            href="/coming-soon"
+            href="https://us4.campaign-archive.com/home/?u=6f37a91ff8cd9f3ecdfdb90ac&id=5c791412a3"
           >
             tutaj.
           </SectionLink>,
