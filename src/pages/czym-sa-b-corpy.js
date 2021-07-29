@@ -135,26 +135,6 @@ const PageContent = styled.main`
   }
 `;
 
-const StyledLink = styled.a`
-  display: block;
-  font-family: ${({ theme }) => theme.font.heading.family};
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 16px 0;
-  width: 100%;
-  margin-top: 130px;
-  margin-bottom: 100px;
-  background: ${({ theme }) => theme.color.orange};
-  color: ${({ theme }) => theme.color.offWhite};
-  @media only screen and (max-width: 1240px) {
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-`;
-
 const Aside = styled.aside`
   grid-column-start: n;
   grid-column-end: n;
@@ -249,16 +229,7 @@ const CzymJestBCorp = () => {
       />
       <MainWrapper>
         <PageWrapper>
-          <PageContent>
-            {ReactHtmlParser(wpPage.content)}
-            <StyledLink
-              href="https://b-better.pl/b-corp/"
-              target="_blank"
-              referrerPolicy="no-referrer"
-            >
-              Dowiedz się więcej
-            </StyledLink>
-          </PageContent>
+          <PageContent>{ReactHtmlParser(wpPage.content)}</PageContent>
           <Aside>
             <PageSideNav data={bcorpNavData} />
           </Aside>

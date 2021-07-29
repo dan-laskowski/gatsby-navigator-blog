@@ -71,7 +71,7 @@ const Navbar = () => {
           <MenuItem
             aria-label="Baza polskich B Corpów"
             text="Baza polskich B Corpów"
-            slug="/bcorp"
+            slug="/baza-polskich-b-corpow"
           />
           <MenuItem
             aria-label="Teksty o B Corpach"
