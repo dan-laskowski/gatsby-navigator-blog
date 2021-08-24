@@ -42,7 +42,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `https://daniello110.usermd.net/graphql`,
+        url: process.env.GATSBY_WP_ENDPOINT,
       },
     },
     {
