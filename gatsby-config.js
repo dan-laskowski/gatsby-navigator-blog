@@ -53,8 +53,8 @@ module.exports = {
         indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         queries: require("./src/utils/algolia-queries"),
         skipIndexing: false,
-        // enablePartialUpdates: true,
-        // matchFields: ["dateGmt"],
+        enablePartialUpdates: true,
+        matchFields: ["dateGmt"],
       },
     },
     {
