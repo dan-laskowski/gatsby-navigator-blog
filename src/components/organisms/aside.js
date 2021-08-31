@@ -73,7 +73,7 @@ const Aside = ({ children, ...props }) => {
       allWpPost(
         filter: {
           categories: {
-            nodes: { elemMatch: { name: { eq: "Publikacje/Raporty" } } }
+            nodes: { elemMatch: { name: { eq: "Publikacje/raporty" } } }
           }
           status: { eq: "publish" }
           raport: { featured: { eq: true } }
