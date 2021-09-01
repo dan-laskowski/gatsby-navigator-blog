@@ -1271,7 +1271,7 @@ export const query = graphql`
       filter: {
         status: { eq: "publish" }
         categories: {
-          nodes: { elemMatch: { name: { eq: "Publikacje/Raporty" } } }
+          nodes: { elemMatch: { name: { eq: "Publikacje/raporty" } } }
         }
       }
       limit: 3
