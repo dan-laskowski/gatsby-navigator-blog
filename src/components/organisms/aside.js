@@ -112,7 +112,11 @@ const Aside = ({ children, ...props }) => {
         <AsideSection className="tags" title="tagi" to={`/tags`}>
           <div>
             {allWpTag.nodes.map(node => (
-              <Tag key={node.slug} name={node.name} slug={node.slug} />
+              <Tag
+                key={node.slug}
+                name={node.name}
+                slug={`/tag/${node.slug}`}
+              />
             ))}
             <Tag className="last-tag" key="last" name="..." slug="tags" />
           </div>

@@ -31,7 +31,7 @@ const StyledTag = styled.button`
 
 const Tag = ({ name, slug, ...props }) => {
   return (
-    <Link className="tag" to={`/tag/${slug}`} {...props}>
+    <Link className="tag" to={`${slug}`} {...props}>
       <StyledTag {...props}>
         {name.charAt(0).toUpperCase() + name.slice(1)}
       </StyledTag>

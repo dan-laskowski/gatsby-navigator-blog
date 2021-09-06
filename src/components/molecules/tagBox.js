@@ -13,7 +13,7 @@ const TagBox = ({ tags, amount, ...props }) => {
   return (
     <Wrapper {...props}>
       {slicedTags.map(node => (
-        <Tag key={node.slug} name={node.name} slug={node.slug} />
+        <Tag key={node.slug} name={node.name} slug={`/tag/${node.slug}`} />
       ))}
       {amount !== tags.nodes.length && amount && !tags && (
         <Tag className="last-tag" key="last" name="..." slug="tags" />
