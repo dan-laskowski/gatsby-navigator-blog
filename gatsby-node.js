@@ -77,7 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const totalPosts =
       node.posts.nodes.length !== null ? node.posts.nodes.length : 0;
 
-    const url = `/${node.slug}`;
+    const url = `/tag/${node.slug}`;
 
     const items = Array.from({ length: totalPosts });
 
