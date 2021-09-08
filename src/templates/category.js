@@ -304,7 +304,7 @@ const Category = ({
                     <Link key={`zostac`} to={`/jak-zostac-b-corpem`}>
                       Jak zostać B Corpem
                     </Link>
-                    <Link key={`firm`} to={`/baza`}>
+                    <Link key={`firm`} to={`/baza-polskich-b-corpow`}>
                       Baza polskich B Corpów
                     </Link>
                   </>
