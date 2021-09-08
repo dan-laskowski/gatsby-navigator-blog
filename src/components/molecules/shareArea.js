@@ -38,7 +38,7 @@ const ShareArea = ({ postTitle, postUrl }) => {
         <img src={facebook} alt="udostępnij post na Facebooku" />
       </a>
       <a
-        href={`https://twitter.com/intent/tweet?url=${shareData.url}&text=${shareData.postTitle}`}
+        href={`https://twitter.com/intent/tweet?url=${shareData.url}&text=${shareData.text}`}
       >
         <img src={twitter} alt="udostępnij post na Twitterze" />
       </a>
