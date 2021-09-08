@@ -40,7 +40,11 @@ const SustainabilityPage = () => {
   `);
   return (
     <StaticPage meta={meta} content={wpPage.content} data={engNavData}>
-      <StyledLink href="/cee" target="_blank" referrerPolicy="no-referrer">
+      <StyledLink
+        href="/articles-and-interviews"
+        target="_blank"
+        referrerPolicy="no-referrer"
+      >
         Read more
       </StyledLink>
     </StaticPage>
