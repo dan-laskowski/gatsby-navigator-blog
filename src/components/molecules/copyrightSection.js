@@ -23,7 +23,12 @@ const CopyrightSection = ({ ...props }) => {
         />
         <Text className="align-right text" text="All Rights Reserved" />
       </div>
-      <a aria-label="Wejdź na stronę Better" href="https://b-better.pl/">
+      <a
+        target="_blank"
+        rel="noopener"
+        aria-label="Wejdź na stronę Better"
+        href="https://b-better.pl/"
+      >
         <Icon className={`better-logo`} src={better} />
       </a>
     </CopyWrapper>
