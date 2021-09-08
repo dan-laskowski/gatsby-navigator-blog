@@ -236,7 +236,7 @@ const TeamMember = ({ member }) => {
           <div>
             <ProfileName>{member.title}</ProfileName>
             <ProfilePosition>{member.description.stanowisko}</ProfilePosition>
-            <StyledLink to={`/${member.description.taglink}`}>
+            <StyledLink to={`/tag/${member.description.taglink}`}>
               Moje teksty
             </StyledLink>
             <Socials>
