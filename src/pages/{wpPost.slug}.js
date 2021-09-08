@@ -349,6 +349,7 @@ const WpPostTemplate = ({ data: { wpPost, asideQuery } }) => {
         image={wpPost.featuredImage.node.mediaItemUrl}
       />
       <Layout>
+        <ProgressBar />
         <MainWrapper>
           <ArticleTitle wpPost={wpPost} />
           <PageWrapper>
