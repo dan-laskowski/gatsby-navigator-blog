@@ -34,14 +34,16 @@ const ShareArea = ({ postTitle, postUrl }) => {
   };
   return (
     <Wrapper>
-      <a href="#">
-        <img src={facebook} alt="ikona facebooka" />
+      <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareData.url}`}>
+        <img src={facebook} alt="udostępnij post na Facebooku" />
       </a>
-      <a href="https://twitter.com/intent/tweet?text=Hello%20world">
-        <img src={twitter} alt="ikona twittera" />
+      <a
+        href={`https://twitter.com/intent/tweet?url=${shareData.url}&text=${shareData.postTitle}`}
+      >
+        <img src={twitter} alt="udostępnij post na Twitterze" />
       </a>
       <ShareIcon onClick={() => navigator.share(shareData)}>
-        <img src={share} alt="ikona twittera" />
+        <img src={share} alt="udostępnij post" />
       </ShareIcon>
     </Wrapper>
   );
