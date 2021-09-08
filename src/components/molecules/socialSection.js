@@ -28,32 +28,32 @@ const SocialSection = ({ ...props }) => {
       <a
         target="_blank"
         rel="noopener"
-        aria-label="Profil na LinkedIn"
-        href="https://linkedin.com/"
+        aria-label="Profil Better na LinkedIn"
+        href="https://www.linkedin.com/company/better./"
       >
         <Icon src={linkedin} />
       </a>
       <a
         target="_blank"
         rel="noopener"
-        aria-label="Profil na Instagramie"
-        href="https://linkedin.com/"
+        aria-label="Profil Better na Instagramie"
+        href="https://www.instagram.com/bcorp.pl/"
       >
         <Icon src={instagram} />
       </a>
       <a
         target="_blank"
         rel="noopener"
-        aria-label="Profil na Twitterze"
-        href="https://linkedin.com/"
+        aria-label="Profil Better na Twitterze"
+        href="https://twitter.com/B_BETTER_PL/"
       >
         <Icon src={twitter} />
       </a>
       <a
         target="_blank"
         rel="noopener"
-        aria-label="Profil na Facebooku"
-        href="https://linkedin.com/"
+        aria-label="Profil Better na Facebooku"
+        href="https://www.facebook.com/CRNavigatorResilience/"
       >
         <Icon src={facebook} />
       </a>
@@ -61,7 +61,7 @@ const SocialSection = ({ ...props }) => {
         target="_blank"
         rel="noopener"
         aria-label="Wyślij do nas maila"
-        href="https://linkedin.com/"
+        href="mailto:b-navigator@b-better.pl"
       >
         <Icon src={mail} />
       </a>
