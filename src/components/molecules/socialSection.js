@@ -25,19 +25,44 @@ const SocialWrapper = styled.section`
 const SocialSection = ({ ...props }) => {
   return (
     <SocialWrapper {...props}>
-      <a aria-label="Profil na LinkedIn" href="https://linkedin.com/">
+      <a
+        target="_blank"
+        rel="noopener"
+        aria-label="Profil na LinkedIn"
+        href="https://linkedin.com/"
+      >
         <Icon src={linkedin} />
       </a>
-      <a aria-label="Profil na Instagramie" href="https://linkedin.com/">
+      <a
+        target="_blank"
+        rel="noopener"
+        aria-label="Profil na Instagramie"
+        href="https://linkedin.com/"
+      >
         <Icon src={instagram} />
       </a>
-      <a aria-label="Profil na Twitterze" href="https://linkedin.com/">
+      <a
+        target="_blank"
+        rel="noopener"
+        aria-label="Profil na Twitterze"
+        href="https://linkedin.com/"
+      >
         <Icon src={twitter} />
       </a>
-      <a aria-label="Profil na Facebooku" href="https://linkedin.com/">
+      <a
+        target="_blank"
+        rel="noopener"
+        aria-label="Profil na Facebooku"
+        href="https://linkedin.com/"
+      >
         <Icon src={facebook} />
       </a>
-      <a aria-label="Wyślij do nas maila" href="https://linkedin.com/">
+      <a
+        target="_blank"
+        rel="noopener"
+        aria-label="Wyślij do nas maila"
+        href="https://linkedin.com/"
+      >
         <Icon src={mail} />
       </a>
     </SocialWrapper>
